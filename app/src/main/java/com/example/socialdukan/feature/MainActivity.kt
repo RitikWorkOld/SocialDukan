@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.stackFromEnd = true
         rvChat.layoutManager = layoutManager
-        ref = FirebaseDatabase.getInstance().reference.child("Profile").child(FirebaseAuth.getInstance().currentUser!!.uid).child("cmpach")
+        ref = FirebaseDatabase.getInstance().reference.child("chat").child(FirebaseAuth.getInstance().currentUser!!.uid)
         ref.keepSynced(true)
 
         btnSend.setOnClickListener {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
 
         val options = FirebaseRecyclerOptions.Builder<ChatMessage>()
-                .setQuery(ref.child("chat1"), ChatMessage::class.java)
+                .setQuery(ref.child("chat"), ChatMessage::class.java)
                 .build()
 
         adapter = ChatAdapter(options)
