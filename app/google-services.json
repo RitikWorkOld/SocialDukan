@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "41450525162",
+    "firebase_url": "https://social-dukan.firebaseio.com",
+    "project_id": "social-dukan",
+    "storage_bucket": "social-dukan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41450525162:android:a4ae398bf7d0aa738d2293",
+        "android_client_info": {
+          "package_name": "com.example.socialdukan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTUu-DsBt5pckb8t6R38Tk_4hRnHhiFTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

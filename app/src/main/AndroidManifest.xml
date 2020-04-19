@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.socialdukan">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".fragment.InternFragment" />
+       
+        <activity android:name=".Dashboard" />
+        <activity
+            android:name=".Verification_2"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".Reg_Employe" />
+        <activity
+            android:name=".Verification"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".Login_Student" />
+        <activity android:name=".Reg_Student" />
+        <activity android:name=".IntroActivity2" />
+        <activity android:name=".LoginActvity" />
+        <activity android:name=".IntroActivity" />
+        <activity android:name=".Studentdetail" />
+        <activity android:name=".splashActi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".feature.MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

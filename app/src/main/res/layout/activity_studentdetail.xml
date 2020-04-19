@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Studentdetail"
+android:background="@color/purple"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@drawable/secondlayer"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/field"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:layout_width="118dp"
+            android:layout_height="118dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="48dp"
+
+            app:srcCompat="@drawable/user" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_1"
+       >
+
+
+
+                    <TextView
+                        android:id="@+id/displayname"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="NAME"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:layout_marginStart="12dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/displayemail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:layout_marginStart="12dp"
+                        android:layout_below="@id/displayname"
+                        android:text="NAME"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginBottom="50px"
+                        android:layout_marginTop="5px"
+                        android:textColor="#808080"/>
+        <TextView
+            android:id="@+id/displaymno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:layout_marginStart="12dp"
+            android:layout_below="@id/displayemail"
+            android:text="NAME"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="50px"
+
+            android:textColor="#808080"/>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="20sp"
+           android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/p_d"
+                android:layout_alignParentStart="true"
+                android:textColor="#fff"
+
+                android:fontFamily="@font/montserrat"
+                android:text="Personal Details*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <EditText
+                android:inputType="date"
+                android:id="@+id/dob"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/ic_date_range_black_24dp"
+                android:textColor="@color/white"
+               android:textColorHint="@color/white"
+                android:background="@drawable/edittext"
+android:paddingStart="8dp"
+                android:layout_margin="16dp"
+                android:hint=" Date Of Birth (dd/mm/yyyy)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:hint=" Address"
+                android:id="@+id/adress"
+                android:textSize="16sp"
+                android:paddingStart="8dp"
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:drawableStart="@drawable/ic_home_black_24dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:hint=" Current Occupation"
+                android:id="@+id/occupation"
+                android:layout_margin="16dp"
+                android:drawableLeft="@drawable/ic_work_black_24dp"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textSize="16sp"
+                android:paddingLeft="8dp"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:hint=" Whatsapp Number"
+                android:id="@+id/wanumber"
+                android:inputType="numberDecimal"
+                android:layout_margin="16dp"
+                android:drawableLeft="@drawable/ic_chat_black_24dp"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textSize="16sp"
+                android:textColorHint="@color/white"
+                android:paddingLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/addpersonaldet_btn"
+                android:layout_margin="5dp"
+                android:text="Add Personal Details"
+                android:textSize="12dp"
+                android:padding="16dp"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_gradient_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserrat"
+                    android:textStyle="bold"
+                    android:id="@+id/ed_detail"
+                    android:text="Education Details:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@id/ed_detail"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserrat"
+                    android:text="School Details* - Matriculate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+            <EditText
+                android:hint=" School Name"
+                android:id="@+id/schoolname10"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_school_black_24dp"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/white"
+
+                android:textColorHint="@color/white"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+              android:layout_marginLeft="6dp"
+                android:paddingLeft="8dp"
+
+                android:background="@drawable/edittext"
+                android:id="@+id/schlstarty10"
+                    android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                android:text=" Start Year "
+                />
+
+
+            <Spinner
+
+                android:id="@+id/spinner"
+
+                android:spinnerMode="dropdown"
+                android:layout_marginTop="6dp"
+android:layout_toRightOf="@+id/schlstarty10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/edittext"
+                android:id="@+id/schlendy10"
+                android:paddingLeft="8dp"
+
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                android:text=" End Year   "/>
+                <Spinner
+
+                    android:id="@+id/spinner1"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/schlendy10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+<EditText
+            android:hint=" Board"
+            android:id="@+id/board"
+            android:textColor="@color/white"
+            android:background="@drawable/edittext"
+            android:textColorHint="@color/white"
+            android:layout_margin="16dp"
+            android:paddingLeft="8dp"
+            android:drawableLeft="@drawable/ic_library_books_black_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <EditText
+                android:inputType="numberDecimal"
+                android:hint=" Percentage/CGPA"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                android:textColorHint="@color/white"
+                android:id="@+id/percentage10"
+                android:paddingLeft="8dp"
+
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/addschool10det_btn"
+                android:layout_margin="5dp"
+                android:text="Add School Details"
+                android:background="@drawable/btn_gradient_style"
+                android:padding="16dp"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+</RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_radio_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="#fff"
+                    android:layout_height="match_parent">
+
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:background="@color/purple"
+                        android:padding="8dp">
+
+
+                        <RadioButton
+                            android:id="@+id/radio_high"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/radio_flat_selector"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:checked="true"
+                            android:fontFamily="@font/nunito"
+                            android:padding="8dp"
+                            android:text="Intermediate"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_diploma"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/radio_flat_selector"
+                            android:button="@android:color/transparent"
+                            android:fontFamily="@font/nunito"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:paddingLeft="16dp"
+                            android:text="Diploma"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+           <!-- <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserrat"
+                    android:text="High School/Diploma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>       -->
+
+
+
+
+
+            <EditText
+                android:hint=" School Name"
+                android:id="@+id/schoolname12"
+                android:textColor="@color/white"
+                android:paddingLeft="8dp"
+                android:textColorHint="@color/white"
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:drawableLeft="@drawable/ic_school_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:id="@+id/r_layout_high"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/edittext"
+                android:id="@+id/schlstarty12"
+                android:paddingLeft="8dp"
+
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                android:text=" Start Year"/>
+                <Spinner
+
+                    android:id="@+id/spinner2"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/schlstarty12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/r_layout2_high"
+                android:layout_margin="16dp"
+            android:background="@drawable/edittext">
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/white"
+                 android:layout_marginLeft="6dp"
+                 android:background="@drawable/edittext"
+                 android:text=" End Year   "
+                 android:textSize="16sp"
+                 android:paddingLeft="8dp"
+                 android:gravity="center_vertical"
+                 android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                 android:id="@id/schlendy12"/>
+                <Spinner
+
+                    android:id="@+id/spinner3"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/schlendy12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </RelativeLayout>
+            <EditText
+
+                android:hint=" Stream"
+                android:id="@+id/stream"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+
+                android:hint=" Board"
+                android:id="@+id/board1"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:hint=" Percentage"
+                android:id="@+id/percentage12"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+                <EditText
+
+                    android:hint=" College Name"
+                    android:id="@+id/dipclgname"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:background="@drawable/edittext"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="16dp"
+                    android:paddingLeft="8dp"
+                    android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <EditText
+
+                    android:hint=" Course Name"
+                    android:id="@+id/dipcorsname"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:background="@drawable/edittext"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="16dp"
+                    android:paddingLeft="8dp"
+                    android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <EditText
+
+                    android:hint=" Percentage"
+                    android:id="@+id/dippercentage"
+                    android:visibility="gone"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/white"
+                    android:background="@drawable/edittext"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="16dp"
+                    android:paddingLeft="8dp"
+                    android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/addschool12det_btn"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Add School Details"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserrat"
+                    android:text="College Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <EditText
+                android:hint=" College Name"
+                android:id="@+id/collegename"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_school_black_24dp"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:background="@drawable/edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:hint=" Course (College)"
+                android:id="@+id/collegecourse"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext"
+                android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:paddingLeft="8dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:hint=" Department/Stream (College)"
+                android:id="@+id/collegedept"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext"
+                android:paddingLeft="8dp"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_book_black_24dp"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_margin="16dp"
+                android:background="@drawable/edittext">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/edittext"
+                android:text=" Start Year (College)"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                android:id="@id/collegestart"/>
+            <Spinner
+
+                android:id="@+id/spinner4"
+
+                android:spinnerMode="dropdown"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/collegestart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="6dp"
+                    android:paddingLeft="8dp"
+                    android:background="@drawable/edittext"
+                    android:text=" End Year (College)"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                    android:id="@id/collegeend"/>
+                <Spinner
+
+                    android:id="@+id/spinner5"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/collegeend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:hint=" Percentage (Last Semester)"
+                android:id="@+id/collegeper"
+                android:layout_margin="16dp"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext"
+                android:textColorHint="@color/white"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/addcollegedet_btn"
+                    android:layout_margin="5dp"
+                    android:text="Add College Details"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/layout_workexp"
+    android:layout_height="match_parent">
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:textSize="20sp"
+           android:layout_marginLeft="16dp"
+                android:textStyle="bold"
+                android:text="Work Experience:"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+</RelativeLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="6dp"
+                android:id="@+id/layout_addnewex"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+            <Button
+                android:background="@drawable/btn_gradient_style"
+                android:padding="16dp"
+
+                android:layout_margin="5dp"
+                android:layout_marginStart="16dp"
+                android:text="Add new experience"
+                android:textColor="@color/white"
+                android:id="@+id/addnewexpshowbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="6dp"
+                android:id="@+id/layout_askingexp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_alignParentLeft="true"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+                    android:textStyle="bold"
+                    android:text="Do you have Experience?"
+                    android:textColor="@color/white"
+                    android:id="@+id/have_exp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+android:id="@+id/yes_no_exp"
+                    android:layout_height="wrap_content"
+
+                    >
+                <Button
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="32dp"
+                    android:text="Yes"
+                    android:textColor="@color/white"
+
+                    android:id="@+id/yes_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+
+                    android:layout_margin="5dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="No"
+                    android:textColor="@color/white"
+                    android:layout_toRightOf="@id/yes_exp"
+                    android:id="@+id/no_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <EditText
+                android:hint="Company Name"
+                android:drawableLeft="@drawable/ic_computer_black_24dp"
+                android:id="@+id/companyname"
+                android:textColor="@color/white"
+                android:paddingLeft="8dp"
+                android:textColorHint="@color/white"
+                android:background="@drawable/edittext"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+android:visibility="gone"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+        android:id="@+id/r_layout"
+                android:background="@drawable/edittext">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="6dp"
+                    android:background="@drawable/edittext"
+                    android:text=" Start Date"
+                    android:textSize="16sp"
+                    android:paddingLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                    android:id="@id/companystartdate"/>
+                <Spinner
+
+                    android:id="@+id/spinner6"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/companystartdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:visibility="gone"
+                android:layout_margin="16dp"
+                android:id="@+id/r_layout1"
+                android:background="@drawable/edittext">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="6dp"
+                    android:drawableStart="@drawable/ic_assignment_black_24dp"
+                    android:background="@drawable/edittext"
+                    android:text=" End Date"
+                    android:textSize="16sp"
+                    android:paddingLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                    android:id="@id/companyenddate"/>
+                <Spinner
+
+                    android:id="@+id/spinner7"
+
+                    android:spinnerMode="dropdown"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/companyenddate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <EditText
+                android:hint="Role in Company"
+                android:id="@+id/companyrole"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edittext"
+                android:textColor="@color/white"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_center_focus_strong_black_24dp"
+                android:textColorHint="@color/white"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:hint="Benefits From Company"
+                android:id="@+id/companybenefits"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_accessibility_black_24dp"
+                android:paddingLeft="8dp"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/addexp_btn"
+                    android:layout_margin="5dp"
+                    android:text="Add Expperience"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/updateexp_btn"
+                    android:layout_margin="5dp"
+                    android:text="Update Exp"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/divider"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserrat"
+                    android:textStyle="bold"
+                    android:id="@+id/detail"
+                    android:text="Abilities:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                android:textSize="20sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                android:text="Skills Acquired"
+                android:layout_below="@id/detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+            <Button
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/btn_gradient_style"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:text="Add new Skill"
+                android:textColor="@color/white"
+                android:id="@+id/addnewexpshowbtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+</RelativeLayout>
+
+            <EditText
+                android:hint=" Skills"
+    android:drawableLeft="@drawable/ic_archive_black_24dp"
+                android:paddingLeft="8dp"
+                android:id="@+id/companyname1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:background="@drawable/edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/addexp_btn1"
+                    android:layout_margin="5dp"
+                    android:text="Add Skill"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/updateexp_btn1"
+                    android:layout_margin="5dp"
+                    android:text="Update Skill"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_margin="16dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/white"
+                    android:text="Achievements/Awards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <Button
+                android:background="@drawable/btn_gradient_style"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:text="Add new achievements/awards"
+                android:textColor="@color/white"
+                android:id="@+id/addnewexpshowbtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <EditText
+                android:hint=" Achievements"
+                android:id="@+id/companyname2"
+                android:textColor="@color/white"
+android:drawableLeft="@drawable/ic_brightness_medium_black_24dp"
+                android:paddingLeft="8dp"
+                android:background="@drawable/edittext"
+                android:textColorHint="@color/white"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/addexp_btn2"
+                    android:layout_margin="5dp"
+                    android:text="Add Achievements"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/updateexp_btn2"
+                    android:layout_margin="5dp"
+                    android:text="Update Achievements"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_margin="5dp"
+                    android:text="Submit"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerInParent="true"
+                    android:textAllCaps="true"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+   <!-- </ScrollView>   -->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
