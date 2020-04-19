@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+
+import com.example.socialdukan.feature.MainActivity;
 import com.example.socialdukan.fragment.InternFragment;
 import com.example.socialdukan.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +31,7 @@ BottomNavigationView navigationView;
 
 final InternFragment intern=new InternFragment();
         final ProfileFragment profile=new ProfileFragment();
+
         navigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,7 +49,8 @@ return true;
                     return true;
                 }
                 else if(id==R.id.bot){
-                    setFragment(  profile);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity( intent );
                     return true;
 
                 } else if(id==R.id.chat_box){

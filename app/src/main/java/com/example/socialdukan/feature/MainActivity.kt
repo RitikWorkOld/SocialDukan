@@ -14,6 +14,7 @@ import com.example.socialdukan.R
 import com.example.socialdukan.adapter.ChatAdapter
 import com.example.socialdukan.entity.ChatMessage
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_chat_bot.*
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.stackFromEnd = true
         rvChat.layoutManager = layoutManager
+        ref = FirebaseDatabase.getInstance().reference.child("Profile").child(FirebaseAuth.getInstance().currentUser!!.uid).child("cmpach")
         ref.keepSynced(true)
 
         btnSend.setOnClickListener {
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
 
         val options = FirebaseRecyclerOptions.Builder<ChatMessage>()
-                .setQuery(ref.child("chat"), ChatMessage::class.java)
+                .setQuery(ref.child("chat1"), ChatMessage::class.java)
                 .build()
 
         adapter = ChatAdapter(options)
@@ -92,7 +94,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         aiService = AIService.getService(this, aiConfiguration)
         aiDataAIService = AIDataService(aiConfiguration)
-        ref = FirebaseDatabase.getInstance().reference
+        ref = FirebaseDatabase.getInstance().reference.child("chat").child(FirebaseAuth.getInstance().currentUser!!.uid)
 
         mPresenter = MainPresenter(aiDataAIService, ref)
 

@@ -22,20 +22,27 @@
         <activity
             android:name=".Verification"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Login_Student" />
+        <activity android:name=".Login_Student" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".Reg_Student" />
         <activity android:name=".IntroActivity2" />
         <activity android:name=".LoginActvity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".Studentdetail" />
         <activity android:name=".splashActi">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".feature.MainActivity" />
+        <activity android:name=".feature.BlankFragment" >
+
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

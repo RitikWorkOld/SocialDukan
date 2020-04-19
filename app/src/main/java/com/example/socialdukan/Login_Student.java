@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -137,7 +138,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                     // finish();
                                     Log.d("HEL","msg= yha agya");
                                     Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login_Student.this,Studentdetail.class);
+                                    Intent intent = new Intent(Login_Student.this, Dashboard.class);
                                     startActivity(intent);
                                     finish();
 
