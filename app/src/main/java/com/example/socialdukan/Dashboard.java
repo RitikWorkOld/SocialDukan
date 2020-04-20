@@ -41,7 +41,7 @@ final InternFragment intern=new InternFragment();
 return true;
                 }
                 else if(id==R.id.profile){
-                    setFragment(  profile);
+                    setFragment(profile);
 return true;
 
                 } else if(id==R.id.other_serv){

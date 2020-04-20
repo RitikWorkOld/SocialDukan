@@ -1,5 +1,6 @@
 package com.example.socialdukan.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.socialdukan.R;
+import com.example.socialdukan.feature.MainActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +56,13 @@ public class InternFragment extends Fragment {
                 holder.location.setText(model.getLocation());
                 holder.amount.setText(model.getAmount());
                 holder.duration.setText(model.getDuration());
+                holder.layout_card.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), InternDetail.class);
+                        startActivity( intent );
+                    }
+                } );
 
             }
 

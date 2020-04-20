@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".fragment.InternDetail"></activity>
         <activity android:name=".fragment.InternFragment" />
         <activity android:name=".feature.MainActivity" />
         <activity android:name=".Dashboard" />
@@ -22,27 +23,20 @@
         <activity
             android:name=".Verification"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Login_Student" >
-
+        <activity android:name=".Login_Student">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".Reg_Student" />
         <activity android:name=".IntroActivity2" />
         <activity android:name=".LoginActvity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".Studentdetail" />
-        <activity android:name=".splashActi">
-
-        </activity>
-        <activity android:name=".feature.BlankFragment" >
-
-
-        </activity>
+        <activity android:name=".splashActi" />
+        <activity android:name=".feature.BlankFragment" />
 
         <meta-data
             android:name="preloaded_fonts"
