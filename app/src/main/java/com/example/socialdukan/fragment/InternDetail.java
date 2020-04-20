@@ -1,16 +1,30 @@
 package com.example.socialdukan.fragment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.socialdukan.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private TabLayout tabLayout;
+    DatabaseReference databaseReferencedetail;
+    String key;
+    ImageView cmpimage;
+    TextView intername,cmpname,location,stipend,duration,worktime;
 
     //This is our viewPager
     private ViewPager viewPager;
@@ -19,8 +33,49 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_intern_detail );
 
+        cmpimage = findViewById(R.id.icd_cmp_img);
+        intername = findViewById(R.id.cmp_work_detail);
+        cmpname = findViewById(R.id.cmp_name_detail);
+        location = findViewById(R.id.icd_location);
+        stipend = findViewById(R.id.stipend_detail);
+        duration = findViewById(R.id.icd_duration);
+        worktime = findViewById(R.id.work_details);
 
+        key = getIntent().getStringExtra("key");
 
+        /*Bundle bundle = new Bundle();
+        bundle.putString("key","hello");
+        DescFragment descFragment = new DescFragment();
+        descFragment.setArguments(bundle);
+        Desc1Fragment desc1Fragment = new Desc1Fragment();
+        desc1Fragment.setArguments(bundle);
+        Desc2Fragment desc2Fragment = new Desc2Fragment();
+        desc2Fragment.setArguments(bundle);*/
+
+        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Internships");
+        databaseReferencedetail.keepSynced(true);
+        databaseReferencedetail.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                {
+                    internall_md valueintern = dataSnapshot1.getValue(internall_md.class);
+
+                    Picasso.get().load(valueintern.intimguri).into(cmpimage);
+                    intername.setText(valueintern.intname);
+                    cmpname.setText(valueintern.cmpname);
+                    location.setText(valueintern.location);
+                    stipend.setText(valueintern.amount);
+                    duration.setText(valueintern.duration);
+                    worktime.setText(valueintern.worktime);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 //Initializing the tablayout

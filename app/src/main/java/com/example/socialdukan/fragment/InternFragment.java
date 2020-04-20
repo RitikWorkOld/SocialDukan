@@ -49,7 +49,7 @@ public class InternFragment extends Fragment {
 
         adapterinternall = new FirebaseRecyclerAdapter<internall_md, internall_vh>(optionsinternall) {
             @Override
-            protected void onBindViewHolder(@NonNull internall_vh holder, int position, @NonNull internall_md model) {
+            protected void onBindViewHolder(@NonNull internall_vh holder, int position, @NonNull final internall_md model) {
                 holder.cmpname.setText(model.getIntname());
                 holder.cmpsubname.setText(model.getCmpname());
                 Picasso.get().load(model.getIntimguri()).into(holder.cmpimg);
@@ -60,6 +60,7 @@ public class InternFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), InternDetail.class);
+                        intent.putExtra("key",model.getKey());
                         startActivity( intent );
                     }
                 } );

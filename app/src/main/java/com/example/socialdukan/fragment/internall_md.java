@@ -9,11 +9,12 @@ public class internall_md {
     public String key;
     public String location;
     public String intname;
+    public String worktime;
 
     public internall_md() {
     }
 
-    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname) {
+    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname,String worktime) {
         this.amount = amount;
         this.cmpname = cmpname;
         this.duration = duration;
@@ -21,6 +22,7 @@ public class internall_md {
         this.key = key;
         this.location = location;
         this.intname = intname;
+        this.worktime = worktime;
     }
 
     public String getAmount() {
@@ -77,5 +79,13 @@ public class internall_md {
 
     public void setIntname(String intname) {
         this.intname = intname;
+    }
+
+    public String getWorktime() {
+        return worktime;
+    }
+
+    public void setWorktime(String worktime) {
+        this.worktime = worktime;
     }
 }
