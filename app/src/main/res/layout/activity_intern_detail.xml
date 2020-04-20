@@ -148,13 +148,10 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@id/cmp_detail2"
-                android:layout_height="match_parent">
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                android:layout_height="330dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -162,34 +159,21 @@
 
                         <com.google.android.material.tabs.TabLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:text="Description"
-                                android:layout_height="wrap_content"/>
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:text="What Yout Get?"
-                                android:layout_height="wrap_content"/>
-
-                            <com.google.android.material.tabs.TabItem
-                                android:layout_width="wrap_content"
-                                android:text="Who Can Apply?"
-                                android:layout_height="wrap_content"/>
-
-                        </com.google.android.material.tabs.TabLayout>
+                            android:id="@+id/sliding_tab"
+                            app:tabMode="fixed"
+                            android:layout_height="wrap_content"/>
 
                         <androidx.viewpager.widget.ViewPager
                             android:layout_width="match_parent"
+                            android:id="@+id/viewpager"
+                            android:layout_below="@id/sliding_tab"
                             android:layout_height="match_parent"/>
 
                     </RelativeLayout>
 
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

@@ -10,4 +10,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="Description">Description</string>
+    <string name="Description1">What you Get?</string>
+    <string name="Description2">Who Can Apply?</string>
+
 </resources>

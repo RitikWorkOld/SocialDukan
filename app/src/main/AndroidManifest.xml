@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragment.InternDetail"></activity>
+        <activity android:name=".fragment.SimpleFragmentPagerAdapter"></activity>
+        <activity android:name=".fragment.InternDetail" />
         <activity android:name=".fragment.InternFragment" />
         <activity android:name=".feature.MainActivity" />
         <activity android:name=".Dashboard" />
