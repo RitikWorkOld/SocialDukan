@@ -4,12 +4,8 @@ package com.example.socialdukan;
 public class User {
     public String name;
     public String email;
-
-
     public String contactn;
-
     public String uid;
-
     public String password;
 
 

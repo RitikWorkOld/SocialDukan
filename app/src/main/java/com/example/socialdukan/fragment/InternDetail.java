@@ -2,6 +2,8 @@ package com.example.socialdukan.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -43,14 +45,19 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
         key = getIntent().getStringExtra("key");
 
-        /*Bundle bundle = new Bundle();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Bundle bundle = new Bundle();
         bundle.putString("key","hello");
         DescFragment descFragment = new DescFragment();
         descFragment.setArguments(bundle);
         Desc1Fragment desc1Fragment = new Desc1Fragment();
         desc1Fragment.setArguments(bundle);
         Desc2Fragment desc2Fragment = new Desc2Fragment();
-        desc2Fragment.setArguments(bundle);*/
+        desc2Fragment.setArguments(bundle);
+
+        fragmentTransaction.commit();
 
         databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Internships");
         databaseReferencedetail.keepSynced(true);
@@ -91,7 +98,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //Creating our pager adapter
-        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(),key);
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);

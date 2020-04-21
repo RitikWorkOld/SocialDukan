@@ -18,12 +18,14 @@ public class SimpleFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
 
     int tabCount;
+    String key;
 
     //Constructor to the class
-    public SimpleFragmentPagerAdapter(FragmentManager fm, int tabCount) {
+    public SimpleFragmentPagerAdapter(FragmentManager fm, int tabCount,String key) {
         super(fm);
         //Initializing tab count
         this.tabCount= tabCount;
+        this.key = key;
     }
 
     //Overriding method getItem
@@ -33,12 +35,21 @@ public class SimpleFragmentPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 DescFragment tab1 = new DescFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("key",key);
+                tab1.setArguments(bundle1);
                 return tab1;
             case 1:
                 Desc1Fragment tab2 = new Desc1Fragment();
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("key",key);
+                tab2.setArguments(bundle2);
                 return tab2;
             case 2:
                 Desc2Fragment tab3 = new Desc2Fragment();
+                Bundle bundle3 = new Bundle();
+                bundle3.putString("key",key);
+                tab3.setArguments(bundle3);
                 return tab3;
             default:
                 return null;
