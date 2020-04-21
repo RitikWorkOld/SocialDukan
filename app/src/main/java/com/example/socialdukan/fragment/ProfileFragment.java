@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class ProfileFragment extends Fragment {
 
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -34,6 +35,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         final View view = inflater.inflate( R.layout.fragment_profile, container, false );
 
@@ -61,4 +65,6 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
+
 }

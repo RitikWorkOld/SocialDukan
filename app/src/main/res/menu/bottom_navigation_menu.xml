@@ -10,21 +10,21 @@
      />
     <item
         android:id="@+id/other_serv"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_apply1"
         android:title=""
         />
     <item android:id="@+id/bot"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_apply1"
         android:title=""
         />
     <item
         android:id="@+id/chat_box"
         android:title=""
-        android:icon="@drawable/ic_group_chat"
+        android:icon="@drawable/ic_apply1"
         />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_group_chat"
+        android:icon="@drawable/ic_profile1"
         android:title=""
         />
 </menu>
