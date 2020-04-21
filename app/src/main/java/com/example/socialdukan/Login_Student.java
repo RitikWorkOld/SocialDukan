@@ -174,29 +174,6 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
 
     }
 
-   /*private boolean checkIfEmailVerified()
-    {
-        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        Log.d( ">> NOTWORKING 1", "onComplete: + COME IN LOOP " );
-
-        if ( firebaseUser.isEmailVerified())
-        {
-            // user is verified, so you can finish this activity or send user to activity which you want.
-            // finish();
-            Log.d("HEL","msg= yha agya");
-            Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else
-        {
-            // email is not verified, so just prompt the message to the user and restart this activity.
-            // NOTE: don't forget to log out the user.
-            FirebaseAuth.getInstance().signOut();
-            Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
-            //restart this activity
-            return false;
-        }
-    }*/
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Profile_activity2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/cross_btn_rf"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:elevation="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/cancel_rf_red"/>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/layout"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/profile_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/dob_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Date of Birth"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/add_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dob_view"
+
+                            android:fontFamily="@font/montserrat"
+                            android:text="Address"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/curr_occ_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/add_view"
+                            android:fontFamily="@font/montserrat"
+
+                            android:text="Occupation"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/wa_no_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_below="@id/curr_occ_view"
+                            android:fontFamily="@font/montserrat"
+
+                            android:text="Whatsapp Number"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_toRightOf="@+id/profile_layout"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/dob_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+
+
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/add_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+                            android:layout_below="@id/dob_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/curr_occ_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+
+                            android:layout_below="@id/add_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/wa_no_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+
+                            android:layout_below="@id/curr_occ_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_below="@id/layout">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/white"
+                        android:background="@drawable/btn_gradient_style"/>
+
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

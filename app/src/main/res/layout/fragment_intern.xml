@@ -6,6 +6,7 @@
     android:background="@color/lightpurple"
     tools:context=".fragment.InternFragment">
 
+
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"

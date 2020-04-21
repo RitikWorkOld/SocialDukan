@@ -3,7 +3,7 @@
     package="com.example.socialdukan">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragment.SimpleFragmentPagerAdapter"></activity>
+        <activity android:name=".fragment.Profile_activity4"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".fragment.Profile_activity3"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".fragment.Profile_activity2"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".fragment.Profile_activity1"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".fragment.SimpleFragmentPagerAdapter" />
         <activity android:name=".fragment.InternDetail" />
         <activity android:name=".fragment.InternFragment" />
         <activity android:name=".feature.MainActivity" />
@@ -37,7 +45,7 @@
         <activity android:name=".IntroActivity" />
         <activity android:name=".Studentdetail" />
         <activity android:name=".splashActi" />
-        <activity android:name=".feature.BlankFragment" />
+
 
         <meta-data
             android:name="preloaded_fonts"
