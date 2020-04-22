@@ -138,7 +138,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                     // finish();
                                     Log.d("HEL","msg= yha agya");
                                     Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login_Student.this, Dashboard.class);
+                                    Intent intent = new Intent(Login_Student.this, Studentdetail.class);
                                     startActivity(intent);
                                     finish();
 

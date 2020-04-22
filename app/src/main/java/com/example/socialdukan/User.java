@@ -7,13 +7,14 @@ public class User {
     public String contactn;
     public String uid;
     public String password;
+    public String profileimg;
 
 
     public User(){
 
     }
 
-    public User(String name, String email,String contactn, String uid, String password) {
+    public User(String name, String email,String contactn, String uid, String password,String profileimg) {
         this.name = name;
         this.email = email;
 
@@ -22,6 +23,7 @@ public class User {
         this.uid = uid;
 
         this.password = password;
+        this.profileimg = profileimg;
 
     }
 
@@ -70,4 +72,11 @@ public class User {
         this.password = password;
     }
 
+    public String getProfileimg() {
+        return profileimg;
+    }
+
+    public void setProfileimg(String profileimg) {
+        this.profileimg = profileimg;
+    }
 }
