@@ -6,11 +6,10 @@
         />
 
     <corners
-        android:topRightRadius="30dp"
-        android:topLeftRadius="30dp"
+        android:radius="30dp"
         />
     <stroke
         android:width="2dp"
-        android:color="#383095" />
+        android:color="@color/purple" />
 
 </shape>

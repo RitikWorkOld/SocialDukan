@@ -42,7 +42,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-android:id="@+id/profile_layout"
+                    android:id="@+id/profile_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -63,7 +63,6 @@ android:id="@+id/profile_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/dob_view"
-
                         android:fontFamily="@font/montserrat"
                         android:text="Address"
                         android:textColor="#000"
@@ -76,7 +75,6 @@ android:id="@+id/profile_layout"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/add_view"
                         android:fontFamily="@font/montserrat"
-
                         android:text="Occupation"
                         android:textColor="#000"
                         android:textSize="16sp" />
@@ -85,10 +83,8 @@ android:id="@+id/profile_layout"
                         android:id="@+id/wa_no_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_below="@id/curr_occ_view"
                         android:fontFamily="@font/montserrat"
-
                         android:text="Whatsapp Number"
                         android:textColor="#000"
                         android:textSize="16sp" />
@@ -102,20 +98,18 @@ android:id="@+id/profile_layout"
                     android:layout_toRightOf="@+id/profile_layout"
                     android:orientation="vertical">
 
-                    <EditText
+                    <TextView
                         android:id="@+id/dob_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:fontFamily="@font/montserrat"
                         android:hint="DOB"
-
-
                         android:background="@null"
                         android:textColor="#CD4B4B"
                         android:textColorHint="#808080"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/add_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,11 +122,10 @@ android:id="@+id/profile_layout"
                         android:textColor="#CD4B4B"
                         android:textColorHint="#808080"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/curr_occ_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:fontFamily="@font/montserrat"
                         android:hint="DOB"
 
@@ -141,7 +134,7 @@ android:id="@+id/profile_layout"
                         android:textColor="#CD4B4B"
                         android:textColorHint="#808080"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/wa_no_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -167,7 +160,7 @@ android:id="@+id/profile_layout"
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Update"
+                    android:text="Okay"
 
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/white"

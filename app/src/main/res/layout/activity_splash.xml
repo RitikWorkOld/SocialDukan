@@ -13,9 +13,10 @@
                 android:id="@+id/lottie_anim_rs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:lottie_imageAssetsFolder="images/"
                 android:layout_gravity="center_horizontal"
                 app:lottie_autoPlay="true"
-                app:lottie_rawRes="@raw/dukan"/>
+              app:lottie_rawRes="@raw/dukan"/>
 
 
 

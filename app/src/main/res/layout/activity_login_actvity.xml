@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_option"
+    android:background="@drawable/bg_design"
 
     tools:context=".LoginActvity">
     <LinearLayout
@@ -15,6 +15,7 @@
         android:layout_height="150dp">
         <ImageView
             android:layout_width="150dp"
+            android:visibility="gone"
             android:layout_height="150dp"
             app:srcCompat="@drawable/dukan_w" />
     </LinearLayout>
@@ -42,8 +43,10 @@ android:fontFamily="@font/montserrat"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:elevation="6dp"
+        android:layout_margin="28dp"
+
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+      android:layout_centerInParent="true"
         android:background="@drawable/gradient2">
 
         <LinearLayout
@@ -77,8 +80,8 @@ android:fontFamily="@font/montserrat"
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                       android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/kid"
+
+
                         android:id="@+id/image_student"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -89,6 +92,7 @@ android:fontFamily="@font/montserrat"
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:text="Student"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/montserrat"
                         android:background="@drawable/btn_gradient_style"
                         android:id="@+id/stud_btn"
@@ -144,8 +148,8 @@ android:fontFamily="@font/montserrat"
                     <ImageView
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/company"
+
+
                         android:id="@+id/image_employe"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -157,7 +161,7 @@ android:fontFamily="@font/montserrat"
                             android:id="@+id/emp_btn"
                             android:layout_width="140dp"
                             android:layout_height="wrap_content"
-
+android:textColor="@color/white"
                             android:layout_centerInParent="true"
                             android:background="@drawable/btn_gradient_style"
                             android:fontFamily="@font/montserrat"

@@ -21,11 +21,13 @@ public class splashActi extends AppCompatActivity {
 
 Timer timer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_splash );
+
+
+
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
