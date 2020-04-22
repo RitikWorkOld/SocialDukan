@@ -1,6 +1,7 @@
 package com.example.socialdukan;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -29,15 +32,24 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class Studentdetail extends AppCompatActivity implements View.OnClickListener {
 TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend,companystartdate,companyenddate;
@@ -57,6 +69,10 @@ TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend
 private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,pres_doctor5,pres_doctor6,pres_doctor7;
     EditText stream1,board,board1,dipclgname,dipcorsname,dippercentage;
 
+    ImageView user_img;
+    private static final int ImageBack = 1;
+    StorageReference storageReference;
+    ProgressBar pb_userimg;
 
 
     private int mYear, mMonth, mDay;
@@ -120,6 +136,49 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ImageBack){
+
+            if (resultCode == RESULT_OK){
+
+                pb_userimg.setVisibility(View.VISIBLE);
+                user_img.setVisibility(View.GONE);
+
+                Uri user_img_uri = data.getData();
+
+                final StorageReference ImageName = storageReference.child(user_img_uri.getLastPathSegment());
+
+                ImageName.putFile(user_img_uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+                                databaseReference.keepSynced(true);
+                                databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profileimg").setValue(String.valueOf(uri)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(Studentdetail.this,"Completed",Toast.LENGTH_SHORT).show();
+                                        pb_userimg.setVisibility(View.GONE);
+                                        user_img.setVisibility(View.VISIBLE);
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+                });
+
+            }
+
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentdetail);
@@ -127,6 +186,10 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
         //alreaady aopen hai to next pe jaega
 
+        pb_userimg = findViewById(R.id.pb_userimg);
+        pb_userimg.setVisibility(View.GONE);
+
+        storageReference = FirebaseStorage.getInstance().getReference().child("ProfileImages");
 
         if (restorePrefData()) {
 
@@ -137,6 +200,16 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
         }
 
+        user_img = findViewById(R.id.user_img);
+
+        user_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,ImageBack);
+            }
+        });
 
         submit=findViewById( R.id.submit );
         dob = findViewById(R.id.dob);
@@ -220,9 +293,6 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
             }
         } );
-
-
-
 
 
 
@@ -534,20 +604,24 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
         updateexpbtn2.setVisibility(View.GONE);
         //------------------------------------------------------------------------------------------------------------------
 
-        DatabaseReference databaseReferencemain = FirebaseDatabase.getInstance().getReference().child("Users");
+        final DatabaseReference databaseReferencemain = FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReferencemain.keepSynced(true);
         databaseReferencemain.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                name = user.getName();
-                email = user.getEmail();
-                phno = user.getContactn();
-                uid = user.getUid();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    User user = dataSnapshot1.getValue(User.class);
+                    name = user.getName();
+                    email = user.getEmail();
+                    phno = user.getContactn();
+                    uid = user.getUid();
+                    if (user.profileimg!=null){
+                        Picasso.get().load(user.profileimg).into(user_img);
+                    }
 
-                displayname.setText(user.getName());
-                displayemail.setText(user.getEmail());
-
+                    displayname.setText(user.getName());
+                    displayemail.setText(user.getEmail());
+                }
             }
 
             @Override

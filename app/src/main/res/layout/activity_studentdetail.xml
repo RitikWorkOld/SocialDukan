@@ -24,17 +24,19 @@ android:background="@color/purple"
         android:layout_height="wrap_content">
 
         <ImageView
-
+            android:id="@+id/user_img"
             android:layout_width="118dp"
             android:layout_height="118dp"
             android:layout_alignParentEnd="true"
             android:layout_margin="48dp"
-
             app:srcCompat="@drawable/user" />
 
-
-
-
+        <ProgressBar
+            android:id="@+id/pb_userimg"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="48dp"
+            android:layout_width="118dp"
+            android:layout_height="118dp"/>
 
     </RelativeLayout>
 
