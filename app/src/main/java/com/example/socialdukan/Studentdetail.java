@@ -58,7 +58,7 @@ TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend
             collegecourse,collegedept,collegeper;
     EditText companyname,companyrole,companybenefits;
     //TextView textview;
-    Button addpersonaldet,addschool10det,addschool12det,addcollegedet,addexpbtn,addnewexpbtn,updateexpbtn;
+    Button addpersonaldet,addschool10det,addschool12det,addcollegedet,addexpbtn,addnewexpbtn,updateexpbtn,adddiplomadet_btn;
     Button addexpbtn1,addnewexpbtn1,updateexpbtn1;//RITIK
     Button addexpbtn2,addnewexpbtn2,updateexpbtn2;
     EditText companyname1;//RITIK
@@ -76,7 +76,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
 
     private int mYear, mMonth, mDay;
-    private int c=0;
+    private int count1=0,count2=0,count3=0,count4=0,count5=0;
 
     TextView displayname,displayemail,displaymno;
 
@@ -298,6 +298,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
         radioButton_high = (RadioButton)findViewById(R.id.radio_high);
         radioButton_diploma = (RadioButton)findViewById(R.id.radio_diploma);
+        adddiplomadet_btn = findViewById(R.id.adddiplomadet_btn);
 
         radioButton_high.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -308,10 +309,12 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                 stream1.setVisibility( View.VISIBLE );
                 board1.setVisibility( View.VISIBLE );
                 percentage12.setVisibility( View.VISIBLE );
+                addschool12det.setVisibility(View.VISIBLE);
 
                 dipclgname.setVisibility( View.GONE );
                 dipcorsname.setVisibility( View.GONE );
                 dippercentage.setVisibility( View.GONE );
+                adddiplomadet_btn.setVisibility(View.GONE);
 
 
             }
@@ -327,16 +330,13 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                 stream1.setVisibility( View.GONE );
                 board1.setVisibility( View.GONE );
                 percentage12.setVisibility( View.GONE );
+                addschool12det.setVisibility(View.GONE);
 
 
                 dipclgname.setVisibility( View.VISIBLE );
                 dipcorsname.setVisibility( View.VISIBLE );
                 dippercentage.setVisibility( View.VISIBLE );
-
-
-
-
-
+                adddiplomadet_btn.setVisibility(View.VISIBLE);
 
 
             }
@@ -723,6 +723,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
 
                                     databaseReferencecmpexp.child( "cmpach" ).child( model.getExpid() ).child( "expid" ).setValue( model.getExpid() );
+                                    databaseReferencecmpexp.child( "cmpach" ).child( model.getExpid() ).child( "uid" ).setValue( uid );
 
                                     companyname2.setVisibility( View.GONE );
 
@@ -814,12 +815,9 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                     databaseReferencecmpexp.keepSynced( true );
                                     databaseReferencecmpexp.child( "cmpskills" ).child( model.getExpid() ).child( "skills" ).setValue( companyname1.getText().toString() );
-
-
                                     databaseReferencecmpexp.child( "cmpskills" ).child( model.getExpid() ).child( "expid" ).setValue( model.getExpid() );
-
+                                    databaseReferencecmpexp.child( "cmpskills" ).child( model.getExpid() ).child( "uid" ).setValue( uid );
                                     companyname1.setVisibility( View.GONE );
-
 
                                     addexpbtn1.setVisibility( View.GONE );
                                     updateexpbtn1.setVisibility( View.GONE );
@@ -942,6 +940,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                                     databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("companyrole").setValue(companyrole.getText().toString());
                                                     databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("companybenefits").setValue(companybenefits.getText().toString());
                                                     databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("expid").setValue(model.getExpid());
+                                                    databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("uid").setValue(uid);
 
                                                     companyname.setVisibility(View.GONE);
                                                     companystartdate.setVisibility(View.GONE);
@@ -996,21 +995,20 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             @Override
             public void onClick(View v) {
                 if (!dob.getText().toString().isEmpty())
-                {c++;
+                {
                     if (!adress.getText().toString().isEmpty())
-                    {c++;
-                        if(!wanumber.getText().toString().isEmpty()) {c++;
-                            if (!occupation.getText().toString().isEmpty()) {c++;
+                    {
+                        if(!wanumber.getText().toString().isEmpty()) {
+                            if (!occupation.getText().toString().isEmpty()) {
                                 //----------------------------success
 
-
+                                count1 = 1;
                                 DatabaseReference databaseReferencepd = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                 databaseReferencepd.keepSynced( true );
                                 databaseReferencepd.child( "personaldet" ).child( "dob" ).setValue( dob.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "adress" ).setValue( adress.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "occupation" ).setValue( occupation.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "wanumber" ).setValue( wanumber.getText().toString() );
-
                                 databaseReferencepd.child( "personaldet" ).child( "name" ).setValue( name );
                                 databaseReferencepd.child( "personaldet" ).child( "uid" ).setValue( uid );
                                 databaseReferencepd.child( "personaldet" ).child( "email" ).setValue( email );
@@ -1049,11 +1047,13 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
         addschool10det.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!board.getText().toString().isEmpty()){c++;
-                if (!schoolname10.getText().toString().isEmpty()){c++;
-                    if (!schlstarty10.getText().toString().isEmpty()){c++;
-                        if (!schlendy10.getText().toString().isEmpty()){c++;
-                            if (!percentage10.getText().toString().isEmpty()){c++;
+                if(!board.getText().toString().isEmpty()){
+                if (!schoolname10.getText().toString().isEmpty()){
+                    if (!schlstarty10.getText().toString().isEmpty()){
+                        if (!schlendy10.getText().toString().isEmpty()){
+                            if (!percentage10.getText().toString().isEmpty()){
+
+                                count2 = 1;
 
                                 DatabaseReference databaseReferenceschl10 = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReferenceschl10.keepSynced(true);
@@ -1062,6 +1062,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                 databaseReferenceschl10.child("school10").child("schoolendy").setValue(pres_doctor1);
                                 databaseReferenceschl10.child("school10").child("schoolper").setValue(percentage10.getText().toString());
                                 databaseReferenceschl10.child("school10").child("schoolboard").setValue(board.getText().toString());
+                                databaseReferenceschl10.child("school10").child( "uid" ).setValue( uid );
                                 addschool10det.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
                                 addschool10det.setCompoundDrawablePadding(5);
 
@@ -1091,14 +1092,16 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
         addschool12det.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!stream1.getText().toString().isEmpty()) {c++;
+                if (!stream1.getText().toString().isEmpty()) {
 
-                if (!board1.getText().toString().isEmpty()) {c++;
+                if (!board1.getText().toString().isEmpty()) {
 
-                if (!schoolname12.getText().toString().isEmpty()) {c++;
-                    if (!schlstarty12.getText().toString().isEmpty()) {c++;
-                        if (!schlendy12.getText().toString().isEmpty()) {c++;
-                            if (!percentage12.getText().toString().isEmpty()) {c++;
+                if (!schoolname12.getText().toString().isEmpty()) {
+                    if (!schlstarty12.getText().toString().isEmpty()) {
+                        if (!schlendy12.getText().toString().isEmpty()) {
+                            if (!percentage12.getText().toString().isEmpty()) {
+
+                                count3 = 1;
 
                                 DatabaseReference databaseReferenceschl12 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                 databaseReferenceschl12.keepSynced( true );
@@ -1108,6 +1111,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                 databaseReferenceschl12.child( "school12" ).child( "schoolper" ).setValue( percentage12.getText().toString() );
                                 databaseReferenceschl12.child( "school12" ).child( "schoolstream" ).setValue( stream1.getText().toString() );
                                 databaseReferenceschl12.child( "school12" ).child( "schoolboard" ).setValue( board1.getText().toString() );
+                                databaseReferenceschl12.child( "school12" ).child( "uid" ).setValue( uid );
 
                                 addschool12det.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                                 addschool12det.setCompoundDrawablePadding( 5 );
@@ -1137,15 +1141,54 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             }
         });
 
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        adddiplomadet_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!dipclgname.getText().toString().isEmpty()){
+                    if (!dipcorsname.getText().toString().isEmpty()) {
+                        if (!dippercentage.getText().toString().isEmpty()){
+
+                            count4 = 1;
+
+                            DatabaseReference databaseReferencedipdet = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReferencedipdet.keepSynced(true);
+                            databaseReferencedipdet.child("diplomadet").child("dipclgname").setValue(dipclgname.getText().toString());
+                            databaseReferencedipdet.child("diplomadet").child("dipcorsname").setValue(dipcorsname.getText().toString());
+                            databaseReferencedipdet.child("diplomadet").child("dippercentage").setValue(dippercentage.getText().toString());
+                            databaseReferencedipdet.child("diplomadet").child("uid").setValue(uid);
+
+                            adddiplomadet_btn.setCompoundDrawablePadding(5);
+                            adddiplomadet_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
+                        }
+                        else {
+                            dippercentage.setError("Empty");
+                        }
+                    }
+                    else {
+                        dipcorsname.setError("Empty");
+                    }
+                }
+                else {
+                    dipclgname.setError("Empty");
+                }
+            }
+        });
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         addcollegedet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!collegename.getText().toString().isEmpty()){c++;
-                    if (!collegecourse.getText().toString().isEmpty()){c++;
-                        if (!collegedept.getText().toString().isEmpty()){c++;
-                            if (!collegestart.getText().toString().isEmpty()){c++;
-                                if (!collegeend.getText().toString().isEmpty()){c++;
-                                    if (!collegeper.getText().toString().isEmpty()){c++;
+                if (!collegename.getText().toString().isEmpty()){
+                    if (!collegecourse.getText().toString().isEmpty()){
+                        if (!collegedept.getText().toString().isEmpty()){
+                            if (!collegestart.getText().toString().isEmpty()){
+                                if (!collegeend.getText().toString().isEmpty()){
+                                    if (!collegeper.getText().toString().isEmpty()){
+
+                                        count5 = 1;
 
                                         DatabaseReference databaseReferenceclgdet = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                         databaseReferenceclgdet.keepSynced(true);
@@ -1155,6 +1198,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                         databaseReferenceclgdet.child("collegedet").child("collegestart").setValue( pres_doctor4 );
                                         databaseReferenceclgdet.child("collegedet").child("collegeend").setValue(pres_doctor5);
                                         databaseReferenceclgdet.child("collegedet").child("collegeper").setValue(collegeper.getText().toString());
+                                        databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue( uid );
 
                                         addcollegedet.setCompoundDrawablePadding(5);
                                         addcollegedet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
@@ -1242,6 +1286,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companyrole").setValue(companyrole.getText().toString());
                                     databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companybenefits").setValue(companybenefits.getText().toString());
                                     databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("expid").setValue(String.valueOf(expcounter));
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("uid").setValue(uid);
 
                                     companyname.setVisibility(View.GONE);
                                     companystartdate.setVisibility(View.GONE);
@@ -1289,6 +1334,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     databaseReferencecmpexp.keepSynced(true);
                     databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("skills").setValue(companyname1.getText().toString());
                     databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("expid").setValue(String.valueOf( skillcount ));
+                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("uid").setValue(String.valueOf( uid ));
                                     companyname1.setVisibility(View.GONE);
                                     addexpbtn1.setVisibility(View.GONE);
                                     updateexpbtn1.setVisibility(View.GONE);
@@ -1312,6 +1358,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                     databaseReferencecmpexp.keepSynced(true);
                     databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("achivmnts").setValue(companyname2.getText().toString());
                     databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("expid").setValue(String.valueOf( achcount ));
+                    databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("uid").setValue(String.valueOf( uid ));
                     companyname2.setVisibility(View.GONE);
                     addexpbtn2.setVisibility(View.GONE);
                     updateexpbtn2.setVisibility(View.GONE);
@@ -1377,9 +1424,16 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             datePickerDialog.show();
         }
         if(v==submit){
-           
-            if(c>=21){
+
+            int count = count1+count2+count3+count4+count5;
+
+            if(count>3){
                 savePrefsData();
+
+                DatabaseReference databaseReferencepstatus = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencepstatus.keepSynced(true);
+                databaseReferencepstatus.child("profilestatus").setValue("yes");
+
                 Intent intent = new Intent( Studentdetail.this, Dashboard.class );
                 startActivity( intent );
                 finish();
@@ -1387,8 +1441,6 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             else{
                 Toast.makeText(Studentdetail.this,"PLease fill all the required details",Toast.LENGTH_SHORT).show();
             }
-
-
         }
 
 

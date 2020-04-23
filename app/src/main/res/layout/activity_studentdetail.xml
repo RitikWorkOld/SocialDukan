@@ -23,7 +23,8 @@ android:background="@color/purple"
         android:id="@+id/field"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:scaleType="centerCrop"
             android:id="@+id/user_img"
             android:layout_width="118dp"
             android:layout_height="118dp"
@@ -593,6 +594,18 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/adddiplomadet_btn"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_gradient_style"
+                    android:padding="16dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Add diploma Details"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -1148,7 +1161,6 @@ android:drawableLeft="@drawable/ic_brightness_medium_black_24dp"
                     android:background="@drawable/btn_gradient_style"
                     android:padding="16dp"
                     android:textColor="@color/white"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>

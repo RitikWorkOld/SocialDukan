@@ -8,13 +8,14 @@ public class User {
     public String uid;
     public String password;
     public String profileimg;
+    public String profilestatus;
 
 
     public User(){
 
     }
 
-    public User(String name, String email,String contactn, String uid, String password,String profileimg) {
+    public User(String name, String email,String contactn, String uid, String password,String profileimg,String profilestatus) {
         this.name = name;
         this.email = email;
 
@@ -24,6 +25,7 @@ public class User {
 
         this.password = password;
         this.profileimg = profileimg;
+        this.profilestatus = profilestatus;
 
     }
 
@@ -78,5 +80,13 @@ public class User {
 
     public void setProfileimg(String profileimg) {
         this.profileimg = profileimg;
+    }
+
+    public String getProfilestatus() {
+        return profilestatus;
+    }
+
+    public void setProfilestatus(String profilestatus) {
+        this.profilestatus = profilestatus;
     }
 }

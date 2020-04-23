@@ -26,6 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login_Student extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener {
@@ -33,6 +38,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     ImageButton go;
     EditText emailId, password;
     FirebaseAuth mFirebaseAuth;
+    String pstatus;
 
 
     private CheckBox rem_userpass;
@@ -130,27 +136,53 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                 //   startActivity(intToHome);
                                 // finish();
 
-                                FirebaseUser firebaseUser=mFirebaseAuth.getCurrentUser();
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+                                databaseReference.keepSynced(true);
+                                databaseReference.orderByChild("uid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                                            User user = dataSnapshot1.getValue(User.class);
 
-                                if ( firebaseUser.isEmailVerified())
-                                {
-                                    // user is verified, so you can finish this activity or send user to activity which you want.
-                                    // finish();
-                                    Log.d("HEL","msg= yha agya");
-                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login_Student.this, Studentdetail.class);
-                                    startActivity(intent);
-                                    finish();
+                                            pstatus = user.profilestatus;
 
-                                }
-                                else
-                                {
-                                    // email is not verified, so just prompt the message to the user and restart this activity.
-                                    // NOTE: don't forget to log out the user.
-                                    FirebaseAuth.getInstance().signOut();
-                                    Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
-                                    //restart this activity
-                                }
+                                            Log.d("HEL**************","**************************************   "+pstatus);
+
+                                            FirebaseUser firebaseUser=mFirebaseAuth.getCurrentUser();
+
+                                            if ( firebaseUser.isEmailVerified())
+                                            {
+                                                if (pstatus.equals("yes")){
+                                                    Log.d("HEL","msg= yha agya");
+                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Login_Student.this, Dashboard.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                                else {
+                                                    Log.d("HEL","msg= yha agya");
+                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Login_Student.this, Studentdetail.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                // email is not verified, so just prompt the message to the user and restart this activity.
+                                                // NOTE: don't forget to log out the user.
+                                                FirebaseAuth.getInstance().signOut();
+                                                Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
+                                                //restart this activity
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
                         }
                     } );
