@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_design"
+    android:background="@drawable/back"
 
     tools:context=".LoginActvity">
     <LinearLayout
@@ -81,7 +81,7 @@ android:fontFamily="@font/montserrat"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
 
-
+android:src="@drawable/student"
                         android:id="@+id/image_student"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -148,7 +148,7 @@ android:fontFamily="@font/montserrat"
                     <ImageView
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
-
+android:src="@drawable/employee"
 
                         android:id="@+id/image_employe"/>
                     <RelativeLayout

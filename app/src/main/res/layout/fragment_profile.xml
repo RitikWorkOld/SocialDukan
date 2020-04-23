@@ -49,6 +49,18 @@ android:layout_marginTop="120dp"
         android:layout_toLeftOf="@+id/image_user"
         android:src="@drawable/ic_pencil" />
 
+
+    <ImageView
+        android:id="@+id/about"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="116dp"
+        android:layout_marginRight="-187dp"
+        android:layout_toLeftOf="@+id/image_user"
+        android:src="@drawable/ic_info" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:src="@drawable/user"
         android:id="@+id/image_user"

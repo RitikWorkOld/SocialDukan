@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,13 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragment.Profile_activity4"
+        <activity android:name="com.example.Edit_profile"></activity>
+        <activity
+            android:name=".fragment.Profile_activity4"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".fragment.Profile_activity3"
+        <activity
+            android:name=".fragment.Profile_activity3"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".fragment.Profile_activity2"
+        <activity
+            android:name=".fragment.Profile_activity2"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".fragment.Profile_activity1"
+        <activity
+            android:name=".fragment.Profile_activity1"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".fragment.SimpleFragmentPagerAdapter" />
         <activity android:name=".fragment.InternDetail" />
@@ -32,22 +36,20 @@
         <activity
             android:name=".Verification"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Login_Student">
-
-        </activity>
+        <activity android:name=".Login_Student"></activity>
         <activity android:name=".Reg_Student" />
         <activity android:name=".IntroActivity2" />
         <activity android:name=".LoginActvity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".Studentdetail" />
+        <activity android:name=".Edit_profile" />
         <activity android:name=".splashActi">
-        <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"

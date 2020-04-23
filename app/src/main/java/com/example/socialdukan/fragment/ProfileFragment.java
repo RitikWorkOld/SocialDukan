@@ -12,12 +12,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.socialdukan.Dashboard;
+import com.example.socialdukan.Edit_profile;
 import com.example.socialdukan.Login_Student;
 import com.example.socialdukan.R;
+import com.example.socialdukan.Studentdetail;
 import com.example.socialdukan.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +43,7 @@ FirebaseAuth mFirebaseAuth;
 
     TextView name_user;
     TextView user_email;
+    ImageView edit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +56,7 @@ FirebaseAuth mFirebaseAuth;
 
         name_user = view.findViewById(R.id.name_user);
         user_email = view.findViewById(R.id.user_email);
+        edit=view.findViewById( R.id.edit_profile );
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
         final RelativeLayout layout_profile2 = (RelativeLayout)view.findViewById(R.id.pers_detail2);
@@ -96,7 +101,15 @@ layout_profile1.setOnClickListener( new View.OnClickListener() {
                 startActivity(intent);
             }
         } );
+        //-------------------------------------------------------------------------------------------------
+        edit.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Edit_profile.class);
 
+                startActivity(intent);
+            }
+        } );
 
         //-------------------------------------------------------------------------------------------------
         layout_signout.setOnClickListener( new View.OnClickListener() {
