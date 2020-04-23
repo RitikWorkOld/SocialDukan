@@ -223,7 +223,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
         collegeend = findViewById(R.id.collegeend);
         collegeper = findViewById(R.id.collegeper);
 
-       /* final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("personaldet");
+     DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("personaldet");
         databaseReference1.keepSynced(true);
         databaseReference1.orderByChild("uid").equalTo( FirebaseAuth.getInstance()
                 .getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -248,7 +248,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
 
 

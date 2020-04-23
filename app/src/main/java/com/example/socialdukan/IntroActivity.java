@@ -44,14 +44,14 @@ public class IntroActivity extends AppCompatActivity {
 
         // when this activity is about to be launch we need to check if its openened before or not
 
-     if (restorePrefData()) {
+    /* if (restorePrefData()) {
 
             Intent mainActivity = new Intent(getApplicationContext(),Login_Student.class );
             startActivity(mainActivity);
             finish();
 
 
-        }
+        }*/
 
         setContentView(R.layout.activity_intro);
 
@@ -157,7 +157,7 @@ public class IntroActivity extends AppCompatActivity {
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity
                 // i'm going to use shared preferences to that process
-                savePrefsData();
+                //savePrefsData();
                 finish();
 
 
@@ -178,7 +178,7 @@ public class IntroActivity extends AppCompatActivity {
 
     }
 
-    private boolean restorePrefData() {
+   /* private boolean restorePrefData() {
 
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
@@ -197,7 +197,7 @@ public class IntroActivity extends AppCompatActivity {
         editor.commit();
 
 
-    }
+    }*/
 
     // show the GETSTARTED Button and hide the indicator and the next button
     private void loaddLastScreen() {
