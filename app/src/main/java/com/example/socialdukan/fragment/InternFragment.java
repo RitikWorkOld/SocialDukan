@@ -77,6 +77,9 @@ public class InternFragment extends Fragment {
         adapterinternall.startListening();
 
         return view;
+
+
+
     }
 
 }

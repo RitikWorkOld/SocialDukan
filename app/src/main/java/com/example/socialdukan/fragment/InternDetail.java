@@ -106,6 +106,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
         //Adding onTabSelectedListener to swipe views
         tabLayout.setOnTabSelectedListener(this);
+
     }
 
     @Override

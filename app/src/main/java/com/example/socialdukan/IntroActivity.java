@@ -167,7 +167,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // skip button click listener
 
-        tvSkip.setOnClickListener(new View.OnClickListener() {
+       tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 screenPager.setCurrentItem(mList.size());

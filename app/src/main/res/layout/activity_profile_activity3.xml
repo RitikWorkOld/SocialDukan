@@ -40,122 +40,13 @@
                     android:layout_marginBottom="30dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:id="@+id/profile_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/dob_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:fontFamily="@font/montserrat"
-                            android:text="School Name"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_exp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
 
-                        <TextView
-                            android:id="@+id/add_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/dob_view"
-
-                            android:fontFamily="@font/montserrat"
-                            android:text="Address"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-
-
-                        <TextView
-                            android:id="@+id/curr_occ_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/add_view"
-                            android:fontFamily="@font/montserrat"
-
-                            android:text="Occupation"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/wa_no_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_below="@id/curr_occ_view"
-                            android:fontFamily="@font/montserrat"
-
-                            android:text="Whatsapp Number"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_toRightOf="@+id/profile_layout"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/dob_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:fontFamily="@font/montserrat"
-                            android:hint="DOB"
-
-
-                            android:background="@null"
-                            android:textColor="#CD4B4B"
-                            android:textColorHint="#808080"
-                            android:textSize="16sp" />
-                        <EditText
-                            android:id="@+id/add_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-
-                            android:fontFamily="@font/montserrat"
-                            android:hint="DOB"
-                            android:layout_below="@id/dob_text"
-                            android:background="@null"
-                            android:textColor="#CD4B4B"
-                            android:textColorHint="#808080"
-                            android:textSize="16sp" />
-                        <EditText
-                            android:id="@+id/curr_occ_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:fontFamily="@font/montserrat"
-                            android:hint="DOB"
-
-                            android:layout_below="@id/add_text"
-                            android:background="@null"
-                            android:textColor="#CD4B4B"
-                            android:textColorHint="#808080"
-                            android:textSize="16sp" />
-                        <EditText
-                            android:id="@+id/wa_no_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:fontFamily="@font/montserrat"
-                            android:hint="DOB"
-
-                            android:layout_below="@id/curr_occ_text"
-                            android:background="@null"
-                            android:textColor="#CD4B4B"
-                            android:textColorHint="#808080"
-                            android:textSize="16sp" />
-
-                    </RelativeLayout>
 
 
                 </RelativeLayout>
@@ -167,7 +58,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Update"
+                        android:text="Okay"
 
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/white"

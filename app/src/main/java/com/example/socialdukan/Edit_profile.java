@@ -29,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.socialdukan.fragment.Personaldet_md;
 import com.example.socialdukan.fragment.ProfileFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -225,22 +226,16 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 
      DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("personaldet");
         databaseReference1.keepSynced(true);
-        databaseReference1.orderByChild("uid").equalTo( FirebaseAuth.getInstance()
-                .getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference1.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
-                String dob1 = dataSnapshot.child(  "dob").getValue().toString();
-                String address1=dataSnapshot.child( "adress" ).getValue().toString();
-                String occ1=dataSnapshot.child( "occupation" ).getValue().toString();
-                String wa_no1=dataSnapshot.child( "wanumber" ).getValue().toString();
+                    User user = dataSnapshot1.getValue(User.class);
 
-                dob.setText( dob1);
-                adress.setText( address1 );
-                occupation.setText( occ1 );
-                wanumber.setText( wa_no1 );
+                }
 
             }
 

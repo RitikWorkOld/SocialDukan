@@ -2,14 +2,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="false">
         <shape android:shape="oval">
-            <gradient android:startColor="@color/gradient_start_color"
-                android:endColor="@color/gradient_end_color" />
+            <gradient android:startColor="@color/lightpurple"
+                android:endColor="@color/lightpurple" />
         </shape>
 
     </item>
     <item android:state_pressed="true">
         <shape android:shape="oval">
-            <solid android:color="#c20586"/>
+            <solid android:color="@color/purple"/>
         </shape>
     </item>
 </selector>
