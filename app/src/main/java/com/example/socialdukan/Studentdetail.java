@@ -1010,7 +1010,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                 databaseReferencepd.child( "personaldet" ).child( "occupation" ).setValue( occupation.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "wanumber" ).setValue( wanumber.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "name" ).setValue( name );
-                                databaseReferencepd.child( "personaldet" ).child( "uid" ).setValue( uid );
+                                databaseReferencepd.child( "personaldet" ).child( "uid" ).setValue("per"+ uid );
                                 databaseReferencepd.child( "personaldet" ).child( "email" ).setValue( email );
                                 databaseReferencepd.child( "personaldet" ).child( "phnumber" ).setValue( phno );
 
@@ -1062,7 +1062,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                 databaseReferenceschl10.child("school10").child("schoolendy").setValue(pres_doctor1);
                                 databaseReferenceschl10.child("school10").child("schoolper").setValue(percentage10.getText().toString());
                                 databaseReferenceschl10.child("school10").child("schoolboard").setValue(board.getText().toString());
-                                databaseReferenceschl10.child("school10").child( "uid" ).setValue( uid );
+                                databaseReferenceschl10.child("school10").child( "uid" ).setValue("sch10"+ uid );
                                 addschool10det.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
                                 addschool10det.setCompoundDrawablePadding(5);
 
@@ -1111,7 +1111,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                 databaseReferenceschl12.child( "school12" ).child( "schoolper" ).setValue( percentage12.getText().toString() );
                                 databaseReferenceschl12.child( "school12" ).child( "schoolstream" ).setValue( stream1.getText().toString() );
                                 databaseReferenceschl12.child( "school12" ).child( "schoolboard" ).setValue( board1.getText().toString() );
-                                databaseReferenceschl12.child( "school12" ).child( "uid" ).setValue( uid );
+                                databaseReferenceschl12.child( "school12" ).child( "uid" ).setValue("sch12"+ uid );
 
                                 addschool12det.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                                 addschool12det.setCompoundDrawablePadding( 5 );
@@ -1157,7 +1157,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                             databaseReferencedipdet.child("diplomadet").child("dipclgname").setValue(dipclgname.getText().toString());
                             databaseReferencedipdet.child("diplomadet").child("dipcorsname").setValue(dipcorsname.getText().toString());
                             databaseReferencedipdet.child("diplomadet").child("dippercentage").setValue(dippercentage.getText().toString());
-                            databaseReferencedipdet.child("diplomadet").child("uid").setValue(uid);
+                            databaseReferencedipdet.child("diplomadet").child("uid").setValue("dip"+uid);
 
                             adddiplomadet_btn.setCompoundDrawablePadding(5);
                             adddiplomadet_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
@@ -1198,7 +1198,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                         databaseReferenceclgdet.child("collegedet").child("collegestart").setValue( pres_doctor4 );
                                         databaseReferenceclgdet.child("collegedet").child("collegeend").setValue(pres_doctor5);
                                         databaseReferenceclgdet.child("collegedet").child("collegeper").setValue(collegeper.getText().toString());
-                                        databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue( uid );
+                                        databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue("clg"+ uid );
 
                                         addcollegedet.setCompoundDrawablePadding(5);
                                         addcollegedet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);

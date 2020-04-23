@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.socialdukan.Pers_detail;
 import com.example.socialdukan.R;
@@ -32,46 +34,27 @@ TextView dob,address,occ,wa_no;
         occ = findViewById( R.id.curr_occ_text );
         wa_no = findViewById( R.id.wa_no_text );
 
-            /*public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot : dataSnapshot.getChildren()) {
-                    Pers_detail pers_detail = dataSnapshot.getValue( Pers_detail.class );
-                    dob1 = pers_detail.getDob();
-                    address1 = pers_detail.getAdress();
-                    occ1 = pers_detail.getOccupation();
-                    wa_no1 = pers_detail.getWanumber();
-
-                    dob.setText( pers_detail.getDob() );
-                    address.setText( pers_detail.getAdress() );
-                    occ.setText( pers_detail.getOccupation() );
-                    wa_no.setText( pers_detail.getWanumber() );
-
-                }
-            }*/
-
-
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("personaldet");
+        reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.keepSynced(true);
-        reff.orderByChild("uid").equalTo( FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+        reff.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String dob1 = dataSnapshot.child(  "dob").getValue().toString();
-                String address1=dataSnapshot.child( "adress" ).getValue().toString();
-                String occ1=dataSnapshot.child( "occupation" ).getValue().toString();
-                String wa_no1=dataSnapshot.child( "wanumber" ).getValue().toString();
 
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
+                    Personaldet_md personaldet_md = dataSnapshot1.getValue(Personaldet_md.class);
 
-                dob.setText( dob1);
-                address.setText( address1 );
-                occ.setText( occ1 );
-                wa_no.setText( wa_no1 );
+                    dob.setText(personaldet_md.getDob());
+                    address.setText(personaldet_md.getAdress());
+                    occ.setText(personaldet_md.getOccupation());
+                    wa_no.setText(personaldet_md.getWanumber());
+
+                }
             }
 
             @Override
