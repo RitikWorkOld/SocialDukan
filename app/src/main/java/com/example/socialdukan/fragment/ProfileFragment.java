@@ -41,39 +41,90 @@ FirebaseAuth mFirebaseAuth;
         // Required empty public constructor
     }
 
+    TextView dob,address,occ,wa_no;
+
+    DatabaseReference reff;
+
     TextView name_user;
     TextView user_email;
-    ImageView edit;
+    ImageView edit,imageuser;
+    boolean perdet_1 = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         // Inflate the layout for this fragment
         final View view = inflater.inflate( R.layout.fragment_profile, container, false );
 
+        dob = view.findViewById( R.id.dob_text );
+        address = view.findViewById( R.id.add_text );
+        occ = view.findViewById( R.id.curr_occ_text );
+        wa_no = view.findViewById( R.id.wa_no_text );
+        imageuser = view.findViewById(R.id.image_user);
         name_user = view.findViewById(R.id.name_user);
         user_email = view.findViewById(R.id.user_email);
         edit=view.findViewById( R.id.edit_profile );
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
+        final RelativeLayout perdet1 = (RelativeLayout)view.findViewById(R.id.layout_perdet1);
+        perdet1.setVisibility(View.GONE);
         final RelativeLayout layout_profile2 = (RelativeLayout)view.findViewById(R.id.pers_detail2);
         final RelativeLayout layout_profile3 = (RelativeLayout)view.findViewById(R.id.pers_detail3);
         final RelativeLayout layout_profile4 = (RelativeLayout)view.findViewById(R.id.pers_detail4);
         final RelativeLayout layout_signout = (RelativeLayout)view.findViewById(R.id.layout_signout);
 
 
-        //-------------------------------------------------------------------------------------------------
-layout_profile1.setOnClickListener( new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), Profile_activity1.class);
 
-        startActivity(intent);
+        reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+
+                    Personaldet_md personaldet_md = dataSnapshot1.getValue(Personaldet_md.class);
+
+                    dob.setText(personaldet_md.getDob());
+                    address.setText(personaldet_md.getAdress());
+                    occ.setText(personaldet_md.getOccupation());
+                    wa_no.setText(personaldet_md.getWanumber());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+
+        //-------------------------------------------------------------------------------------------------
+
+        /*layout_profile1.setOnClickListener( new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), Profile_activity1.class);
+            startActivity(intent);
     }
-} );
+        } );*/
+
+        layout_profile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (perdet_1){
+                    perdet_1 = false;
+                    perdet1.setVisibility(View.VISIBLE);
+                }
+                else {
+                    perdet_1 = true;
+                    perdet1.setVisibility(View.GONE);
+                }
+            }
+        });
+
         //-------------------------------------------------------------------------------------------------
         layout_profile2.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -168,6 +219,4 @@ layout_profile1.setOnClickListener( new View.OnClickListener() {
         return view;
     }
     //-------------------------------------------------------------------------------------------------
-
-
 }

@@ -24,13 +24,13 @@ android:background="@color/purple"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@drawable/user"
             android:scaleType="centerCrop"
             android:id="@+id/user_img"
             android:layout_width="118dp"
             android:layout_height="118dp"
             android:layout_alignParentEnd="true"
-            android:layout_margin="48dp"
-            app:srcCompat="@drawable/user" />
+            android:layout_margin="48dp"/>
 
         <ProgressBar
             android:id="@+id/pb_userimg"

@@ -51,6 +51,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import static com.example.socialdukan.R.drawable.user;
+
 public class Studentdetail extends AppCompatActivity implements View.OnClickListener {
 TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend,companystartdate,companyenddate;
     EditText dob,adress,occupation,schoolname10,wanumber,
@@ -617,6 +619,9 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                     uid = user.getUid();
                     if (user.profileimg!=null){
                         Picasso.get().load(user.profileimg).into(user_img);
+                    }
+                    else {
+                        user_img.setImageResource(R.drawable.user);
                     }
 
                     displayname.setText(user.getName());

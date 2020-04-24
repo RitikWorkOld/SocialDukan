@@ -118,36 +118,158 @@ android:layout_marginTop="120dp"
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_below="@+id/layout_profile"
-
         android:layout_height="400dp">
         <androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         android:elevation="8dp"
-android:id="@+id/card_profile"
+        android:id="@+id/card_profile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         app:cardElevation="6dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:id="@+id/pers_detail1"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_margin="12dp"
-android:layout_centerHorizontal="true"
-                android:drawableLeft="@drawable/ic_personal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/montserrat"
-                android:textSize="18sp"
-                android:text="Personal Details"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/pers_detail1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_personaldet"
+                        android:layout_margin="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:drawableLeft="@drawable/ic_personal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="18sp"
+                        android:text="Personal Details"/>
 
-        </RelativeLayout>
+                </RelativeLayout>
+
+                <!--hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+
+                <RelativeLayout
+                    android:layout_below="@+id/pers_detail1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/layout_perdet1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/profile_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/dob_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Date of Birth"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/add_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dob_view"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Address"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/curr_occ_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/add_view"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Occupation"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/wa_no_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/curr_occ_view"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Whatsapp Number"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_toRightOf="@+id/profile_layout"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/dob_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/add_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+                            android:layout_below="@id/dob_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/curr_occ_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+                            android:layout_below="@id/add_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/wa_no_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:hint="DOB"
+                            android:layout_below="@id/curr_occ_text"
+                            android:background="@null"
+                            android:textColor="#CD4B4B"
+                            android:textColorHint="#808080"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <!--hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+
+            </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -156,11 +278,10 @@ android:layout_centerHorizontal="true"
             app:cardCornerRadius="10dp"
             android:elevation="8dp"
             android:id="@+id/card2"
-android:layout_below="@+id/card_profile"
+            android:layout_below="@+id/card_profile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             app:cardElevation="6dp">
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -186,7 +307,7 @@ android:layout_below="@+id/card_profile"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             android:elevation="8dp"
-android:layout_below="@id/card2"
+            android:layout_below="@id/card2"
             android:id="@+id/card3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
@@ -217,7 +338,7 @@ android:layout_below="@id/card2"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             android:elevation="8dp"
-android:layout_below="@+id/card3"
+            android:layout_below="@+id/card3"
             android:id="@+id/card4"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
@@ -259,7 +380,7 @@ android:layout_below="@+id/card3"
 
             <RelativeLayout
                 android:layout_width="match_parent"
-android:id="@+id/layout_signout"
+                android:id="@+id/layout_signout"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_margin="12dp"
