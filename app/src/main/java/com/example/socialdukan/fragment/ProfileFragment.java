@@ -8,7 +8,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,21 +25,54 @@ import com.example.socialdukan.Login_Student;
 import com.example.socialdukan.R;
 import com.example.socialdukan.Studentdetail;
 import com.example.socialdukan.User;
+import com.example.socialdukan.addexp1_model;
+import com.example.socialdukan.addexp1_viewholder;
+import com.example.socialdukan.addexp2_model;
+import com.example.socialdukan.addexp2_viewholder;
+import com.example.socialdukan.addexp_model;
+import com.example.socialdukan.addexp_viewholder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
-FirebaseAuth mFirebaseAuth;
+
+    RecyclerView rv_exp,rv_exp1;//RITIK
+    FirebaseRecyclerOptions<addexp_model> optionsexp;
+    FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
+
+    FirebaseRecyclerAdapter<addexp_model,addexp_viewholder> adapterexp;
+    FirebaseRecyclerAdapter<addexp1_model,addexp1_viewholder>adapterexp1; //Ritik
+
+    DatabaseReference databaseReferenceexprv,databaseReferenceexprv1;
+    FirebaseAuth mFirebaseAuth;
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterexp.stopListening();
+        adapterexp1.stopListening();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterexp.startListening();
+        adapterexp1.startListening();
+    }
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -49,6 +85,9 @@ FirebaseAuth mFirebaseAuth;
     TextView user_email;
     ImageView edit,imageuser;
     boolean perdet_1 = true;
+    boolean ed_deta = true;
+    boolean work_exp = true;
+    boolean abili = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,12 +108,141 @@ FirebaseAuth mFirebaseAuth;
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
         final RelativeLayout perdet1 = (RelativeLayout)view.findViewById(R.id.layout_perdet1);
         perdet1.setVisibility(View.GONE);
-        final RelativeLayout layout_profile2 = (RelativeLayout)view.findViewById(R.id.pers_detail2);
+        final RelativeLayout eddet1 = (RelativeLayout)view.findViewById(R.id.layout_eddet1);
+        final RelativeLayout work_det = (RelativeLayout)view.findViewById(R.id.work_det);
+        final RelativeLayout abi_det = (RelativeLayout)view.findViewById(R.id.abi_det);
+        final RelativeLayout layout_profile2 = (RelativeLayout)view.findViewById(R.id.ed_detail1);
         final RelativeLayout layout_profile3 = (RelativeLayout)view.findViewById(R.id.pers_detail3);
         final RelativeLayout layout_profile4 = (RelativeLayout)view.findViewById(R.id.pers_detail4);
         final RelativeLayout layout_signout = (RelativeLayout)view.findViewById(R.id.layout_signout);
+        rv_exp1 = view.findViewById(R.id.rv_exp1);
+        rv_exp1.setHasFixedSize(true);
+        rv_exp1.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills");
+        databaseReferenceexprv1.keepSynced(true);
+
+        optionsexp1  = new FirebaseRecyclerOptions.Builder<addexp1_model>().setQuery(databaseReferenceexprv1,addexp1_model.class).build();
+
+        adapterexp1 = new FirebaseRecyclerAdapter<addexp1_model, addexp1_viewholder>(optionsexp1) {
+            @Override
+            protected void onBindViewHolder(@NonNull final addexp1_viewholder holder1, int position, @NonNull final addexp1_model model) {
+                holder1.companynamelayout.setText(model.getSkills());
+
+                holder1.show.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!holder1.expand){
+
+                            holder1.companynamelayout.setVisibility(View.VISIBLE);
+
+                            holder1.editexp.setVisibility(View.GONE);
+                            holder1.expand = true;
+                        }
+                        else {
+
+                            holder1.companynamelayout.setVisibility(View.GONE);
+                            holder1.editexp.setVisibility(View.GONE);
+                            holder1.expand = false;
+                        }
+                    }
+                });
 
 
+
+            }
+
+            @NonNull
+            @Override
+            public addexp1_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return new addexp1_viewholder(LayoutInflater.from(getActivity()).inflate(R.layout.exp1_card_layout,parent,false));
+            }
+        };
+
+        rv_exp1.setAdapter(adapterexp1);
+        adapterexp1.startListening();
+
+//-------------------------------------------------------------------------------------------
+        rv_exp = view.findViewById( R.id.rv_exp );
+        rv_exp.setHasFixedSize( true );
+      //  rv_exp.setLayoutManager( new LinearLayoutManager( this ) );
+        rv_exp.setLayoutManager( new LinearLayoutManager(  getContext()) );
+
+        databaseReferenceexprv = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpexp" );
+        databaseReferenceexprv.keepSynced( true );
+
+        optionsexp = new FirebaseRecyclerOptions.Builder<addexp_model>().setQuery( databaseReferenceexprv, addexp_model.class ).build();
+
+        adapterexp = new FirebaseRecyclerAdapter<addexp_model, addexp_viewholder>( optionsexp ) {
+
+            @Override
+            protected void onBindViewHolder(@NonNull final addexp_viewholder holder, int position, @NonNull final addexp_model model) {
+                holder.companynamelayout.setText( model.getCompanyname() );
+                holder.companystartlayout.setText( model.getCompanystart() );
+                holder.companyendlayout.setText( model.getCompanyend() );
+                holder.companyrolelayout.setText( model.getCompanyrole() );
+                holder.companybenefitslayout.setText( model.getCompanybenefits() );
+
+
+                holder.companynamelayout.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (holder.expand == false) {
+                            holder.companystartlayout.setVisibility( View.VISIBLE );
+                            holder.companyendlayout.setVisibility( View.VISIBLE );
+                            holder.companyrolelayout.setVisibility( View.VISIBLE );
+                            holder.companybenefitslayout.setVisibility( View.VISIBLE );
+
+                            holder.expand = true;
+
+                        } else {
+                            holder.companystartlayout.setVisibility( View.GONE );
+                            holder.companyendlayout.setVisibility( View.GONE );
+                            holder.companyrolelayout.setVisibility( View.GONE );
+                            holder.companybenefitslayout.setVisibility( View.GONE );
+                            holder.editexp.setVisibility( View.GONE );
+                            holder.cancelbtn.setVisibility( View.GONE );
+                            holder.expand = false;
+                        }
+                    }
+                } );
+            }
+
+            @NonNull
+            @Override
+            public addexp_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return new addexp_viewholder( LayoutInflater.from( getActivity()).inflate( R.layout.exp_card_layout, parent, false ) );
+            }
+
+
+
+        };
+        rv_exp.setAdapter(adapterexp);
+        adapterexp.startListening();
+        //----------------------------------------------------------------------------------------------------------------------------------
+        final DatabaseReference databaseReferencemain = FirebaseDatabase.getInstance().getReference().child("Users");
+        databaseReferencemain.keepSynced(true);
+        databaseReferencemain.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    User user = dataSnapshot1.getValue(User.class);
+                    if (user.profileimg!=null){
+                        Picasso.get().load(user.profileimg).into(imageuser);
+                    }
+                    else {
+                        imageuser.setImageResource(R.drawable.user);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+//----------------------------------------------------------------------------------------------------------------------------------
 
         reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.keepSynced(true);
@@ -90,6 +258,7 @@ FirebaseAuth mFirebaseAuth;
                     address.setText(personaldet_md.getAdress());
                     occ.setText(personaldet_md.getOccupation());
                     wa_no.setText(personaldet_md.getWanumber());
+
 
                 }
             }
@@ -110,7 +279,32 @@ FirebaseAuth mFirebaseAuth;
             startActivity(intent);
     }
         } );*/
-
+        layout_profile3.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (work_exp){
+                    work_exp = false;
+                    work_det.setVisibility(View.VISIBLE);
+                }
+                else {
+                    work_exp = true;
+                    work_det.setVisibility(View.GONE);
+                }
+            }
+        } );
+        layout_profile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ed_deta){
+                    ed_deta = false;
+                    eddet1.setVisibility(View.VISIBLE);
+                }
+                else {
+                    ed_deta = true;
+                    eddet1.setVisibility(View.GONE);
+                }
+            }
+        });
         layout_profile1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,30 +320,35 @@ FirebaseAuth mFirebaseAuth;
         });
 
         //-------------------------------------------------------------------------------------------------
-        layout_profile2.setOnClickListener( new View.OnClickListener() {
+       /* layout_profile2.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Profile_activity2.class);
 
                 startActivity(intent);
             }
-        } );
+        } );*/
         //-------------------------------------------------------------------------------------------------
-        layout_profile3.setOnClickListener( new View.OnClickListener() {
+        /*layout_profile3.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Profile_activity3.class);
 
                 startActivity(intent);
             }
-        } );
+        } );*/
         //-------------------------------------------------------------------------------------------------
         layout_profile4.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Profile_activity4.class);
-
-                startActivity(intent);
+                if (abili){
+                    abili = false;
+                    abi_det.setVisibility(View.VISIBLE);
+                }
+                else {
+                    abili = true;
+                    abi_det.setVisibility(View.GONE);
+                }
             }
         } );
         //-------------------------------------------------------------------------------------------------
@@ -191,7 +390,6 @@ FirebaseAuth mFirebaseAuth;
            /* mFirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent( view.getContext(), Login_Student.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
                 startActivity(intent);*/
 
             }
@@ -217,6 +415,11 @@ FirebaseAuth mFirebaseAuth;
         });
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
     //-------------------------------------------------------------------------------------------------
 }

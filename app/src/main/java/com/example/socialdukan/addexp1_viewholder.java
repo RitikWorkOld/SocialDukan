@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class addexp1_viewholder extends RecyclerView.ViewHolder {
 
-    TextView companynamelayout,show;
+    public TextView companynamelayout,show;
 
 
-    TextView editexp;
-    boolean expand;
+    public TextView editexp;
+    public boolean expand;
 
     public addexp1_viewholder(@NonNull View itemView) {
         super(itemView);
