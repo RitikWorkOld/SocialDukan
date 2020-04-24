@@ -15,36 +15,39 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Profile_activity2 extends AppCompatActivity {
-TextView schoolname,startyear,endyear,board,percentage;
+TextView schoolname,startyear,endyear,board,percentage,stream;
     DatabaseReference reff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_profile_activity2 );
-        schoolname=findViewById( R.id.schoolname10 );
-        startyear=findViewById( R.id.schlstarty10 );
-        endyear=findViewById( R.id.schlendy10 );
-        board=findViewById( R.id.board );
-        percentage=findViewById( R.id.percentage10 );
+        schoolname=findViewById( R.id.schoolname12 );
+        startyear=findViewById( R.id.schlstarty12 );
+        endyear=findViewById( R.id.schlendy12 );
+        board=findViewById( R.id.board1 );
+        percentage=findViewById( R.id.percentage12 );
+        stream=findViewById( R.id.stream );
+
     }
     @Override
     protected void onStart() {
         super.onStart();
         reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.keepSynced(true);
-        reff.orderByChild("uid").equalTo("sch10"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+        reff.orderByChild("uid").equalTo("sch12"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
 
                 for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
 
-                    School_ten_md school_ten_md = dataSnapshot.getValue(School_ten_md.class);
+                    School_twe_md school_twe_md = dataSnapshot.getValue(School_twe_md.class);
 
-                    schoolname.setText(school_ten_md.getSchoolname());
-                    startyear.setText(school_ten_md.getSchoolstarty());
-                    endyear.setText(school_ten_md.getSchoolendy());
-                    board.setText(school_ten_md.getSchoolboard());
-                    percentage.setText(school_ten_md.getSchoolper());
+                    schoolname.setText(school_twe_md.getSchoolname());
+                    startyear.setText(school_twe_md.getSchoolstarty());
+                    endyear.setText(school_twe_md.getSchoolendy());
+                    board.setText(school_twe_md.getSchoolboard());
+                    percentage.setText(school_twe_md.getSchoolper());
+                    stream.setText( school_twe_md.getSchoolstream() );
 
                 }
             }

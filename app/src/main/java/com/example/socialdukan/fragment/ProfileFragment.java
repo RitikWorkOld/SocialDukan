@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,9 +47,9 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener {
+public class ProfileFragment extends Fragment{
 
-
+Button matri_btn,inter_btn,dip_btn,clg_btn;
     RecyclerView rv_exp,rv_exp1;//RITIK
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
@@ -104,6 +105,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         name_user = view.findViewById(R.id.name_user);
         user_email = view.findViewById(R.id.user_email);
         edit=view.findViewById( R.id.edit_profile );
+        matri_btn=view.findViewById( R.id.matr_btn );
+        inter_btn=view.findViewById( R.id.inter_btn );
+        dip_btn=view.findViewById( R.id.dip_btn );
+        clg_btn=view.findViewById( R.id.college_btn );
+
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
         final RelativeLayout perdet1 = (RelativeLayout)view.findViewById(R.id.layout_perdet1);
@@ -298,6 +304,42 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 if (ed_deta){
                     ed_deta = false;
                     eddet1.setVisibility(View.VISIBLE);
+                    matri_btn.setOnClickListener( new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), Profile_activity1.class);
+
+                            startActivity(intent);
+
+                        }
+                    } );
+                    inter_btn.setOnClickListener( new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), Profile_activity2.class);
+
+                            startActivity(intent);
+
+                        }
+                    } );
+                    dip_btn.setOnClickListener( new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), Profile_activity3.class);
+
+                            startActivity(intent);
+
+                        }
+                    } );
+                    clg_btn.setOnClickListener( new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), Profile_activity4.class);
+
+                            startActivity(intent);
+
+                        }
+                    } );
                 }
                 else {
                     ed_deta = true;
@@ -319,24 +361,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        //-------------------------------------------------------------------------------------------------
-       /* layout_profile2.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Profile_activity2.class);
 
-                startActivity(intent);
-            }
-        } );*/
-        //-------------------------------------------------------------------------------------------------
-        /*layout_profile3.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Profile_activity3.class);
-
-                startActivity(intent);
-            }
-        } );*/
         //-------------------------------------------------------------------------------------------------
         layout_profile4.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -387,10 +412,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
-           /* mFirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent( view.getContext(), Login_Student.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);*/
+
 
             }
         } );
@@ -417,9 +439,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
+
+
     //-------------------------------------------------------------------------------------------------
 }

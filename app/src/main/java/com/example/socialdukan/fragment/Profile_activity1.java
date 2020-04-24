@@ -4,55 +4,47 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.socialdukan.Pers_detail;
 import com.example.socialdukan.R;
-import com.example.socialdukan.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
 
 public class Profile_activity1 extends AppCompatActivity {
-TextView dob,address,occ,wa_no;
-
+    TextView schoolname,startyear,endyear,board,percentage;
     DatabaseReference reff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_profile_activity1 );
-        dob = findViewById( R.id.dob_text );
-        address = findViewById( R.id.add_text );
-        occ = findViewById( R.id.curr_occ_text );
-        wa_no = findViewById( R.id.wa_no_text );
-
+        schoolname=findViewById( R.id.schoolname10 );
+        startyear=findViewById( R.id.schlstarty10 );
+        endyear=findViewById( R.id.schlendy10 );
+        board=findViewById( R.id.board );
+        percentage=findViewById( R.id.percentage10 );
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.keepSynced(true);
-        reff.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+        reff.orderByChild("uid").equalTo("sch10"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
 
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
 
-                    Personaldet_md personaldet_md = dataSnapshot1.getValue(Personaldet_md.class);
+                    School_ten_md school_ten_md = dataSnapshot.getValue(School_ten_md.class);
 
-                    dob.setText(personaldet_md.getDob());
-                    address.setText(personaldet_md.getAdress());
-                    occ.setText(personaldet_md.getOccupation());
-                    wa_no.setText(personaldet_md.getWanumber());
+                    schoolname.setText(school_ten_md.getSchoolname());
+                    startyear.setText(school_ten_md.getSchoolstarty());
+                    endyear.setText(school_ten_md.getSchoolendy());
+                    board.setText(school_ten_md.getSchoolboard());
+                    percentage.setText(school_ten_md.getSchoolper());
 
                 }
             }

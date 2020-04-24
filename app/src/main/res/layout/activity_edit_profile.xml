@@ -276,10 +276,10 @@
                         <Spinner
 
                             android:id="@+id/spinner"
-
+android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/schlstarty10"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -306,10 +306,10 @@
                         <Spinner
 
                             android:id="@+id/spinner1"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/schlendy10"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -464,10 +464,10 @@
                         <Spinner
 
                             android:id="@+id/spinner2"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/schlstarty12"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -492,10 +492,10 @@
                         <Spinner
 
                             android:id="@+id/spinner3"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/schlendy12"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
@@ -680,10 +680,10 @@
                         <Spinner
 
                             android:id="@+id/spinner4"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/collegestart"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -708,10 +708,10 @@
                         <Spinner
 
                             android:id="@+id/spinner5"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/collegeend"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -879,10 +879,10 @@
                         <Spinner
 
                             android:id="@+id/spinner6"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/companystartdate"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
@@ -909,10 +909,10 @@
                         <Spinner
 
                             android:id="@+id/spinner7"
-
+                            android:layout_alignParentEnd="true"
                             android:spinnerMode="dropdown"
                             android:layout_marginTop="6dp"
-                            android:layout_toRightOf="@+id/companyenddate"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>

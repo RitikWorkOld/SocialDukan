@@ -69,12 +69,12 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Internships","",R.drawable.img1));
-        mList.add(new ScreenItem("Sponsorships for events","",R.drawable.img2));
-        mList.add(new ScreenItem("Website Designing","",R.drawable.img3));
-        mList.add(new ScreenItem("Graphic Designing","",R.drawable.img1));
-        mList.add(new ScreenItem("Test1","",R.drawable.img2));
-        mList.add(new ScreenItem("Test2","",R.drawable.img3));
+        mList.add(new ScreenItem("Apply for internships","",R.drawable.inernship));
+        mList.add(new ScreenItem(" Get Sponsorships for your event","",R.drawable.sponsorship));
+        mList.add(new ScreenItem(" Apply for campaigns as a influencer","",R.drawable.influence));
+        mList.add(new ScreenItem("Get your website designed","",R.drawable.website));
+        mList.add(new ScreenItem(" Get the live concert organised by us","",R.drawable.concert));
+
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -167,12 +167,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // skip button click listener
 
-       tvSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                screenPager.setCurrentItem(mList.size());
-            }
-        });
+
 
 
 
@@ -204,7 +199,7 @@ public class IntroActivity extends AppCompatActivity {
 
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
-        tvSkip.setVisibility(View.INVISIBLE);
+
         tabIndicator.setVisibility(View.INVISIBLE);
       // ADD an animation the getstarted button
         // setup animation

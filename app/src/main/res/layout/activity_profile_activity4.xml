@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Profile_activity4">
+    tools:context=".fragment.Profile_activity3">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,49 +25,178 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/white">
-
-            <RelativeLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:id="@+id/layout"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_exp1"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_below="@id/layout">
-                    <Button
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="okay"
 
-                        android:layout_centerHorizontal="true"
-                        android:textColor="@color/white"
-                        android:background="@drawable/btn_gradient_style"/>
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/layout"
+
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:textSize="20sp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+
+                            android:textColor="#000"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:id="@+id/ed_detail"
+                            android:text="Education Details:"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:textSize="20sp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_below="@id/ed_detail"
+                            android:id="@+id/coll_det"
+                            android:layout_marginTop="12dp"
+                            android:layout_alignParentLeft="true"
+                            android:textColor="#000"
+                            android:fontFamily="@font/montserrat"
+                            android:text="College"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
 
+
+                        <TextView
+                            android:hint=" College Name"
+                            android:id="@+id/clg_name"
+                            android:textColor="@color/white"
+                            android:layout_below="@id/coll_det"
+                            android:paddingLeft="8dp"
+                            android:gravity="center_vertical"
+                            android:textColorHint="@color/white"
+                            android:background="@drawable/edittext"
+                            android:layout_margin="16dp"
+                            android:drawableLeft="@drawable/ic_school_black_24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+
+
+                        <TextView
+
+                            android:hint=" Course Name"
+                            android:id="@+id/course_name"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/white"
+                            android:layout_below="@id/clg_name"
+                            android:background="@drawable/edittext"
+                            android:textColorHint="@color/white"
+                            android:layout_margin="16dp"
+                            android:paddingLeft="8dp"
+                            android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:hint=" Department/Stream (College)"
+                            android:id="@+id/collegedept"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/edittext"
+                            android:paddingLeft="8dp"
+                            android:layout_below="@id/course_name"
+                            android:textColor="@color/white"
+                            android:drawableLeft="@drawable/ic_book_black_24dp"
+                            android:textColorHint="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                     android:layout_margin="16dp"
+                               android:paddingLeft="8dp"
+android:layout_below="@id/collegedept"
+                                android:background="@drawable/edittext"
+                                android:id="@+id/clg_start"
+                                android:gravity="center_vertical"
+                                android:textSize="16sp"
+                                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                                android:text=" Start Year "
+                                />
+
+
+
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/clg_start"
+                             android:layout_margin="16dp"
+                                android:paddingLeft="8dp"
+                                android:background="@drawable/edittext"
+                                android:id="@+id/clg_end"
+
+
+                                android:gravity="center_vertical"
+                                android:textSize="16sp"
+                                android:drawableLeft="@drawable/ic_assignment_black_24dp"
+                                android:text=" End Year   "/>
+
+
+
+
+                        <TextView
+                            android:inputType="numberDecimal"
+                            android:hint=" Percentage"
+                            android:layout_below="@id/clg_end"
+                            android:id="@+id/percentage_clg"
+                            android:textColor="@color/white"
+                            android:background="@drawable/edittext"
+                            android:textColorHint="@color/white"
+                            android:layout_margin="16dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_below="@+id/layout"
+                        >
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Okay"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/white"
+                            android:background="@drawable/btn_gradient_style"/>
+
+
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
-
-
-            </RelativeLayout>
+            </ScrollView>
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

@@ -29,8 +29,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.socialdukan.fragment.College_md;
+import com.example.socialdukan.fragment.Diploma_md;
 import com.example.socialdukan.fragment.Personaldet_md;
 import com.example.socialdukan.fragment.ProfileFragment;
+import com.example.socialdukan.fragment.School_ten_md;
+import com.example.socialdukan.fragment.School_twe_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -61,6 +65,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
     EditText companyname1;//RITIK
     EditText companyname2;
     Button submit,yesbtn,nobtn;
+    DatabaseReference reff;
     String name,phno,email,uid;
     RadioButton radioButton_high, radioButton_diploma;
     private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,pres_doctor5,pres_doctor6,pres_doctor7;
@@ -117,7 +122,129 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("sch10"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
 
+                for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
+
+                    School_ten_md school_ten_md = dataSnapshot.getValue(School_ten_md.class);
+
+                    schoolname10.setText(school_ten_md.getSchoolname());
+                    schlstarty10.setText(school_ten_md.getSchoolstarty());
+                    schlendy10.setText(school_ten_md.getSchoolendy());
+                    board.setText(school_ten_md.getSchoolboard());
+                    percentage10.setText(school_ten_md.getSchoolper());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+        reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("sch12"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+
+                for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
+
+                    School_twe_md school_twe_md = dataSnapshot.getValue(School_twe_md.class);
+
+                    schoolname12.setText(school_twe_md.getSchoolname());
+                    schlstarty12.setText(school_twe_md.getSchoolstarty());
+                    schlendy12.setText(school_twe_md.getSchoolendy());
+                    board1.setText(school_twe_md.getSchoolboard());
+                    percentage12.setText(school_twe_md.getSchoolper());
+                    stream1.setText( school_twe_md.getSchoolstream() );
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+        reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("dip"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+
+                for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
+
+                    Diploma_md diploma_md = dataSnapshot.getValue(Diploma_md.class);
+
+                    dipclgname.setText(diploma_md.getDipclgname());
+
+                    dipcorsname.setText(diploma_md.getDipcorsname());
+                    dippercentage.setText(diploma_md.getDippercentage());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+        reff= FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("clg"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+
+                for (DataSnapshot dataSnapshot : dataSnapshot1.getChildren()){
+
+                    College_md college_md = dataSnapshot.getValue(College_md.class);
+
+                    collegename.setText(college_md.getCollegename());
+                    collegecourse.setText(college_md.getCollegecourse());
+                    collegedept.setText(college_md.getCollegedept());
+                    collegestart.setText(college_md.getCollegestart());
+                    collegeend.setText(college_md.getCollegeend());
+                    collegeper.setText(college_md.getCollegeper());
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+        reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff.keepSynced(true);
+        reff.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+
+                    Personaldet_md personaldet_md = dataSnapshot1.getValue(Personaldet_md.class);
+
+                    dob.setText(personaldet_md.getDob());
+                    adress.setText(personaldet_md.getAdress());
+                    occupation.setText(personaldet_md.getOccupation());
+                    wanumber.setText(personaldet_md.getWanumber());
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
 
         adapterexp.startListening();
         adapterexp1.startListening();
@@ -224,26 +351,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
         collegeend = findViewById(R.id.collegeend);
         collegeper = findViewById(R.id.collegeper);
 
-     DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("personaldet");
-        databaseReference1.keepSynced(true);
-        databaseReference1.orderByChild("uid").equalTo("per"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-
-                    User user = dataSnapshot1.getValue(User.class);
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -1025,7 +1133,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                 databaseReferencepd.child( "personaldet" ).child( "occupation" ).setValue( occupation.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "wanumber" ).setValue( wanumber.getText().toString() );
                                 databaseReferencepd.child( "personaldet" ).child( "name" ).setValue( name );
-                                databaseReferencepd.child( "personaldet" ).child( "uid" ).setValue( uid );
+                                databaseReferencepd.child( "personaldet" ).child( "uid" ).setValue("per"+ uid );
                                 databaseReferencepd.child( "personaldet" ).child( "email" ).setValue( email );
                                 databaseReferencepd.child( "personaldet" ).child( "phnumber" ).setValue( phno );
 
@@ -1077,7 +1185,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                     databaseReferenceschl10.child("school10").child("schoolendy").setValue(pres_doctor1);
                                     databaseReferenceschl10.child("school10").child("schoolper").setValue(percentage10.getText().toString());
                                     databaseReferenceschl10.child("school10").child("schoolboard").setValue(board.getText().toString());
-                                    databaseReferenceschl10.child("school10").child( "uid" ).setValue( uid );
+                                    databaseReferenceschl10.child("school10").child( "uid" ).setValue("sch10"+ uid );
                                     addschool10det.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
                                     addschool10det.setCompoundDrawablePadding(5);
 
@@ -1126,7 +1234,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                         databaseReferenceschl12.child( "school12" ).child( "schoolper" ).setValue( percentage12.getText().toString() );
                                         databaseReferenceschl12.child( "school12" ).child( "schoolstream" ).setValue( stream1.getText().toString() );
                                         databaseReferenceschl12.child( "school12" ).child( "schoolboard" ).setValue( board1.getText().toString() );
-                                        databaseReferenceschl12.child( "school12" ).child( "uid" ).setValue( uid );
+                                        databaseReferenceschl12.child( "school12" ).child( "uid" ).setValue("sch12"+ uid );
 
                                         addschool12det.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                                         addschool12det.setCompoundDrawablePadding( 5 );
@@ -1172,7 +1280,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                             databaseReferencedipdet.child("diplomadet").child("dipclgname").setValue(dipclgname.getText().toString());
                             databaseReferencedipdet.child("diplomadet").child("dipcorsname").setValue(dipcorsname.getText().toString());
                             databaseReferencedipdet.child("diplomadet").child("dippercentage").setValue(dippercentage.getText().toString());
-                            databaseReferencedipdet.child("diplomadet").child("uid").setValue(uid);
+                            databaseReferencedipdet.child("diplomadet").child("uid").setValue("dip"+ uid );
 
                             adddiplomadet_btn.setCompoundDrawablePadding(5);
                             adddiplomadet_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
@@ -1213,7 +1321,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                         databaseReferenceclgdet.child("collegedet").child("collegestart").setValue( pres_doctor4 );
                                         databaseReferenceclgdet.child("collegedet").child("collegeend").setValue(pres_doctor5);
                                         databaseReferenceclgdet.child("collegedet").child("collegeper").setValue(collegeper.getText().toString());
-                                        databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue( uid );
+                                        databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue("clg"+ uid );
 
                                         addcollegedet.setCompoundDrawablePadding(5);
                                         addcollegedet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);

@@ -46,15 +46,12 @@
                     android:layout_marginBottom="30dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:id="@+id/lay"
-                        android:layout_height="wrap_content">
+
                         <TextView
                             android:textSize="20sp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="12dp"
-                            android:layout_alignParentLeft="true"
+
                             android:textColor="#000"
                             android:fontFamily="@font/montserrat"
                             android:textStyle="bold"
@@ -67,104 +64,103 @@
                             android:textSize="20sp"
                             android:layout_marginLeft="16dp"
                             android:layout_below="@id/ed_detail"
+                            android:id="@+id/coll_det"
                             android:layout_marginTop="12dp"
                             android:layout_alignParentLeft="true"
                             android:textColor="#000"
                             android:fontFamily="@font/montserrat"
-                            android:text="School Details* - Matriculate"
+                            android:text="School Details* - Intermediate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
-                    </RelativeLayout>
+
+
                     <TextView
                         android:hint=" School Name"
-                        android:id="@+id/schoolname10"
-                        android:layout_below="@id/lay"
-                        android:layout_margin="16dp"
-                        android:paddingStart="8dp"
-                        android:layout_marginLeft="6dp"
-                        android:gravity="center_vertical"
-                        android:layout_width="match_parent"
-                        android:textSize="16sp"
-                        android:background="@drawable/edittext"
+                        android:id="@+id/schoolname12"
                         android:textColor="@color/white"
-android:drawableStart="@drawable/ic_school_black_24dp"
+                        android:layout_below="@id/coll_det"
+                        android:paddingLeft="8dp"
+                        android:gravity="center_vertical"
                         android:textColorHint="@color/white"
+                        android:background="@drawable/edittext"
+                        android:layout_margin="16dp"
+                        android:drawableLeft="@drawable/ic_school_black_24dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:background="@drawable/edittext"
-                        android:id="@+id/lay1"
-                        android:layout_below="@id/schoolname10"
-                        android:layout_margin="16dp"
-                        android:layout_height="wrap_content">
+
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:layout_marginLeft="6dp"
-                            android:paddingLeft="8dp"
-
+                           android:layout_margin="16dp"
                             android:background="@drawable/edittext"
-                            android:id="@+id/schlstarty10"
+                            android:id="@+id/schlstarty12"
+                            android:paddingLeft="8dp"
+                            android:layout_below="@id/schoolname12"
                             android:gravity="center_vertical"
                             android:textSize="16sp"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
-                            android:text=" Start Year "
-                            />
+                            android:text=" Start Year"/>
 
 
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
-                        android:layout_below="@id/lay1"
-                        android:id="@+id/lay2"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/edittext"
-                        android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:layout_marginLeft="6dp"
+                          android:layout_margin="16dp"
                             android:background="@drawable/edittext"
-                            android:id="@+id/schlendy10"
-                            android:paddingLeft="8dp"
-
-                            android:gravity="center_vertical"
+                            android:text=" End Year   "
+                            android:layout_below="@id/schlstarty12"
                             android:textSize="16sp"
+                            android:paddingLeft="8dp"
+                            android:gravity="center_vertical"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
-                            android:text=" End Year   "/>
+                            android:id="@id/schlendy12"/>
 
-                    </RelativeLayout>
                     <TextView
-                        android:hint=" Board"
-                        android:id="@+id/board"
+
+                        android:hint=" Stream"
+                        android:id="@+id/stream"
+                        android:gravity="center_vertical"
                         android:textColor="@color/white"
-                        android:layout_below="@id/lay2"
+                        android:layout_below="@id/schlendy12"
                         android:background="@drawable/edittext"
                         android:textColorHint="@color/white"
                         android:layout_margin="16dp"
-                        android:gravity="center_vertical"
                         android:paddingLeft="8dp"
                         android:drawableLeft="@drawable/ic_library_books_black_24dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:inputType="numberDecimal"
-                        android:hint=" Percentage/CGPA"
-                        android:layout_below="@id/board"
-                        android:textColor="@color/white"
-                        android:drawableLeft="@drawable/ic_content_paste_black_24dp"
-                        android:textColorHint="@color/white"
-                        android:id="@+id/percentage10"
-                        android:paddingLeft="8dp"
+
+                        android:hint=" Board"
+                        android:id="@+id/board1"
                         android:gravity="center_vertical"
+                        android:textColor="@color/white"
                         android:background="@drawable/edittext"
+                        android:textColorHint="@color/white"
                         android:layout_margin="16dp"
+                        android:layout_below="@id/stream"
+                        android:paddingLeft="8dp"
+                        android:drawableLeft="@drawable/ic_library_books_black_24dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:inputType="numberDecimal"
+                        android:hint=" Percentage"
+                        android:layout_below="@id/board1"
+                        android:id="@+id/percentage12"
+                        android:textColor="@color/white"
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/white"
+                        android:layout_margin="16dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="8dp"
+                        android:drawableLeft="@drawable/ic_content_paste_black_24dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
