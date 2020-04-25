@@ -1,5 +1,7 @@
 package com.example.socialdukan.fragment;
 
+import android.provider.MediaStore;
+
 public class internall_md {
 
     public String amount;
@@ -16,11 +18,14 @@ public class internall_md {
     public String wcg2;
     public String wca1;
     public String wca2;
+    public String ques1;
+    public String ques2;
+    public String companyid;
 
     public internall_md() {
     }
 
-    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname,String worktime,String desc1,String desc2,String wcg1,String wcg2,String wca1,String wca2) {
+    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname,String worktime,String desc1,String desc2,String wcg1,String wcg2,String wca1,String wca2,String ques1,String ques2,String companyid) {
         this.amount = amount;
         this.cmpname = cmpname;
         this.duration = duration;
@@ -35,6 +40,9 @@ public class internall_md {
         this.wcg2 = wcg2;
         this.wca1 = wca1;
         this.wca2 = wca2;
+        this.ques1 = ques1;
+        this.ques2 = ques2;
+        this.companyid = companyid;
     }
 
     public String getAmount() {
@@ -147,5 +155,29 @@ public class internall_md {
 
     public void setWca2(String wca2) {
         this.wca2 = wca2;
+    }
+
+    public String getQues1() {
+        return ques1;
+    }
+
+    public void setQues1(String ques1) {
+        this.ques1 = ques1;
+    }
+
+    public String getQues2() {
+        return ques2;
+    }
+
+    public void setQues2(String ques2) {
+        this.ques2 = ques2;
+    }
+
+    public String getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(String companyid) {
+        this.companyid = companyid;
     }
 }

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.Edit_profile"></activity>
+        <activity android:name=".ApplyIntern"></activity>
+        <activity android:name="com.example.Edit_profile" />
         <activity
             android:name=".fragment.Profile_activity4"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -36,7 +37,7 @@
         <activity
             android:name=".Verification"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Login_Student"></activity>
+        <activity android:name=".Login_Student" />
         <activity android:name=".Reg_Student" />
         <activity android:name=".IntroActivity2" />
         <activity android:name=".LoginActvity" />

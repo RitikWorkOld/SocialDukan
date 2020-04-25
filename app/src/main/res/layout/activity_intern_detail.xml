@@ -181,27 +181,23 @@
                         </androidx.viewpager.widget.ViewPager>
                       <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/applied"
-
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-android:background="@drawable/btn_gradient_style"
-                          android:textColor="#fff"
-                          android:fontFamily="@font/montserrat"
+                            android:background="@drawable/btn_gradient_style"
+                            android:textColor="#fff"
+                            android:fontFamily="@font/montserrat"
                             android:text="Apply"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true" />
                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/alr_applied"
-                           android:background="@drawable/gray_btn"
-                           android:textColor="#fff"
+                            android:background="@drawable/gray_btn"
+                            android:textColor="#fff"
                             android:visibility="gone"
-                           android:fontFamily="@font/montserrat"
+                            android:fontFamily="@font/montserrat"
                             android:padding="8dp"
                             android:layout_width="wrap_content"
-
                             android:layout_height="wrap_content"
-
                             android:text="Already Applied"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true" />

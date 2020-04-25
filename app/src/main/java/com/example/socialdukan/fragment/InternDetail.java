@@ -8,9 +8,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.socialdukan.ApplyIntern;
 import com.example.socialdukan.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +30,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
     String key;
     ImageView cmpimage;
     TextView intername,cmpname,location,stipend,duration,worktime;
+    Button apply_btn;
 
     //This is our viewPager
     private ViewPager viewPager;
@@ -34,6 +38,8 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_intern_detail );
+
+        apply_btn = findViewById(R.id.applied);
 
         cmpimage = findViewById(R.id.icd_cmp_img);
         intername = findViewById(R.id.cmp_work_detail);
@@ -81,6 +87,15 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        apply_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InternDetail.this, ApplyIntern.class);
+                intent.putExtra("key",key);
+                startActivity(intent);
             }
         });
 
