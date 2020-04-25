@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ApplyIntern extends AppCompatActivity {
 
     TextView ques1,ques2,ques3;
- TextInputLayout answer1,answer2,answer3;
+    TextInputLayout answer1,answer2,answer3;
     Button fillbtn;
     String key;
     String companyid;
@@ -87,6 +87,16 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference.child("answer3").setValue(answer3.toString());
                             databaseReference.child("key").setValue(key);
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReference.child("companyid").setValue(companyid);
+
+                            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                            databaseReference1.keepSynced(true);
+                            databaseReference1.child("answer1").setValue(answer1.toString());
+                            databaseReference1.child("answer2").setValue(answer2.toString());
+                            databaseReference1.child("answer3").setValue(answer3.toString());
+                            databaseReference1.child("key").setValue(key);
+                            databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReference1.child("companyid").setValue(companyid);
 
                             Toast.makeText(ApplyIntern.this,"Done",Toast.LENGTH_SHORT).show();
 

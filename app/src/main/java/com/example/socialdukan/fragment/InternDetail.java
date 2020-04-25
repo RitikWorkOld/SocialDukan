@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.socialdukan.ApplyIntern;
 import com.example.socialdukan.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,16 +31,45 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
     String key;
     ImageView cmpimage;
     TextView intername,cmpname,location,stipend,duration,worktime;
-    Button apply_btn;
+    Button apply_btn,applied_btn;
 
     //This is our viewPager
     private ViewPager viewPager;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        dbref.keepSynced(true);
+        dbref.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() != null){
+                    apply_btn.setVisibility(View.GONE);
+                    applied_btn.setVisibility(View.VISIBLE);
+                }
+                else {
+                    apply_btn.setVisibility(View.VISIBLE);
+                    applied_btn.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_intern_detail );
 
         apply_btn = findViewById(R.id.applied);
+        applied_btn = findViewById(R.id.alr_applied);
 
         cmpimage = findViewById(R.id.icd_cmp_img);
         intername = findViewById(R.id.cmp_work_detail);

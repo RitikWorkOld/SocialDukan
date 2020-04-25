@@ -871,6 +871,12 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                 holder.companyrolelayout.setText(model.getCompanyrole());
                 holder.companybenefitslayout.setText(model.getCompanybenefits());
 
+                holder.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpexp").child(model.getExpid()).removeValue();
+                    }
+                });
 
                 holder.companynamelayout.setOnClickListener(new View.OnClickListener() {
                     @Override
