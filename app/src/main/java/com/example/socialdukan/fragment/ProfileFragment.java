@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -59,6 +60,7 @@ Button matri_btn,inter_btn,dip_btn,clg_btn;
 
     DatabaseReference databaseReferenceexprv,databaseReferenceexprv1;
     FirebaseAuth mFirebaseAuth;
+    ProgressBar pb_userimg;
 
     @Override
     public void onStop() {
@@ -78,17 +80,17 @@ Button matri_btn,inter_btn,dip_btn,clg_btn;
         // Required empty public constructor
     }
 
-    TextView dob,address,occ,wa_no;
+    private TextView dob,address,occ,wa_no;
 
-    DatabaseReference reff;
-
-    TextView name_user;
-    TextView user_email;
-    ImageView edit,imageuser;
-    boolean perdet_1 = true;
-    boolean ed_deta = true;
-    boolean work_exp = true;
-    boolean abili = true;
+    private DatabaseReference reff;
+private TextView user_ph;
+    private TextView name_user;
+    private TextView user_email;
+    private ImageView imageuser;
+    private boolean perdet_1 = true;
+    private boolean ed_deta = true;
+    private boolean work_exp = true;
+    private boolean abili = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,11 +106,16 @@ Button matri_btn,inter_btn,dip_btn,clg_btn;
         imageuser = view.findViewById(R.id.image_user);
         name_user = view.findViewById(R.id.name_user);
         user_email = view.findViewById(R.id.user_email);
-        edit=view.findViewById( R.id.edit_profile );
+        user_ph=view.findViewById( R.id.user_ph );
+
+
+        ImageView edit = view.findViewById( R.id.edit_profile );
         matri_btn=view.findViewById( R.id.matr_btn );
         inter_btn=view.findViewById( R.id.inter_btn );
         dip_btn=view.findViewById( R.id.dip_btn );
         clg_btn=view.findViewById( R.id.college_btn );
+        pb_userimg = view.findViewById(R.id.pb_userimg);
+
 
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
@@ -234,11 +241,15 @@ Button matri_btn,inter_btn,dip_btn,clg_btn;
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     User user = dataSnapshot1.getValue(User.class);
                     if (user.profileimg!=null){
+
                         Picasso.get().load(user.profileimg).into(imageuser);
+
                     }
                     else {
                         imageuser.setImageResource(R.drawable.user);
+
                     }
+                    pb_userimg.setVisibility(View.GONE);
 
                 }
             }
@@ -427,6 +438,7 @@ Button matri_btn,inter_btn,dip_btn,clg_btn;
 
                     name_user.setText(user.name);
                     user_email.setText(user.email);
+                    user_ph.setText( "+91"+user.contactn );
                 }
             }
 

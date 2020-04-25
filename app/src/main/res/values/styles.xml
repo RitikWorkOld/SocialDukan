@@ -22,4 +22,8 @@
         <item name="colorPrimary">@android:color/holo_orange_dark</item>
         <item name="colorOnSurface">@android:color/holo_orange_light</item>
     </style>
+
+    <style name="TextLimitError" parent="TextAppearance.AppCompat.Small">
+    <item name="android:textColor">#fff</item>
+    </style>
 </resources>
