@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/btn_gradient_style"
-    tools:context=".fragment.InternFragment">
+
+    tools:context=".Student.fragment.Internship.InternFragment">
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:id="@+id/intern_layout"
             android:orientation="vertical"
-android:background="@drawable/btn_gradient_style"
+android:background="@drawable/btn_grd_style"
             android:layout_height="200dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -36,7 +36,7 @@ android:background="@drawable/btn_gradient_style"
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_internall"
 android:layout_below="@id/intern_layout"
-            android:background="@drawable/btn_gradient_style"
+            android:background="@drawable/btn_grd_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

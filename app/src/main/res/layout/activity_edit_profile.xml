@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Edit_profile"
-    android:background="@color/purple"
+    tools:context=".Student.fragment.profile.Edit_profile"
+    android:background="@drawable/try001"
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@drawable/secondlayer"
+
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -73,13 +73,14 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textStyle="italic"
+
                         android:layout_marginStart="12dp"
                         android:layout_below="@id/displayname"
                         android:text="NAME"
                         android:fontFamily="sans-serif"
                         android:layout_marginBottom="50px"
                         android:layout_marginTop="5px"
-                        android:textColor="#808080"/>
+                        android:textColor="#fff"/>
                     <TextView
                         android:id="@+id/displaymno"
                         android:layout_width="wrap_content"
@@ -92,7 +93,7 @@
                         android:fontFamily="sans-serif"
                         android:layout_marginBottom="50px"
 
-                        android:textColor="#808080"/>
+                        android:textColor="#fff"/>
 
 
 
@@ -136,6 +137,7 @@
                         android:textColorHint="@color/white"
                         android:background="@drawable/edittext"
                         android:paddingStart="8dp"
+                        android:drawablePadding="8dp"
                         android:layout_margin="16dp"
                         android:hint=" Date Of Birth (dd/mm/yyyy)"
                         android:layout_width="match_parent"
@@ -152,6 +154,7 @@
                         android:drawableStart="@drawable/ic_home_black_24dp"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"
+                        android:drawablePadding="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -164,12 +167,14 @@
                         android:background="@drawable/edittext"
                         android:textSize="16sp"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:textColorHint="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <EditText
                         android:hint=" Whatsapp Number"
                         android:id="@+id/wanumber"
+                        android:drawablePadding="8dp"
                         android:inputType="numberDecimal"
                         android:layout_margin="16dp"
                         android:drawableLeft="@drawable/ic_chat_black_24dp"
@@ -247,6 +252,7 @@
                         android:drawableLeft="@drawable/ic_school_black_24dp"
                         android:layout_width="match_parent"
                         android:textSize="16sp"
+                        android:drawablePadding="8dp"
                         android:background="@drawable/edittext"
                         android:textColor="@color/white"
 
@@ -263,7 +269,7 @@
                             android:textColor="@color/white"
                             android:layout_marginLeft="6dp"
                             android:paddingLeft="8dp"
-
+                            android:drawablePadding="8dp"
                             android:background="@drawable/edittext"
                             android:id="@+id/schlstarty10"
                             android:gravity="center_vertical"
@@ -298,7 +304,7 @@ android:layout_alignParentEnd="true"
                             android:background="@drawable/edittext"
                             android:id="@+id/schlendy10"
                             android:paddingLeft="8dp"
-
+                            android:drawablePadding="8dp"
                             android:gravity="center_vertical"
                             android:textSize="16sp"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
@@ -321,6 +327,7 @@ android:layout_alignParentEnd="true"
                         android:textColorHint="@color/white"
                         android:layout_margin="16dp"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:drawableLeft="@drawable/ic_library_books_black_24dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -328,6 +335,7 @@ android:layout_alignParentEnd="true"
                         android:inputType="numberDecimal"
                         android:hint=" Percentage/CGPA"
                         android:textColor="@color/white"
+                        android:drawablePadding="8dp"
                         android:drawableLeft="@drawable/ic_content_paste_black_24dp"
                         android:textColorHint="@color/white"
                         android:id="@+id/percentage10"
@@ -431,10 +439,11 @@ android:layout_alignParentEnd="true"
 
 
                     <EditText
-                        android:hint=" School Name"
+                        android:hint="School Name"
                         android:id="@+id/schoolname12"
                         android:textColor="@color/white"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:textColorHint="@color/white"
                         android:background="@drawable/edittext"
                         android:layout_margin="16dp"
@@ -456,11 +465,11 @@ android:layout_alignParentEnd="true"
                             android:background="@drawable/edittext"
                             android:id="@+id/schlstarty12"
                             android:paddingLeft="8dp"
-
+                            android:drawablePadding="8dp"
                             android:gravity="center_vertical"
                             android:textSize="16sp"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
-                            android:text=" Start Year"/>
+                            android:text="Start Year"/>
                         <Spinner
 
                             android:id="@+id/spinner2"
@@ -483,8 +492,9 @@ android:layout_alignParentEnd="true"
                             android:textColor="@color/white"
                             android:layout_marginLeft="6dp"
                             android:background="@drawable/edittext"
-                            android:text=" End Year   "
+                            android:text="End Year   "
                             android:textSize="16sp"
+                            android:drawablePadding="8dp"
                             android:paddingLeft="8dp"
                             android:gravity="center_vertical"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
@@ -503,8 +513,8 @@ android:layout_alignParentEnd="true"
 
                     </RelativeLayout>
                     <EditText
-
-                        android:hint=" Stream"
+                        android:drawablePadding="8dp"
+                        android:hint="Stream"
                         android:id="@+id/stream"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
@@ -515,8 +525,8 @@ android:layout_alignParentEnd="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <EditText
-
-                        android:hint=" Board"
+                        android:drawablePadding="8dp"
+                        android:hint="Board"
                         android:id="@+id/board1"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
@@ -529,7 +539,8 @@ android:layout_alignParentEnd="true"
 
                     <EditText
                         android:inputType="numberDecimal"
-                        android:hint=" Percentage"
+                        android:drawablePadding="8dp"
+                        android:hint="Percentage"
                         android:id="@+id/percentage12"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
@@ -542,8 +553,9 @@ android:layout_alignParentEnd="true"
 
                     <EditText
 
-                        android:hint=" College Name"
+                        android:hint="College Name"
                         android:id="@+id/dipclgname"
+                        android:drawablePadding="8dp"
                         android:visibility="gone"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
@@ -555,9 +567,10 @@ android:layout_alignParentEnd="true"
                         android:layout_height="wrap_content"/>
                     <EditText
 
-                        android:hint=" Course Name"
+                        android:hint="Course Name"
                         android:id="@+id/dipcorsname"
                         android:visibility="gone"
+                        android:drawablePadding="8dp"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
                         android:textColorHint="@color/white"
@@ -568,9 +581,10 @@ android:layout_alignParentEnd="true"
                         android:layout_height="wrap_content"/>
                     <EditText
 
-                        android:hint=" Percentage"
+                        android:hint="Percentage"
                         android:id="@+id/dippercentage"
                         android:visibility="gone"
+                        android:drawablePadding="8dp"
                         android:inputType="numberDecimal"
                         android:textColor="@color/white"
                         android:background="@drawable/edittext"
@@ -618,6 +632,7 @@ android:layout_alignParentEnd="true"
                             android:layout_marginTop="12dp"
                             android:layout_alignParentLeft="true"
                             android:textColor="#fff"
+
                             android:fontFamily="@font/montserrat"
                             android:text="College Details"
                             android:layout_width="match_parent"
@@ -626,20 +641,22 @@ android:layout_alignParentEnd="true"
 
 
                     <EditText
-                        android:hint=" College Name"
+                        android:hint="College Name"
                         android:id="@+id/collegename"
                         android:textColor="@color/white"
                         android:drawableLeft="@drawable/ic_school_black_24dp"
                         android:textColorHint="@color/white"
                         android:layout_margin="16dp"
+                        android:drawablePadding="8dp"
                         android:paddingLeft="8dp"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                     <EditText
-                        android:hint=" Course (College)"
+                        android:hint="Course (College)"
                         android:id="@+id/collegecourse"
+                        android:drawablePadding="8dp"
                         android:layout_margin="16dp"
                         android:background="@drawable/edittext"
                         android:drawableLeft="@drawable/ic_library_books_black_24dp"
@@ -650,11 +667,12 @@ android:layout_alignParentEnd="true"
                         android:layout_height="wrap_content"/>
 
                     <EditText
-                        android:hint=" Department/Stream (College)"
+                        android:hint="Department/Stream (College)"
                         android:id="@+id/collegedept"
                         android:layout_margin="16dp"
                         android:background="@drawable/edittext"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:textColor="@color/white"
                         android:drawableLeft="@drawable/ic_book_black_24dp"
                         android:textColorHint="@color/white"
@@ -671,7 +689,8 @@ android:layout_alignParentEnd="true"
                             android:textColor="@color/white"
                             android:layout_marginLeft="6dp"
                             android:background="@drawable/edittext"
-                            android:text=" Start Year (College)"
+                            android:text="Start Year (College)"
+                            android:drawablePadding="8dp"
                             android:textSize="16sp"
                             android:gravity="center_vertical"
                             android:paddingLeft="8dp"
@@ -699,8 +718,9 @@ android:layout_alignParentEnd="true"
                             android:textColor="@color/white"
                             android:layout_marginLeft="6dp"
                             android:paddingLeft="8dp"
+                            android:drawablePadding="8dp"
                             android:background="@drawable/edittext"
-                            android:text=" End Year (College)"
+                            android:text="End Year (College)"
                             android:textSize="16sp"
                             android:gravity="center_vertical"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
@@ -719,10 +739,11 @@ android:layout_alignParentEnd="true"
 
                     <EditText
                         android:inputType="numberDecimal"
-                        android:hint=" Percentage (Last Semester)"
+                        android:hint="Percentage (Last Semester)"
                         android:id="@+id/collegeper"
                         android:layout_margin="16dp"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:drawableLeft="@drawable/ic_content_paste_black_24dp"
                         android:layout_width="match_parent"
                         android:textColor="@color/white"
@@ -765,6 +786,7 @@ android:layout_alignParentEnd="true"
                             android:layout_marginLeft="16dp"
                             android:textStyle="bold"
                             android:text="Work Experience:"
+
                             android:textColor="@color/white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
@@ -851,6 +873,7 @@ android:layout_alignParentEnd="true"
                         android:id="@+id/companyname"
                         android:textColor="@color/white"
                         android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
                         android:textColorHint="@color/white"
                         android:background="@drawable/edittext"
                         android:layout_margin="16dp"
@@ -870,8 +893,9 @@ android:layout_alignParentEnd="true"
                             android:textColor="@color/white"
                             android:layout_marginLeft="6dp"
                             android:background="@drawable/edittext"
-                            android:text=" Start Date"
+                            android:text="Start Date"
                             android:textSize="16sp"
+                            android:drawablePadding="8dp"
                             android:paddingLeft="8dp"
                             android:gravity="center_vertical"
                             android:drawableLeft="@drawable/ic_assignment_black_24dp"
@@ -900,7 +924,8 @@ android:layout_alignParentEnd="true"
                             android:layout_marginLeft="6dp"
                             android:drawableStart="@drawable/ic_assignment_black_24dp"
                             android:background="@drawable/edittext"
-                            android:text=" End Date"
+                            android:text="End Date"
+                            android:drawablePadding="8dp"
                             android:textSize="16sp"
                             android:paddingLeft="8dp"
                             android:gravity="center_vertical"
@@ -922,6 +947,7 @@ android:layout_alignParentEnd="true"
                         android:id="@+id/companyrole"
                         android:layout_margin="16dp"
                         android:layout_width="match_parent"
+                        android:drawablePadding="8dp"
                         android:background="@drawable/edittext"
                         android:textColor="@color/white"
                         android:paddingLeft="8dp"
@@ -931,6 +957,7 @@ android:layout_alignParentEnd="true"
                     <EditText
                         android:hint="Benefits From Company"
                         android:id="@+id/companybenefits"
+                        android:drawablePadding="8dp"
                         android:layout_margin="16dp"
                         android:background="@drawable/edittext"
                         android:textColor="@color/white"
@@ -1097,8 +1124,9 @@ android:layout_alignParentEnd="true"
                     </RelativeLayout>
 
                     <EditText
-                        android:hint=" Achievements"
+                        android:hint="Achievements"
                         android:id="@+id/companyname2"
+                        android:drawablePadding="8dp"
                         android:textColor="@color/white"
                         android:drawableLeft="@drawable/ic_brightness_medium_black_24dp"
                         android:paddingLeft="8dp"

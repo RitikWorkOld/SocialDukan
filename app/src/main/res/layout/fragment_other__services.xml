@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Student.fragment.other_services.Other_Services">
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+android:layout_gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="140dp"
+      android:orientation="vertical"
+      app:cardCornerRadius="10dp"
+      android:id="@+id/card_main"
+      android:elevation="8dp"
+
+      android:layout_marginRight="12dp"
+      android:layout_marginLeft="12dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      app:cardElevation="6dp">
+      <LinearLayout
+          android:weightSum="2"
+
+          android:layout_width="match_parent"
+          android:orientation="vertical"
+          android:layout_height="match_parent">
+
+          <RelativeLayout
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#fff"
+              android:fontFamily="@font/nunito"
+              android:paddingHorizontal="20dp"
+              android:paddingVertical="12dp">
+
+              <LinearLayout
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerVertical="true"
+                  android:orientation="vertical"
+                  android:weightSum="3">
+
+                  <TextView
+                      android:id="@+id/other_1"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:fontFamily="@font/montserrat"
+                      android:textColor="#000"
+                      android:text="Fetch Sponsorships"
+                      android:textSize="18sp" />
+
+
+
+
+
+              </LinearLayout>
+
+              <ImageView
+                  android:src="@drawable/sponsorships"
+                  android:id="@+id/image_sponsor"
+                  android:layout_width="114dp"
+                  android:layout_height="114dp"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+                  android:padding="2dp"/>
+          </RelativeLayout>
+      </LinearLayout>
+  </androidx.cardview.widget.CardView>
+    <!-- YAHAAAAAA PEEE -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        android:elevation="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="6dp">
+        <LinearLayout
+            android:weightSum="2"
+            android:id="@+id/mainframe_0123"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/layout_team_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:fontFamily="@font/nunito"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+                    android:id="@+id/layout12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/other_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="#000"
+                        android:text="Apply as an influencer"
+                        android:textSize="18sp" />
+
+
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/influencers"
+                    android:id="@+id/image_sponsor1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="2dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+
+        android:elevation="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="6dp">
+        <LinearLayout
+            android:weightSum="2"
+
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:fontFamily="@font/nunito"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/other_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Get your website designed"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/web"
+                    android:id="@+id/image_sponsor3"
+                    android:layout_width="118dp"
+                    android:layout_height="118dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+android:paddingLeft="20dp"
+                  />
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- YAHAAAAAA PEEE -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        android:elevation="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="6dp">
+        <LinearLayout
+            android:weightSum="2"
+
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:fontFamily="@font/nunito"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/other_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="#000"
+                        android:text="Book a live concert"
+                        android:textSize="18sp" />
+
+
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/concert"
+                    android:id="@+id/image_sponsor4"
+                    android:layout_width="94dp"
+                    android:layout_height="94dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="2dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+    </ScrollView>
+
+
+
+
+</FrameLayout>

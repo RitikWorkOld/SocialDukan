@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 android:background="@color/purple"
-    tools:context=".ApplyIntern">
+    tools:context=".Student.fragment.Internship.ApplyIntern">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,9 +58,10 @@ android:background="@color/purple"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:hint="Answer"
+                android:textColor="@color/white"
                 android:padding="8dp"
                 android:gravity="center_horizontal|start"
-
+android:id="@+id/answer1"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 />
@@ -96,7 +97,8 @@ android:background="@color/purple"
                 android:hint="Answer"
                 android:padding="8dp"
                 android:gravity="center_horizontal|start"
-
+                android:textColor="@color/white"
+                android:id="@+id/answer2"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 />
@@ -130,9 +132,10 @@ android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:hint="Answer"
+                android:id="@+id/answer3"
                 android:padding="8dp"
                 android:gravity="center_horizontal|start"
-
+                android:textColor="@color/white"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 />

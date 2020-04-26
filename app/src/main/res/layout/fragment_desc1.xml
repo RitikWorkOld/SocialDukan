@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Desc1Fragment">
+    tools:context=".Student.fragment.Internship.Desc1Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"

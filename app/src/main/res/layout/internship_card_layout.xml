@@ -109,8 +109,8 @@
                     android:textSize="12dp"
                     android:id="@+id/icd_amount"
                     android:layout_marginRight="5dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center"
+
+                    android:gravity="start|center"
                     android:text="1000"
                     android:drawableLeft="@drawable/ic_attach_money_interncard_24dp"
                     android:layout_width="match_parent"

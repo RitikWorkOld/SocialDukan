@@ -11,39 +11,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ApplyIntern"></activity>
+        <activity android:name=".Student.fragment.Internship.ApplyIntern"></activity>
         <activity android:name="com.example.Edit_profile" />
         <activity
-            android:name=".fragment.Profile_activity4"
+            android:name=".Student.fragment.profile.Profile_activity4"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity
-            android:name=".fragment.Profile_activity3"
+            android:name=".Student.fragment.profile.Profile_activity3"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity
-            android:name=".fragment.Profile_activity2"
+            android:name=".Student.fragment.profile.Profile_activity2"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity
-            android:name=".fragment.Profile_activity1"
+            android:name=".Student.fragment.profile.Profile_activity1"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".fragment.SimpleFragmentPagerAdapter" />
-        <activity android:name=".fragment.InternDetail" />
-        <activity android:name=".fragment.InternFragment" />
-        <activity android:name=".feature.MainActivity" />
-        <activity android:name=".Dashboard" />
+        <activity android:name=".Student.fragment.SimpleFragmentPagerAdapter" />
+        <activity android:name=".Student.fragment.Internship.InternDetail" />
+        <activity android:name=".Student.fragment.Internship.InternFragment" />
+        <activity android:name="com.example.socialdukan.Student.feature.MainActivity" />
+        <activity android:name=".Student.Login_Register_Student.Dashboard" />
         <activity
-            android:name=".Verification_2"
+            android:name=".Employe.Verification_2"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Reg_Employe" />
+        <activity android:name=".Employe.Reg_Employe" />
         <activity
-            android:name=".Verification"
+            android:name=".Student.Login_Register_Student.Verification"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Login_Student" />
-        <activity android:name=".Reg_Student" />
-        <activity android:name=".IntroActivity2" />
+        <activity android:name=".Student.Login_Register_Student.Login_Student" />
+        <activity android:name=".Student.Miscellaneous.Reg_Student" />
+        <activity android:name=".Employe.IntroActivity2" />
         <activity android:name=".LoginActvity" />
-        <activity android:name=".IntroActivity" />
-        <activity android:name=".Studentdetail" />
-        <activity android:name=".Edit_profile" />
+        <activity android:name=".Student.Login_Register_Student.IntroActivity" />
+        <activity android:name=".Student.Login_Register_Student.Studentdetail" />
+        <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

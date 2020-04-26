@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/btn_gradient_style"
-    tools:context=".Reg_Student">
+    tools:context=".Student.Miscellaneous.Reg_Student">
 
     <TextView
         android:id="@+id/signup_text_view"

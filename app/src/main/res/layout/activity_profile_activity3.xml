@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Profile_activity3">
+    tools:context=".Student.fragment.profile.Profile_activity3">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
