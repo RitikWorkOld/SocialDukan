@@ -19,11 +19,14 @@ public class internall_md {
     public String ques1;
     public String ques2;
     public String companyid;
+    public String ctext1;
+    public String ctext2;
+    public String ctext3;
 
     public internall_md() {
     }
 
-    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname,String worktime,String desc1,String desc2,String wcg1,String wcg2,String wca1,String wca2,String ques1,String ques2,String companyid) {
+    public internall_md(String amount, String cmpname, String duration, String intimguri, String key, String location, String intname,String worktime,String desc1,String desc2,String wcg1,String wcg2,String wca1,String wca2,String ques1,String ques2,String companyid,String ctext1,String ctext2,String ctext3) {
         this.amount = amount;
         this.cmpname = cmpname;
         this.duration = duration;
@@ -41,6 +44,9 @@ public class internall_md {
         this.ques1 = ques1;
         this.ques2 = ques2;
         this.companyid = companyid;
+        this.ctext1 = ctext1;
+        this.ctext2 = ctext2;
+        this.ctext3 = ctext3;
     }
 
     public String getAmount() {
@@ -177,5 +183,29 @@ public class internall_md {
 
     public void setCompanyid(String companyid) {
         this.companyid = companyid;
+    }
+
+    public String getCtext1() {
+        return ctext1;
+    }
+
+    public void setCtext1(String ctext1) {
+        this.ctext1 = ctext1;
+    }
+
+    public String getCtext2() {
+        return ctext2;
+    }
+
+    public void setCtext2(String ctext2) {
+        this.ctext2 = ctext2;
+    }
+
+    public String getCtext3() {
+        return ctext3;
+    }
+
+    public void setCtext3(String ctext3) {
+        this.ctext3 = ctext3;
     }
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
     ImageView cmpimage;
     TextView intername,cmpname,location,stipend,duration,worktime;
     Button apply_btn,applied_btn;
+    TextView ctext1,ctext2,ctext3;
 
     //This is our viewPager
     private ViewPager viewPager;
@@ -79,6 +81,9 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
         stipend = findViewById(R.id.stipend_detail);
         duration = findViewById(R.id.icd_duration);
         worktime = findViewById(R.id.work_details);
+        ctext1 = findViewById(R.id.title1);
+        ctext2 = findViewById(R.id.title2);
+        ctext3 = findViewById(R.id.title3);
 
         key = getIntent().getStringExtra("key");
 
@@ -112,6 +117,15 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
                     stipend.setText(valueintern.amount);
                     duration.setText(valueintern.duration);
                     worktime.setText(valueintern.worktime);
+                    if (valueintern.getCtext1().equals("no")){
+                        ctext1.setPaintFlags(ctext1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+                    else if (valueintern.getCtext2().equals("no")){
+                        ctext2.setPaintFlags(ctext2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+                    else if (valueintern.getCtext3().equals("no")){
+                        ctext3.setPaintFlags(ctext3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                 }
             }
 

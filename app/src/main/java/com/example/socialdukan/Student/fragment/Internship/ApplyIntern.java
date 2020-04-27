@@ -29,6 +29,7 @@ public class ApplyIntern extends AppCompatActivity {
     Button fillbtn;
     String key;
     String companyid;
+    int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class ApplyIntern extends AppCompatActivity {
         final Editable text3 = answer3.getEditText().getText();
 
         TextView title = (TextView) findViewById(R.id.title);
-        SpannableString content = new SpannableString("SocialDukan Application");
+        final SpannableString content = new SpannableString("SocialDukan Application");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         title.setText(content);
 
@@ -65,8 +66,24 @@ public class ApplyIntern extends AppCompatActivity {
 
                     internall_md valueintern = dataSnapshot1.getValue(internall_md.class);
 
-                    ques2.setText(valueintern.getQues1());
-                    ques3.setText(valueintern.getQues2());
+                    if (!valueintern.getQues1().isEmpty()){
+                        count = 2;
+                        ques2.setText(valueintern.getQues1());
+                    }
+                    else {
+                        ques2.setVisibility(View.GONE);
+                        answer2.setVisibility(View.GONE);
+                    }
+
+                    if (!valueintern.getQues2().isEmpty()){
+                        count = 3;
+                        ques3.setText(valueintern.getQues2());
+                    }
+                    else {
+                        ques3.setVisibility(View.GONE);
+                        answer3.setVisibility(View.GONE);
+                    }
+
                     companyid = valueintern.getCompanyid();
 
                 }
@@ -81,15 +98,54 @@ public class ApplyIntern extends AppCompatActivity {
         fillbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!text1.toString().isEmpty()){
-                    if (!text2.toString().isEmpty()){
-                        if (!text3.toString().isEmpty()){
+                if (count == 3) {
+                    if (!text1.toString().isEmpty()){
+                        if (!text2.toString().isEmpty()){
+                            if (!text3.toString().isEmpty()){
+
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
+                                databaseReference.keepSynced(true);
+                                databaseReference.child("answer1").setValue(text1.toString());
+                                databaseReference.child("answer2").setValue(text2.toString());
+                                databaseReference.child("answer3").setValue(text3.toString());
+                                databaseReference.child("key").setValue(key);
+                                databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                databaseReference.child("companyid").setValue(companyid);
+
+                                DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                                databaseReference1.keepSynced(true);
+                                databaseReference1.child("answer1").setValue(text1.toString());
+                                databaseReference1.child("answer2").setValue(text2.toString());
+                                databaseReference1.child("answer3").setValue(text3.toString());
+                                databaseReference1.child("key").setValue(key);
+                                databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                databaseReference1.child("companyid").setValue(companyid);
+
+                                Toast.makeText(ApplyIntern.this,"Done",Toast.LENGTH_SHORT).show();
+                                finish();
+
+                            }
+                            else {
+                                Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if (count == 2){
+                    if (!text1.toString().isEmpty()){
+                        if (!text2.toString().isEmpty()){
 
                             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
                             databaseReference.keepSynced(true);
                             databaseReference.child("answer1").setValue(text1.toString());
                             databaseReference.child("answer2").setValue(text2.toString());
-                            databaseReference.child("answer3").setValue(text3.toString());
+                            databaseReference.child("answer3").setValue("QNP");
                             databaseReference.child("key").setValue(key);
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference.child("companyid").setValue(companyid);
@@ -98,7 +154,7 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference1.keepSynced(true);
                             databaseReference1.child("answer1").setValue(text1.toString());
                             databaseReference1.child("answer2").setValue(text2.toString());
-                            databaseReference1.child("answer3").setValue(text3.toString());
+                            databaseReference1.child("answer3").setValue("QNP");
                             databaseReference1.child("key").setValue(key);
                             databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference1.child("companyid").setValue(companyid);
@@ -115,11 +171,36 @@ public class ApplyIntern extends AppCompatActivity {
                         Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                     }
                 }
-                else {
-                    Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                else if (count == 1){
+                    if (!text1.toString().isEmpty()){
+
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
+                        databaseReference.keepSynced(true);
+                        databaseReference.child("answer1").setValue(text1.toString());
+                        databaseReference.child("answer2").setValue("QNP");
+                        databaseReference.child("answer3").setValue("QNP");
+                        databaseReference.child("key").setValue(key);
+                        databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReference.child("companyid").setValue(companyid);
+
+                        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                        databaseReference1.keepSynced(true);
+                        databaseReference1.child("answer1").setValue(text1.toString());
+                        databaseReference1.child("answer2").setValue("QNP");
+                        databaseReference1.child("answer3").setValue("QNP");
+                        databaseReference1.child("key").setValue(key);
+                        databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReference1.child("companyid").setValue(companyid);
+
+                        Toast.makeText(ApplyIntern.this,"Done",Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }
+                    else {
+                        Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-
     }
 }

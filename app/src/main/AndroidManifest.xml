@@ -13,16 +13,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Student.fragment.other_services.Card4_Form"></activity>
         <activity android:name=".Student.fragment.other_services.Card3_Form" >
-
         </activity>
         <activity android:name=".Student.fragment.other_services.Card2_Form" />
         <activity android:name=".Student.fragment.other_services.Card1_Form">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Student.fragment.Internship.ApplyIntern" />
         <activity
@@ -57,7 +50,11 @@
         <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
