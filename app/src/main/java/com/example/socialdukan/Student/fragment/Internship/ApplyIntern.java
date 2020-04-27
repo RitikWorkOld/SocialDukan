@@ -83,7 +83,7 @@ public class ApplyIntern extends AppCompatActivity {
             public void onClick(View v) {
                 if (!text1.toString().isEmpty()){
                     if (!text2.toString().isEmpty()){
-                        if (!text2.toString().isEmpty()){
+                        if (!text3.toString().isEmpty()){
 
                             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
                             databaseReference.keepSynced(true);
@@ -108,15 +108,15 @@ public class ApplyIntern extends AppCompatActivity {
 
                         }
                         else {
-                            answer3.setError("Empty");
+                            Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else {
-                        answer2.setError("Empty");
+                        Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    answer1.setError("Empty");
+                    Toast.makeText(ApplyIntern.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                 }
             }
         });

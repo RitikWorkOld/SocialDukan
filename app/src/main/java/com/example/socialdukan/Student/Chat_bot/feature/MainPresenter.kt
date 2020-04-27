@@ -1,9 +1,9 @@
-package com.example.socialdukan.Student.feature
+package com.example.socialdukan.Student.Chat_bot.feature
 
 import ai.api.AIDataService
 import ai.api.model.AIRequest
 import ai.api.model.AIResponse
-import com.example.socialdukan.Student.entity.ChatMessage
+import com.example.socialdukan.Student.Chat_bot.entity.ChatMessage
 import com.google.firebase.database.DatabaseReference
 import kotlinx.coroutines.*
 

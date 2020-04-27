@@ -11,8 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.Internship.ApplyIntern"></activity>
-        <activity android:name="com.example.Edit_profile" />
+        <activity android:name=".Student.fragment.other_services.Card4_Form"></activity>
+        <activity android:name=".Student.fragment.other_services.Card3_Form" >
+
+        </activity>
+        <activity android:name=".Student.fragment.other_services.Card2_Form" />
+        <activity android:name=".Student.fragment.other_services.Card1_Form">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Student.fragment.Internship.ApplyIntern" />
         <activity
             android:name=".Student.fragment.profile.Profile_activity4"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -28,7 +40,7 @@
         <activity android:name=".Student.fragment.SimpleFragmentPagerAdapter" />
         <activity android:name=".Student.fragment.Internship.InternDetail" />
         <activity android:name=".Student.fragment.Internship.InternFragment" />
-        <activity android:name="com.example.socialdukan.Student.feature.MainActivity" />
+        <activity android:name=".Student.Chat_bot.feature.MainActivity" />
         <activity android:name=".Student.Login_Register_Student.Dashboard" />
         <activity
             android:name=".Employe.Verification_2"
@@ -44,12 +56,8 @@
         <activity android:name=".Student.Login_Register_Student.IntroActivity" />
         <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />
-        <activity android:name=".splashActi">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".splashActi" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

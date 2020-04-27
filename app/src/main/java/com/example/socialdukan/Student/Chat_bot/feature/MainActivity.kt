@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.feature
+package com.example.socialdukan.Student.Chat_bot.feature
 
 import ai.api.AIConfiguration
 import ai.api.AIDataService
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialdukan.R
-import com.example.socialdukan.Student.adapter.ChatAdapter
-import com.example.socialdukan.Student.entity.ChatMessage
+import com.example.socialdukan.Student.Chat_bot.adapter.ChatAdapter
+import com.example.socialdukan.Student.Chat_bot.entity.ChatMessage
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

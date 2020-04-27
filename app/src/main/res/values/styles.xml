@@ -26,4 +26,9 @@
     <style name="TextLimitError" parent="TextAppearance.AppCompat.Small">
     <item name="android:textColor">#fff</item>
     </style>
+    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
 </resources>

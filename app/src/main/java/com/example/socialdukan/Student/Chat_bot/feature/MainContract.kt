@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.feature;
+package com.example.socialdukan.Student.Chat_bot.feature;
 interface MainContract {
 
     interface View{

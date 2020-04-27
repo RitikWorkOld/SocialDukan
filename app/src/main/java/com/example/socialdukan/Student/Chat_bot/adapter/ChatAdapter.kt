@@ -1,11 +1,11 @@
-package com.example.socialdukan.Student.adapter
+package com.example.socialdukan.Student.Chat_bot.adapter
 
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.socialdukan.R
-import com.example.socialdukan.Student.entity.ChatMessage
+import com.example.socialdukan.Student.Chat_bot.entity.ChatMessage
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 

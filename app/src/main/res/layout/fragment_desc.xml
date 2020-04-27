@@ -21,12 +21,15 @@
             android:fontFamily="@font/montserrat"
             android:id="@+id/text_about"
             android:textColor="#000"
+            android:layout_marginLeft="8dp"
             android:textSize="20sp"
             android:text="About Company" />
 
         <TextView
             android:id="@+id/textview1_desc"
             android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
+            android:textSize="16sp"
             android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +38,8 @@
         <TextView
             android:id="@+id/textview2_desc"
             android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
+            android:textSize="16sp"
             android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

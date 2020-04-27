@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.adapter
+package com.example.socialdukan.Student.Chat_bot.adapter
 
 import android.view.View
 import android.widget.TextView

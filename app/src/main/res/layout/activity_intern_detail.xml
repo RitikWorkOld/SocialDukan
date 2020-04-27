@@ -144,6 +144,53 @@
 
                     </LinearLayout>
 
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                   android:layout_alignParentBottom="true"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:background="#94808080"
+                        android:layout_weight="3"
+                        android:layout_height="30dp">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                          android:layout_marginStart="8dp"
+                            android:id="@+id/title"
+                            android:layout_height="match_parent"
+                            android:text="Work From Home"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:id="@+id/title2"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_height="match_parent"
+                            android:text="Work in College"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                      android:id="@+id/title3"
+                            android:layout_marginEnd="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_height="match_parent"
+                            android:text="Nearby"/>
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+
                 </LinearLayout>
 
             </RelativeLayout>
