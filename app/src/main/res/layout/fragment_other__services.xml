@@ -71,7 +71,8 @@ android:layout_gravity="center"
               </LinearLayout>
 
               <ImageView
-                  android:src="@drawable/sponsorships"
+                  android:src="@drawable/spons"
+                 android:scaleType="centerCrop"
                   android:id="@+id/image_sponsor"
                   android:layout_width="114dp"
                   android:layout_height="114dp"
@@ -136,10 +137,11 @@ android:layout_gravity="center"
                 </LinearLayout>
 
                 <ImageView
-                    android:src="@drawable/influencers"
+                    android:src="@drawable/influenc"
                     android:id="@+id/image_sponsor1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:layout_width="110dp"
+                    android:layout_height="130dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:padding="2dp"/>
@@ -198,7 +200,7 @@ android:layout_gravity="center"
                 </LinearLayout>
 
                 <ImageView
-                    android:src="@drawable/web"
+                    android:src="@drawable/website"
                     android:id="@+id/image_sponsor3"
                     android:layout_width="118dp"
                     android:layout_height="118dp"
@@ -266,6 +268,71 @@ android:paddingLeft="20dp"
                 <ImageView
                     android:src="@drawable/concert"
                     android:id="@+id/image_sponsor4"
+                    android:layout_width="94dp"
+                    android:layout_height="94dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="2dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- YAHAAAAAA PEEE -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        android:elevation="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="6dp">
+        <LinearLayout
+            android:weightSum="2"
+
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:fontFamily="@font/nunito"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/other_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="#000"
+                        android:text="Get your customised\nmerchandise"
+                        android:textSize="18sp" />
+
+
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/merch"
+                    android:id="@+id/image_sponsor5"
                     android:layout_width="94dp"
                     android:layout_height="94dp"
                     android:layout_alignParentRight="true"

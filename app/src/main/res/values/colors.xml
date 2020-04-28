@@ -17,6 +17,7 @@
     <!-- colors for tab and screent text -->
 
     <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="gray">#808080</color>
     <color name="intro_title_color">#000000</color>
 </resources>
 
