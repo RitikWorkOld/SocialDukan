@@ -13,6 +13,8 @@
         android:textColor="#fff"
         android:fontFamily="@font/montserrat"
         android:text="Apply"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="12dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
     <ScrollView

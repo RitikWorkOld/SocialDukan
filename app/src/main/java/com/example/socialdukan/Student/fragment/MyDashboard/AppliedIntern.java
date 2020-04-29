@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.fragment.Internship;
+package com.example.socialdukan.Student.fragment.MyDashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Chat_bot.feature.MainContract;
-import com.example.socialdukan.Student.fragment.Internship.model.applied_intern_md;
-import com.example.socialdukan.Student.fragment.Internship.model.applied_intern_vh;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -55,6 +52,26 @@ public class AppliedIntern extends Fragment {
             protected void onBindViewHolder(@NonNull final applied_intern_vh holder, int position, @NonNull final applied_intern_md model) {
 
                 holder.intern_status.setText(model.getStatus());
+                if(model.getStatus().equals("Applied")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.applied ) );
+
+                }
+                if(model.getStatus().equals("Hired")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.info ) );
+
+                }
+                if(model.getStatus().equals("In-touch")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.intouch ) );
+
+                }
+                if(model.getStatus().equals("Position Filled")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.positionfilled ) );
+
+                }
+                if(model.getStatus().equals("Not Selected")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.positionfilled ) );
+
+                }
 
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Internships");
                 db.keepSynced(true);
@@ -67,6 +84,7 @@ public class AppliedIntern extends Fragment {
                             holder.intern_name.setText(value.getIntname());
                             holder.company_name.setText(value.getCmpname());
                             Picasso.get().load(value.getIntimguri()).into(holder.intern_img);
+
                         }
                     }
 
@@ -79,7 +97,7 @@ public class AppliedIntern extends Fragment {
                 holder.view_app_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(view.getContext(),InternForm.class);
+                        Intent intent = new Intent(view.getContext(), InternForm.class);
                         intent.putExtra("key",model.getKey());
                         startActivity(intent);
                     }

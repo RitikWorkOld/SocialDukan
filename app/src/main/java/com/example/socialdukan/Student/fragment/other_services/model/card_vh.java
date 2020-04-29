@@ -20,7 +20,7 @@ public class card_vh extends RecyclerView.ViewHolder {
     public  TextView location;
     public  TextView date;
     public Button detail_btn;
-    public Button apply_btn;
+
     public  RelativeLayout layout_card;
 
     public card_vh(@NonNull View itemView) {
@@ -33,6 +33,6 @@ public class card_vh extends RecyclerView.ViewHolder {
         location = itemView.findViewById(R.id.location);
         date = itemView.findViewById(R.id.date);
         detail_btn = itemView.findViewById(R.id.detail_btn);
-        apply_btn = itemView.findViewById(R.id.apply_btn);
+
     }
 }

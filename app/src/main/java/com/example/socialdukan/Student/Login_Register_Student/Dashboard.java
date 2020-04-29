@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
-import com.example.socialdukan.Student.fragment.Internship.AppliedIntern;
+import com.example.socialdukan.Student.fragment.MyDashboard.AppliedIntern;
 import com.example.socialdukan.Student.fragment.Internship.InternFragment;
 import com.example.socialdukan.Student.fragment.other_services.Other_Services;
 import com.example.socialdukan.Student.fragment.profile.ProfileFragment;

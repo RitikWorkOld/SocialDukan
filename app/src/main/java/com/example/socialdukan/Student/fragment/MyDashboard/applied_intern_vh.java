@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.fragment.Internship.model;
+package com.example.socialdukan.Student.fragment.MyDashboard;
 
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +16,7 @@ public class applied_intern_vh extends RecyclerView.ViewHolder {
     public TextView intern_name;
     public TextView company_name;
     public TextView intern_status;
-    public Button view_app_btn;
+    public TextView view_app_btn;
     public CircleImageView intern_img;
 
     public applied_intern_vh(@NonNull View itemView) {

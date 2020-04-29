@@ -4,12 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student.fragment.Internship.InternForm">
+    tools:context=".Student.fragment.MyDashboard.InternForm">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/main"
+        android:layout_marginTop="24dp"
+       android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/intern_name"
         android:maxLines="1"
-        android:textSize="22sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        android:textColor="#0C93FA"
         android:text="Mobile App Development"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -17,37 +28,52 @@
         android:layout_below="@+id/intern_name"
         android:id="@+id/company_name"
         android:maxLines="1"
-        android:textSize="22sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat"
+      android:layout_marginStart="8dp"
         android:text="Company name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/intern_img"
         android:layout_alignParentRight="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+    android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+    </RelativeLayout>
     <TextView
         android:id="@+id/balck_line"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/company_name"
+        android:layout_below="@id/main"
         android:background="#808080"
         android:layout_width="match_parent"
         android:layout_height="2dp"/>
     <TextView
         android:id="@+id/heading"
+        android:fontFamily="@font/montserrat"
         android:layout_marginBottom="10dp"
         android:textSize="20sp"
         android:text="Assessment"
+        android:textAllCaps="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/balck_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/heading"
+        android:layout_margin="12dp"
+        android:layout_height="wrap_content">
     <TextView
         android:layout_marginBottom="10dp"
-        android:layout_below="@+id/heading"
+android:textColor="#C3000000"
         android:id="@+id/ques_1"
-        android:text="Question1"
+        android:fontFamily="@font/montserrat"
+        android:text="Q1.Why Should we hired you?"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -56,6 +82,7 @@
         android:layout_below="@+id/ques_1"
         android:id="@+id/answer_1"
         android:text="Answer1"
+        android:fontFamily="@font/montserrat"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -64,6 +91,8 @@
         android:layout_below="@+id/answer_1"
         android:id="@+id/ques_2"
         android:text="Question2"
+        android:fontFamily="@font/montserrat"
+        android:textColor="#C3000000"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -72,6 +101,7 @@
         android:layout_below="@id/ques_2"
         android:id="@+id/answer_2"
         android:text="Answer2"
+        android:fontFamily="@font/montserrat"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -79,7 +109,9 @@
         android:layout_marginBottom="10dp"
         android:layout_below="@+id/answer_2"
         android:id="@+id/ques_3"
+        android:fontFamily="@font/montserrat"
         android:text="Question3"
+        android:textColor="#C3000000"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -88,8 +120,10 @@
         android:layout_below="@+id/ques_3"
         android:id="@+id/answer_3"
         android:text="Answer3"
+        android:fontFamily="@font/montserrat"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
 </RelativeLayout>

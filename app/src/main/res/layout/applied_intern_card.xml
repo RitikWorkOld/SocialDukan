@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="12dp"
     android:padding="10dp">
 
     <RelativeLayout
@@ -10,8 +11,12 @@
 
         <TextView
             android:id="@+id/intern_name"
+            android:textColor="#000"
+            android:layout_margin="8dp"
             android:maxLines="1"
-            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
             android:text="Mobile App Development"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -19,28 +24,54 @@
             android:layout_below="@+id/intern_name"
             android:id="@+id/company_name"
             android:maxLines="1"
-            android:textSize="22sp"
+            android:textSize="20sp"
+android:layout_margin="8dp"
+            android:fontFamily="@font/montserrat"
             android:text="Company name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/intern_img"
-            android:layout_alignParentRight="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_alignParentEnd="true"
+           android:layout_marginEnd="18dp"
+            android:layout_marginTop="12dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
         <TextView
             android:text="Applied"
+
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            android:drawableStart="@drawable/ic_thunderbolt"
             android:layout_below="@+id/company_name"
             android:id="@+id/intern_status"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <Button
-            android:text="  View Application  "
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/intern_status"
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/greyline"
+            android:layout_below="@id/intern_status"
+            android:layout_marginTop="10dp"
+
+            android:background="#8A808080"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
             android:id="@+id/view_app_btn"
+            android:text="View Application"
+
+            android:drawableEnd="@drawable/ic_next"
+            android:textSize="20sp"
+           android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserrat"
+            android:layout_alignParentEnd="true"
+            android:textColor="#0C93FA"
+            android:layout_below="@+id/greyline"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

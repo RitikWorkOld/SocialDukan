@@ -32,7 +32,6 @@ public class Card2_Form extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_card2__form );
 
-
         rv_internall = findViewById(R.id.rv_internall);
         rv_internall.setHasFixedSize(true);
         rv_internall.setLayoutManager(new LinearLayoutManager(this));
@@ -56,14 +55,7 @@ public class Card2_Form extends AppCompatActivity {
                         startActivity( intent );
                     }
                 } );
-                holder.apply_btn.setOnClickListener( new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), Detail_Submitted.class);
-                        intent.putExtra("key",model.getKey());
-                        startActivity( intent );
-                    }
-                } );
+
 
             }
 

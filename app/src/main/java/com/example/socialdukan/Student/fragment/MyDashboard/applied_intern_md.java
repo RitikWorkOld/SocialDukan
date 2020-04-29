@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.fragment.Internship.model;
+package com.example.socialdukan.Student.fragment.MyDashboard;
 
 public class applied_intern_md {
 

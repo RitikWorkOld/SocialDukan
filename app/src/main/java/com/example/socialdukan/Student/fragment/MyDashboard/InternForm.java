@@ -1,16 +1,16 @@
-package com.example.socialdukan.Student.fragment.Internship;
+package com.example.socialdukan.Student.fragment.MyDashboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.fragment.Internship.model.applied_intern_md;
+import com.example.socialdukan.Student.fragment.Internship.InternDetail;
+import com.example.socialdukan.Student.fragment.MyDashboard.applied_intern_md;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +43,15 @@ public class InternForm extends AppCompatActivity {
         answer_2 = findViewById(R.id.answer_2);
         ques_3 = findViewById(R.id.ques_3);
         answer_3 = findViewById(R.id.answer_3);
+
+        intern_name.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), InternDetail.class);
+                intent.putExtra("key",key);
+                startActivity( intent );
+            }
+        } );
 
         DatabaseReference db_form = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         db_form.keepSynced(true);
