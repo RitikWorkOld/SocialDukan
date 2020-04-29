@@ -109,6 +109,7 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference.child("answer2").setValue(text2.toString());
                                 databaseReference.child("answer3").setValue(text3.toString());
                                 databaseReference.child("key").setValue(key);
+                                databaseReference.child("status").setValue("Applied");
                                 databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference.child("companyid").setValue(companyid);
 
@@ -118,6 +119,7 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference1.child("answer2").setValue(text2.toString());
                                 databaseReference1.child("answer3").setValue(text3.toString());
                                 databaseReference1.child("key").setValue(key);
+                                databaseReference1.child("status").setValue("Applied");
                                 databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference1.child("companyid").setValue(companyid);
 
@@ -147,6 +149,7 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference.child("answer2").setValue(text2.toString());
                             databaseReference.child("answer3").setValue("QNP");
                             databaseReference.child("key").setValue(key);
+                            databaseReference.child("status").setValue("Applied");
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference.child("companyid").setValue(companyid);
 
@@ -156,6 +159,7 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference1.child("answer2").setValue(text2.toString());
                             databaseReference1.child("answer3").setValue("QNP");
                             databaseReference1.child("key").setValue(key);
+                            databaseReference1.child("status").setValue("Applied");
                             databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference1.child("companyid").setValue(companyid);
 

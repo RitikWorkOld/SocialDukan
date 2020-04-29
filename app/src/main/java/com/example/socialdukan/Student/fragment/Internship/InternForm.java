@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,14 @@ public class InternForm extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     applied_intern_md value1 = dataSnapshot1.getValue(applied_intern_md.class);
 
+                    if (value1.getAnswer2().equals("QNP")){
+                        ques_2.setVisibility(View.GONE);
+                        answer_2.setVisibility(View.GONE);
+                    }
+                    if (value1.getAnswer3().equals("QNP")){
+                        ques_3.setVisibility(View.GONE);
+                        answer_3.setVisibility(View.GONE);
+                    }
                     answer_1.setText(value1.getAnswer1());
                     answer_2.setText(value1.getAnswer2());
                     answer_3.setText(value1.getAnswer3());
