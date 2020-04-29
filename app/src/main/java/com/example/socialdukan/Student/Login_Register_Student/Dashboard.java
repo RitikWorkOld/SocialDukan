@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+import com.example.socialdukan.Student.fragment.Internship.AppliedIntern;
 import com.example.socialdukan.Student.fragment.Internship.InternFragment;
 import com.example.socialdukan.Student.fragment.other_services.Other_Services;
 import com.example.socialdukan.Student.fragment.profile.ProfileFragment;
@@ -21,9 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class Dashboard extends AppCompatActivity {
-BottomNavigationView navigationView;
 
-
+    BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,10 @@ BottomNavigationView navigationView;
         setContentView( R.layout.activity_dashboard);
         navigationView=findViewById( R.id.bottom_nav );
 
-final InternFragment intern=new InternFragment();
+        final InternFragment intern=new InternFragment();
         final ProfileFragment profile=new ProfileFragment();
         final Other_Services other_services=new Other_Services();
+        final AppliedIntern appliedIntern = new AppliedIntern();
 
         navigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -41,11 +42,11 @@ final InternFragment intern=new InternFragment();
                 int id=item.getItemId();
                 if(id==R.id.intern){
                     setFragment( intern );
-return true;
+                    return true;
                 }
                 else if(id==R.id.profile){
                     setFragment(profile);
-return true;
+                    return true;
 
                 } else if(id==R.id.other_serv){
                     setFragment( other_services );
@@ -57,7 +58,7 @@ return true;
                     return true;
 
                 } else if(id==R.id.chat_box){
-                    setFragment(  profile);
+                    setFragment(  appliedIntern);
                     return true;
 
                 }
@@ -74,8 +75,4 @@ return true;
         fragmentTransaction.commit();
 
     }
-
-
-
-
 }

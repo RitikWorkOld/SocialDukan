@@ -120,10 +120,10 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
                     if (valueintern.getCtext1().equals("no")){
                         ctext1.setPaintFlags(ctext1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     }
-                    else if (valueintern.getCtext2().equals("no")){
+                    if (valueintern.getCtext2().equals("no")){
                         ctext2.setPaintFlags(ctext2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     }
-                    else if (valueintern.getCtext3().equals("no")){
+                    if (valueintern.getCtext3().equals("no")){
                         ctext3.setPaintFlags(ctext3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     }
                 }
