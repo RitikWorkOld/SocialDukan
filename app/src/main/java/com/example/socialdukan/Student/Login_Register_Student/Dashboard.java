@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+import com.example.socialdukan.Student.fragment.Event.EventFragment;
 import com.example.socialdukan.Student.fragment.MyDashboard.AppliedIntern;
 import com.example.socialdukan.Student.fragment.Internship.InternFragment;
 import com.example.socialdukan.Student.fragment.other_services.Other_Services;
@@ -35,6 +36,7 @@ public class Dashboard extends AppCompatActivity {
         final ProfileFragment profile=new ProfileFragment();
         final Other_Services other_services=new Other_Services();
         final AppliedIntern appliedIntern = new AppliedIntern();
+        final EventFragment eventFragment=new EventFragment();
 
         navigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -53,8 +55,7 @@ public class Dashboard extends AppCompatActivity {
                     return true;
                 }
                 else if(id==R.id.bot){
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity( intent );
+                    setFragment( eventFragment );
                     return true;
 
                 } else if(id==R.id.chat_box){

@@ -26,6 +26,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp1_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
+import com.example.socialdukan.Student.fragment.profile.aboutus.about_us;
 import com.example.socialdukan.Student.fragment.profile.models.Personaldet_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -102,7 +103,7 @@ private TextView user_ph;
         user_email = view.findViewById(R.id.user_email);
         user_ph=view.findViewById( R.id.user_ph );
 
-
+    ImageView about=view.findViewById( R.id.about );
         ImageView edit = view.findViewById( R.id.edit_profile );
         matri_btn=view.findViewById( R.id.matr_btn );
         inter_btn=view.findViewById( R.id.inter_btn );
@@ -110,7 +111,14 @@ private TextView user_ph;
         clg_btn=view.findViewById( R.id.college_btn );
         pb_userimg = view.findViewById(R.id.pb_userimg);
 
+about.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(getActivity(), about_us.class);
 
+        startActivity(intent);
+    }
+} );
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
         final RelativeLayout perdet1 = (RelativeLayout)view.findViewById(R.id.layout_perdet1);

@@ -14,7 +14,7 @@
         android:title=""
         />
     <item android:id="@+id/bot"
-        android:icon="@drawable/ic_apply1"
+        android:icon="@drawable/other"
         android:title=""
         />
     <item

@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Student.fragment.MyDashboard.InternForm">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:id="@+id/main"
@@ -46,7 +52,7 @@
     <TextView
         android:id="@+id/balck_line"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="36dp"
         android:layout_below="@id/main"
         android:background="#808080"
         android:layout_width="match_parent"
@@ -55,7 +61,7 @@
         android:id="@+id/heading"
         android:fontFamily="@font/montserrat"
         android:layout_marginBottom="10dp"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:text="Assessment"
         android:textAllCaps="true"
         android:layout_centerHorizontal="true"
@@ -90,6 +96,7 @@ android:textColor="#C3000000"
         android:layout_marginBottom="10dp"
         android:layout_below="@+id/answer_1"
         android:id="@+id/ques_2"
+        android:layout_marginTop="24dp"
         android:text="Question2"
         android:fontFamily="@font/montserrat"
         android:textColor="#C3000000"
@@ -112,6 +119,7 @@ android:textColor="#C3000000"
         android:fontFamily="@font/montserrat"
         android:text="Question3"
         android:textColor="#C3000000"
+        android:layout_marginTop="24dp"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -125,5 +133,6 @@ android:textColor="#C3000000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     </RelativeLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

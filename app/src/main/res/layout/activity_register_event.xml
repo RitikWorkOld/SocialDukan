@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp">
+
+                <TextView
+                    android:id="@+id/title_001"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="Enter Team Details"
+                    android:textAlignment="center"/>
+
+                <EditText
+                    android:textColorHint="@color/gray"
+                    android:id="@+id/teamname"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:hint="TEAM NAME"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColorHint="@color/gray"
+                    android:id="@+id/teamleader"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:hint="ENDVR ID (LEADER)"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColorHint="@color/gray"
+                    android:id="@+id/teammember1"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:hint="ENDVR ID (MEMBER 1)"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColorHint="@color/gray"
+                    android:id="@+id/teammember2"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:hint="ENDVR ID (MEMBER 2)"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColorHint="@color/gray"
+                    android:id="@+id/teammember3"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:hint="ENDVR ID (MEMBER 3)"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/next_btn"
+                    android:textAlignment="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_gradient_style"
+                    android:text="   next   "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
