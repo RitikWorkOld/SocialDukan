@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_check"
     tools:context=".Student.fragment.other_services.Card1_Form">
+
 <LinearLayout
     android:layout_centerInParent="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <TextView
 
         android:textStyle="bold"
@@ -181,4 +183,4 @@ android:id="@+id/evnt_date"
         android:text="Submit"/>
 
 </LinearLayout>
-</RelativeLayout>
+</ScrollView>

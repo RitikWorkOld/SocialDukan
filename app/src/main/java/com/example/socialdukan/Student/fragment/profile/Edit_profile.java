@@ -1539,19 +1539,14 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 
             int count = count1+count2+count3+count4+count5;
 
-            if(count>3){
+         {
 
-                DatabaseReference databaseReferencepstatus = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                databaseReferencepstatus.keepSynced(true);
-                databaseReferencepstatus.child("profilestatus").setValue("yes");
 
                 Intent intent = new Intent( Edit_profile.this, ProfileFragment.class );
                 startActivity( intent );
                 finish();
             }
-            else{
-                Toast.makeText(Edit_profile.this,"PLease fill all the required details",Toast.LENGTH_SHORT).show();
-            }
+
         }
     }
 

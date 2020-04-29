@@ -4,31 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_check"
     tools:context=".Student.fragment.other_services.Card3_Form">
+    <TextView
+
+        android:textStyle="bold"
+        android:id="@+id/title"
+
+        android:textColor="@color/purple"
+        android:padding="8dp"
+
+
+        android:textSize="44sp"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/montserrat"
+        android:layout_marginTop="24dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+
+            app:counterTextColor="@color/white"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/company_name"
-            android:layout_height="wrap_content"
-            android:hint="1"/>
-        <EditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:background="@drawable/edittext"
+            android:layout_margin="16dp"
+            android:hint="Head's Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+
+            app:counterTextColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contact_no"
-            android:layout_height="wrap_content"
-            android:hint="2"/>
-        <EditText
             android:layout_width="match_parent"
-            android:id="@+id/emailid"
             android:layout_height="wrap_content"
-            android:hint="3"/>
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:background="@drawable/edittext"
+            android:layout_margin="16dp"
+            android:hint="Contact Number" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+
+            app:counterTextColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:background="@drawable/edittext"
+            android:layout_margin="16dp"
+            android:hint="Email ID" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
+            android:background="@drawable/btn_gradient_style"
+            android:textColor="@color/white"
             android:layout_height="match_parent"
+            android:layout_margin="4dp"
             android:id="@+id/submit_btn"
             android:text="Submit"/>
 

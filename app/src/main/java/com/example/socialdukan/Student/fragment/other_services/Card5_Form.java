@@ -241,32 +241,32 @@ others.setVisibility( View.VISIBLE );
 
                                                     }
                                                     else {
-                                                        Toast.makeText( Card5_Form.this, "Please fill all the answers1", Toast.LENGTH_SHORT ).show();
+                                                        Toast.makeText( Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
                                                     }
                                                 }
                                                 else {
-                                                    Toast.makeText( Card5_Form.this, "Please fill all the answers2", Toast.LENGTH_SHORT ).show();
+                                                    Toast.makeText( Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
                                                 }
                                             }
                                             else {
-                                                Toast.makeText(Card5_Form.this,"Please fill all the answers3",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                         else {
-                                            Toast.makeText(Card5_Form.this,"Please fill all the answers4",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                     else {
-                                        Toast.makeText(Card5_Form.this,"Please fill all the answers5",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 else {
-                                    Toast.makeText(Card5_Form.this,"Please fill all the answers6",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                                 }
 
                             }
                             else {
-                                Toast.makeText(Card5_Form.this,"Please fill all the answers7",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                             }
 
 

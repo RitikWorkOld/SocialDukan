@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.Internship.InternForm"></activity>
-        <activity android:name=".Student.fragment.other_services.Card5_Form"></activity>
+        <activity android:name=".Student.fragment.other_services.Detail_Submitted"
+
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".Student.fragment.Internship.InternForm"/>
+        <activity android:name=".Student.fragment.other_services.Card2_detail" />
+        <activity android:name=".Student.fragment.other_services.Card5_Form" />
         <activity
             android:name=".Student.fragment.other_services.Thanks_Activity"
             android:theme="@style/AppTheme.Popupstyle" />

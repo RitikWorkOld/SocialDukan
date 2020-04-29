@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:background="@drawable/bg_check"
     tools:context=".Student.fragment.other_services.Card5_Form">
     <ScrollView
@@ -11,13 +13,14 @@
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-
+        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 <RelativeLayout
     android:layout_width="wrap_content"
     android:id="@+id/upper"
-
+android:layout_gravity="center"
     android:gravity="center"
     android:layout_height="wrap_content">
 
@@ -48,7 +51,7 @@
     android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@drawable/ic_tshirt"
+                    android:src="@drawable/shirt"
 
                     android:id="@+id/image_sponsor"
                     android:layout_width="114dp"
@@ -99,7 +102,7 @@ android:layout_toRightOf="@+id/card_main"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/ic_tshirt"
+                android:src="@drawable/hoodies"
                 android:id="@+id/image_sponsor2"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
@@ -150,7 +153,7 @@ android:layout_toRightOf="@+id/card_main"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/ic_tshirt"
+                android:src="@drawable/notpad"
                 android:id="@+id/image_sponsor3"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
@@ -201,7 +204,7 @@ android:layout_toRightOf="@+id/card_main"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/ic_tshirt"
+                android:src="@drawable/pen"
                 android:id="@+id/image_sponsor4"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
@@ -254,7 +257,8 @@ android:layout_toRightOf="@+id/card_main"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/ic_tshirt"
+                android:src="@drawable/badges"
+                android:scaleType="centerCrop"
                 android:id="@+id/image_sponsor5"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
@@ -464,6 +468,7 @@ android:id="@+id/other_text"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:padding="8dp"
+                android:visibility="gone"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:hint="Others" />

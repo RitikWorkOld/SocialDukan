@@ -6,6 +6,7 @@
     <color name="white">#fff</color>
     <color name="purple">#34004B</color>
     <color name="lightpurple">#570C69</color>
+    <color name="black">#000000</color>
 
 
     <!-- colors for button style -->

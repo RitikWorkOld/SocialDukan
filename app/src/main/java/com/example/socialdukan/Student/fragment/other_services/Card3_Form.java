@@ -3,18 +3,22 @@ package com.example.socialdukan.Student.fragment.other_services;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.socialdukan.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Card3_Form extends AppCompatActivity {
-EditText company_name,contact_no,emailid;
+TextInputEditText company_name,contact_no,emailid;
 Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,11 @@ Button btn;
         contact_no=findViewById( R.id.contact_no );
         emailid=findViewById( R.id.emailid );
         btn=findViewById( R.id.submit_btn );
+
+        TextView title = (TextView) findViewById(R.id.title);
+        SpannableString content = new SpannableString("Form");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        title.setText(content);
 
 
 

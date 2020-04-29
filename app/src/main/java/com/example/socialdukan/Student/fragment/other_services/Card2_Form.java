@@ -13,11 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.socialdukan.R;
 
-import com.example.socialdukan.Student.Login_Register_Student.Studentdetail;
-import com.example.socialdukan.Student.ModelandViewholder.addexp2_viewholder;
-import com.example.socialdukan.Student.fragment.Internship.InternDetail;
-import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
-import com.example.socialdukan.Student.fragment.Internship.model.internall_vh;
+
 import com.example.socialdukan.Student.fragment.other_services.model.card_model;
 import com.example.socialdukan.Student.fragment.other_services.model.card_vh;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -52,10 +48,20 @@ public class Card2_Form extends AppCompatActivity {
                 holder.location.setText(model.getLocation());
                 holder.date.setText(model.getDate());
 
-                holder.layout_card.setOnClickListener( new View.OnClickListener() {
+                holder.detail_btn.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Intent intent = new Intent(getApplicationContext(), Card2_detail.class);
+                        intent.putExtra("key",model.getKey());
+                        startActivity( intent );
+                    }
+                } );
+                holder.apply_btn.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), Detail_Submitted.class);
+                        intent.putExtra("key",model.getKey());
+                        startActivity( intent );
                     }
                 } );
 

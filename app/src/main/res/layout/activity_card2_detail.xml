@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Student.fragment.other_services.Card2_detail">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_gradient_style"
+        android:textColor="#fff"
+        android:fontFamily="@font/montserrat"
+        android:text="Apply"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentTop="true"
+
+        android:id="@+id/icd_cmpimg_layout"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/icd_cmpimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:text="Classic"
+
+        android:textStyle="bold"
+        android:fontFamily="@font/montserrat"
+        android:id="@+id/infl_name"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@+id/icd_cmpimg_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/greyline"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/icd_cmpimg_layout"
+        android:background="#808080"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/greyline"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#000"
+            android:text="Brand Name:"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/brand_name"
+            android:textSize="20sp"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#808080"
+            android:text="Brand Name:"
+            android:textStyle="normal"/>
+
+
+                </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Payment Type:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/pymnt_type"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Cash"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Location:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/location1"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Location"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Social Media:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Note:The content created for the primary social media platform must be shared on the secondary platforms as well"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+
+                android:text=" Primary:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+android:id="@+id/primary"
+                android:layout_marginLeft="4dp"
+                android:gravity="start"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Youtube"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Genre:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/genre"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Gaming"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+   android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Type of campaign:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Product review"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+
+                android:text="Product Information:"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#000"
+
+                    android:text="Product Name:"
+                    android:textStyle="normal"/>
+
+                <TextView
+                    android:id="@+id/brand_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat"
+                    android:text="  Classic"
+                    android:textColor="#808080"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#000"
+
+                    android:text="Instagram Handle:"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#808080"
+android:id="@+id/insta_handle"
+                    android:text="  @Something"
+                    android:textStyle="normal"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#000"
+
+                    android:text="Link:"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#808080"
+android:id="@+id/link"
+                    android:text="  link"
+                    android:textStyle="normal"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </RelativeLayout>
+        </ScrollView>
+
+</RelativeLayout>
