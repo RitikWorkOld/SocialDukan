@@ -50,9 +50,9 @@ public class about_us extends AppCompatActivity {
 
         rv_internall = findViewById(R.id.recyclerview);
         rv_internall.setHasFixedSize(true);
+        rv_internall.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
-        rv_internall.setLayoutManager(new LinearLayoutManager(this));
-        drinternall = FirebaseDatabase.getInstance().getReference().child("aboutus").child("features").child( "0001" );
+        drinternall = FirebaseDatabase.getInstance().getReference().child("aboutus").child("features");
         drinternall.keepSynced(true);
         arrayList = new ArrayList<aboutus_md>();
         optionsinternall = new FirebaseRecyclerOptions.Builder<aboutus_md>().setQuery(drinternall,aboutus_md.class).build();
@@ -63,11 +63,6 @@ public class about_us extends AppCompatActivity {
                 Log.d(TAG,"feautrrs");
                 Picasso.get().load(model.getIcon()).into(holder.cmpimg);
                 holder.number.setText(model.getNumber());
-
-
-
-
-
             }
 
             @NonNull
@@ -78,7 +73,6 @@ public class about_us extends AppCompatActivity {
         };
         rv_internall.setAdapter(adapterinternall);
         adapterinternall.startListening();
-
 
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutus").child("admin");
         databaseReference.keepSynced(true);

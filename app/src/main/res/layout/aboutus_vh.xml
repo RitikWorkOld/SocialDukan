@@ -8,13 +8,10 @@
     android:layout_marginTop="16dp"
     app:cardCornerRadius="6dp">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/layout_card"
         android:layout_height="match_parent">
-
-
 
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="5dp"
@@ -23,14 +20,13 @@
             android:layout_marginTop="12dp"
             android:layout_marginStart="20dp"
             android:layout_alignParentTop="true"
-android:layout_centerInParent="true"
+            android:layout_centerInParent="true"
             android:id="@+id/icd_cmpimg_layout"
             android:layout_width="100dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-
                 android:layout_height="match_parent">
 
             <ImageView
@@ -39,7 +35,6 @@ android:layout_centerInParent="true"
                 android:id="@+id/icd_cmpimg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -63,7 +58,7 @@ android:layout_centerInParent="true"
             android:textColor="#000"
             android:id="@+id/title"
             android:fontFamily="@font/montserrat"
-android:layout_below="@id/number"
+            android:layout_below="@id/number"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content"
 

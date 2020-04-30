@@ -15,9 +15,6 @@ public class aboutus_vh extends RecyclerView.ViewHolder {
     public ImageView cmpimg;
     public TextView title;
     public TextView number;
-
-
-
     public RelativeLayout layout_card;
 
     public aboutus_vh(@NonNull View itemView) {

@@ -46,10 +46,9 @@
             android:id="@+id/frame1"
             android:layout_height="match_parent">
         <androidx.viewpager.widget.ViewPager
-
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:layout_gravity="top"
             android:clipToPadding="false"
             android:overScrollMode="never"
@@ -64,7 +63,7 @@
         </FrameLayout>
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="170dp"
     android:layout_below="@id/frame1"
     android:id="@+id/recyclerview"/>
 
