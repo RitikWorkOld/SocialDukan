@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@color/purple"
+android:background="@color/white"
     tools:context=".Student.fragment.Internship.ApplyIntern">
     <ScrollView
         android:layout_width="match_parent"
@@ -14,29 +14,29 @@ android:background="@color/purple"
         android:layout_height="wrap_content">
 
     <TextView
-
+android:gravity="center"
         android:textStyle="bold"
         android:id="@+id/title"
-        android:textColor="#fff"
+        android:textColor="@color/purple"
         android:padding="8dp"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:layout_margin="16dp"
         android:fontFamily="@font/montserrat"
         android:layout_marginTop="24dp"
-
+android:text="HELLO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="Why Should we hired you?"
+        android:text="Q1. Why Should you hired for this role?"
         android:id="@+id/ques_1"
-        android:textColor="#fff"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
         android:layout_below="@id/title"
-        android:padding="8dp"
-        android:textSize="20sp"
-        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:textSize="16sp"
         android:fontFamily="@font/montserrat"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -51,7 +51,7 @@ android:background="@color/purple"
             android:layout_below="@id/ques_1"
             app:counterOverflowTextAppearance="@style/TextLimitError"
             app:counterTextColor="@color/white"
-            android:textColorHint="#808080"
+            android:textColorHint="@color/white"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -60,19 +60,22 @@ android:background="@color/purple"
                 android:hint="Answer"
                 android:textColor="@color/white"
                 android:padding="8dp"
+
                 android:gravity="center_horizontal|start"
 android:id="@+id/answer1"
                 android:background="@drawable/edittext"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_below="@+id/answer_1"
         android:text="Question2?"
-        android:textColor="#fff"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
         android:layout_margin="16dp"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:fontFamily="@font/montserrat"
         android:layout_marginTop="24dp"
         android:padding="8dp"
@@ -88,7 +91,7 @@ android:id="@+id/answer1"
             android:layout_below="@id/ques_2"
             app:counterOverflowTextAppearance="@style/TextLimitError"
             app:counterTextColor="@color/white"
-            android:textColorHint="#808080"
+            android:textColorHint="@color/white"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -100,19 +103,21 @@ android:id="@+id/answer1"
                 android:textColor="@color/white"
                 android:id="@+id/answer2"
                 android:background="@drawable/edittext"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_below="@+id/answer_2"
         android:text="Question3?"
-        android:textColor="#fff"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
         android:layout_margin="16dp"
         android:id="@+id/ques_3"
         android:fontFamily="@font/montserrat"
         android:layout_marginTop="24dp"
-android:textSize="20sp"
+android:textSize="16sp"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -125,7 +130,7 @@ android:textSize="20sp"
             android:layout_below="@id/ques_3"
             app:counterOverflowTextAppearance="@style/TextLimitError"
             app:counterTextColor="@color/white"
-            android:textColorHint="#808080"
+            android:textColorHint="@color/white"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -137,7 +142,8 @@ android:textSize="20sp"
                 android:gravity="center_horizontal|start"
                 android:textColor="@color/white"
                 android:background="@drawable/edittext"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

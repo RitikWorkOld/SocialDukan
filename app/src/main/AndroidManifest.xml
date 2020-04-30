@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh"></activity>
         <activity android:name=".Student.fragment.profile.aboutus.about_us">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

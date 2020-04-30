@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.fragment.Internship.ApplyIntern;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,8 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 public class Card4_Form extends AppCompatActivity implements View.OnClickListener  {
-    EditText evnt_name,evnt_date,evnt_venue,city,exp_football,head_name,head_cont,head_email;
+    TextInputEditText evnt_name,evnt_venue,city,exp_football,head_name,head_cont,head_email;
     Button btn;
+    EditText evnt_date;
     private int mYear, mMonth, mDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,8 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
 
         btn=findViewById( R.id.submit_btn );
         evnt_date.setOnClickListener( this );
-
+        TextView title = (TextView) findViewById(R.id.title);
+        SpannableString content = new SpannableString("Form");
 
 
         btn.setOnClickListener(new View.OnClickListener() {

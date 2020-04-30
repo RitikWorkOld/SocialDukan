@@ -52,7 +52,7 @@ public class ApplyIntern extends AppCompatActivity {
 
         TextView title = (TextView) findViewById(R.id.title);
         final SpannableString content = new SpannableString("SocialDukan Application");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+       // content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         title.setText(content);
 
         fillbtn = findViewById(R.id.fill_btn);

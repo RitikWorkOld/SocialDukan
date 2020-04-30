@@ -60,6 +60,8 @@ public class Faq_manager extends AppCompatActivity {
         };
         rv_internall.setAdapter(adapterinternall);
         adapterinternall.startListening();
+
+
         close_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

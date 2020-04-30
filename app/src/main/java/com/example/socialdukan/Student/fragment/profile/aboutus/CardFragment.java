@@ -1,11 +1,14 @@
 package com.example.socialdukan.Student.fragment.profile.aboutus;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,23 +31,7 @@ public class CardFragment extends Fragment {
 
     private CardView cardView;
     String TAG = "CARD *****-----";
-    private LinearLayout linearLayout1;
-    private TextView title_1,desc_1;
 
-    private LinearLayout linearLayout2;
-    private TextView title_2,desc_2;
-
-    private LinearLayout linearLayout3;
-    private TextView title_3,desc_3;
-
-    private LinearLayout linearLayout4;
-    private TextView title_4,desc_4;
-
-    private LinearLayout linearLayout5;
-    private TextView title_5,desc_5;
-
-    private LinearLayout linearLayout6;
-    private TextView title_6,desc_6;
 
     public static Fragment getInstance(int position) {
         CardFragment f = new CardFragment();
@@ -63,80 +50,12 @@ public class CardFragment extends Fragment {
         cardView = (CardView) view.findViewById( R.id.cardView);
         cardView.setMaxCardElevation(cardView.getCardElevation() * CardAdapter.MAX_ELEVATION_FACTOR);
 
-        linearLayout1 = (LinearLayout)view.findViewById(R.id.card1);
-        linearLayout2 = (LinearLayout)view.findViewById(R.id.card2);
-        linearLayout3 = (LinearLayout)view.findViewById(R.id.card3);
-        linearLayout4 = (LinearLayout)view.findViewById(R.id.card4);
-        linearLayout5 = (LinearLayout)view.findViewById(R.id.card5);
-        linearLayout6 = (LinearLayout)view.findViewById(R.id.card6);
 
-        title_1 = (TextView)view.findViewById(R.id.speaker_title_details_1);
-        desc_1 = (TextView)view.findViewById(R.id.speaker_desc_detail_1);
-        title_2 = (TextView)view.findViewById(R.id.speaker_title_details_2);
-        desc_2 = (TextView)view.findViewById(R.id.speaker_desc_detail_2);
-        title_3 = (TextView)view.findViewById(R.id.speaker_title_details_3);
-        desc_3 = (TextView)view.findViewById(R.id.speaker_desc_detail_3);
-        title_4 = (TextView)view.findViewById(R.id.speaker_title_details_4);
-        desc_4 = (TextView)view.findViewById(R.id.speaker_desc_detail_4);
-        title_5 = (TextView)view.findViewById(R.id.speaker_title_details_5);
-        desc_5 = (TextView)view.findViewById(R.id.speaker_desc_detail_5);
-        title_6 = (TextView)view.findViewById(R.id.speaker_title_details_6);
-        desc_6 = (TextView)view.findViewById(R.id.speaker_desc_detail_6);
+
+
 
         String position = String.format("%d", getArguments().getInt("position"));
 
-        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference().child("aboutus").child("admin").child(position);
-        databaseReference2.keepSynced(true);
-        databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String count = String.valueOf(dataSnapshot.getChildrenCount()-4);
-                Toast.makeText(view.getContext(),"COUNT = "+count,Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"came in visiblity");
-                switch (count){
-                    case "2" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        Log.d(TAG,"came in visiblity2");
-                        break;
-                    case "4" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        linearLayout2.setVisibility( View.VISIBLE);
-                        Log.d(TAG,"came in visiblity3");
-                        break;
-                    case "6" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        linearLayout2.setVisibility( View.VISIBLE);
-                        linearLayout3.setVisibility( View.VISIBLE);
-                        break;
-                    case "8" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        linearLayout2.setVisibility( View.VISIBLE);
-                        linearLayout3.setVisibility( View.VISIBLE);
-                        linearLayout4.setVisibility( View.VISIBLE);
-                        break;
-                    case "10" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        linearLayout2.setVisibility( View.VISIBLE);
-                        linearLayout3.setVisibility( View.VISIBLE);
-                        linearLayout4.setVisibility( View.VISIBLE);
-                        linearLayout5.setVisibility( View.VISIBLE);
-                        break;
-                    case "12" :
-                        linearLayout1.setVisibility( View.VISIBLE);
-                        linearLayout2.setVisibility( View.VISIBLE);
-                        linearLayout3.setVisibility( View.VISIBLE);
-                        linearLayout4.setVisibility( View.VISIBLE);
-                        linearLayout5.setVisibility( View.VISIBLE);
-                        linearLayout6.setVisibility( View.VISIBLE);
-                        break;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         //final TextView title = (TextView) view.findViewById(R.id.title_speak);
         //final TextView description = (TextView)view.findViewById(R.id.desc_speak);
@@ -144,6 +63,8 @@ public class CardFragment extends Fragment {
         final TextView title = (TextView) view.findViewById(R.id.title_speak);
         final TextView description = (TextView)view.findViewById(R.id.desc_speak);
         final de.hdodenhof.circleimageview.CircleImageView image_p = (de.hdodenhof.circleimageview.CircleImageView)view.findViewById(R.id.image_speaker);
+        final ImageView insta = view.findViewById( R.id.insta );
+        final ImageView mail = view.findViewById( R.id.gmail );
 
         Log.d(TAG,"came out ----------------------------------------------------------");
 
@@ -154,7 +75,7 @@ public class CardFragment extends Fragment {
                 Log.d(TAG,"Fall in firebase---------------------------------------------------");
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     Log.d(TAG,"Fall in firebase snapshot ---------------------------------------------------");
-                    Speaker_detail speaker_detail = dataSnapshot1.getValue(Speaker_detail.class);
+                    final Speaker_detail speaker_detail = dataSnapshot1.getValue(Speaker_detail.class);
                     String name = speaker_detail.getName();
                     String desc = speaker_detail.getDesc();
                     String imguri = speaker_detail.getImguri();
@@ -162,24 +83,26 @@ public class CardFragment extends Fragment {
                     title.setText(name);
                     description.setText(desc);
                     Picasso.get().load(imguri).into(image_p);
+            insta.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Uri uri = Uri.parse(speaker_detail.getInsta());
+        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(intent);
+    }
+} );
+            mail.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+                String mail= speaker_detail.getMail();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra( Intent.EXTRA_EMAIL,mail );
+                intent.setType( "message/rfc822" );
 
-                    title_1.setText(speaker_detail.getT1());
-                    desc_1.setText(speaker_detail.getD1());
+                startActivity( Intent.createChooser( intent,"Choose an email client" ) );
+    }
+} );
 
-                    title_2.setText(speaker_detail.getT2());
-                    desc_2.setText(speaker_detail.getD2());
-
-                    title_3.setText(speaker_detail.getT3());
-                    desc_3.setText(speaker_detail.getD3());
-
-                    title_4.setText(speaker_detail.getT4());
-                    desc_4.setText(speaker_detail.getD4());
-
-                    title_5.setText(speaker_detail.getT5());
-                    desc_5.setText(speaker_detail.getD5());
-
-                    title_6.setText(speaker_detail.getT6());
-                    desc_6.setText(speaker_detail.getD6());
 
                     Log.d(TAG,"Here is name ----------------------------------------  "+name);
                     Log.d(TAG,"Here is desc ----------------------------------------  "+desc);
@@ -192,6 +115,7 @@ public class CardFragment extends Fragment {
         });
         return view;
     }
+
 
     public CardView getCardView() {
         return cardView;

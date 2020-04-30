@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardUseCompatPadding="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="6dp"
+    android:id="@+id/cardView"
+    android:layout_gravity="center"
+
+    android:background="@color/white"
+    app:cardCornerRadius="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_card"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:text="@string/About_us"
+            android:id="@+id/description"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/description"
+            android:layout_height="2dp"
+            android:layout_marginTop="60dp"
+            android:background="#808080">
+
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+android:id="@+id/photo"
+          android:layout_centerInParent="true"
+
+            android:layout_below="@id/description"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:id="@+id/name"
+            android:layout_marginTop="8dp"
+            android:textSize="24sp"
+            android:layout_below="@id/photo"
+            android:layout_centerInParent="true"
+            android:text="Ritik Mehta"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+
+            android:id="@+id/position"
+
+            android:layout_marginTop="8dp"
+            android:textSize="24sp"
+            android:layout_below="@id/name"
+            android:textStyle="italic"
+            android:layout_centerInParent="true"
+            android:text="Founder  CEO"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+
+            android:id="@+id/work"
+
+            android:layout_marginTop="4dp"
+            android:textSize="24sp"
+            android:layout_below="@id/position"
+            android:textStyle="normal"
+            android:layout_centerInParent="true"
+            android:text="Application Developer"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+<!--
+<androidx.cardview.widget.CardView
+app:cardCornerRadius="5dp"
+android:elevation="5dp"
+android:layout_marginEnd="15dp"
+android:layout_marginTop="12dp"
+android:layout_marginStart="20dp"
+android:layout_alignParentTop="true"
+android:layout_centerInParent="true"
+android:id="@+id/icd_cmpimg_layout"
+android:layout_width="60dp"
+android:layout_height="60dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/icd_cmpimg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>-->
