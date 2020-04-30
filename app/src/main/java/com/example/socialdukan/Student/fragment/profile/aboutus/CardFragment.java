@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -84,21 +85,23 @@ public class CardFragment extends Fragment {
 
         String position = String.format("%d", getArguments().getInt("position"));
 
-        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference().child("speakers").child(position);
+        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference().child("aboutus").child("admin").child(position);
         databaseReference2.keepSynced(true);
         databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String count = String.valueOf(dataSnapshot.getChildrenCount()-4);
-                //Toast.makeText(view.getContext(),"COUNT = "+count,Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(view.getContext(),"COUNT = "+count,Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"came in visiblity");
                 switch (count){
                     case "2" :
                         linearLayout1.setVisibility( View.VISIBLE);
+                        Log.d(TAG,"came in visiblity2");
                         break;
                     case "4" :
                         linearLayout1.setVisibility( View.VISIBLE);
                         linearLayout2.setVisibility( View.VISIBLE);
+                        Log.d(TAG,"came in visiblity3");
                         break;
                     case "6" :
                         linearLayout1.setVisibility( View.VISIBLE);
@@ -144,7 +147,7 @@ public class CardFragment extends Fragment {
 
         Log.d(TAG,"came out ----------------------------------------------------------");
 
-        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("speakers");
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("aboutus").child("admin");
         databaseReference1.orderByChild("id").equalTo(position).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

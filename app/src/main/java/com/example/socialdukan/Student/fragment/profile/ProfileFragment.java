@@ -45,17 +45,15 @@ import java.util.Objects;
  */
 public class ProfileFragment extends Fragment{
 
-Button matri_btn,inter_btn,dip_btn,clg_btn;
-    RecyclerView rv_exp,rv_exp1;//RITIK
+private Button matri_btn,inter_btn,dip_btn,clg_btn;
     FirebaseRecyclerOptions<addexp_model> optionsexp;
-    FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
+    private FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
 
-    FirebaseRecyclerAdapter<addexp_model,addexp_viewholder> adapterexp;
-    FirebaseRecyclerAdapter<addexp1_model,addexp1_viewholder>adapterexp1; //Ritik
+    private FirebaseRecyclerAdapter<addexp_model,addexp_viewholder> adapterexp;
+    private FirebaseRecyclerAdapter<addexp1_model,addexp1_viewholder>adapterexp1; //Ritik
 
-    DatabaseReference databaseReferenceexprv,databaseReferenceexprv1;
-    FirebaseAuth mFirebaseAuth;
-    ProgressBar pb_userimg;
+    private FirebaseAuth mFirebaseAuth;
+    private ProgressBar pb_userimg;
 
     @Override
     public void onStop() {
@@ -130,14 +128,15 @@ about.setOnClickListener( new View.OnClickListener() {
         final RelativeLayout layout_profile3 = (RelativeLayout)view.findViewById(R.id.pers_detail3);
         final RelativeLayout layout_profile4 = (RelativeLayout)view.findViewById(R.id.pers_detail4);
         final RelativeLayout layout_signout = (RelativeLayout)view.findViewById(R.id.layout_signout);
-        rv_exp1 = view.findViewById(R.id.rv_exp1);
+        //RITIK
+        RecyclerView rv_exp1 = view.findViewById( R.id.rv_exp1 );
         rv_exp1.setHasFixedSize(true);
         rv_exp1.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills");
+        DatabaseReference databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpskills" );
         databaseReferenceexprv1.keepSynced(true);
 
-        optionsexp1  = new FirebaseRecyclerOptions.Builder<addexp1_model>().setQuery(databaseReferenceexprv1,addexp1_model.class).build();
+        optionsexp1  = new FirebaseRecyclerOptions.Builder<addexp1_model>().setQuery( databaseReferenceexprv1,addexp1_model.class).build();
 
         adapterexp1 = new FirebaseRecyclerAdapter<addexp1_model, addexp1_viewholder>(optionsexp1) {
             @Override
@@ -178,12 +177,12 @@ about.setOnClickListener( new View.OnClickListener() {
         adapterexp1.startListening();
 
 //-------------------------------------------------------------------------------------------
-        rv_exp = view.findViewById( R.id.rv_exp );
+        RecyclerView rv_exp = view.findViewById( R.id.rv_exp );
         rv_exp.setHasFixedSize( true );
       //  rv_exp.setLayoutManager( new LinearLayoutManager( this ) );
         rv_exp.setLayoutManager( new LinearLayoutManager(  getContext()) );
 
-        databaseReferenceexprv = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpexp" );
+        DatabaseReference databaseReferenceexprv = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpexp" );
         databaseReferenceexprv.keepSynced( true );
 
         optionsexp = new FirebaseRecyclerOptions.Builder<addexp_model>().setQuery( databaseReferenceexprv, addexp_model.class ).build();

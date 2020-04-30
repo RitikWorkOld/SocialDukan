@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.profile.aboutus.about_us"></activity>
+        <activity android:name=".Student.fragment.profile.aboutus.about_us">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -65,11 +71,7 @@
         <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

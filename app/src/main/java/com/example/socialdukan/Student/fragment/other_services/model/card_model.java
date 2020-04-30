@@ -18,11 +18,11 @@ public class card_model {
 
 
     public card_model(String collab_name, String key, String categroy, String location, String intimguri, String date, String paymenttype, String instahandle, String link,String primary) {
-   this.collab_name=collab_name;
+        this.collab_name=collab_name;
         this.intimguri = intimguri;
         this.key = key;
-this.date=date;
-this.primary=primary;
+        this.date=date;
+        this.primary=primary;
         this.categroy = categroy;
         this.location = location;
         this.paymenttype=paymenttype;
