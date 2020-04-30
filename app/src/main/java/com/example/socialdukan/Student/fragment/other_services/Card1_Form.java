@@ -58,7 +58,7 @@ Button btn;
 
         TextView title = (TextView) findViewById(R.id.title);
         SpannableString content = new SpannableString("Form");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+
         title.setText(content);
 
 

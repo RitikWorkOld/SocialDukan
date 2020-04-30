@@ -352,7 +352,7 @@
 
                                     android:layout_height="match_parent">
                                 <Button
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="130dp"
                                     android:layout_height="wrap_content"
                                     android:text="      Matriculate      "
                                     android:textSize="12sp"
@@ -362,7 +362,7 @@
                                     android:textColor="#fff"
                                     android:id="@+id/matr_btn"/>
                                 <Button
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="130dp"
                                     android:layout_height="wrap_content"
                                     android:text="      Intermediate      "
                                     android:textSize="12sp"
@@ -373,7 +373,7 @@
                                     android:textColor="#fff"
                                     android:id="@+id/inter_btn"/>
                                 <Button
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="130dp"
                                     android:layout_height="wrap_content"
                                     android:text="      Diploma      "
                                     android:layout_margin="4dp"
@@ -384,7 +384,7 @@
                                     android:textColor="#fff"
                                     android:id="@+id/dip_btn"/>
                                 <Button
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="130dp"
                                     android:layout_height="wrap_content"
                                     android:text="      College      "
                                     android:layout_margin="4dp"

@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
+
     android:background="@drawable/bg_check"
     tools:context=".Student.fragment.other_services.Card5_Form">
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_gravity="center"
+
         android:orientation="vertical"
         android:layout_height="wrap_content">
 <RelativeLayout
@@ -458,7 +457,7 @@ android:inputType="number"
             app:counterTextColor="@color/white"
             android:textColorHint="@color/white"
             android:layout_width="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             >
 

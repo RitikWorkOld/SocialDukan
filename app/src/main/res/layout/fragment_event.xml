@@ -4,10 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Student.fragment.Event.EventFragment">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/eventsTitle"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+android:layout_centerInParent="true"
+android:textColor="#000"
+                android:fontFamily="@font/montserrat"
+                android:textSize="40sp"
+
+
+                />
+        </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-
+        android:layout_below="@id/eventsTitle"
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="match_parent"/>
+    </RelativeLayout>
 </FrameLayout>

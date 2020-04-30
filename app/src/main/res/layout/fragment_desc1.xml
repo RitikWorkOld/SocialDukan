@@ -14,12 +14,14 @@
         <TextView
             android:id="@+id/textview1_wyg"
             android:layout_width="match_parent"
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
 
         <TextView
             android:id="@+id/textview2_wyg"
             android:layout_width="match_parent"
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
 

@@ -67,11 +67,12 @@ card1=findViewById( R.id.card_main );
 card1.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        others.setVisibility( View.GONE );
        card1.setCardBackgroundColor( getResources().getColor( R.color.purple ) );
        text1.setTextColor( getResources().getColor( R.color.white ) );
 type.setText("T-Shirt");
 other_text.setText( "NULL" );
-        others.setVisibility( View.GONE );
+
 
         card2.setCardBackgroundColor( getResources().getColor( R.color.white ) );
         text2.setTextColor( getResources().getColor( R.color.gray ) );
@@ -189,12 +190,13 @@ other_text.setText( "NULL" );
             public void onClick(View v) {
                 card2.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text2.setTextColor( getResources().getColor( R.color.gray ) );
-
+                others.setVisibility( View.VISIBLE );
                 type.setText("Others");
                 other_text.setText( "" );
+
                 card1.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text1.setTextColor( getResources().getColor( R.color.gray ) );
-others.setVisibility( View.VISIBLE );
+
                 card3.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text3.setTextColor( getResources().getColor( R.color.gray ) );
 
