@@ -2,9 +2,39 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/eventsTitle"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Application"
+
+            android:layout_centerInParent="true"
+            android:textColor="@color/purple"
+            android:fontFamily="@font/montserrat"
+            android:textSize="32sp"
+
+
+            />
+        <ImageView
+            android:elevation="6dp"
+            android:id="@+id/iv_notification_btn"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/ic_notifications_black_24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_applied_intern"
+        android:layout_below="@id/eventsTitle"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

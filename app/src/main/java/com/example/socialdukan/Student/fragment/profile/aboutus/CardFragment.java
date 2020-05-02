@@ -62,9 +62,9 @@ public class CardFragment extends Fragment {
 
         final TextView title = (TextView) view.findViewById(R.id.title_speak);
         final TextView description = (TextView)view.findViewById(R.id.desc_speak);
-        final de.hdodenhof.circleimageview.CircleImageView image_p = (de.hdodenhof.circleimageview.CircleImageView)view.findViewById(R.id.image_speaker);
-        final ImageView insta = view.findViewById( R.id.insta );
-        final ImageView mail = view.findViewById( R.id.gmail );
+        final ImageView image_p = view.findViewById(R.id.image_speaker);
+       // final ImageView insta = view.findViewById( R.id.insta );
+       // final ImageView mail = view.findViewById( R.id.gmail );
 
         Log.d(TAG,"came out ----------------------------------------------------------");
 
@@ -83,15 +83,15 @@ public class CardFragment extends Fragment {
                     title.setText(name);
                     description.setText(desc);
                     Picasso.get().load(imguri).into(image_p);
-            insta.setOnClickListener( new View.OnClickListener() {
+        /*   insta.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Uri uri = Uri.parse(speaker_detail.getInsta());
         Intent intent = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(intent);
     }
-} );
-            mail.setOnClickListener( new View.OnClickListener() {
+} );*/
+          /*  mail.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
                 String mail= speaker_detail.getMail();
@@ -101,7 +101,7 @@ public class CardFragment extends Fragment {
 
                 startActivity( Intent.createChooser( intent,"Choose an email client" ) );
     }
-} );
+} );*/
 
 
                     Log.d(TAG,"Here is name ----------------------------------------  "+name);

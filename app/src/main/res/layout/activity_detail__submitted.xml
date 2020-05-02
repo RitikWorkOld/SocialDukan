@@ -121,7 +121,8 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:layout_width="match_parent"
+                        android:layout_width="134dp"
+                        android:layout_gravity="center"
                         android:background="@drawable/btn_gradient_style"
                         android:textColor="@color/white"
                         android:layout_height="match_parent"

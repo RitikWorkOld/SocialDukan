@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.Login_Register_Student;
+package com.example.socialdukan.Employe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,9 @@ import android.widget.Toast;
 
 
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+import com.example.socialdukan.Student.Login_Register_Student.Dashboard;
+import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
+import com.example.socialdukan.Student.Login_Register_Student.Studentdetail;
 import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +39,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Login_Student extends AppCompatActivity implements TextWatcher,
+public class Login_Employe extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener {
     Button btnSignUp;
     ImageButton go;
@@ -49,22 +52,22 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     private CheckBox rem_userpass;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    private static final String PREF_NAME = "prefs";
-    private static final String KEY_REMEMBER = "remember";
-    private static final String KEY_USERNAME = "username";
-    private static final String KEY_PASS = "password";
+    private static final String PREF_NAME = "prefs1";
+    private static final String KEY_REMEMBER = "remember1";
+    private static final String KEY_USERNAME = "username1";
+    private static final String KEY_PASS = "password1";
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_login__student );
+        setContentView( R.layout.activity_login__employe );
         chatbot=findViewById( R.id.chatbot );
         chatbot.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_Student.this, MainActivity.class);
+                Intent intent = new Intent(Login_Employe.this, MainActivity.class);
                 startActivity(intent);
             }
         } );
@@ -123,18 +126,18 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     //   progressBars.setVisibility(View.GONE);
-                    Toast.makeText( Login_Student.this, "Fields Are Empty!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Login_Employe.this, "Fields Are Empty!", Toast.LENGTH_SHORT ).show();
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     //check this runs
                     Log.d( "LOOP 1", "status: login " );//ye lga rhndo
 
-                    mFirebaseAuth.signInWithEmailAndPassword( email, pwd ).addOnCompleteListener( Login_Student.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.signInWithEmailAndPassword( email, pwd ).addOnCompleteListener( Login_Employe.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 //progressBars.setVisibility(View.GONE);
 
-                                Toast.makeText( Login_Student.this, "Login Error, Please Login Again", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( Login_Employe.this, "Login Error, Please Login Again", Toast.LENGTH_SHORT ).show();
                                 // Intent intent = new Intent(LoginActivity.this,Login_Failed.class);
                                 //  startActivity(intent);
                             } else {
@@ -148,13 +151,13 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                 //   startActivity(intToHome);
                                 // finish();
 
-                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Employe");
                                 databaseReference.keepSynced(true);
                                 databaseReference.orderByChild("uid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                                            User user = dataSnapshot1.getValue(User.class);
+                                            Employe user = dataSnapshot1.getValue(Employe.class);
 
                                             pstatus = user.profilestatus;
 
@@ -166,15 +169,15 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                             {
                                                 if (pstatus.equals("yes")){
                                                     Log.d("HEL","msg= yha agya");
-                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Login_Student.this, Dashboard.class);
-                                                    startActivity(intent);
-                                                    finish();
+                                                   // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    //Intent intent = new Intent(Login_Employe.this, Dashboard_emp.class);
+                                                 //   startActivity(intent);
+                                                   // finish();
                                                 }
                                                 else {
                                                     Log.d("HEL","msg= yha agya");
-                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Login_Student.this, Studentdetail.class);
+                                                   // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Login_Employe.this, Employe_detail.class);
                                                     startActivity(intent);
                                                     finish();
                                                 }
@@ -184,7 +187,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                 // email is not verified, so just prompt the message to the user and restart this activity.
                                                 // NOTE: don't forget to log out the user.
                                                 FirebaseAuth.getInstance().signOut();
-                                                Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Login_Employe.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
                                                 //restart this activity
                                             }
                                         }
@@ -198,8 +201,8 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                             }
                         }
                     } );
+                }
             }
-           }
         } );
 
 
@@ -208,7 +211,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
             @Override
             public void onClick(View v) {
                 if (v == btnSignUp) {
-                    Intent intent = new Intent( Login_Student.this, Reg_Student.class );
+                    Intent intent = new Intent( Login_Employe.this, Reg_Employe.class );
                     startActivity( intent );
                     overridePendingTransition( android.R.anim.fade_in, android.R.anim.fade_out );
                     finish();

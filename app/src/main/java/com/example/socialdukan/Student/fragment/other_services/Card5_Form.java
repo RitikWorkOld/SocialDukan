@@ -167,7 +167,7 @@ other_text.setText( "NULL" );
                 card2.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text2.setTextColor( getResources().getColor( R.color.gray ) );
                 type.setText("Pens");
-                other_text.setText( "NULL" );
+               other_text.setText( "NULL" );
                 others.setVisibility( View.GONE );
                 card1.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text1.setTextColor( getResources().getColor( R.color.gray ) );
@@ -193,7 +193,7 @@ other_text.setText( "NULL" );
                 others.setVisibility( View.VISIBLE );
                 type.setText("Others");
                 other_text.setText( "" );
-
+                other_text.setVisibility( View.VISIBLE );
                 card1.setCardBackgroundColor( getResources().getColor( R.color.white ) );
                 text1.setTextColor( getResources().getColor( R.color.gray ) );
 

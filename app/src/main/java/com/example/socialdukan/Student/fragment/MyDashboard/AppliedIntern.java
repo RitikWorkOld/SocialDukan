@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -29,7 +31,7 @@ public class AppliedIntern extends Fragment {
     RecyclerView rv_applied_intern;
     FirebaseRecyclerOptions<applied_intern_md> app_intern_options;
     FirebaseRecyclerAdapter<applied_intern_md, applied_intern_vh> app_intern_adapter;
-
+    ImageView notification_btn;
     public AppliedIntern(){
     }
 
@@ -41,7 +43,7 @@ public class AppliedIntern extends Fragment {
         rv_applied_intern = view.findViewById(R.id.rv_applied_intern);
         rv_applied_intern.setHasFixedSize(true);
         rv_applied_intern.setLayoutManager(new LinearLayoutManager(container.getContext()));
-
+        notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         DatabaseReference db_applied_intern = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         db_applied_intern.keepSynced(true);
 
@@ -57,7 +59,7 @@ public class AppliedIntern extends Fragment {
 
                 }
                 if(model.getStatus().equals("Hired")){
-                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.info ) );
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.info_btn ) );
 
                 }
                 if(model.getStatus().equals("In-touch")){
@@ -80,7 +82,16 @@ public class AppliedIntern extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                             internall_md value = dataSnapshot1.getValue(internall_md.class);
+                            notification_btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
 
+
+                                    Intent intent = new Intent(getActivity(), Notifications.class);
+                                    startActivity(intent);
+
+                                }
+                            });
                             holder.intern_name.setText(value.getIntname());
                             holder.company_name.setText(value.getCmpname());
                             Picasso.get().load(value.getIntimguri()).into(holder.intern_img);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student.Login_Register_Student.Verification"
+    tools:context=".Employe.Verification_2"
     android:gravity="center">
 
     <ImageView
@@ -62,24 +62,12 @@
                     android:id="@+id/lottie_anim_rs"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:visibility="visible"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/otp"/>
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lottie_anim_rs1"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/stopwatch"/>
 
                 <EditText
                     android:visibility="visible"
@@ -109,7 +97,7 @@
                     android:gravity="start"
                     android:textStyle="italic"
                     android:layout_height="wrap_content"
-                    android:text="We have sent the link to your E-mail,Please Verify and get back to us"
+                    android:text="We have sent the link to your E-mail,Please Verify and get back to us."
                     android:textSize="20sp"
                     android:padding="8dp"
                     android:fontFamily="@font/montserrat"
@@ -122,22 +110,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_gradient_style"
-                    android:text="   Next   "
+                    android:text="   LOGIN   "
                     android:textColor="#fff"
                     android:textSize="20sp"/>
-                <TextView
-
-                    android:visibility="gone"
-                    android:id="@+id/text_doc"
-                    android:layout_width="wrap_content"
-                    android:gravity="start"
-                    android:textStyle="italic"
-                    android:layout_height="wrap_content"
-                    android:text="Your Documents are submitted,we will revert you soon in 48 hours"
-                    android:textSize="20sp"
-                    android:padding="8dp"
-                    android:fontFamily="@font/montserrat"
-                    />
 
 
 

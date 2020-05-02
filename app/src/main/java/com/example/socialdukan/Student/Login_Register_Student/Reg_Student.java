@@ -1,4 +1,4 @@
-package com.example.socialdukan.Student.Miscellaneous;
+package com.example.socialdukan.Student.Login_Register_Student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
-import com.example.socialdukan.Student.Login_Register_Student.Verification;
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
@@ -22,6 +22,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
     ImageButton go;
     private EditText emailId,password,number1,fname1;
     FirebaseAuth mFirebaseAuth;
+    ImageView chatbot;
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -44,7 +45,14 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
         password = findViewById(R.id.password);
         fname1 = findViewById(R.id.fname);
         number1 = findViewById(R.id.cnumber);
-
+        chatbot=findViewById( R.id.chatbot );
+        chatbot.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Reg_Student.this, MainActivity.class);
+                startActivity(intent);
+            }
+        } );
 
         findViewById( R.id.go ).setOnClickListener( this );
 

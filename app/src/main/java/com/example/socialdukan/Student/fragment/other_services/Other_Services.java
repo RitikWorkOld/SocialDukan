@@ -9,13 +9,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Notifications.Notifications;
 
 
 public class Other_Services extends Fragment {
 CardView card1,card2,card3,card4,card5;
-
+    ImageView notification_btn;
 
 
     public Other_Services() {
@@ -34,7 +36,17 @@ CardView card1,card2,card3,card4,card5;
         card3=view.findViewById( R.id.card3 );
         card4=view.findViewById( R.id.card4 );
         card5=view.findViewById( R.id.card5 );
+        notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+        notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+                Intent intent = new Intent(getActivity(), Notifications.class);
+                startActivity(intent);
+
+            }
+        });
         card1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

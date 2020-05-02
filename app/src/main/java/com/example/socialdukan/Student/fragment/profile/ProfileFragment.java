@@ -26,6 +26,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp1_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
+import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.fragment.profile.aboutus.about_us;
 import com.example.socialdukan.Student.fragment.profile.models.Personaldet_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -48,7 +49,7 @@ public class ProfileFragment extends Fragment{
 private Button matri_btn,inter_btn,dip_btn,clg_btn;
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     private FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
-
+    ImageView notification_btn;
     private FirebaseRecyclerAdapter<addexp_model,addexp_viewholder> adapterexp;
     private FirebaseRecyclerAdapter<addexp1_model,addexp1_viewholder>adapterexp1; //Ritik
 
@@ -91,7 +92,7 @@ private TextView user_ph;
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate( R.layout.fragment_profile, container, false );
-
+        notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         dob = view.findViewById( R.id.dob_text );
         address = view.findViewById( R.id.add_text );
         occ = view.findViewById( R.id.curr_occ_text );
@@ -117,6 +118,16 @@ about.setOnClickListener( new View.OnClickListener() {
         startActivity(intent);
     }
 } );
+        notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(getActivity(), Notifications.class);
+                startActivity(intent);
+
+            }
+        });
 
         final RelativeLayout layout_profile1 = (RelativeLayout)view.findViewById(R.id.pers_detail1);
         final RelativeLayout perdet1 = (RelativeLayout)view.findViewById(R.id.layout_perdet1);

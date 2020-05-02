@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="6dp"
@@ -19,6 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:padding="12dp"
+            android:textColor="@color/purple"
             android:layout_height="wrap_content"
             android:text="@string/About_us"
             android:id="@+id/description"
@@ -29,8 +30,9 @@
             android:layout_width="match_parent"
             android:layout_below="@id/description"
             android:layout_height="2dp"
+
             android:layout_marginTop="60dp"
-            android:background="#808080">
+            android:background="@color/purple">
 
 
 
@@ -58,30 +60,30 @@ android:id="@+id/photo"
             android:text="Ritik Mehta"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000"
 
             android:id="@+id/position"
-
-            android:layout_marginTop="8dp"
-            android:textSize="24sp"
+android:layout_margin="4dp"
+android:gravity="center"
+            android:textSize="20sp"
             android:layout_below="@id/name"
             android:textStyle="italic"
-            android:layout_centerInParent="true"
+
             android:text="Founder  CEO"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000"
 
             android:id="@+id/work"
 
-            android:layout_marginTop="4dp"
-            android:textSize="24sp"
+
+            android:textSize="20sp"
             android:layout_below="@id/position"
             android:textStyle="normal"
-            android:layout_centerInParent="true"
+        android:gravity="center"
             android:text="Application Developer"/>
 
 

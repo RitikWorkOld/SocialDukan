@@ -14,13 +14,13 @@
         android:title=""
         />
     <item android:id="@+id/bot"
-        android:icon="@drawable/other"
+        android:icon="@drawable/chat"
         android:title=""
         />
     <item
         android:id="@+id/chat_box"
         android:title=""
-        android:icon="@drawable/chat"
+        android:icon="@drawable/ic_dashboard"
         />
     <item
         android:id="@+id/profile"

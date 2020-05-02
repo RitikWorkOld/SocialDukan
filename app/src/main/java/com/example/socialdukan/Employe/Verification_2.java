@@ -1,9 +1,11 @@
 package com.example.socialdukan.Employe;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -11,13 +13,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
+import com.example.socialdukan.Student.Login_Register_Student.Studentdetail;
 import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
@@ -26,7 +32,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,22 +47,23 @@ public class Verification_2 extends AppCompatActivity {
     private String mVerificationId;
     PhoneAuthProvider.ForceResendingToken token;
     private FirebaseAuth mAuth;
-    LottieAnimationView lottie1,lottie2;
+
+
 
 
     private FirebaseAuth mFirebaseAuth;
     int code=91;
 
 
-    ImageView crossiv;
-    Button verify_btn,login_btn;
 
+    Button verify_btn,login_btn;
+    ImageView user_img;
     EditText otp;
-    TextView email_txt,chk_email,enterotp,text;
+    TextView email_txt,chk_email,enterotp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_verification_2 );
+        setContentView( R.layout.activity_verification );
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -64,16 +77,14 @@ public class Verification_2 extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
 
-        crossiv = (ImageView) findViewById(R.id.cross_btn_rf);
+
+
         verify_btn=findViewById( R.id.verify_btn );
         otp=findViewById( R.id.otp_et );
         email_txt=findViewById( R.id.textemail );
         chk_email=findViewById( R.id.chk_email );
         enterotp=findViewById( R.id.title_001 );
-        login_btn=findViewById( R.id.login_btn );   //next btn
-        text=findViewById( R.id.text_doc );
-        lottie1=findViewById( R.id.lottie_anim_rs );
-        lottie2=findViewById( R.id.lottie_anim_rs1 );
+        login_btn=findViewById( R.id.login_btn );
 
 
         Intent intent = getIntent();
@@ -100,12 +111,7 @@ public class Verification_2 extends AppCompatActivity {
             }
         });
 
-        crossiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
         /*verify_btn.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -188,7 +194,7 @@ public class Verification_2 extends AppCompatActivity {
 
                     //EMAIL BHEJNE KA CODE YHA AYEGA SHYAAD
 
-
+                  //  detailuser();
                     registeruser();
 
                 } else {
@@ -208,6 +214,8 @@ public class Verification_2 extends AppCompatActivity {
         });
 
     }
+
+
     private void registeruser() {
 
         Intent intent = getIntent();
@@ -232,22 +240,17 @@ public class Verification_2 extends AppCompatActivity {
                             otp.setVisibility( View.GONE );
                             verify_btn.setVisibility( View.GONE );
                             enterotp.setVisibility( View.GONE );
+
+
+
                             chk_email.setVisibility( View.VISIBLE );
                             email_txt.setVisibility( View.VISIBLE );
                             login_btn.setVisibility( View.VISIBLE );
                             login_btn.setOnClickListener( new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
-                                   /* otp.setVisibility( View.GONE );
-                                    verify_btn.setVisibility( View.GONE );
-                                    enterotp.setVisibility( View.GONE );
-                                    chk_email.setVisibility( View.GONE );
-                                    email_txt.setVisibility( View.GONE );
-                                    login_btn.setVisibility( View.GONE );
-                                    lottie1.setVisibility( View.GONE );
-                                    text.setVisibility( View.VISIBLE );
-                                    lottie2.setVisibility( View.VISIBLE );*/
+                                    Intent intent = new Intent(Verification_2.this, Employe_detail.class);
+                                    startActivity( intent );
 
                                 }
                             } );
@@ -256,11 +259,11 @@ public class Verification_2 extends AppCompatActivity {
 
                     //final String refrelid = endvr.concat(number);
                     String uid = FirebaseAuth.getInstance().getUid();
-                    User user=new User(fname,email,number,uid,pwd,null,"no");
+                    Employe employe=new Employe(fname,email,number,uid,pwd,null,"no");
 
-                    FirebaseDatabase.getInstance().getReference("Users")
+                    FirebaseDatabase.getInstance().getReference("Employe")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>()
+                            .setValue(employe).addOnCompleteListener(new OnCompleteListener<Void>()
                     {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

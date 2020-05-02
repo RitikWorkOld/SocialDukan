@@ -12,9 +12,11 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.socialdukan.LoginActvity;
+import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
 import com.example.socialdukan.Student.Miscellaneous.IntroViewPagerAdapter;
 import com.example.socialdukan.Student.Miscellaneous.ScreenItem;
 import com.example.socialdukan.R;
@@ -33,6 +35,7 @@ public class IntroActivity2 extends AppCompatActivity {
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
+    ImageView chatbot;
 
 
     @Override
@@ -48,9 +51,9 @@ public class IntroActivity2 extends AppCompatActivity {
 
         // when this activity is about to be launch we need to check if its openened before or not
 
-       if (restorePrefData()) {
+        if (restorePrefData()) {
 
-            Intent mainActivity = new Intent(getApplicationContext(),Reg_Employe.class );
+            Intent mainActivity = new Intent(getApplicationContext(), Login_Employe.class );
             startActivity(mainActivity);
             finish();
 
@@ -68,17 +71,24 @@ public class IntroActivity2 extends AppCompatActivity {
         btnGetStarted = findViewById(R.id.btn_get_started);
         tabIndicator = findViewById(R.id.tab_indicator);
         btnAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
-        tvSkip = findViewById(R.id.tv_skip);
 
+        chatbot=findViewById( R.id.chatbot );
+        chatbot.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IntroActivity2.this, MainActivity.class);
+                startActivity(intent);
+            }
+        } );
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Internships Post","",R.drawable.img1));
-        mList.add(new ScreenItem("Sponsorships for events","",R.drawable.img2));
-        mList.add(new ScreenItem("Website Designing","",R.drawable.img3));
-        mList.add(new ScreenItem("Graphic Designing","",R.drawable.img1));
-        mList.add(new ScreenItem("Test1","",R.drawable.img2));
-        mList.add(new ScreenItem("Test2","",R.drawable.img3));
+        mList.add(new ScreenItem("Apply for internships","",R.drawable.inernship));
+        mList.add(new ScreenItem(" Get Sponsorships for your event","",R.drawable.sponsorship));
+        mList.add(new ScreenItem(" Apply for campaigns as a influencer","",R.drawable.influence));
+        mList.add(new ScreenItem("Get your website designed","",R.drawable.website));
+        mList.add(new ScreenItem(" Get the live concert organised by us","",R.drawable.concert));
+
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -156,7 +166,7 @@ public class IntroActivity2 extends AppCompatActivity {
 
                 //open main activity
 
-                Intent mainActivity = new Intent(getApplicationContext(), LoginActvity.class);
+                Intent mainActivity = new Intent(getApplicationContext(), Reg_Employe.class);
                 startActivity(mainActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity
@@ -171,18 +181,13 @@ public class IntroActivity2 extends AppCompatActivity {
 
         // skip button click listener
 
-        tvSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                screenPager.setCurrentItem(mList.size());
-            }
-        });
+
 
 
 
     }
 
-   private boolean restorePrefData() {
+    private boolean restorePrefData() {
 
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
@@ -208,7 +213,7 @@ public class IntroActivity2 extends AppCompatActivity {
 
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
-        tvSkip.setVisibility(View.INVISIBLE);
+
         tabIndicator.setVisibility(View.INVISIBLE);
         // ADD an animation the getstarted button
         // setup animation

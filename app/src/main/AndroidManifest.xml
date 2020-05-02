@@ -11,14 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh"></activity>
-        <activity android:name=".Student.fragment.profile.aboutus.about_us">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".Employe.Employe_detail" />
+        <activity android:name=".Employe.Login_Employe" />
+        <activity android:name=".Student.Notifications.Notifications" />
+        <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
+        <activity android:name=".Student.fragment.profile.aboutus.about_us" />
         <activity
             android:name=".Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -65,14 +64,18 @@
             android:name=".Student.Login_Register_Student.Verification"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.Login_Register_Student.Login_Student" />
-        <activity android:name=".Student.Miscellaneous.Reg_Student" />
+        <activity android:name=".Student.Login_Register_Student.Reg_Student" />
         <activity android:name=".Employe.IntroActivity2" />
         <activity android:name=".LoginActvity" />
         <activity android:name=".Student.Login_Register_Student.IntroActivity" />
         <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

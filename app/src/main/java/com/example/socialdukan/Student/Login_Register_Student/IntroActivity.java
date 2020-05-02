@@ -12,12 +12,13 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.example.socialdukan.Student.Miscellaneous.IntroViewPagerAdapter;
 import com.example.socialdukan.Student.Miscellaneous.ScreenItem;
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Miscellaneous.Reg_Student;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class IntroActivity extends AppCompatActivity {
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
+    ImageView chatbot;
 
 
     @Override
@@ -67,9 +69,15 @@ public class IntroActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btn_next);
         btnGetStarted = findViewById(R.id.btn_get_started);
         tabIndicator = findViewById(R.id.tab_indicator);
-        btnAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
-        tvSkip = findViewById(R.id.tv_skip);
 
+        chatbot=findViewById( R.id.chatbot );
+        chatbot.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        } );
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();

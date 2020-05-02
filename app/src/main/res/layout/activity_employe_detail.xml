@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/try001"
+    tools:context=".Employe.Employe_detail">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/main_layout"
+
+android:visibility="visible"
+    android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:id="@+id/det_title"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textSize="40sp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/field"
+            android:layout_below="@id/det_title"
+          android:layout_centerHorizontal="true"
+      android:layout_marginTop="40dp"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/user"
+                android:scaleType="centerCrop"
+                android:id="@+id/user_img"
+
+                android:layout_width="118dp"
+                android:layout_height="118dp"
+
+                />
+
+            <ProgressBar
+                android:id="@+id/pb_userimg"
+
+
+                android:layout_width="118dp"
+                android:layout_height="118dp"/>
+
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_below="@id/field"
+
+        android:id="@+id/try_this2"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:hint="Company Name"
+            android:id="@+id/cmp_name"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:background="@drawable/edittext"
+            android:layout_margin="16dp"
+
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:hint="Email"
+            android:id="@+id/cmp_email"
+
+            android:layout_margin="16dp"
+
+            android:textColor="@color/white"
+            android:background="@drawable/edittext"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:hint="Contact Number"
+            android:id="@+id/cmp_no"
+
+            android:inputType="numberDecimal"
+            android:layout_margin="16dp"
+
+            android:textColor="@color/white"
+            android:background="@drawable/edittext"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/white"
+            android:paddingLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Next"
+            android:layout_marginTop="60dp"
+            android:id="@+id/buttonNext"
+        android:layout_gravity="center"
+            android:background="@drawable/btn_gradient_style"
+  />
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/aft_next_ly"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_anim_rs"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+         android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+
+            app:lottie_rawRes="@raw/stopwatch"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+
+            android:textStyle="italic"
+            android:id="@+id/info_title"
+            android:layout_margin="8dp"
+            android:text="It will take 24-48 hours for your profile to be approved.Please wait till then.\n\nIn case of any queries,we will get in touch with you via your Email or Contact details."
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/okay_btn"
+
+          android:layout_gravity="center"
+            android:background="@drawable/btn_gradient_style"
+            android:textColor="@color/white"
+            android:text="okay"
+            android:layout_marginTop="12dp"
+
+            android:padding="16dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

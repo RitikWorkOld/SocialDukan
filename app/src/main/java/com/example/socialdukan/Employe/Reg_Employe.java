@@ -55,7 +55,7 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 if(v==btnSignIn){
-                    Intent intent = new Intent(Reg_Employe.this, Login_Student.class);
+                    Intent intent = new Intent(Reg_Employe.this, Login_Employe.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                     finish();

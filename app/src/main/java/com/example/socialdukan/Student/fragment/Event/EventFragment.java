@@ -16,6 +16,7 @@ import com.example.socialdukan.R;
 
 
 import android.content.Intent;
+import android.widget.ImageView;
 
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.fragment.Internship.InternDetail;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,6 +40,7 @@ public class EventFragment extends Fragment {
     DatabaseReference drinternall;
     FirebaseRecyclerOptions<events_md> optionsinternall;
     FirebaseRecyclerAdapter<events_md, events_vh> adapterinternall;
+    ImageView notification_btn;
 
     public EventFragment() {
         // Required empty public constructor
@@ -48,7 +51,7 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_event,container,false);
         // Inflate the layout for this fragment
-
+        notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         rv_internall = view.findViewById(R.id.recycler);
         rv_internall.setHasFixedSize(true);
         rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext()));
@@ -64,7 +67,16 @@ public class EventFragment extends Fragment {
                 holder.Title.setText(model.getEventname());
                 holder.Descp.setText(model.getEvent_desc());
                 Picasso.get().load(model.getIntimguri()).into(holder.Mimguri);
+                notification_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+
+                        Intent intent = new Intent(getActivity(), Notifications.class);
+                        startActivity(intent);
+
+                    }
+                });
                 holder.read_more_ebtn.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -9,34 +9,27 @@
     app:cardCornerRadius="6dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:id="@+id/layout_card"
-        android:layout_height="match_parent">
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="5dp"
-            android:elevation="5dp"
-           android:layout_margin="18dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:id="@+id/icd_cmpimg_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:scaleType="centerCrop"
+
                     android:src="@mipmap/ic_launcher"
                     android:id="@+id/icd_cmpimg"
                     android:layout_margin="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+
 
 
 

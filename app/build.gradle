@@ -74,6 +74,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.1'
+    implementation 'com.nex3z:notification-badge:0.1.0'
 }
 repositories {
     mavenCentral()
