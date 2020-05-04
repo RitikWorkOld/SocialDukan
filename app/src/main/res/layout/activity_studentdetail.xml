@@ -79,7 +79,7 @@ android:background="@drawable/try001"
                         android:fontFamily="sans-serif"
                         android:layout_marginBottom="50px"
                         android:layout_marginTop="5px"
-                        android:textColor="#808080"/>
+                        android:textColor="@color/white"/>
         <TextView
             android:id="@+id/displaymno"
             android:layout_width="wrap_content"
@@ -92,7 +92,7 @@ android:background="@drawable/try001"
             android:fontFamily="sans-serif"
             android:layout_marginBottom="50px"
 
-            android:textColor="#808080"/>
+            android:textColor="@color/white"/>
 
 
 

@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.socialdukan.Employe.IntroActivity2;
-import com.example.socialdukan.Employe.Reg_Employe;
+import com.example.socialdukan.Employe.Login_Register_Employe.Login_Employe;
+import com.example.socialdukan.Employe.Login_Register_Employe.Reg_Employe;
 import com.example.socialdukan.Student.Login_Register_Student.IntroActivity;
+import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
 
 public class LoginActvity extends AppCompatActivity {
     private Button student_btn;
@@ -25,7 +27,7 @@ public class LoginActvity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(v==student_btn){
-                    Intent intent=new Intent(getApplicationContext(), IntroActivity.class);
+                    Intent intent=new Intent(getApplicationContext(), Login_Student.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
@@ -36,7 +38,7 @@ public class LoginActvity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(v==employe_btn){
-                    Intent intent=new Intent(getApplicationContext(), Reg_Employe.class);
+                    Intent intent=new Intent(getApplicationContext(), Login_Employe.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                 }

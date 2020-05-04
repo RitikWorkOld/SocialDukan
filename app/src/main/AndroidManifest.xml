@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".Employe.Employe_detail" />
-        <activity android:name=".Employe.Login_Employe" />
+        <activity android:name=".Employe.Fragment.edit_prof_emp"></activity>
+        <activity android:name=".Employe.Fragment.about_emp" />
+        <activity android:name=".Employe.Login_Register_Employe.Dashboard_emp" />
+        <activity android:name=".Employe.Login_Register_Employe.Employe_detail" />
+        <activity android:name=".Employe.Login_Register_Employe.Login_Employe" />
         <activity android:name=".Student.Notifications.Notifications" />
         <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
         <activity android:name=".Student.fragment.profile.aboutus.about_us" />
@@ -57,9 +58,9 @@
         <activity android:name=".Student.Chat_bot.feature.MainActivity" />
         <activity android:name=".Student.Login_Register_Student.Dashboard" />
         <activity
-            android:name=".Employe.Verification_2"
+            android:name=".Employe.Login_Register_Employe.Verification_2"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Employe.Reg_Employe" />
+        <activity android:name=".Employe.Login_Register_Employe.Reg_Employe" />
         <activity
             android:name=".Student.Login_Register_Student.Verification"
             android:theme="@style/AppTheme.Popupstyle" />

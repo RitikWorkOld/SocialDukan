@@ -748,6 +748,9 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     if (user.profileimg!=null){
                         Picasso.get().load(user.profileimg).into(user_img);
                     }
+                    else {
+                        user_img.setImageResource(R.drawable.user);
+                    }
 
                     displayname.setText(user.getName());
                     displayemail.setText(user.getEmail());
@@ -1542,8 +1545,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
          {
 
 
-                Intent intent = new Intent( Edit_profile.this, ProfileFragment.class );
-                startActivity( intent );
+
                 finish();
             }
 

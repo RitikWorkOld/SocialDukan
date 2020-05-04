@@ -1,11 +1,9 @@
-package com.example.socialdukan.Employe;
+package com.example.socialdukan.Employe.Login_Register_Employe;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -13,17 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.socialdukan.Student.Login_Register_Student.Studentdetail;
-import com.example.socialdukan.Student.Miscellaneous.User;
+import com.example.socialdukan.Employe.Login_Register_Employe.Model.Employe;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
@@ -32,13 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.concurrent.TimeUnit;
 
@@ -57,7 +44,7 @@ public class Verification_2 extends AppCompatActivity {
 
 
     Button verify_btn,login_btn;
-    ImageView user_img;
+
     EditText otp;
     TextView email_txt,chk_email,enterotp;
     @Override
@@ -92,7 +79,7 @@ public class Verification_2 extends AppCompatActivity {
         final String pwd = intent.getStringExtra("password");
         final String fname = intent.getStringExtra("name");
         final String number = intent.getStringExtra("number");
-
+        final String website=intent.getStringExtra("website");
 
         final String mobile = "+"+code+number;
         sendVerificationCode(mobile);
@@ -222,7 +209,7 @@ public class Verification_2 extends AppCompatActivity {
         final String email = intent.getStringExtra("email");
         final String pwd = intent.getStringExtra("password");
         final String fname = intent.getStringExtra("name");
-
+        final String website=intent.getStringExtra("website");
         final String number = intent.getStringExtra("number");
 
 
@@ -249,7 +236,7 @@ public class Verification_2 extends AppCompatActivity {
                             login_btn.setOnClickListener( new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Intent intent = new Intent(Verification_2.this, Employe_detail.class);
+                                    Intent intent = new Intent(Verification_2.this, Login_Employe.class);
                                     startActivity( intent );
 
                                 }
@@ -259,7 +246,7 @@ public class Verification_2 extends AppCompatActivity {
 
                     //final String refrelid = endvr.concat(number);
                     String uid = FirebaseAuth.getInstance().getUid();
-                    Employe employe=new Employe(fname,email,number,uid,pwd,null,"no");
+                    Employe employe=new Employe(fname,email,number,uid,pwd,null,"https://"+website,"no","no",null,"no");
 
                     FirebaseDatabase.getInstance().getReference("Employe")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -7,7 +7,7 @@
     tools:context=".Student.Login_Register_Student.Verification"
     android:gravity="center">
 
-   <!-- <ImageView
+ <ImageView
         android:id="@+id/cross_btn_rf"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/cancel_rf_red"/>-->
+        app:srcCompat="@drawable/cancel_rf_red"/>
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="20dp"

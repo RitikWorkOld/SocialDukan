@@ -46,6 +46,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
         fname1 = findViewById(R.id.fname);
         number1 = findViewById(R.id.cnumber);
         chatbot=findViewById( R.id.chatbot );
+
         chatbot.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

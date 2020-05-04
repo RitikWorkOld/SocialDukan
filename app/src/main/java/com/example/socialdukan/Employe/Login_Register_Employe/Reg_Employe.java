@@ -1,4 +1,4 @@
-package com.example.socialdukan.Employe;
+package com.example.socialdukan.Employe.Login_Register_Employe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
 import com.example.socialdukan.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -18,8 +17,8 @@ import java.util.regex.Pattern;
 
 public class Reg_Employe extends AppCompatActivity implements View.OnClickListener {
     Button btnSignIn;
-    ImageButton go;
-    private EditText emailId,password,number1,fname1;
+
+    private EditText emailId,password,number1,fname1,cmpwebsite;
     FirebaseAuth mFirebaseAuth;
 
     private static final Pattern PASSWORD_PATTERN =
@@ -43,6 +42,7 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
         password = findViewById(R.id.password);
         fname1 = findViewById(R.id.fname);
         number1 = findViewById(R.id.cnumber);
+        cmpwebsite=findViewById( R.id.cmp_website );
 
 
         findViewById( R.id.go ).setOnClickListener( this );
@@ -105,29 +105,19 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
                 //  Log.i("Hello", "working");
                 if (valid) {
 
-                  /*  final String number=number1.getText().toString().trim();
-                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Users");
-                    dbref.keepSynced(true);
-                    dbref.orderByChild("contactn").equalTo(number).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getValue() != null){
-                              //  progressBar.setVisibility(View.GONE);
-                                findViewById(R.id.go).setVisibility(View.VISIBLE);
-                                Toast.makeText(Reg_Student.this,"User on this phone Number Already Exists",Toast.LENGTH_SHORT).show();
-                            }
-                            else {*/
+
+
                     final String email = emailId.getText().toString().trim();
                     final String pwd = password.getText().toString().trim();
                     final String fname = fname1.getText().toString().trim();
-
+                    final String website=cmpwebsite.getText().toString().trim();
                     final String number = number1.getText().toString().trim();
 
                     Intent intent = new Intent( Reg_Employe.this, Verification_2.class );
                     intent.putExtra( "name", fname );
                     intent.putExtra( "email", email );
                     intent.putExtra( "password", pwd );
-
+                    intent.putExtra( "website",website );
                     intent.putExtra( "number", number );
 
                     startActivity( intent );
@@ -156,7 +146,7 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
         final String email=emailId.getText().toString().trim();
         final String pwd=password.getText().toString().trim();
         final String fname=fname1.getText().toString().trim();
-
+final String website=cmpwebsite.getText().toString().trim();
         final String number=number1.getText().toString().trim();
 
 
@@ -180,6 +170,7 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
             password.requestFocus();
             return false;
         }
+
         else if (pwd.length() < 6 ) {
             password.setError(getString(R.string.input_error_password_length));
             password.requestFocus();
@@ -199,7 +190,11 @@ public class Reg_Employe extends AppCompatActivity implements View.OnClickListen
             number1.requestFocus();
             return false;
         }
-
+        else if(website.isEmpty()){
+            cmpwebsite.setError("Website Required");
+            cmpwebsite.requestFocus();
+            return false;
+        }
         else if (number.length() != 10) {
             number1.setError(getString(R.string.input_error_phone_invalid));
             number1.requestFocus();

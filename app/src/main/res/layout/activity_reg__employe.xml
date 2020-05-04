@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/btn_grd_style"
-    tools:context=".Employe.Reg_Employe">
+    tools:context=".Employe.Login_Register_Employe.Reg_Employe">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,20 +55,20 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:orientation="horizontal"
-            android:layout_alignParentTop="true"
+
 
             >
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
+
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
+
                     android:padding="8dp"
                     android:orientation="vertical">
 
@@ -113,6 +113,28 @@
                         android:layout_marginEnd="8dp"
                         android:fontFamily="@font/montserrat"
                         android:hint="Email ID"
+                        android:textColor="#CD4B4B"
+                        android:textColorHint="#808080"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/cmp_website_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Company's website"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/cmp_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="website"
+
                         android:textColor="#CD4B4B"
                         android:textColorHint="#808080"
                         android:textSize="18sp" />
@@ -166,11 +188,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_marginEnd="8dp"
+                        android:inputType="number"
                         android:fontFamily="@font/montserrat"
                         android:hint="You will recieve an OTP"
                         android:textColor="#CD4B4B"
                         android:textColorHint="#808080"
                         android:textSize="18sp" />
+
 
 
 

@@ -1,4 +1,4 @@
-package com.example.socialdukan.Employe;
+package com.example.socialdukan.Employe.Login_Register_Employe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +22,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.example.socialdukan.Employe.IntroActivity2;
+import com.example.socialdukan.Employe.Login_Register_Employe.Model.Employe;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
-import com.example.socialdukan.Student.Login_Register_Student.Dashboard;
-import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
-import com.example.socialdukan.Student.Login_Register_Student.Studentdetail;
-import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +44,7 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
     EditText emailId, password;
     FirebaseAuth mFirebaseAuth;
     String pstatus;
+    String ostatus;
     ImageView chatbot;
 
 
@@ -74,8 +73,6 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
         btnSignUp=findViewById(R.id.signup);
         go=findViewById( R.id.go1 );
 
-        btnSignUp = findViewById( R.id.signup );
-        go = findViewById( R.id.go1 );
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -153,13 +150,14 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
 
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Employe");
                                 databaseReference.keepSynced(true);
-                                databaseReference.orderByChild("uid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                databaseReference.orderByChild("eid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                                             Employe user = dataSnapshot1.getValue(Employe.class);
 
                                             pstatus = user.profilestatus;
+                                            ostatus=user.officialstatus;
 
                                             Log.d("HEL**************","**************************************   "+pstatus);
 
@@ -167,13 +165,18 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
 
                                             if ( firebaseUser.isEmailVerified())
                                             {
-                                                if (pstatus.equals("yes")){
+                                                if (pstatus.equals("yes") && ostatus.equals( "yes" ) ){
                                                     Log.d("HEL","msg= yha agya");
                                                    // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                                    //Intent intent = new Intent(Login_Employe.this, Dashboard_emp.class);
-                                                 //   startActivity(intent);
-                                                   // finish();
+                                                    Intent intent = new Intent(Login_Employe.this, Dashboard_emp.class);
+                                                  startActivity(intent);
+                                                    finish();
                                                 }
+                                               /* else if(pstatus.equals( "yes" ) && ostatus.equals("no")){
+                                                    Toast.makeText(Login_Employe.this, "Your account is in verification, Please Wait", Toast.LENGTH_SHORT).show();
+
+
+                                                }*/
                                                 else {
                                                     Log.d("HEL","msg= yha agya");
                                                    // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
@@ -211,7 +214,7 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
             @Override
             public void onClick(View v) {
                 if (v == btnSignUp) {
-                    Intent intent = new Intent( Login_Employe.this, Reg_Employe.class );
+                    Intent intent = new Intent( Login_Employe.this, IntroActivity2.class );
                     startActivity( intent );
                     overridePendingTransition( android.R.anim.fade_in, android.R.anim.fade_out );
                     finish();

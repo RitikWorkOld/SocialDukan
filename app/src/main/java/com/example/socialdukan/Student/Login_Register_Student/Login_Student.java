@@ -71,8 +71,6 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         btnSignUp=findViewById(R.id.signup);
         go=findViewById( R.id.go1 );
 
-        btnSignUp = findViewById( R.id.signup );
-        go = findViewById( R.id.go1 );
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -208,7 +206,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
             @Override
             public void onClick(View v) {
                 if (v == btnSignUp) {
-                    Intent intent = new Intent( Login_Student.this, Reg_Student.class );
+                    Intent intent = new Intent( Login_Student.this, IntroActivity.class );
                     startActivity( intent );
                     overridePendingTransition( android.R.anim.fade_in, android.R.anim.fade_out );
                     finish();
