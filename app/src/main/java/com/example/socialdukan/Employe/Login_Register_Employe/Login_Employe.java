@@ -150,7 +150,7 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
 
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Employe");
                                 databaseReference.keepSynced(true);
-                                databaseReference.orderByChild("eid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                databaseReference.orderByChild("eid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){

@@ -16,6 +16,40 @@
 
 
     <string name="About_us">Social Dukan, is one shop for all marketing activities. We are a 2-year-old startup based out of Chandigarh. Our premium service include hosting and managing intership for top companies, raising sponsorship for events, live concerts, managing influencers. We also cater some other services like graphic designing, website designing, vedio designing, etc.\n\nWe have done various collaborations at IIT Delhi, IIT Kharagpur, Jadavpur University, Delhi University, Devfest by Google community and a lot more.</string>
+<string-array name="duration">
+    <item>   1   </item>
+    <item>   2   </item>
+    <item>   3   </item>
+    <item>   4   </item>
+    <item>   5   </item>
+    <item>   6   </item>
 
+
+
+</string-array>
+    <string-array name="month">
+        <item>Month</item>
+        <item>Week</item>
+    </string-array>
+    <string-array name="per_month">
+        <item>/Month</item>
+        <item>/Week</item>
+
+
+
+
+    </string-array>
+    <string-array name="per_scale">
+        <item>Scale</item>
+        <item>write-up</item>
+        <item>design</item>
+        <item>video</item>
+        <item>data entry</item>
+        <item>others</item>
+
+
+
+
+    </string-array>
 
 </resources>

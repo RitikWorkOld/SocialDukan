@@ -246,7 +246,7 @@ public class Verification_2 extends AppCompatActivity {
 
                     //final String refrelid = endvr.concat(number);
                     String uid = FirebaseAuth.getInstance().getUid();
-                    Employe employe=new Employe(fname,email,number,uid,pwd,null,"https://"+website,"no","no",null,"no");
+                    Employe employe=new Employe(null,null,null,null,null,null,null,null,fname,email,number,uid,pwd,null,"https://"+website,"no","no",null,"no");
 
                     FirebaseDatabase.getInstance().getReference("Employe")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
