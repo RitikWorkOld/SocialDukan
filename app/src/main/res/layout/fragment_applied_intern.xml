@@ -19,6 +19,7 @@
 
 
             />
+
         <ImageView
             android:elevation="6dp"
             android:id="@+id/iv_notification_btn"
@@ -29,9 +30,41 @@
             android:src="@drawable/ic_notifications_black_24dp"
             android:layout_width="48dp"
             android:layout_height="48dp"/>
+        <ImageView
+            android:elevation="10dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/badge_notifications"
+            android:id="@+id/notificationbadge"
+            android:layout_marginLeft="-30dp"
+            android:layout_alignTop="@+id/iv_notification_btn"
+            android:layout_toRightOf="@+id/iv_notification_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
     </RelativeLayout>
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/no_app"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/no_events"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Application"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
         android:id="@+id/rv_applied_intern"
         android:layout_below="@id/eventsTitle"
         android:layout_marginTop="12dp"

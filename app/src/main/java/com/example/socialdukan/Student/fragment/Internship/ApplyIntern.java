@@ -57,7 +57,7 @@ public class ApplyIntern extends AppCompatActivity {
 
         fillbtn = findViewById(R.id.fill_btn);
 
-        DatabaseReference dbques = FirebaseDatabase.getInstance().getReference().child("Internships");
+        DatabaseReference dbques = FirebaseDatabase.getInstance().getReference().child("Internships").child(companyid);
         dbques.keepSynced(true);
         dbques.orderByChild("key").equalTo(key).addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,7 +70,7 @@ public class ApplyIntern extends AppCompatActivity {
                         count = 2;
                         ques2.setText(valueintern.getQues1());
                     }
-                    else {
+                    if(valueintern.getQues1().equals( "Q3." )) {
                         ques2.setVisibility(View.GONE);
                         answer2.setVisibility(View.GONE);
                     }
@@ -79,7 +79,7 @@ public class ApplyIntern extends AppCompatActivity {
                         count = 3;
                         ques3.setText(valueintern.getQues2());
                     }
-                    else {
+                    if(valueintern.getQues2().equals( "Q3." )) {
                         ques3.setVisibility(View.GONE);
                         answer3.setVisibility(View.GONE);
                     }

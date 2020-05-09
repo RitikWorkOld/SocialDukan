@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Employe.Fragment.edit_prof_emp"></activity>
+        <activity android:name=".Employe.Fragment.Application_detail"></activity>
+        <activity
+            android:name=".Employe.Fragment.Application_Proceed"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name=".Employe.Fragment.edit_prof_emp" />
         <activity android:name=".Employe.Fragment.about_emp" />
         <activity android:name=".Employe.Login_Register_Employe.Dashboard_emp" />
         <activity android:name=".Employe.Login_Register_Employe.Employe_detail" />

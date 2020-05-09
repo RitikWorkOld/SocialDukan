@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".Student.fragment.other_services.Card2_detail">
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/apply_btn"
@@ -137,7 +138,7 @@
             android:layout_height="wrap_content"
 
             android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,10 +152,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:layout_marginLeft="8dp"
                 android:id="@+id/location1"
                 android:fontFamily="@font/montserrat"
                 android:textColor="#808080"
                 android:text="Location"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#000"
+                android:text="Description:"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+android:id="@+id/d"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#808080"
+                android:text="Note:The content created for the primary social media platform must be shared on the secondary platforms as well"
                 android:textStyle="normal"/>
 
 
@@ -263,6 +292,7 @@ android:id="@+id/primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:id="@+id/campaign"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/montserrat"
                 android:textColor="#000"
@@ -308,6 +338,7 @@ android:id="@+id/primary"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/montserrat"
                     android:text="  Classic"
+                    android:layout_marginLeft="8dp"
                     android:textColor="#808080"
                     android:textSize="16sp"
                     android:textStyle="normal" />
@@ -335,6 +366,7 @@ android:id="@+id/primary"
                     android:fontFamily="@font/montserrat"
                     android:textColor="#808080"
 android:id="@+id/insta_handle"
+                    android:layout_marginLeft="8dp"
                     android:text="  @Something"
                     android:textStyle="normal"/>
 
@@ -361,6 +393,7 @@ android:id="@+id/insta_handle"
                     android:fontFamily="@font/montserrat"
                     android:textColor="#808080"
 android:id="@+id/link"
+                    android:layout_marginLeft="8dp"
                     android:text="  link"
                     android:textStyle="normal"/>
 

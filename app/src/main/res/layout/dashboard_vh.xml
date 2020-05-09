@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="6dp"
+    android:layout_margin="12dp"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="6dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_card"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="5dp"
+            android:elevation="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/icd_cmpimg_layout"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/icd_cmpimg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:text="Market Expansion for Oyo"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/icd_cmpname"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/icd_cmpimg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:maxLines="1"
+            android:textColor="#808080"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/icd_cmpsubname"
+            android:layout_marginRight="15dp"
+            android:text="Oyo"
+            android:textSize="22sp"
+            android:layout_below="@+id/icd_cmpname"
+            android:layout_toRightOf="@+id/icd_cmpimg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/greyline"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/icd_cmpsubname"
+            android:layout_toRightOf="@+id/icd_cmpimg_layout"
+            android:background="#808080"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_below="@+id/greyline"
+            android:layout_toRightOf="@+id/icd_cmpimg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:maxLines="1"
+                    android:textSize="10dp"
+                    android:id="@+id/icd_location"
+                    android:layout_marginRight="5dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="Delhi"
+                    android:drawableLeft="@drawable/ic_location_interncard_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:maxLines="1"
+                    android:textSize="12dp"
+                    android:id="@+id/icd_amount"
+                    android:layout_marginRight="5dp"
+
+                    android:gravity="start|center"
+                    android:text="1000"
+                    android:drawableLeft="@drawable/ic_attach_money_interncard_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:maxLines="1"
+                    android:textSize="10dp"
+                    android:id="@+id/icd_duration"
+                    android:layout_marginRight="5dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="2 months"
+                    android:drawableLeft="@drawable/ic_date_range_interncard_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

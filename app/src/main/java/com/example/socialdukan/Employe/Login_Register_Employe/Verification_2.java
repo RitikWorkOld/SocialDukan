@@ -237,6 +237,7 @@ public class Verification_2 extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     Intent intent = new Intent(Verification_2.this, Login_Employe.class);
+
                                     startActivity( intent );
 
                                 }
@@ -246,7 +247,7 @@ public class Verification_2 extends AppCompatActivity {
 
                     //final String refrelid = endvr.concat(number);
                     String uid = FirebaseAuth.getInstance().getUid();
-                    Employe employe=new Employe(null,null,null,null,null,null,null,null,fname,email,number,uid,pwd,null,"https://"+website,"no","no",null,"no");
+                    Employe employe=new Employe(null,null,null,null,null,null,null,null,null,null,fname,email,number,uid,pwd,null,"https://"+website,"no","no",null,"no");
 
                     FirebaseDatabase.getInstance().getReference("Employe")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

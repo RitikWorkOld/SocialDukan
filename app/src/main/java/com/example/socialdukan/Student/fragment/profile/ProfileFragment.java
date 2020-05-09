@@ -27,6 +27,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
 import com.example.socialdukan.Student.Notifications.Notifications;
+import com.example.socialdukan.Student.Notifications.Notifications_Dots;
 import com.example.socialdukan.Student.fragment.profile.aboutus.about_us;
 import com.example.socialdukan.Student.fragment.profile.models.Personaldet_md;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -83,6 +84,7 @@ private TextView user_ph;
     private ImageView imageuser;
     private boolean perdet_1 = true;
     private boolean ed_deta = true;
+    ImageView notification_badge;
     private boolean work_exp = true;
     private boolean abili = true;
 
@@ -109,6 +111,29 @@ private TextView user_ph;
         dip_btn=view.findViewById( R.id.dip_btn );
         clg_btn=view.findViewById( R.id.college_btn );
         pb_userimg = view.findViewById(R.id.pb_userimg);
+        notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+
+        notification_badge.setVisibility(View.GONE);
+        DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                .child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        databaseReferencenot.keepSynced(true);
+        databaseReferencenot.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
+                if (notifications_dots != null)
+                {
+                    if (notifications_dots.getDotstatus().equals("yes")){
+                        notification_badge.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 about.setOnClickListener( new View.OnClickListener() {
     @Override

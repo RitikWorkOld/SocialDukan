@@ -19,7 +19,7 @@ android:layout_margin="4dp"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/icd_cmpimg"
             android:layout_width="60dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
           android:layout_centerHorizontal="true"
             android:layout_height="60dp"/>
         <TextView

@@ -42,7 +42,7 @@ public class Card2_Form extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull card_vh holder, int position, @NonNull final card_model model) {
                 holder.infl_name.setText(model.getCollab_name());
-                holder.category.setText(model.getCategroy());
+                holder.category.setText(model.getCategory());
                 Picasso.get().load(model.getIntimguri()).into(holder.cmpimg);
                 holder.location.setText(model.getLocation());
                 holder.date.setText(model.getDate());

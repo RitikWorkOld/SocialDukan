@@ -27,7 +27,7 @@ public class Desc1Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    TextView textView1,textView2;
+    TextView textView1,textView2,perks_view;
     String key;
 
     @Override
@@ -37,6 +37,7 @@ public class Desc1Fragment extends Fragment {
         final View view = inflater.inflate( R.layout.fragment_desc1, container, false );
 
         textView1 = view.findViewById(R.id.textview1_wyg);
+        perks_view=view.findViewById( R.id.perks_view );
         textView2 = view.findViewById(R.id.textview2_wyg);
         key = getArguments().getString("key");
 
@@ -47,7 +48,11 @@ public class Desc1Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     internall_md value = dataSnapshot1.getValue(internall_md.class);
+                    if(!value.wca1.equals("")){
+                        perks_view.setVisibility( View.VISIBLE );
+                        textView1.setVisibility(View.VISIBLE);
 
+                    }
                     textView1.setText(value.wcg1);
                     textView2.setText(value.wcg2);
                 }

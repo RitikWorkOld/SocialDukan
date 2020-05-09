@@ -1,8 +1,8 @@
 package com.example.socialdukan.Employe.Fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,30 +17,27 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.socialdukan.Employe.Login_Register_Employe.Model.Employe;
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.view.View.GONE;
 
@@ -50,18 +47,22 @@ private CheckBox one,two,three,four;
 private RadioButton radio_fixed,radio_perfor_based,radio_unpaid,radio_negot;
     private String comp_id;
     private String wcg1;
+    private String img;
     private String duration;
     private String month;
+    private String description;
+
     private Spinner spinner_permonth,spinner_choose_scale;
     private String permonth,scale;
 
-    private Button add_detail,add_type,add_start_date,add_respons,add_stip,add_perks,add_skill;
+    private Button add_detail,add_type,add_start_date,add_respons,add_stip,add_perks,add_skill,add_questions;
 
 
     private LinearLayout march,perform_based_show1,negot_layout,unpaid_noshow;
-    EditText other_selected,city_edit_text,no_of_opening,skills,que1,que2,resp_edit_text,main_stipend_et,inc_based_et,neg_to_et;
-    TextView perform_based1,title_city,FromET,ToET,another_que,another_que2;
-    private NestedScrollView nestedScrollView;
+    private EditText other_selected,city_edit_text,no_of_opening,skills,que1,que2,resp_edit_text,main_stipend_et,inc_based_et,neg_to_et;
+    private TextView perform_based1,title_city,FromET,ToET,another_que,another_que2,leave;
+
+
     private RadioButton intern_type_option1,intern_type_option2;
     private RadioButton immed,later;
     private LinearLayout layout1,layout2;
@@ -76,11 +77,13 @@ private RadioButton radiobtn1,radiobtn2,radiobtn3,radiobtn4,radiobtn5,
         final View view = inflater.inflate( R.layout.fragment_one_a,container,false);
 
         march = (LinearLayout)view.findViewById(R.id.march);
-skills=view.findViewById( R.id.skills );
-        coming_soon = (View)view.findViewById(R.id.coming_soon);
+        add_questions=view.findViewById( R.id.add_questions );
+        skills=view.findViewById( R.id.skills );
+
         radioGroup_detail=view.findViewById( R.id.group_detail );
         radioGroup_type=view.findViewById( R.id.options_interntype );
         radioGroup_duration=view.findViewById( R.id.intern_duration );
+
         FromET=view.findViewById( R.id.from_editText );
         spinner_permonth=view.findViewById( R.id.spinner_permonth );
          spinner_choose_scale=view.findViewById( R.id.choose_scale );
@@ -89,7 +92,7 @@ skills=view.findViewById( R.id.skills );
         resp_edit_text=view.findViewById( R.id.resp_edit_text );
         main_stipend_et=view.findViewById( R.id.main_stipend_edit_text );
         inc_based_et=view.findViewById( R.id.inc_based_et );
-neg_to_et=view.findViewById( R.id.neg_to_et );
+        neg_to_et=view.findViewById( R.id.neg_to_et );
         add_detail=view.findViewById( R.id.add_detail );
         add_type=view.findViewById( R.id.add_type );
         add_perks=view.findViewById( R.id.add_perks );
@@ -98,6 +101,9 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
         add_stip=view.findViewById( R.id.add_stip );
         add_skill=view.findViewById( R.id.add_skill );
 
+        leave=view.findViewById( R.id.leave );
+        leave.setVisibility( GONE );
+
         add_detail.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +111,7 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
                 RadioButton radioButton = view.findViewById( option );
                 if(radioButton.getText().equals( "Other" )){
                     if(!other_selected.getText().toString().isEmpty()){
-                        DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child("Internships").child( comp_id);
+                        DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child("Internships").child( comp_id).child( comp_id );
                         databaseReferencec_detail1.keepSynced(true);
                         databaseReferencec_detail1.child("intname").setValue(other_selected.getText().toString());
                         add_detail.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
@@ -122,7 +128,7 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
 
                 }
                 else{
-                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child("Internships").child( comp_id);
+                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child("Internships").child( comp_id).child( comp_id );
                     databaseReferencec_detail1.keepSynced(true);
                     databaseReferencec_detail1.child("intname").setValue(radioButton.getText().toString());
                     add_detail.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
@@ -134,16 +140,19 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
         add_type.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int option_type = radioGroup_type.getCheckedRadioButtonId();
                 RadioButton radioButton_type = view.findViewById( option_type );
                 if(radioButton_type.getText().toString().equals( "Work from home" )){
 
 
                         if (!no_of_opening.getText().toString().isEmpty()) {
-                            DatabaseReference databaseReferencec_type = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                            DatabaseReference databaseReferencec_type = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                             databaseReferencec_type.keepSynced( true );
                             databaseReferencec_type.child( "type" ).setValue( radioButton_type.getText().toString() );
+                            databaseReferencec_type.child( "location" ).setValue( "Work from home" );
                             databaseReferencec_type.child( "ctext1" ).setValue( "yes" );
+                            databaseReferencec_type.child("part_time_status").removeValue();
                             databaseReferencec_type.child( "no_opening" ).setValue( no_of_opening.getText().toString() );
                             add_type.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                             add_type.setCompoundDrawablePadding( 5 );
@@ -162,14 +171,17 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
                 if (radioButton_type.getText().toString().equals( "Regular (In-Office/On-field)" )){
                     if(!city_edit_text.getText().toString().isEmpty()){
                         if (!no_of_opening.getText().toString().isEmpty()) {
-                        DatabaseReference databaseReferencec_detail = FirebaseDatabase.getInstance().getReference().child("Internships").child( comp_id);
-                        databaseReferencec_detail.keepSynced(true);
-                        databaseReferencec_detail.child("location").setValue(city_edit_text.getText().toString());
-                            add_type.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
-                            add_type.setCompoundDrawablePadding( 5 );
-                            add_type.setText("Added");
 
-                        }
+                                DatabaseReference databaseReferencec_detail = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
+                                databaseReferencec_detail.keepSynced( true );
+                                databaseReferencec_detail.child( "location" ).setValue( city_edit_text.getText().toString() );
+                            databaseReferencec_detail.child( "ctext1" ).setValue( "no");
+
+                                add_type.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
+                                add_type.setCompoundDrawablePadding( 5 );
+                                add_type.setText("Added");
+                            }
+
                         else{
                             no_of_opening.setError( "Required" );
                             Toast.makeText( getActivity(), "Number of opening Required", Toast.LENGTH_SHORT ).show();
@@ -194,7 +206,7 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
                 if(radioButton_dur.getText().toString().equals("Later")){
                     if(!FromET.getText().toString().isEmpty()) {
                         if(!ToET.getText().toString().isEmpty()){
-                        DatabaseReference databaseReference_duration = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                        DatabaseReference databaseReference_duration = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                         databaseReference_duration.keepSynced( true );
                         databaseReference_duration.child( "duration" ).setValue( duration + " " + month );
                         databaseReference_duration.child( "from" ).setValue( FromET.getText().toString() );
@@ -216,9 +228,11 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
                 }
                 if(radioButton_dur.getText().toString().equals("Immediately (within next 30 days)"))
                 {
-                    DatabaseReference databaseReference_duration = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    DatabaseReference databaseReference_duration = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference_duration.keepSynced( true );
                     databaseReference_duration.child("duration").setValue( duration+" "+month );
+                    databaseReference_duration.child( "from" ).removeValue();
+                    databaseReference_duration.child( "to" ).removeValue();
                     add_start_date.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_start_date.setCompoundDrawablePadding( 5 );
                     add_start_date.setText("Added");
@@ -232,7 +246,7 @@ neg_to_et=view.findViewById( R.id.neg_to_et );
             @Override
             public void onClick(View v) {
                 if(!skills.getText().toString().isEmpty()){
-                    DatabaseReference databaseReference_skills = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    DatabaseReference databaseReference_skills = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference_skills.keepSynced( true );
                     databaseReference_skills.child("wca1").setValue( skills.getText().toString());
                     add_skill.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
@@ -251,7 +265,7 @@ add_respons.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         if(!resp_edit_text.getText().toString().isEmpty()){
-            DatabaseReference databaseReference_resp = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+            DatabaseReference databaseReference_resp = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
             databaseReference_resp.keepSynced( true );
             databaseReference_resp.child("desc2").setValue( resp_edit_text.getText().toString());
             add_respons.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
@@ -270,9 +284,11 @@ add_stip.setOnClickListener( new View.OnClickListener() {
         RadioButton radioButton = view.findViewById( option );
         if(radioButton.getText().equals( "Fixed" )){
             if(!main_stipend_et.getText().toString().isEmpty()) {
-                DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                 databaseReferencec_detail1.keepSynced( true );
                 databaseReferencec_detail1.child( "amount" ).setValue( main_stipend_et.getText().toString() );
+                databaseReferencec_detail1.child( "stipend_per" ).setValue(permonth );
+                databaseReferencec_detail1.child( "stipend_scale_per" ).removeValue();
                 add_stip.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                 add_stip.setCompoundDrawablePadding( 5 );
                 add_stip.setText("Added");
@@ -284,10 +300,12 @@ add_stip.setOnClickListener( new View.OnClickListener() {
         if(radioButton.getText().equals( "Performance based" )){
             if(!main_stipend_et.getText().toString().isEmpty()) {
                 if(!inc_based_et.getText().toString().isEmpty()) {
-                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReferencec_detail1.keepSynced( true );
                     databaseReferencec_detail1.child( "amount" ).setValue( main_stipend_et.getText().toString() );
                     databaseReferencec_detail1.child( "incentiveBased" ).setValue( inc_based_et.getText().toString() );
+                    databaseReferencec_detail1.child( "stipend_per" ).setValue(permonth );
+                    databaseReferencec_detail1.child( "stipend_scale_per" ).setValue(scale );
                     add_stip.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_stip.setCompoundDrawablePadding( 5 );
                     add_stip.setText("Added");
@@ -307,10 +325,14 @@ add_stip.setOnClickListener( new View.OnClickListener() {
         if(radioButton.getText().equals( "Negotiable" )){
             if(!main_stipend_et.getText().toString().isEmpty()) {
                 if(!neg_to_et.getText().toString().isEmpty()){
-                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    DatabaseReference databaseReferencec_detail1 = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReferencec_detail1.keepSynced( true );
-                    databaseReferencec_detail1.child( "amount" ).setValue( main_stipend_et.getText().toString() );
+                    databaseReferencec_detail1.child( "amount" ).setValue( main_stipend_et.getText().toString()+" - " + neg_to_et.getText().toString()  );
                     databaseReferencec_detail1.child( "negotiatedTo" ).setValue( neg_to_et.getText().toString() );
+                    databaseReferencec_detail1.child( "stipend_per" ).setValue(permonth );
+                    databaseReferencec_detail1.child( "stipend_scale_per" ).removeValue();
+                    databaseReferencec_detail1.child( "incentiveBased" ).removeValue();
+
                     add_stip.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_stip.setCompoundDrawablePadding( 5 );
                     add_stip.setText("Added");
@@ -327,9 +349,13 @@ add_stip.setOnClickListener( new View.OnClickListener() {
 
         }
         if(radioButton.getText().toString().equals( "Unpaid" )){
-            DatabaseReference databaseReferencec_ = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+            DatabaseReference databaseReferencec_ = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
             databaseReferencec_.keepSynced( true );
             databaseReferencec_.child( "amount" ).setValue( "Unpaid");
+            databaseReferencec_.child( "stipend_scale_per" ).removeValue();
+            databaseReferencec_.child( "incentiveBased" ).removeValue();
+            databaseReferencec_.child( "stipend_per" ).removeValue();
+            databaseReferencec_  .child( "negotiatedTo" ).removeValue();
             add_stip.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
             add_stip.setCompoundDrawablePadding( 5 );
             add_stip.setText("Added");
@@ -340,11 +366,12 @@ add_stip.setOnClickListener( new View.OnClickListener() {
         add_perks.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(one.isChecked())
                 {
-                    wcg1 = wcg1 + " Certificate, ";
+                    wcg1 = wcg1 + "● Certificate"+"\n";
 
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference.keepSynced( true );
                     databaseReference.child("wcg1").setValue( wcg1+"." );
                     add_perks.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
@@ -352,28 +379,28 @@ add_stip.setOnClickListener( new View.OnClickListener() {
                     add_perks.setText("Added");
                 }
                 if(two.isChecked()) {
-                    wcg1 = wcg1 + " Letter of recommendation, ";
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    wcg1 = wcg1 + "● Letter of recommendation"+"\n";
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference.keepSynced( true );
-                    databaseReference.child("wcg1").setValue( wcg1+"." );
+                    databaseReference.child("wcg1").setValue( wcg1 );
                     add_perks.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_perks.setCompoundDrawablePadding( 5 );
                     add_perks.setText("Added");
                 }
                 if(three.isChecked()) {
-                    wcg1 = wcg1 + " Flexible Work hours, ";
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    wcg1 = wcg1 + "● Flexible Work hours"+"\n";
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference.keepSynced( true );
-                    databaseReference.child( "wcg1" ).setValue( wcg1 + "." );
+                    databaseReference.child( "wcg1" ).setValue( wcg1 );
                     add_perks.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_perks.setCompoundDrawablePadding( 5 );
                     add_perks.setText("Added");
                 }
                 if(four.isChecked()) {
-                    wcg1 = wcg1 + " 5 days a week, ";
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id );
+                    wcg1 = wcg1 + "● 5 days a week"+"\n";
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
                     databaseReference.keepSynced( true );
-                    databaseReference.child("wcg1").setValue( wcg1+"." );
+                    databaseReference.child("wcg1").setValue( wcg1 );
                     add_perks.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     add_perks.setCompoundDrawablePadding( 5 );
                     add_perks.setText("Added");
@@ -428,6 +455,7 @@ one=view.findViewById( R.id.checkbox_certificate );
 
                     que1.setVisibility( View.VISIBLE );
                 another_que.setVisibility( GONE );
+                leave.setVisibility( View.VISIBLE );
                 another_que2.setVisibility( View.VISIBLE );
             }
         } );
@@ -436,6 +464,19 @@ one=view.findViewById( R.id.checkbox_certificate );
             public void onClick(View v) {
                 que2.setVisibility( View.VISIBLE );
                 another_que2.setVisibility( GONE );
+            }
+        } );
+        add_questions.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
+                databaseReference.keepSynced( true );
+                databaseReference.child("ques1").setValue( "Q2. "+que1.getText().toString());
+                databaseReference.child("ques2").setValue( "Q3. "+que2.getText().toString());
+                add_questions.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
+                add_questions.setCompoundDrawablePadding( 5 );
+                add_questions.setText("Added");
+
             }
         } );
 
@@ -530,8 +571,8 @@ one=view.findViewById( R.id.checkbox_certificate );
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Employe employe = dataSnapshot.getValue(Employe.class);
-
-
+img=employe.getProfileimg();
+                    description=employe.getDescrip();
                 comp_id= employe.getCmpid()   ;
                 wcg1=employe.getWcg1();
                 if(wcg1==null){
@@ -549,13 +590,40 @@ one=view.findViewById( R.id.checkbox_certificate );
 
 
 
+
         sbmit_btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
 
+                AlertDialog.Builder builder = new AlertDialog.Builder( Objects.requireNonNull( getActivity() ) );
+                builder.setTitle(R.string.app_name);
+                builder.setIcon(R.drawable.social_dukan );
+                builder.setMessage("Do you want to submit your Application?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
+                                //saving session
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Internships" ).child( comp_id ).child( comp_id );
+                                databaseReference.keepSynced( true );
+                                databaseReference.child("desc1").setValue(description );
+                                databaseReference.child("intimguri").setValue(img );
+
+                                Intent intent = new Intent(getActivity(), Application_Proceed.class);
+
+                                startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
 
                 // Concatenation of the checked options in if
 
@@ -676,6 +744,7 @@ one=view.findViewById( R.id.checkbox_certificate );
             case R.id.option_type1:
                 title_city.setVisibility( View.VISIBLE );
                 city_edit_text.setVisibility( View.VISIBLE );
+
                 add_type.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0 );
 
                 add_type.setText("ADD");
@@ -683,6 +752,7 @@ one=view.findViewById( R.id.checkbox_certificate );
             case R.id.option_type2:
                 title_city.setVisibility( GONE );
                 city_edit_text.setVisibility( GONE );
+
                 add_type.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0 );
 
                 add_type.setText("ADD");

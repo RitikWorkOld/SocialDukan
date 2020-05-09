@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.example.socialdukan.Student.fragment.Event.EventFragment;
@@ -38,11 +39,12 @@ public class Dashboard extends AppCompatActivity {
         final AppliedIntern appliedIntern = new AppliedIntern();
         final EventFragment eventFragment=new EventFragment();
 
-        navigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
+       navigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
                 if(id==R.id.intern){
+
                     setFragment( intern );
                     return true;
                 }
@@ -70,9 +72,10 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
-    private void setFragment(Fragment fragment){
+   private void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace( R.id.frame,fragment );
+        fragmentTransaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN );
         fragmentTransaction.commit();
 
     }

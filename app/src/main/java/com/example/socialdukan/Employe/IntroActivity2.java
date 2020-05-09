@@ -78,7 +78,7 @@ public class IntroActivity2 extends AppCompatActivity {
         mList.add(new ScreenItem("Signup - Create account - Post internship!!","",R.drawable.postinternships));
         mList.add(new ScreenItem("Easily get top influencers across country for your brand promotion.","",R.drawable.hire_influencers));
         mList.add(new ScreenItem("Well dedicated team to manage your internship and campaigns","",R.drawable.dedicatedteam));
-
+        mList.add(new ScreenItem("Hire top interns across the globe!\nEasy access!! Easy handling!!","",R.drawable.top_interns));
 
 
         // setup viewpager

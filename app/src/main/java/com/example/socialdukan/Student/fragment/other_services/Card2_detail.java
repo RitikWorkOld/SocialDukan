@@ -10,12 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.socialdukan.Employe.Login_Register_Employe.Model.Employe;
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.fragment.Internship.ApplyIntern;
 import com.example.socialdukan.Student.fragment.Internship.InternDetail;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.example.socialdukan.Student.fragment.other_services.model.card_model;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,13 +29,16 @@ import com.squareup.picasso.Picasso;
 public class Card2_detail extends AppCompatActivity {
     DatabaseReference databaseReferencedetail;
     ImageView cmpimage;
-    TextView infl_name,brandname,brandname2,pymnt_type,location,genre,insta_handle,link,primary;
+    TextView infl_name,brandname,brandname2,pymnt_type,location,genre,insta_handle,link,primary,campaign,descri ;
     String key;
     Button apply_btn;
+    private DatabaseReference  databaseReference;
+    private String description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_card2_detail );
+        descri=findViewById( R.id.d );
         infl_name=findViewById( R.id.infl_name );   //influe name
     brandname=findViewById( R.id.brand_name );  //infl name same
 
@@ -45,11 +51,12 @@ public class Card2_detail extends AppCompatActivity {
     cmpimage=findViewById( R.id.icd_cmpimg );
     primary=findViewById( R.id.primary );
     apply_btn=findViewById( R.id.apply_btn );
+    campaign=findViewById( R.id.campaign );
 
         key = getIntent().getStringExtra("key");
 
 
-        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("InfluencerCard");
+        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("InfluencerCard").child(key);
         databaseReferencedetail.keepSynced(true);
         databaseReferencedetail.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -64,10 +71,12 @@ public class Card2_detail extends AppCompatActivity {
                     location.setText(card_model.getLocation());
                     brandname2.setText(card_model.getCollab_name());
                     pymnt_type.setText(card_model.getPaymenttype());
-                    genre.setText(card_model.getCategroy());
+                    genre.setText(card_model.getCategory());
                     insta_handle.setText("@"+card_model.getInstahandle());
                     link.setText(card_model.getLink());
+                    campaign.setText( card_model.getCampaign() );
                     primary.setText(card_model.getPrimary());
+              descri.setText( card_model.getDescrip() );
 
                     apply_btn.setOnClickListener( new View.OnClickListener() {
                         @Override
@@ -88,4 +97,6 @@ public class Card2_detail extends AppCompatActivity {
             }
         });
     }
+
+
 }

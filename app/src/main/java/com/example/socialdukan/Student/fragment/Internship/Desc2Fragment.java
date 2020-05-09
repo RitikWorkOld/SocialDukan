@@ -39,6 +39,7 @@ public class Desc2Fragment extends Fragment {
 
         textView1 = view.findViewById(R.id.textview1_wca);
         textView2 = view.findViewById(R.id.textview2_wca);
+
         key = getArguments().getString("key");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Internships");
@@ -49,7 +50,7 @@ public class Desc2Fragment extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     internall_md value = dataSnapshot1.getValue(internall_md.class);
 
-                    textView1.setText(value.wca1);
+                    textView1.setText(value.wca1+"\n");
                     textView2.setText(value.wca2);
                 }
             }

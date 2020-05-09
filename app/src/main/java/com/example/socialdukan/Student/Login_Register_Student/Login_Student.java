@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.example.socialdukan.LottieDialogFragment;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
@@ -108,7 +109,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         go.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showProgressDialog();
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
@@ -255,5 +256,9 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     protected void onStart() {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+    private void showProgressDialog(){
+        new LottieDialogFragment().newInstance().
+                show(getSupportFragmentManager(),"");
     }
 }

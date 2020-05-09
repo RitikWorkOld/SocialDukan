@@ -5,13 +5,23 @@
     android:layout_width="match_parent"
     android:id="@+id/relativelayout"
     android:layout_height="match_parent">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:id="@+id/post_for"
+        android:background="@color/purple"
+        android:text="Post For :"
+        android:textColor="@color/white"/>
     <LinearLayout
         android:id="@+id/select_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
+        android:layout_below="@id/post_for"
         android:background="@color/purple"
         android:gravity="top">
 
@@ -278,6 +288,9 @@ android:background="@drawable/shedule_btn2"
                             android:layout_width="wrap_content"
                             android:layout_gravity="center"
                             android:text="ADD"
+android:background="@color/purple"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white"
                             android:id="@+id/add_detail"
                             android:layout_height="wrap_content"
                             />
@@ -355,17 +368,9 @@ android:background="@drawable/shedule_btn2"
                                 android:textColor="@color/white"
                                 android:padding="8dp"
                                 android:layout_margin="8dp"
-                                android:textColorHint="#fff"
-                                android:background="@drawable/edittext"/>
-                            <Switch
-                                android:layout_width="wrap_content"
-                                android:layout_marginLeft="16dp"
-                                android:textColor="@color/purple"
+                                android:textColorHint="#808080"
+                                android:background="@drawable/gray_stroke_back"/>
 
-                                android:buttonTint="@color/purple"
-                                android:textSize="18sp"
-                                android:text="Is part-time allowed?       "
-                                android:layout_height="wrap_content"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -391,6 +396,9 @@ android:background="@drawable/shedule_btn2"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:id="@+id/add_type"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:text="ADD"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -512,6 +520,9 @@ android:background="@drawable/shedule_btn2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:id="@+id/add_start_date"
                                 android:text="ADD"/>
 
@@ -551,6 +562,9 @@ android:background="@drawable/shedule_btn2"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:id="@+id/add_respons"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:text="ADD"/>
                             <TextView
 
@@ -729,6 +743,9 @@ android:id="@+id/neg_to_et"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:id="@+id/add_stip"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:text="ADD"/>
 
 
@@ -797,23 +814,15 @@ android:id="@+id/neg_to_et"
 
 
 
-                            <Switch
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="16dp"
-
-                                android:textSize="16sp"
-                                android:textColor="@color/purple"
-                                android:buttonTint="@color/purple"
-                                android:layout_gravity="start"
-                                android:text="   Does this internship come\nwith a pre-placement offer (PPO)?      "/>
-
 
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/add_perks"
                                 android:layout_gravity="center"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:text="ADD"/>
                             <TextView
 
@@ -869,6 +878,9 @@ android:id="@+id/skills"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:id="@+id/add_skill"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
                                 android:text="ADD"/>
                             <TextView
 
@@ -929,6 +941,19 @@ android:id="@+id/skills"
 
                                 android:layout_marginLeft="16dp"
                                 android:layout_width="wrap_content"
+                                android:text=" (leave as black if no need)"
+                                android:textSize="16sp"
+                                android:id="@+id/leave"
+                                android:layout_marginTop="8dp"
+                                android:textStyle="italic"
+                                android:textColor="#6273D1"
+                                android:layout_height="wrap_content"
+
+                                />
+                            <TextView
+
+                                android:layout_marginLeft="16dp"
+                                android:layout_width="wrap_content"
                                 android:text=" + Add another question"
                                 android:textSize="18sp"
                                 android:id="@+id/anoth_que"
@@ -965,6 +990,15 @@ android:visibility="gone"
                                 android:layout_height="wrap_content"
 
                                 />
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:id="@+id/add_questions"
+                                android:background="@color/purple"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
+                                android:text="ADD"/>
 
 
                         </LinearLayout>
@@ -981,6 +1015,8 @@ android:visibility="gone"
                                 android:layout_height="wrap_content"
                                 android:background="@color/purple"
 android:text="Post Internship"
+                                android:layout_marginTop="8dp"
+                                android:padding="4dp"
                                 android:id="@+id/sbmit_btn"
                                 android:textColor="@color/white"/>
 

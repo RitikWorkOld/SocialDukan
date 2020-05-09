@@ -101,7 +101,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
         fragmentTransaction.commit();
 
-        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Internships");
+        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Internships").child(key);
         databaseReferencedetail.keepSynced(true);
         databaseReferencedetail.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -4,32 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".Student.Login_Register_Student.Dashboard">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-android:background="?android:attr/windowBackground"
-        android:layout_height="wrap_content"
-app:menu="@menu/bottom_navigation_menu"
-
-        app:itemTextColor="#808080"
-        app:itemIconTint="#932691"
-
-        android:layout_alignParentBottom="true">
-
-
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav"
+android:layout_above="@id/bottom_nav"
         android:id="@+id/frame"
 
         >
-
-
     </FrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:background="@drawable/bottom_navbg"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navigation_menu"
+            android:elevation="2dp"
+android:layout_alignParentBottom="true"
+            app:labelVisibilityMode="unlabeled"
+            android:layout_gravity="bottom"
+            app:itemIconTint="@color/bottom_nav_color"
+            android:layout_margin="12dp"
+
+            >
+
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+
 </RelativeLayout>

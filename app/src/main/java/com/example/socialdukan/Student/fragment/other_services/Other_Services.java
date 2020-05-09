@@ -3,6 +3,7 @@ package com.example.socialdukan.Student.fragment.other_services;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -13,11 +14,18 @@ import android.widget.ImageView;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Notifications.Notifications;
+import com.example.socialdukan.Student.Notifications.Notifications_Dots;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Other_Services extends Fragment {
 CardView card1,card2,card3,card4,card5;
-    ImageView notification_btn;
+    ImageView notification_btn,notification_badge;
 
 
     public Other_Services() {
@@ -36,6 +44,29 @@ CardView card1,card2,card3,card4,card5;
         card3=view.findViewById( R.id.card3 );
         card4=view.findViewById( R.id.card4 );
         card5=view.findViewById( R.id.card5 );
+        notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+
+        notification_badge.setVisibility(View.GONE);
+        DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                .child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+        databaseReferencenot.keepSynced(true);
+        databaseReferencenot.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
+                if (notifications_dots != null)
+                {
+                    if (notifications_dots.getDotstatus().equals("yes")){
+                        notification_badge.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_btn.setOnClickListener(new View.OnClickListener() {
             @Override

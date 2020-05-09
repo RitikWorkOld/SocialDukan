@@ -169,14 +169,15 @@ public class Login_Employe extends AppCompatActivity implements TextWatcher,
                                                     Log.d("HEL","msg= yha agya");
                                                    // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Employe.this, Dashboard_emp.class);
+
                                                   startActivity(intent);
                                                     finish();
                                                 }
                                                /* else if(pstatus.equals( "yes" ) && ostatus.equals("no")){
                                                     Toast.makeText(Login_Employe.this, "Your account is in verification, Please Wait", Toast.LENGTH_SHORT).show();
 
-
                                                 }*/
+
                                                 else {
                                                     Log.d("HEL","msg= yha agya");
                                                    // Toast.makeText(Login_Employe.this, "Successfully logged in", Toast.LENGTH_SHORT).show();

@@ -14,14 +14,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.example.socialdukan.Student.Notifications.Notifications;
+import com.example.socialdukan.Student.Notifications.Notifications_Dots;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.example.socialdukan.Student.fragment.Internship.model.internall_vh;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class InternFragment extends Fragment {
@@ -31,6 +36,8 @@ public class InternFragment extends Fragment {
     FirebaseRecyclerOptions<internall_md> optionsinternall;
     FirebaseRecyclerAdapter<internall_md, internall_vh> adapterinternall;
     ImageView notification_btn;
+
+    ImageView notification_badge;
 
     public InternFragment() {
         // Required empty public constructor
@@ -42,9 +49,33 @@ public class InternFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_intern,container,false);
         // Inflate the layout for this fragment
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+        notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+
+        notification_badge.setVisibility(View.GONE);
+        DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        databaseReferencenot.keepSynced(true);
+        databaseReferencenot.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
+                if (notifications_dots != null)
+                {
+                    if (notifications_dots.getDotstatus().equals("yes")){
+                        notification_badge.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         rv_internall = view.findViewById(R.id.rv_internall);
         rv_internall.setHasFixedSize(true);
         rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext()));
+
 
         drinternall = FirebaseDatabase.getInstance().getReference().child("Internships");
         drinternall.keepSynced(true);

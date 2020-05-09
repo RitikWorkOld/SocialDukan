@@ -3,7 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:id="@+id/relativelayout"
     android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:id="@+id/post_for"
+        android:background="@color/purple"
+        android:text="Post For :"
+        android:textColor="@color/white"/>
 
     <LinearLayout
         android:id="@+id/select_menu"
@@ -11,19 +22,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:background="#fff"
+        android:layout_below="@id/post_for"
+        android:background="@color/purple"
         android:gravity="top">
 
         <LinearLayout
-            android:id="@+id/february"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="60dp"
             android:elevation="10dp"
             android:layout_marginRight="10dp"
+android:id="@+id/feb"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:background="@drawable/shedule_btn2">
+            android:background="@drawable/shedule_btn1">
 
             <TextView
                 android:elevation="10dp"
@@ -32,7 +44,7 @@
                 android:layout_height="match_parent"
                 android:text="Internship"
                 android:fontFamily="@font/montserrat"
-                android:textColor="#932691"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:gravity="center"/>
@@ -40,6 +52,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/march"
             android:layout_marginTop="10dp"
             android:layout_marginRight="60dp"
             android:elevation="10dp"
@@ -47,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:background="@drawable/shedule_btn1">
+            android:background="@drawable/shedule_btn2">
 
             <TextView
                 android:textStyle="bold"
@@ -56,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:text="Influencer"
                 android:fontFamily="@font/montserrat"
-                android:textColor="@color/white"
+                android:textColor="@color/purple"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:gravity="center"/>
@@ -70,83 +83,362 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@drawable/shedule_btn1">
+        android:background="@drawable/shedule_btn2">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:visibility="visible"
-                android:id="@+id/top_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:elevation="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/logo"
-                    />
-
-                <TextView
-                    android:elevation="10dp"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:layout_alignParentTop="true"
-                    android:id="@+id/title_speakers"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Influencer"
-                    android:textSize="32sp" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:orientation="vertical"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/top_bar"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/shedule_btn1">
-
-                <LinearLayout
-                    android:id="@+id/coming_soon"
-                    android:gravity="center"
+                android:background="@drawable/shedule_btn2">
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:src="@drawable/ic_access_time_black_24dp"
-                        android:layout_height="100dp"/>
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:textSize="30sp"
-                        android:textAlignment="center"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
                         android:layout_width="match_parent"
+                        android:background="@drawable/gray_stroke_back"
+                        android:layout_height="600dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Brand Name:"
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+
+                            android:layout_marginStart="16dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint=""
+                            android:id="@+id/brandname_textview"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description:"
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+
+                            android:layout_marginStart="16dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint=""
+                            android:id="@+id/desc_textview"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="12dp"
+    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nothing here"/>
+                        android:text="Genre"
+                        android:textColor="@color/purple"
+                        android:textSize="18sp"
 
-                </LinearLayout>
+                        android:layout_marginLeft="4dp"/>
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/spinner_genre"
 
-               <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
-                    android:id="@+id/rv_schedule_mar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+    android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:visibility="gone"
+                            android:hint=""
+                            android:id="@+id/Others"
+                            android:gravity="start"
+                            android:textColor="@color/white"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Location:"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+                            android:layout_marginStart="16dp"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="e.g Delhi"
+                            android:id="@+id/city_edittext"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Last date to apply:"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+
+                            android:layout_marginStart="16dp"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="dd/mm/yyyy"
+                            android:id="@+id/last_date"
+                            android:gravity="start"
+                            android:inputType="number"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="12dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Payment Type"
+                                android:textColor="@color/purple"
+                                android:textSize="18sp"
+
+                                android:layout_marginLeft="8dp"/>
+                            <Spinner
+                                android:layout_width="fill_parent"
+                                android:id="@+id/spinner_payment_type"
+
+                                android:layout_marginStart="24dp"
+                                android:layout_height="wrap_content"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_margin="12dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Platform to be used"
+                                android:textColor="@color/purple"
+                                android:textSize="18sp"
+
+                                android:layout_marginLeft="10dp"/>
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/checkBox_insta"
+                                android:buttonTint="@color/purple"
+                                android:text="Instagram"
+                                android:textColor="@color/purple"/>
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/checkBox_fb"
+                                android:buttonTint="@color/purple"
+                                android:text="Facebook"
+                                android:textColor="@color/purple"/>
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:buttonTint="@color/purple"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/checkBox_youtube"
+                                android:text="Youtube"
+                                android:textColor="@color/purple"/>
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/checkBox_tiktok"
+                                android:buttonTint="@color/purple"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="10dp"
+                                android:text="Tiktok"
+                                android:textColor="@color/purple"/>
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/checkbox_other"
+                                android:buttonTint="@color/purple"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="10dp"
+                                android:text="Others"
+                                android:textColor="@color/purple"/>
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:hint=""
+                                android:id="@+id/other_platform"
+                                android:visibility="gone"
+                                android:gravity="start"
+                                android:textColor="#000"
+                                android:padding="8dp"
+                                android:layout_margin="16dp"
+                                android:textColorHint="#808080"
+                                android:background="@drawable/gray_stroke_back"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="12dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Types of campaign"
+                                android:textColor="@color/purple"
+                                android:textSize="18sp"
+android:layout_marginLeft="2dp"
+                                />
+                            <Spinner
+                                android:layout_width="fill_parent"
+                                android:id="@+id/spinner_campaign"
+
+                                android:layout_marginStart="24dp"
+                                android:layout_height="wrap_content"
+                                />
+                        </LinearLayout>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:visibility="gone"
+                            android:hint=""
+                            android:id="@+id/Others1"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Product Name:"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+                            android:layout_marginStart="16dp"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint=""
+                            android:id="@+id/prod_name"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Instagram handle:"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+                            android:layout_marginStart="16dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="dont use @ prefix before username"
+                            android:textColor="@color/purple"
+                            android:textStyle="italic"
+                            android:textSize="16sp"
+                            android:layout_marginStart="16dp"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="e.g socialdukan"
+                            android:id="@+id/insta_handle_et"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Website link"
+                            android:textColor="@color/purple"
+                            android:textSize="18sp"
+                            android:layout_marginStart="16dp"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint=""
+                            android:id="@+id/website_link_et"
+                            android:gravity="start"
+                            android:textColor="#000"
+                            android:padding="8dp"
+                            android:layout_margin="16dp"
+                            android:textColorHint="#808080"
+                            android:background="@drawable/gray_stroke_back"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/purple"
+                                android:text="Submit"
+                           android:layout_margin="8dp"
+                                android:padding="4dp"
+                                android:id="@+id/sbmit_btn"
+                                android:textColor="@color/white"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+                </androidx.core.widget.NestedScrollView>
+
+
+
+
 
             </RelativeLayout>
 

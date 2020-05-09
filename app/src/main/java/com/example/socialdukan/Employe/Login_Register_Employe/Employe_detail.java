@@ -99,6 +99,7 @@ Button okay;
                                         databaseReferencepd.child( "logostatus" ).setValue( "yes" );
 
 
+
                                         pb_userimg.setVisibility(View.GONE);
 
 
@@ -229,75 +230,7 @@ cross_name.setOnClickListener( new View.OnClickListener() {
 } );
 
 
-       /* update_email.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                final String email = cmp_email_edit.getText().toString().trim();
-                final String password = pass.getText().toString().trim();
-                // Get auth credentials from the user for re-authentication
-                AuthCredential credential = EmailAuthProvider
-                        .getCredential(email, password);
 
-                // Prompt the user to re-provide their sign-in credentials
-                user.reauthenticate(credential)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                                //Now change your email address \\
-                                //----------------Code for Changing Email Address----------\\
-                                user.updateEmail(email)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                        FirebaseUser user1=FirebaseAuth.getInstance().getCurrentUser();
-                                                user1.sendEmailVerification(  ).addOnCompleteListener( new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        Toast.makeText(Employe_detail.this, "Email Verification link has been sent to your Email, Please verify.", Toast.LENGTH_LONG).show();
-                                                    }
-                                                } );
-
-
-                                                    String uid = FirebaseAuth.getInstance().getUid();
-                                                    Employe employe=new Employe(null,email,null,uid,password,null,null,null,null,null);
-
-                                                    FirebaseDatabase.getInstance().getReference("Employe")
-                                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                            .setValue(employe).addOnCompleteListener(new OnCompleteListener<Void>()
-                                                    {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            // progressBar.setVisibility(View.GONE);
-                                                            //progressBar.setVisibility(View.GONE);
-                                                            if (task.isSuccessful()) {
-
-                                                            }
-                                                            else {
-                                                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-
-                                                                }
-
-                                                            }
-                                                        }
-                                                    });
-
-
-                                                }
-
-
-
-                                            }
-                                        });
-
-                            }
-                        });
-
-            }
-        } );*/
 
         adddesc.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -306,6 +239,9 @@ cross_name.setOnClickListener( new View.OnClickListener() {
                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Employe").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     databaseReferencecmpexp.keepSynced(true);
                     databaseReferencecmpexp.child("descrip").setValue(desc.getText().toString());
+
+
+
                     adddesc.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                     adddesc.setCompoundDrawablePadding( 5 );
                     adddesc.setText("Added");

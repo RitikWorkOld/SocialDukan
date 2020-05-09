@@ -23,15 +23,20 @@ public class Employe {
     public String negotiatedTo;
 
 
+public String stipend_per;
+public String stipend_scale_per;
+
 
     public Employe(){
 
     }
 
-    public Employe(String negotiatedTo,String incentBased,String respo,String no_opening,String from,String to,String wcg1,String cmpid,String name, String email, String contactn, String eid, String password, String profileimg,String website, String profilestatus,String officialstatus,String descrip,String logostatus) {
+    public Employe(String stipend_scale_per,String stipend_per,String negotiatedTo,String incentBased,String respo,String no_opening,String from,String to,String wcg1,String cmpid,String name, String email, String contactn, String eid, String password, String profileimg,String website, String profilestatus,String officialstatus,String descrip,String logostatus) {
         this.name = name;
         this.email = email;
 this.officialstatus=officialstatus;
+this.stipend_scale_per=stipend_scale_per;
+this.stipend_per=stipend_per;
         this.contactn = contactn;
 this.website=website;
 this.negotiatedTo=negotiatedTo;
@@ -42,6 +47,7 @@ this.cmpid=cmpid;
 this.incentBased=incentBased;
 this.logostatus=logostatus;
 this.respo=respo;
+
         this.password = password;
         this.from=from;
         this.to=to;
@@ -49,7 +55,26 @@ this.respo=respo;
         this.profilestatus = profilestatus;
         this.wcg1=wcg1;
 
+
     }
+
+    public String getStipend_per() {
+        return stipend_per;
+    }
+
+    public void setStipend_per(String stipend_per) {
+        this.stipend_per = stipend_per;
+    }
+
+    public String getStipend_scale_per() {
+        return stipend_scale_per;
+    }
+
+    public void setStipend_scale_per(String stipend_scale_per) {
+        this.stipend_scale_per = stipend_scale_per;
+    }
+
+
 
     public String getNegotiatedTo() {
         return negotiatedTo;

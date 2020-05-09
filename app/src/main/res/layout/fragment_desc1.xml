@@ -9,20 +9,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <TextView
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/perks_view"
+            android:textColor="#000"
+            android:visibility="gone"
+            android:layout_marginLeft="8dp"
+            android:textSize="20sp"
+            android:text="Perks" />
 
         <TextView
             android:id="@+id/textview1_wyg"
             android:layout_width="match_parent"
             android:layout_margin="8dp"
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
 
         <TextView
             android:id="@+id/textview2_wyg"
             android:layout_width="match_parent"
-            android:layout_margin="8dp"
+            android:fontFamily="@font/montserrat"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
             android:text="@string/hello_blank_fragment" />
 
     </LinearLayout>
