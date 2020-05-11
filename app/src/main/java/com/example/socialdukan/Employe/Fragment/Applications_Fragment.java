@@ -42,7 +42,6 @@ public class Applications_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -56,9 +55,45 @@ public class Applications_Fragment extends Fragment {
         final View view=  inflater.inflate( R.layout.fragment_applications_, container, false );
         key = getArguments().getString("key");
 
-        rv_internall = view.findViewById(R.id.recycle);
+        rv_internall = view.findViewById(R.id.recycle_application);
         rv_internall.setHasFixedSize(true);
         rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext(),LinearLayoutManager.VERTICAL,false));
+
+
+        drinternall = FirebaseDatabase.getInstance().getReference().child("Users").child( userid );
+        drinternall.keepSynced(true);
+
+        optionsinternall = new FirebaseRecyclerOptions.Builder<User>().setQuery(drinternall,User.class).build();
+
+        adapterinternall = new FirebaseRecyclerAdapter<User, Application_vh>(optionsinternall) {
+            @Override
+            protected void onBindViewHolder(@NonNull Application_vh holder, int position, @NonNull final User model) {
+                holder.cmpname.setText(model.getName());
+                holder.cmpsubname.setText(model.getContactn());
+                Picasso.get().load(model.getProfileimg()).into(holder.cmpimg);
+
+
+                holder.layout_card.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), Application_detail.class);
+
+                        startActivity( intent );
+                    }
+                } );
+            }
+
+            @NonNull
+            @Override
+            public Application_vh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return new Application_vh(LayoutInflater.from(view.getContext()).inflate(R.layout.application_vh, parent,false));
+            }
+        };
+        rv_internall.setAdapter(adapterinternall);
+        adapterinternall.startListening();
+
+
+        //----------------------------------------------------------------------------------------------
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child( key );
@@ -71,40 +106,8 @@ public class Applications_Fragment extends Fragment {
                    userid=user.getUserid();
                    status=user.getStatus();
 
-                    drinternall = FirebaseDatabase.getInstance().getReference().child("Users").child( userid );
-                    drinternall.keepSynced(true);
 
-                    optionsinternall = new FirebaseRecyclerOptions.Builder<User>().setQuery(drinternall,User.class).build();
-
-                    adapterinternall = new FirebaseRecyclerAdapter<User, Application_vh>(optionsinternall) {
-                        @Override
-                        protected void onBindViewHolder(@NonNull Application_vh holder, int position, @NonNull final User model) {
-                            holder.cmpname.setText(model.getName());
-                            holder.cmpsubname.setText(model.getContactn());
-                            Picasso.get().load(model.getProfileimg()).into(holder.cmpimg);
-
-
-                            holder.layout_card.setOnClickListener( new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(getActivity(), Application_detail.class);
-
-                                    startActivity( intent );
-                                }
-                            } );
-
-                        }
-
-                        @NonNull
-                        @Override
-                        public Application_vh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                            return new Application_vh(LayoutInflater.from(view.getContext()).inflate(R.layout.application_vh, parent,false));
-                        }
-                    };
-                    rv_internall.setAdapter(adapterinternall);
-                    adapterinternall.startListening();
                 }
-
 
             }
 
@@ -114,15 +117,7 @@ public class Applications_Fragment extends Fragment {
             }
         });
 
-
-
-
-
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
 }

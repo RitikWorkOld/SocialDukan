@@ -35,6 +35,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -76,10 +77,11 @@ public class Fragment_two extends Fragment {
                     cmpid=user.getCmpid();
                     eid=user.getEid();
 
-                    drinternall = FirebaseDatabase.getInstance().getReference().child("Internships").child( cmpid );
+                    drinternall = FirebaseDatabase.getInstance().getReference().child("Internships");
                     drinternall.keepSynced(true);
+                    Query query = drinternall.orderByChild("companyid").equalTo(cmpid);
 
-                    optionsinternall = new FirebaseRecyclerOptions.Builder<internall_md>().setQuery(drinternall,internall_md.class).build();
+                    optionsinternall = new FirebaseRecyclerOptions.Builder<internall_md>().setQuery(query,internall_md.class).build();
 
                     adapterinternall = new FirebaseRecyclerAdapter<internall_md, internall_vh>(optionsinternall) {
                         @Override
@@ -99,7 +101,6 @@ public class Fragment_two extends Fragment {
                                     startActivity( intent );
                                 }
                             } );
-
                         }
 
                         @NonNull
