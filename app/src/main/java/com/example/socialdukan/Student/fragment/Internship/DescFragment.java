@@ -41,8 +41,8 @@ public class DescFragment extends Fragment {
         textView2 = view.findViewById(R.id.textview2_desc);
         assert getArguments() != null;
         key = getArguments().getString("key");
-        key = getArguments().getString("id");
-        Log.d("HAS","AGYA AB "+key+" "+id);
+
+        
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Internships");
         databaseReference.keepSynced(true);
