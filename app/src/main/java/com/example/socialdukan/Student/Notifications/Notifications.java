@@ -84,41 +84,6 @@ public class Notifications extends AppCompatActivity {
 
                 final String notiid = noti_helper.getNotiid();
 
-                /*if (type != null){
-                    notification_viewHolder.notification_trigger.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            switch (type)
-                            {
-                                case "TECH" :
-                                    Intent intent = new Intent(Notifications.this, EventsMain.class);
-                                    intent.putExtra("type",type);
-                                    startActivity(intent);
-                                    break;
-                                case "FUN" :
-                                    Intent intent1 = new Intent(Notifications.this, EventsMain.class);
-                                    intent1.putExtra("type",type);
-                                    startActivity(intent1);
-                                    break;
-                                case "CORP" :
-                                    Intent intent2 = new Intent(Notifications.this, EventsMain.class);
-                                    intent2.putExtra("type",type);
-                                    startActivity(intent2);
-                                    break;
-                                case "FEB" :
-                                    Intent intent3 = new Intent(Notifications.this, Shedule.class);
-                                    intent3.putExtra("type",type);
-                                    startActivity(intent3);
-                                    break;
-                                case "MAR" :
-                                    Intent intent4 = new Intent(Notifications.this, Shedule.class);
-                                    intent4.putExtra("type",type);
-                                    startActivity(intent4);
-                                    break;
-                            }
-                        }
-                    });
-                }*/
 
 
             }

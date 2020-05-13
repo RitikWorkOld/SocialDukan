@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DescFragment extends Fragment {
 
     TextView textView1,textView2;
-    String key;
+    String key,id;
 
     public DescFragment() {
         // Required empty public constructor
@@ -38,7 +39,10 @@ public class DescFragment extends Fragment {
 
         textView1 = view.findViewById(R.id.textview1_desc);
         textView2 = view.findViewById(R.id.textview2_desc);
+        assert getArguments() != null;
         key = getArguments().getString("key");
+        key = getArguments().getString("id");
+        Log.d("HAS","AGYA AB "+key+" "+id);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Internships");
         databaseReference.keepSynced(true);

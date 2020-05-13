@@ -21,13 +21,14 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.Notifications.Notifications_Dots;
-import com.example.socialdukan.Student.fragment.Internship.InternDetail;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -40,7 +41,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class EventFragment extends Fragment {
-
+String key;
     RecyclerView rv_internall;
     DatabaseReference drinternall;
     FirebaseRecyclerOptions<events_md> optionsinternall;
@@ -59,6 +60,7 @@ public class EventFragment extends Fragment {
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+
 
         notification_badge.setVisibility(View.GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
@@ -96,6 +98,22 @@ public class EventFragment extends Fragment {
                 holder.Title.setText(model.getEventname());
                 holder.Descp.setText(model.getEvent_desc());
                 Picasso.get().load(model.getIntimguri()).into(holder.Mimguri);
+
+                String Title = model.getEventname();
+                String Descp = model.getEvent_desc();
+                String Desc1 = model.getDesc1();
+                String Desc2 = model.getDesc2();
+                String Mimguri = model.getIntimguri();
+key=model.getKey();
+                final Bundle bundle = new Bundle();
+                bundle.putString("Title",Title);
+                bundle.putString("Descp",Descp);
+                bundle.putString("Desc1",Desc1);
+                bundle.putString("Desc2",Desc2);
+                bundle.putString("Mimguri",Mimguri);
+                bundle.putString("key",key);
+
+
                 notification_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -109,11 +127,18 @@ public class EventFragment extends Fragment {
                 holder.read_more_ebtn.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), Events_detail.class);
-                        intent.putExtra("key",model.getKey());
-                        startActivity( intent );
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                        Event_detail events_details = new Event_detail();
+                        events_details.setArguments(bundle);
+
+                        fragmentTransaction.replace(R.id.frame,events_details);
+                        fragmentTransaction.addToBackStack("tech");
+                        fragmentTransaction.commit();
                     }
                 } );
+
 
             }
 

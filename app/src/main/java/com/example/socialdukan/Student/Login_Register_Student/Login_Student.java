@@ -19,6 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -45,6 +46,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     FirebaseAuth mFirebaseAuth;
     String pstatus;
     ImageView chatbot;
+    private ProgressBar progressBars;
 
 
     private CheckBox rem_userpass;
@@ -62,6 +64,8 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login__student );
         chatbot=findViewById( R.id.chatbot );
+        progressBars = findViewById(R.id.progressBar2);
+        progressBars.setVisibility(View.GONE);
         chatbot.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,19 +113,23 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         go.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showProgressDialog();
+              //  showProgressDialog();
+                progressBars.setVisibility(View.VISIBLE);
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
                     // progressBars.setVisibility(View.GONE);
+                    progressBars.setVisibility(View.GONE);
                     emailId.setError( "Please enter email id" );
                     emailId.requestFocus();
                 } else if (pwd.isEmpty()) {
                     //progressBars.setVisibility(View.GONE);
+                    progressBars.setVisibility(View.GONE);
                     password.setError( "Please enter your password" );
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     //   progressBars.setVisibility(View.GONE);
+                    progressBars.setVisibility(View.GONE);
                     Toast.makeText( Login_Student.this, "Fields Are Empty!", Toast.LENGTH_SHORT ).show();
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     //check this runs
@@ -132,12 +140,14 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 //progressBars.setVisibility(View.GONE);
+                                progressBars.setVisibility(View.GONE);
 
                                 Toast.makeText( Login_Student.this, "Login Error, Please Login Again", Toast.LENGTH_SHORT ).show();
                                 // Intent intent = new Intent(LoginActivity.this,Login_Failed.class);
                                 //  startActivity(intent);
                             } else {
                                 // progressBars.setVisibility(View.GONE);
+
                                 Log.d( ">> NOTWORKING 1", "onComplete: + COME IN LOOP " );
                                 ////yha bhi aaya run statement...ok
                                 //Toast.makeText( Login_Student.this, "Welcome", Toast.LENGTH_SHORT ).show();
@@ -165,14 +175,16 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                             {
                                                 if (pstatus.equals("yes")){
                                                     Log.d("HEL","msg= yha agya");
-                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    progressBars.setVisibility(View.GONE);
+                                                   // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Student.this, Dashboard.class);
                                                     startActivity(intent);
                                                     finish();
                                                 }
                                                 else {
                                                     Log.d("HEL","msg= yha agya");
-                                                    Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                    progressBars.setVisibility(View.GONE);
+                                                   // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Student.this, Studentdetail.class);
                                                     startActivity(intent);
                                                     finish();
@@ -183,6 +195,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                 // email is not verified, so just prompt the message to the user and restart this activity.
                                                 // NOTE: don't forget to log out the user.
                                                 FirebaseAuth.getInstance().signOut();
+                                                progressBars.setVisibility(View.GONE);
                                                 Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
                                                 //restart this activity
                                             }

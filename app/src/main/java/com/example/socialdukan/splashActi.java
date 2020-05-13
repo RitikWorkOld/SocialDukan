@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,7 +34,7 @@ Timer timer;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(splashActi.this, LoginActvity.class);
+                Intent intent = new Intent(splashActi.this, Login_Student.class);
                 startActivity(intent);
                 finish();
             }

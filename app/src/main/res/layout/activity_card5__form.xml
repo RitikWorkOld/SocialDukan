@@ -52,7 +52,6 @@ android:layout_gravity="center"
                 <ImageView
                     android:src="@drawable/shirt"
 
-                    android:id="@+id/image_sponsor"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:padding="16dp"/>
@@ -102,7 +101,6 @@ android:layout_toRightOf="@+id/card_main"
 
             <ImageView
                 android:src="@drawable/hoodies"
-                android:id="@+id/image_sponsor2"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
 
@@ -147,13 +145,11 @@ android:layout_toRightOf="@+id/card_main"
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/lay3"
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:src="@drawable/notpad"
-                android:id="@+id/image_sponsor3"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
                 android:padding="16dp"/>
@@ -198,13 +194,11 @@ android:layout_toRightOf="@+id/card_main"
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/lay4"
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:src="@drawable/pen"
-                android:id="@+id/image_sponsor4"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
 
@@ -251,14 +245,12 @@ android:layout_toRightOf="@+id/card_main"
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/lay5"
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:src="@drawable/badges"
                 android:scaleType="centerCrop"
-                android:id="@+id/image_sponsor5"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
                 android:padding="16dp"/>
@@ -303,13 +295,11 @@ android:layout_toEndOf="@id/card_main4"
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/lay6"
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:src="@drawable/ic_tshirt"
-                android:id="@+id/image_sponsor6"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
                 android:padding="16dp"/>
@@ -351,7 +341,6 @@ android:layout_toEndOf="@id/card_main4"
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name_edit_text"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

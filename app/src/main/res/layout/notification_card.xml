@@ -39,7 +39,6 @@
             <ImageView
                 android:visibility="gone"
                 tool:visibility="visible"
-                android:id="@+id/cancel_noti_btn"
                 android:layout_alignParentEnd="true"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"

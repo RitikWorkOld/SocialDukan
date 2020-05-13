@@ -221,9 +221,10 @@ other_text.setText( "NULL" );
                                             if (!pieces1.toString().isEmpty()) {
                                                 if (!other_text.getText().toString().isEmpty()) {
                                                     if (!type.getText().toString().isEmpty()) {
+                                                        String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard5")
+                                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
 
-
-                                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard5" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard5" ).child(notiid );
                                                         databaseReference.keepSynced( true );
 
                                                         databaseReference.child( "city" ).setValue( city.toString() );
@@ -235,11 +236,12 @@ other_text.setText( "NULL" );
                                                         databaseReference.child( "type" ).setValue( type.getText().toString() );
                                                         databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
 
+                                                        databaseReference.child( "id" ).setValue(notiid);
 
-                                                        Toast.makeText( Card5_Form.this, "Done", Toast.LENGTH_SHORT ).show();
 
                                                         Intent intent = new Intent( Card5_Form.this, Thanks_Activity.class );
                                                         startActivity( intent );
+                                                        finish();
 
                                                     }
                                                     else {

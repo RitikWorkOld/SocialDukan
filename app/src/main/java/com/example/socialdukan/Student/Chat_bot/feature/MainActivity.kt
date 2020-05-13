@@ -39,12 +39,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.stackFromEnd = true
         rvChat.layoutManager = layoutManager
-        ref = FirebaseDatabase.getInstance().reference.child("chat").child(FirebaseAuth.getInstance().currentUser!!.uid)
+        ref = FirebaseDatabase.getInstance().reference.child("chat")
         ref.keepSynced(true)
 
         btnSend.setOnClickListener {
             val message = edChat.text.toString()
-            if (message != "") {
+            if(message.isNullOrBlank()){
+                Toast.makeText(applicationContext, "Enter message first", Toast.LENGTH_SHORT).show()
+            }
+           else if (message != "") {
                 mPresenter.sendMessage(message)
             } else {
                 aiService.startListening()
@@ -94,7 +97,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         aiService = AIService.getService(this, aiConfiguration)
         aiDataAIService = AIDataService(aiConfiguration)
-        ref = FirebaseDatabase.getInstance().reference.child("chat").child(FirebaseAuth.getInstance().currentUser!!.uid)
+        ref = FirebaseDatabase.getInstance().reference.child("chat")
 
         mPresenter = MainPresenter(aiDataAIService, ref)
 

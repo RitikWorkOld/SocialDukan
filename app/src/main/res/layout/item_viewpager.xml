@@ -56,7 +56,6 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:background="@color/white"
-android:id="@+id/layout0"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <ImageView

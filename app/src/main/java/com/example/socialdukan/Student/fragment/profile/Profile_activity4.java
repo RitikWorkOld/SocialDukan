@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.socialdukan.R;
@@ -18,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile_activity4 extends AppCompatActivity {
     TextView collegename,college_dep,college_starty,college_endy,coursename,percentage;
     DatabaseReference reff;
+    ImageView cross_btn;
+    Button okay_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -28,6 +33,22 @@ public class Profile_activity4 extends AppCompatActivity {
         college_endy=findViewById( R.id.clg_end );
         coursename=findViewById( R.id.course_name );
         percentage=findViewById( R.id.percentage_clg );
+        cross_btn=findViewById( R.id.cross_btn_rf );
+        okay_btn=findViewById( R.id.okay );
+        coursename=findViewById( R.id.course_name );
+
+        cross_btn.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        } );
+        okay_btn.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        } );
     }
     @Override
     protected void onStart() {

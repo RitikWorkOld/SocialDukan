@@ -40,7 +40,6 @@
 
 
                 <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lottie_anim_rs"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:visibility="visible"
@@ -70,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="OKAY"
+                    android:id="@+id/okay"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/montserrat"

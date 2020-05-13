@@ -107,7 +107,8 @@ public class InternFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), InternDetail.class);
-                        intent.putExtra("key",model.getKey());
+                        intent.putExtra("id",model.getId());
+                        intent.putExtra( "key",model.getCompanyid() );
                         startActivity( intent );
                     }
                 } );

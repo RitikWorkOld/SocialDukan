@@ -86,7 +86,6 @@
                   android:weightSum="3">
 
                   <TextView
-                      android:id="@+id/other_1"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_weight="1"
@@ -105,7 +104,6 @@
               <ImageView
                   android:src="@drawable/spons"
                  android:scaleType="centerCrop"
-                  android:id="@+id/image_sponsor"
                   android:layout_width="114dp"
                   android:layout_height="114dp"
                   android:layout_alignParentRight="true"
@@ -129,13 +127,11 @@ android:id="@+id/card2"
         app:cardElevation="6dp">
         <LinearLayout
             android:weightSum="2"
-            android:id="@+id/mainframe_0123"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/layout_team_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#fff"
@@ -144,7 +140,6 @@ android:id="@+id/card2"
                 android:paddingVertical="12dp">
 
                 <LinearLayout
-                    android:id="@+id/layout12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -152,7 +147,6 @@ android:id="@+id/card2"
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/other_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -170,7 +164,6 @@ android:id="@+id/card2"
 
                 <ImageView
                     android:src="@drawable/influenc"
-                    android:id="@+id/image_sponsor1"
                     android:scaleType="centerCrop"
                     android:layout_width="110dp"
                     android:layout_height="130dp"
@@ -218,7 +211,6 @@ android:id="@+id/card3"
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/other_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -233,7 +225,6 @@ android:id="@+id/card3"
 
                 <ImageView
                     android:src="@drawable/website"
-                    android:id="@+id/image_sponsor3"
                     android:layout_width="118dp"
                     android:layout_height="118dp"
                     android:layout_alignParentEnd="true"
@@ -281,7 +272,6 @@ android:id="@+id/card4"
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/other_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -299,7 +289,6 @@ android:id="@+id/card4"
 
                 <ImageView
                     android:src="@drawable/concert"
-                    android:id="@+id/image_sponsor4"
                     android:layout_width="94dp"
                     android:layout_height="94dp"
                     android:layout_alignParentRight="true"
@@ -346,7 +335,6 @@ android:id="@+id/card4"
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/other_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -364,7 +352,6 @@ android:id="@+id/card4"
 
                 <ImageView
                     android:src="@drawable/merch"
-                    android:id="@+id/image_sponsor5"
                     android:layout_width="94dp"
                     android:layout_height="94dp"
                     android:layout_alignParentRight="true"

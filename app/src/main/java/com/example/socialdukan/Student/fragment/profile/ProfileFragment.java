@@ -439,7 +439,7 @@ about.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) { AlertDialog.Builder builder = new AlertDialog.Builder( Objects.requireNonNull( getActivity() ) );
                 builder.setTitle(R.string.app_name);
-                builder.setIcon(R.drawable.dukan_w);
+                builder.setIcon(R.drawable.social_dukan);
                 builder.setMessage("Do you want to Logout?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {

@@ -20,7 +20,6 @@
             android:layout_marginTop="5dp"
             android:textAlignment="center"
             android:layout_alignParentTop="true"
-            android:id="@+id/title_events"
             android:textStyle="bold"
             android:textColor="@color/purple"
             android:layout_width="match_parent"
