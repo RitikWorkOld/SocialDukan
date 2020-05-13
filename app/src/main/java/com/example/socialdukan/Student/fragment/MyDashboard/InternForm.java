@@ -50,7 +50,7 @@ public class InternForm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), InternDetail.class);
-                intent.putExtra("id",internid);
+                intent.putExtra("key",internid);
                 startActivity( intent );
             }
         } );

@@ -44,7 +44,7 @@ public class Desc2Fragment extends Fragment {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Internships");
         databaseReference.keepSynced(true);
-        databaseReference.orderByChild("key").equalTo(key).addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("id").equalTo(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){

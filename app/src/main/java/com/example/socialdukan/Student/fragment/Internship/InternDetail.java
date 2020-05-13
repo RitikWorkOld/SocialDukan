@@ -31,7 +31,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
     private TabLayout tabLayout;
     DatabaseReference databaseReferencedetail;
-    String id,key;
+    String key;
     ImageView cmpimage;
     TextView intername,cmpname,location,stipend,duration,worktime;
     Button apply_btn,applied_btn;
@@ -86,15 +86,12 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
         ctext2 = findViewById(R.id.title2);
         ctext3 = findViewById(R.id.title3);
 
-        id = getIntent().getStringExtra("id");
         key=getIntent().getStringExtra( "key" );
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-Log.d("HAS","AGYA IDHE"+key+" "+id);
         Bundle bundle = new Bundle();
         bundle.putString("key",key);
-        bundle.putString("id",id);
         DescFragment descFragment = new DescFragment();
         descFragment.setArguments(bundle);
         Desc1Fragment desc1Fragment = new Desc1Fragment();
@@ -106,7 +103,7 @@ Log.d("HAS","AGYA IDHE"+key+" "+id);
 
         databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Internships");
         databaseReferencedetail.keepSynced(true);
-        databaseReferencedetail.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferencedetail.orderByChild("id").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())

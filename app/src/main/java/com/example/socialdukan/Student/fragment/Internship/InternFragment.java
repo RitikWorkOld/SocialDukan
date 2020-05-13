@@ -92,7 +92,7 @@ public class InternFragment extends Fragment {
                 holder.location.setText(model.getLocation());
                 holder.amount.setText(model.getAmount());
                 holder.duration.setText(model.getDuration());
-final String internid=model.getId();
+
                 notification_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -108,9 +108,7 @@ final String internid=model.getId();
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), InternDetail.class);
-                        intent.putExtra("internid",internid);
-                        intent.putExtra( "key",model.getCompanyid() );
-                        Log.d("HAS","AGY "+internid);
+                        intent.putExtra( "key",model.getId() );
                         startActivity( intent );
                     }
                 } );
