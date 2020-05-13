@@ -72,9 +72,12 @@ public class AppliedIntern extends Fragment {
 
             }
         });
+
+
+
         rv_applied_intern.setHasFixedSize(true);
         rv_applied_intern.setLayoutManager(new LinearLayoutManager(container.getContext()));
-rv_applied_intern.showIfEmpty( no_app );
+        rv_applied_intern.showIfEmpty( no_app );
 
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         DatabaseReference db_applied_intern = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -87,6 +90,7 @@ rv_applied_intern.showIfEmpty( no_app );
             protected void onBindViewHolder(@NonNull final applied_intern_vh holder, int position, @NonNull final applied_intern_md model) {
 
                 holder.intern_status.setText(model.getStatus());
+
                 if(model.getStatus().equals("Applied")){
                     holder.intern_status.setBackground( getResources().getDrawable( R.drawable.applied ) );
 
@@ -110,24 +114,28 @@ rv_applied_intern.showIfEmpty( no_app );
 
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Internships");
                 db.keepSynced(true);
-                db.orderByChild("key").equalTo(model.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                db.orderByChild("id").equalTo(model.getInternid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                             internall_md value = dataSnapshot1.getValue(internall_md.class);
+
+                            holder.intern_name.setText(value.getIntname());
+                            holder.company_name.setText(value.getCmpname());
+                            Picasso.get().load(value.getIntimguri()).into(holder.intern_img);
+
                             notification_btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
 
 
                                     Intent intent = new Intent(getActivity(), Notifications.class);
+
                                     startActivity(intent);
 
                                 }
                             });
-                            holder.intern_name.setText(value.getIntname());
-                            holder.company_name.setText(value.getCmpname());
-                            Picasso.get().load(value.getIntimguri()).into(holder.intern_img);
+
 
                         }
                     }
@@ -142,7 +150,7 @@ rv_applied_intern.showIfEmpty( no_app );
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(view.getContext(), InternForm.class);
-                        intent.putExtra("key",model.getKey());
+                        intent.putExtra( "internid",model.getInternid() );
                         startActivity(intent);
                     }
                 });

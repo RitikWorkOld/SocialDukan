@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Detail_Submitted extends AppCompatActivity {
 TextInputEditText name,contact,emailid,profilelink;
 Button btn;
-    String key;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -26,7 +26,7 @@ Button btn;
         emailid=findViewById( R.id.emailid );
         profilelink=findViewById( R.id.profile_link );
         btn=findViewById( R.id.submit_btn );
-        key = getIntent().getStringExtra("key");
+        id = getIntent().getStringExtra("id");
 
         btn.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -36,14 +36,17 @@ Button btn;
                         if (!emailid.getText().toString().isEmpty()) {
                             if (!profilelink.getText().toString().isEmpty()) {
 
+                                String notiid = FirebaseDatabase.getInstance().getReference().child("InfluencerDetailSubmitted")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
 
-                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "InfluencerDetailSubmitted" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "InfluencerDetailSubmitted" ).child( id );
                                 databaseReference.keepSynced( true );
                                 databaseReference.child( "name" ).setValue( name.getText().toString() );
                                 databaseReference.child( "contact" ).setValue( contact.getText().toString() );
                                 databaseReference.child( "emailID" ).setValue( emailid.getText().toString() );
                                 databaseReference.child( "profilelink" ).setValue( "https://"+profilelink.getText().toString() );
-                                databaseReference.child("key").setValue( key );
+                                databaseReference.child("influencerid").setValue( id );
+                                databaseReference.child("id").setValue( notiid );
                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
 
 

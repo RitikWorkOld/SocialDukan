@@ -11,7 +11,6 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:id="@+id/main_layout"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:id="@+id/layout_profile"
@@ -23,7 +22,6 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/layout_this"
                     android:background="@drawable/try_4"
                     android:layout_height="match_parent">
                     <ImageView
@@ -182,7 +180,6 @@
                             android:id="@+id/pers_detail1"
                             android:layout_height="wrap_content">
                             <TextView
-                                android:id="@+id/tv_personaldet"
                                 android:layout_margin="12dp"
                                 android:layout_centerHorizontal="true"
                                 android:drawableLeft="@drawable/ic_personal"
@@ -247,7 +244,6 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:id="@+id/wa_no_view"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/curr_occ_view"
@@ -329,8 +325,7 @@
                     app:cardElevation="6dp">
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ed_layout_main">
+                        android:layout_height="wrap_content">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:id="@+id/ed_detail1"
@@ -526,7 +521,6 @@ android:id="@+id/work_det"
                             android:drawableLeft="@drawable/ic_abili"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-android:id="@+id/abil_det"
                             android:drawablePadding="10dp"
                             android:fontFamily="@font/montserrat"
                             android:textSize="18sp"
@@ -551,7 +545,6 @@ android:id="@+id/abil_det"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:id="@+id/layout0"
 
                         android:layout_marginBottom="30dp"
                         android:gravity="center_horizontal"

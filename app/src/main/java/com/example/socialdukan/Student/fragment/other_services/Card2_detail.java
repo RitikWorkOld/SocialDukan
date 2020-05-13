@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.socialdukan.Employe.Login_Register_Employe.Model.Employe;
+
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.fragment.Internship.ApplyIntern;
 import com.example.socialdukan.Student.fragment.Internship.InternDetail;
@@ -30,10 +30,37 @@ public class Card2_detail extends AppCompatActivity {
     DatabaseReference databaseReferencedetail;
     ImageView cmpimage;
     TextView infl_name,brandname,brandname2,pymnt_type,location,genre,insta_handle,link,primary,campaign,descri ;
-    String key;
-    Button apply_btn;
+    String id,userid;
+    Button apply_btn,applied_btn;
     private DatabaseReference  databaseReference;
     private String description;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("InfluencerDetailSubmitted");
+        dbref.keepSynced(true);
+        dbref.orderByChild("influencerid").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() != null){
+                    apply_btn.setVisibility(View.GONE);
+                    applied_btn.setVisibility(View.VISIBLE);
+                }
+                else {
+                    apply_btn.setVisibility(View.VISIBLE);
+                    applied_btn.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -42,7 +69,13 @@ public class Card2_detail extends AppCompatActivity {
         infl_name=findViewById( R.id.infl_name );   //influe name
     brandname=findViewById( R.id.brand_name );  //infl name same
 
+        id = getIntent().getStringExtra("id");
+        userid = getIntent().getStringExtra("userid");
+
         brandname2=findViewById( R.id.brand_name2);
+
+
+        applied_btn=findViewById( R.id.alr_applied );
     pymnt_type=findViewById( R.id.pymnt_type );
     location=findViewById( R.id.location1 );
     genre=findViewById( R.id.genre );           //category
@@ -53,12 +86,12 @@ public class Card2_detail extends AppCompatActivity {
     apply_btn=findViewById( R.id.apply_btn );
     campaign=findViewById( R.id.campaign );
 
-        key = getIntent().getStringExtra("key");
 
 
-        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("InfluencerCard").child(key);
+
+        databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("InfluencerCard");
         databaseReferencedetail.keepSynced(true);
-        databaseReferencedetail.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferencedetail.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
@@ -82,7 +115,7 @@ public class Card2_detail extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent( Card2_detail.this, Detail_Submitted.class);
-                            intent.putExtra("key",key);
+                            intent.putExtra("id",id);
                             startActivity(intent);
 
                         }
@@ -97,6 +130,7 @@ public class Card2_detail extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

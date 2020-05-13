@@ -2,7 +2,6 @@
 <resources>
     <color name="colorPrimary">#570C69</color>
     <color name="colorPrimaryDark">#34004B</color>
-    <color name="colorAccent">#03DAC5</color>
     <color name="white">#fff</color>
     <color name="purple">#34004B</color>
     <color name="lightpurple">#570C69</color>
@@ -12,7 +11,6 @@
     <!-- colors for button style -->
 
     <color name="gradient_start_color">#4c84ff</color>
-    <color name="gradient_end_color">#18a3fe</color>
 
 
     <!-- colors for tab and screent text -->

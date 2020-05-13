@@ -3,6 +3,7 @@ package com.example.socialdukan.Student.fragment.other_services;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.view.View;
@@ -58,9 +59,10 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
                                     if (!head_cont.getText().toString().isEmpty()) {
                                         if (!head_name.getText().toString().isEmpty()) {
                                             if (!head_email.getText().toString().isEmpty()) {
+                                                String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard4")
+                                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
 
-
-                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard4" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard4" ).child( notiid);
                                                 databaseReference.keepSynced( true );
                                                 databaseReference.child( "eventname" ).setValue( evnt_name.getText().toString() );
                                                 databaseReference.child( "eventdate" ).setValue( evnt_date.getText().toString() );
@@ -71,10 +73,11 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
                                                 databaseReference.child( "headcont" ).setValue( head_cont.getText().toString() );
                                                 databaseReference.child( "heademail" ).setValue( head_email.getText().toString() );
                                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                                                databaseReference.child( "id" ).setValue(notiid);
 
-
-
-                                                Toast.makeText( Card4_Form.this, "Done", Toast.LENGTH_SHORT ).show();
+                                                Intent intent = new Intent( Card4_Form.this, Thanks_Activity.class );
+                                                startActivity( intent );
+                                              //  Toast.makeText( Card4_Form.this, "Done", Toast.LENGTH_SHORT ).show();
                                                 finish();
 
                                             }

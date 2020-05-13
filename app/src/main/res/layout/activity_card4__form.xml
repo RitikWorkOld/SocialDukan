@@ -8,7 +8,7 @@
     android:background="@drawable/bg_check"
     tools:context=".Student.fragment.other_services.Card4_Form">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content">
@@ -198,5 +198,5 @@
             </RelativeLayout>
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

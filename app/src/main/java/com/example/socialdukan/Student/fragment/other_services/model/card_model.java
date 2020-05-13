@@ -13,18 +13,20 @@ public class card_model {
     public String primary;
     public String campaign;
     public String descrip;
+    public String id;
 
 
     public card_model() {
     }
 
 
-    public card_model(String campaign,String descrip,String collab_name, String key, String category, String location, String intimguri, String date, String paymenttype, String instahandle, String link,String primary) {
+    public card_model(String id,String campaign,String descrip,String collab_name, String key, String category, String location, String intimguri, String date, String paymenttype, String instahandle, String link,String primary) {
         this.collab_name=collab_name;
         this.intimguri = intimguri;
         this.key = key;
         this.descrip=descrip;
         this.date=date;
+        this.id=id;
         this.primary=primary;
         this.category = category;
         this.location = location;
@@ -33,6 +35,14 @@ public class card_model {
         this.link=link;
         this.campaign=campaign;
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDescrip() {

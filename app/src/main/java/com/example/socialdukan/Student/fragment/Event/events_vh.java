@@ -16,12 +16,14 @@ public class events_vh extends RecyclerView.ViewHolder {
     public TextView Descp;
     public ImageView Mimguri;
     public TextView read_more_ebtn;
+    public TextView read_less_btn;
     public events_vh(@NonNull View itemView) {
         super(itemView);
 
         Title = itemView.findViewById(R.id.event_title);
         Descp = itemView.findViewById(R.id.event_descp);
         Mimguri = itemView.findViewById(R.id.event_main_img);
+        read_less_btn=itemView.findViewById( R.id.read_less_events );
         read_more_ebtn = itemView.findViewById(R.id.read_more_events);
     }
 }

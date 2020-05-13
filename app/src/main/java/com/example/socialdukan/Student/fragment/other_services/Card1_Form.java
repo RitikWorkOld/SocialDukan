@@ -1,5 +1,6 @@
 package com.example.socialdukan.Student.fragment.other_services;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -7,25 +8,39 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.fragment.MyDashboard.applied_intern_md;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Card1_Form extends AppCompatActivity implements View.OnClickListener {
 TextInputLayout evnt_name,evnt_venue,city1,exp_football,head_name,head_cont,head_email;
-
+EditText number;
+public String cmpid;
 EditText evnt_date;
+private FirebaseAuth mFirebaseAuth;
 Button btn;
     private int mYear, mMonth, mDay;
     @Override
@@ -36,10 +51,13 @@ Button btn;
         evnt_date=findViewById( R.id.evnt_date );
         evnt_venue=findViewById( R.id.evnt_venue );
         city1=findViewById( R.id.city );
+        number=findViewById( R.id.number );
+        mFirebaseAuth=FirebaseAuth.getInstance();
         exp_football=findViewById( R.id.exp_football );
         head_cont=findViewById( R.id.head_cont );
         head_name=findViewById( R.id.head_name );
         head_email=findViewById( R.id.head_email );
+
         final Editable eventname = evnt_name.getEditText().getText();
 
         final Editable eventvenue = evnt_venue.getEditText().getText();
@@ -70,38 +88,47 @@ evnt_date.setOnClickListener( this );
                             if (!city.toString().isEmpty()) {
                                 if (!exprec_football.toString().isEmpty()) {
                                     if (!headCont.toString().isEmpty()) {
-                                        if (!headName.toString().isEmpty()) {
-                                            if (!headEmail.toString().isEmpty()) {
+                                        if((number.length() == 10)) {
+                                            if (!headName.toString().isEmpty()) {
+                                                if (!headEmail.toString().isEmpty()) {
+                                                    String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard1")
+                                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
+
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard1" ).child( notiid )
+                                                            ;
+                                                    databaseReference.keepSynced( true );
+                                                    databaseReference.child( "eventname" ).setValue( eventname.toString() );
+                                                    databaseReference.child( "eventdate" ).setValue( evnt_date.getText().toString() );
+                                                    databaseReference.child( "eventvenue" ).setValue( eventvenue.toString() );
+                                                    databaseReference.child( "city" ).setValue( city.toString() );
+                                                    databaseReference.child( "expfootball" ).setValue( exprec_football.toString() );
+                                                    databaseReference.child( "headname" ).setValue( headName.toString() );
+                                                    databaseReference.child( "headcont" ).setValue( headCont.toString() );
+                                                    databaseReference.child( "heademail" ).setValue( headEmail.toString() );
+                                                    databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                                                    databaseReference.child( "id" ).setValue(notiid);
 
 
-                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard1" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                                databaseReference.keepSynced( true );
-                                                databaseReference.child( "eventname" ).setValue( eventname.toString() );
-                                                databaseReference.child( "eventdate" ).setValue( evnt_date.getText().toString() );
-                                                databaseReference.child( "eventvenue" ).setValue( eventvenue.toString() );
-                                                databaseReference.child( "city" ).setValue( city.toString() );
-                                                databaseReference.child( "expfootball" ).setValue( exprec_football.toString() );
-                                                databaseReference.child( "headname" ).setValue( headName.toString() );
-                                                databaseReference.child( "headcont" ).setValue( headCont.toString() );
-                                                databaseReference.child( "heademail" ).setValue( headEmail.toString() );
-                                                databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                                                    //Toast.makeText( Card1_Form.this, "Done", Toast.LENGTH_SHORT ).show();
 
+                                                    Intent intent = new Intent( Card1_Form.this, Thanks_Activity.class );
+                                                    startActivity( intent );
 
-
-                                                Toast.makeText( Card1_Form.this, "Done", Toast.LENGTH_SHORT ).show();
-
-                                                Intent intent = new Intent( Card1_Form.this, Thanks_Activity.class);
-                                                startActivity(intent);
-
-                                            }
-                                            else {
-                                                Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText( Card1_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
+                                                }
+                                            } else {
+                                                Toast.makeText( Card1_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
                                             }
                                         }
+
                                         else {
-                                            Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
+                                            number.setError(getString(R.string.input_error_phone_invalid));
+                                            number.requestFocus();
+                                            }
+
+
+                                    }//
                                     else {
                                         Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
                                     }

@@ -6,28 +6,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/dukan_r"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Employe.Fragment.Application_detail"></activity>
-        <activity
-            android:name=".Employe.Fragment.Application_Proceed"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Employe.Fragment.edit_prof_emp" />
-        <activity android:name=".Employe.Fragment.about_emp" />
-        <activity android:name=".Employe.Login_Register_Employe.Dashboard_emp" />
-        <activity android:name=".Employe.Login_Register_Employe.Employe_detail" />
-        <activity android:name=".Employe.Login_Register_Employe.Login_Employe" />
+
         <activity android:name=".Student.Notifications.Notifications" />
         <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
         <activity android:name=".Student.fragment.profile.aboutus.about_us" />
         <activity
             android:name=".Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.fragment.Event.FAQ.Faq_manager" />
-        <activity android:name=".Student.fragment.Event.Events_detail" />
         <activity android:name=".Student.fragment.Event.events_vh" />
         <activity
             android:name=".Student.fragment.other_services.Detail_Submitted"
@@ -61,17 +51,13 @@
         <activity android:name=".Student.fragment.Internship.InternFragment" />
         <activity android:name=".Student.Chat_bot.feature.MainActivity" />
         <activity android:name=".Student.Login_Register_Student.Dashboard" />
-        <activity
-            android:name=".Employe.Login_Register_Employe.Verification_2"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Employe.Login_Register_Employe.Reg_Employe" />
+
         <activity
             android:name=".Student.Login_Register_Student.Verification"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.Login_Register_Student.Login_Student" />
         <activity android:name=".Student.Login_Register_Student.Reg_Student" />
-        <activity android:name=".Employe.IntroActivity2" />
-        <activity android:name=".LoginActvity" />
+
         <activity android:name=".Student.Login_Register_Student.IntroActivity" />
         <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />

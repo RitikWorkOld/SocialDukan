@@ -18,7 +18,6 @@
 
 
     <TextView
-        android:id="@+id/signup_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signin"
@@ -60,7 +59,6 @@
             >
 
             <androidx.core.widget.NestedScrollView
-                android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
@@ -75,7 +73,6 @@
 
 
                     <TextView
-                        android:id="@+id/email_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -97,7 +94,6 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/password_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -144,7 +140,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/middle_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -202,6 +197,13 @@
         </RelativeLayout>
 
     </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/cpb_4"
+        android:layout_height="wrap_content" />
 
 
 

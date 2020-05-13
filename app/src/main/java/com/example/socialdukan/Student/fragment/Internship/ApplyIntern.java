@@ -29,6 +29,7 @@ public class ApplyIntern extends AppCompatActivity {
     TextInputLayout answer1,answer2,answer3;
     Button fillbtn;
     String key;
+    String internid;
     String companyid;
     int count = 1;
 
@@ -66,12 +67,13 @@ public class ApplyIntern extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
                     internall_md valueintern = dataSnapshot1.getValue(internall_md.class);
+                     internid=valueintern.getId();
 
                     if (!valueintern.getQues1().isEmpty()){
                         count = 2;
                         ques2.setText(valueintern.getQues1());
                     }
-                    if(valueintern.getQues1().equals( "Q3." )) {
+                    if(valueintern.getQues1().equals( "Q2." )) {
                         ques2.setVisibility(View.GONE);
                         answer2.setVisibility(View.GONE);
                     }
@@ -113,6 +115,7 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference.child("status").setValue("Applied");
                                 databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference.child("companyid").setValue(companyid);
+                                databaseReference.child("internid").setValue(internid);
 
                                 final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                                 databaseReference1.keepSynced(true);
@@ -123,6 +126,7 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference1.child("status").setValue("Applied");
                                 databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference1.child("companyid").setValue(companyid);
+                                databaseReference.child("internid").setValue(internid);
 
                                 DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                                 dbhelper.keepSynced(true);

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
@@ -23,6 +24,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
     private EditText emailId,password,number1,fname1;
     FirebaseAuth mFirebaseAuth;
     ImageView chatbot;
+    private ProgressBar progressBars;
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -41,6 +43,9 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_reg__student );
         mFirebaseAuth = FirebaseAuth.getInstance();
+        progressBars = findViewById(R.id.progressBar2);
+        progressBars.setVisibility(View.GONE);
+
         emailId = findViewById(R.id.email);
         password = findViewById(R.id.password);
         fname1 = findViewById(R.id.fname);
@@ -107,7 +112,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
 
             case R.id.go:
-
+                progressBars.setVisibility(View.VISIBLE);
                 findViewById( R.id.go ).setVisibility( View.VISIBLE );
 
                 boolean valid = validateUser();
@@ -132,7 +137,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                     final String fname = fname1.getText().toString().trim();
 
                     final String number = number1.getText().toString().trim();
-
+                    progressBars.setVisibility(View.GONE);
                     Intent intent = new Intent( Reg_Student.this, Verification.class );
                     intent.putExtra( "name", fname );
                     intent.putExtra( "email", email );
@@ -145,6 +150,10 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                     //  progressBar.setVisibility(View.GONE);
                     findViewById( R.id.go ).setVisibility( View.VISIBLE );
                     //Toast.makeText(RegAct.this,"NO user found",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    progressBars.setVisibility(View.GONE);
+
                 }
                 break;
         }

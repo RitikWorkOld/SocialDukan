@@ -2,6 +2,7 @@ package com.example.socialdukan.Student.fragment.other_services;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -44,19 +45,20 @@ Button btn;
                     if (!contact_no.getText().toString().isEmpty()) {
                         if (!emailid.getText().toString().isEmpty()) {
 
+                            String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard3")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
 
-
-                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard3" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard3" ).child( notiid);
                                                 databaseReference.keepSynced( true );
                                                 databaseReference.child( "companyname" ).setValue( company_name.getText().toString() );
                                                 databaseReference.child( "contactno" ).setValue( contact_no.getText().toString() );
                                                 databaseReference.child( "emailid" ).setValue( emailid.getText().toString() );
-
+                            databaseReference.child( "id" ).setValue(notiid);
                                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
 
 
-
-                                                Toast.makeText( Card3_Form.this, "Done", Toast.LENGTH_SHORT ).show();
+                            Intent intent = new Intent( Card3_Form.this, Thanks_Activity.class );
+                            startActivity( intent );
                                                 finish();
 
 

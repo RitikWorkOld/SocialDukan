@@ -23,7 +23,6 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:id="@+id/field"
                 android:layout_height="wrap_content">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -53,9 +52,7 @@
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/layout_1"
-                    >
+                    android:layout_height="wrap_content">
 
 
 
@@ -120,7 +117,6 @@
                             android:textSize="20sp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
-                            android:id="@+id/p_d"
                             android:layout_alignParentStart="true"
                             android:textColor="#fff"
 
@@ -363,7 +359,6 @@ android:layout_alignParentEnd="true"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_view_radio_buttons"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -375,7 +370,6 @@ android:layout_alignParentEnd="true"
                             android:layout_height="match_parent">
 
                             <RadioGroup
-                                android:id="@+id/radio_group"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -833,7 +827,6 @@ android:layout_alignParentEnd="true"
                             android:textStyle="bold"
                             android:text="Do you have Experience?"
                             android:textColor="@color/white"
-                            android:id="@+id/have_exp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
