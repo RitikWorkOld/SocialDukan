@@ -99,16 +99,13 @@ public class AppliedIntern extends Fragment {
                     holder.intern_status.setBackground( getResources().getDrawable( R.drawable.info_btn ) );
 
                 }
-                if(model.getStatus().equals("In-touch")){
+                if(model.getStatus().equals("Shortlisted")){
                     holder.intern_status.setBackground( getResources().getDrawable( R.drawable.intouch ) );
 
                 }
-                if(model.getStatus().equals("Position Filled")){
-                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.positionfilled ) );
 
-                }
-                if(model.getStatus().equals("Not Selected")){
-                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.positionfilled ) );
+                if(model.getStatus().equals("Rejected")){
+                    holder.intern_status.setBackground( getResources().getDrawable( R.drawable.rejected ) );
 
                 }
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +92,7 @@ public class InternFragment extends Fragment {
                 holder.location.setText(model.getLocation());
                 holder.amount.setText(model.getAmount());
                 holder.duration.setText(model.getDuration());
-
+final String internid=model.getId();
                 notification_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -107,8 +108,9 @@ public class InternFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), InternDetail.class);
-                        intent.putExtra("id",model.getId());
+                        intent.putExtra("internid",internid);
                         intent.putExtra( "key",model.getCompanyid() );
+                        Log.d("HAS","AGY "+internid);
                         startActivity( intent );
                     }
                 } );
