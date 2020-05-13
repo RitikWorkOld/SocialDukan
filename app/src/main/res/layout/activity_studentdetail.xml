@@ -274,9 +274,7 @@ android:paddingStart="8dp"
 
 
             <Spinner
-
                 android:id="@+id/spinner"
-
                 android:spinnerMode="dropdown"
                 android:layout_marginTop="6dp"
 android:layout_toRightOf="@+id/schlstarty10"
