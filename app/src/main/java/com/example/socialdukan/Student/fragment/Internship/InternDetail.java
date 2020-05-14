@@ -46,7 +46,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         dbref.keepSynced(true);
-        dbref.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbref.orderByChild("internid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null){
