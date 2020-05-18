@@ -59,36 +59,36 @@ public class ApplyIntern extends AppCompatActivity {
 
         fillbtn = findViewById(R.id.fill_btn);
 
-        DatabaseReference dbques = FirebaseDatabase.getInstance().getReference().child("Internships").child(companyid);
+        DatabaseReference dbques = FirebaseDatabase.getInstance().getReference().child("Internships");
         dbques.keepSynced(true);
-        dbques.orderByChild("key").equalTo(key).addValueEventListener(new ValueEventListener() {
+        dbques.orderByChild("id").equalTo(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
                     internall_md valueintern = dataSnapshot1.getValue(internall_md.class);
-                     internid=valueintern.getId();
 
-                    if (!valueintern.getQues1().isEmpty()){
+
+                    if (!valueintern.getQues1().equals( "Q2. " )){
                         count = 2;
                         ques2.setText(valueintern.getQues1());
                     }
-                    if(valueintern.getQues1().equals( "Q2." )) {
+                    if(valueintern.getQues1().equals( "Q2. " )) {
                         ques2.setVisibility(View.GONE);
                         answer2.setVisibility(View.GONE);
                     }
 
-                    if (!valueintern.getQues2().isEmpty()){
+                    if (!valueintern.getQues2().equals( "Q3. " )){
                         count = 3;
                         ques3.setText(valueintern.getQues2());
                     }
-                    if(valueintern.getQues2().equals( "Q3." )) {
+                    if(valueintern.getQues2().equals( "Q3. " )) {
                         ques3.setVisibility(View.GONE);
                         answer3.setVisibility(View.GONE);
                     }
 
                     companyid = valueintern.getCompanyid();
-
+                    internid=valueintern.getId();
                 }
             }
 
@@ -111,22 +111,26 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference.child("answer1").setValue(text1.toString());
                                 databaseReference.child("answer2").setValue(text2.toString());
                                 databaseReference.child("answer3").setValue(text3.toString());
-                                databaseReference.child("key").setValue(key);
+                                databaseReference.child("internid_status").setValue(key+"Applied");
+                                databaseReference.child("internid").setValue(key);
                                 databaseReference.child("status").setValue("Applied");
                                 databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference.child("companyid").setValue(companyid);
-                                databaseReference.child("internid").setValue(internid);
+
+
+
+
 
                                 final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                                 databaseReference1.keepSynced(true);
                                 databaseReference1.child("answer1").setValue(text1.toString());
                                 databaseReference1.child("answer2").setValue(text2.toString());
                                 databaseReference1.child("answer3").setValue(text3.toString());
-                                databaseReference1.child("key").setValue(key);
+                                databaseReference1.child("internid").setValue(key);
                                 databaseReference1.child("status").setValue("Applied");
                                 databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference1.child("companyid").setValue(companyid);
-                                databaseReference.child("internid").setValue(internid);
+
 
                                 DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                                 dbhelper.keepSynced(true);
@@ -181,20 +185,23 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference.child("answer1").setValue(text1.toString());
                             databaseReference.child("answer2").setValue(text2.toString());
                             databaseReference.child("answer3").setValue("QNP");
-                            databaseReference.child("key").setValue(key);
+                            databaseReference.child("internid_status").setValue(key+"Applied");
+                            databaseReference.child("internid").setValue(key);
                             databaseReference.child("status").setValue("Applied");
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference.child("companyid").setValue(companyid);
+
 
                             final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                             databaseReference1.keepSynced(true);
                             databaseReference1.child("answer1").setValue(text1.toString());
                             databaseReference1.child("answer2").setValue(text2.toString());
                             databaseReference1.child("answer3").setValue("QNP");
-                            databaseReference1.child("key").setValue(key);
+                            databaseReference1.child("internid").setValue(key);
                             databaseReference1.child("status").setValue("Applied");
                             databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference1.child("companyid").setValue(companyid);
+
 
                             DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                             dbhelper.keepSynced(true);
@@ -244,20 +251,23 @@ public class ApplyIntern extends AppCompatActivity {
                         databaseReference.child("answer1").setValue(text1.toString());
                         databaseReference.child("answer2").setValue("QNP");
                         databaseReference.child("answer3").setValue("QNP");
-                        databaseReference.child("key").setValue(key);
+                        databaseReference.child("internid").setValue(key);
                         databaseReference.child("status").setValue("Applied");
+                        databaseReference.child("internid_status").setValue(key+"Applied");
                         databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference.child("companyid").setValue(companyid);
+
 
                         final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                         databaseReference1.keepSynced(true);
                         databaseReference1.child("answer1").setValue(text1.toString());
                         databaseReference1.child("answer2").setValue("QNP");
                         databaseReference1.child("answer3").setValue("QNP");
-                        databaseReference1.child("key").setValue(key);
+                        databaseReference1.child("internid").setValue(key);
                         databaseReference1.child("status").setValue("Applied");
                         databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference1.child("companyid").setValue(companyid);
+
 
                         DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                         dbhelper.keepSynced(true);
@@ -270,14 +280,17 @@ public class ApplyIntern extends AppCompatActivity {
                                     String name = user.getName();
                                     String number = user.getContactn();
                                     String imguri = user.getProfileimg();
+                                    String useremail=user.getEmail();
 
                                     databaseReference.child("username").setValue(name);
                                     databaseReference.child("usernumber").setValue(number);
                                     databaseReference.child("userimg").setValue(imguri);
+                                    databaseReference.child("useremail").setValue(useremail);
 
                                     databaseReference1.child("username").setValue(name);
                                     databaseReference1.child("usernumber").setValue(number);
                                     databaseReference1.child("userimg").setValue(imguri);
+                                    databaseReference1.child("useremail").setValue(useremail);
                                 }
                             }
 

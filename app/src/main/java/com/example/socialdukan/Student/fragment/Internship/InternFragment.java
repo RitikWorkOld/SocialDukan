@@ -109,6 +109,7 @@ public class InternFragment extends Fragment {
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), InternDetail.class);
                         intent.putExtra( "key",model.getId() );
+
                         startActivity( intent );
                     }
                 } );

@@ -98,19 +98,38 @@ String key;
                 holder.Title.setText(model.getEventname());
                 holder.Descp.setText(model.getEvent_desc());
                 Picasso.get().load(model.getIntimguri()).into(holder.Mimguri);
+                holder.event_date.setText( model.getEvent_date() );
 
                 String Title = model.getEventname();
                 String Descp = model.getEvent_desc();
                 String Desc1 = model.getDesc1();
                 String Desc2 = model.getDesc2();
                 String Mimguri = model.getIntimguri();
-key=model.getKey();
+                String number_of_member=model.getNumber_of_member();
+                String event_date=model.getEvent_date();
+                String event_fb_link=model.getEvent_fb_link();
+                        String event_insta_handle=model.getEvent_insta_handle();
+                        String website_link=model.getEvent_website_link();
+                        String max_number=model.getMax_number();
+                        String min_number=model.getMin_number();
+                        String type_event=model.getType_of_event();
+                key=model.getEventid();
+                String location=model.getLocation();
+
+
                 final Bundle bundle = new Bundle();
                 bundle.putString("Title",Title);
                 bundle.putString("Descp",Descp);
                 bundle.putString("Desc1",Desc1);
                 bundle.putString("Desc2",Desc2);
                 bundle.putString("Mimguri",Mimguri);
+                bundle.putString("number_of_member",number_of_member);
+                bundle.putString("event_date",event_date);
+
+                bundle.putString("max_number",max_number);
+                bundle.putString("min_number",min_number);
+                bundle.putString("type_event",type_event);
+                bundle.putString("location",location);
                 bundle.putString("key",key);
 
 

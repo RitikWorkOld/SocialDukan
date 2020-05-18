@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Student.fragment.Event.Events_detail">
+    android:layout_height="match_parent">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,10 +20,11 @@
                 android:layout_height="200dp"/>
 
             <TextView
-                android:gravity="center_horizontal"
+
                 android:textStyle="bold"
                 android:id="@+id/event_title"
-                android:layout_width="match_parent"
+              android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event_main_img1"
                 android:layout_marginTop="10dp"
@@ -56,13 +56,325 @@
                 android:layout_marginTop="10dp"
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
-
+android:text="HI"
                 android:textColor="#808080"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
             </TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/insta_lay"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/event_descp2"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:id="@+id/insta_title"
+                    android:text="Instagram Handle:"
+                    android:textColor="#000"
+
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/insta_handle"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Something"
+                    android:textColor="#808080"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fb_lay"
+                android:layout_marginStart="16dp"
+
+                android:layout_below="@+id/insta_lay"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:id="@+id/fb_title"
+                    android:text="Facebook Link:       "
+                    android:textColor="#000"
+
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/fb_handle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Something"
+                    android:textColor="#808080"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/link_lay"
+                android:layout_marginStart="16dp"
+                android:layout_below="@+id/fb_lay"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Link:                          "
+                    android:id="@+id/link_title"
+                    android:textColor="#000"
+
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Link"
+                    android:textColor="#808080"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/link_lay"
+                android:orientation="horizontal"
+
+                android:id="@+id/location_lay"
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+
+                android:text="Location:                 "
+                android:textSize="16sp"
+
+                android:textStyle="bold"
+
+
+
+                android:drawablePadding="10dp"
+                android:ellipsize="end"
+
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="60dp"
+                    android:id="@+id/location_desc"
+                    android:text="Location"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/location_lay"
+                android:orientation="horizontal"
+                android:id="@+id/date_layout"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:text="Event Date:         "
+                    android:textSize="16sp"
+
+                    android:textStyle="bold"
+
+
+
+                    android:drawablePadding="10dp"
+                    android:ellipsize="end"
+
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="74dp"
+                    android:id="@+id/event_date"
+                    android:text="Location"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/date_layout"
+                android:orientation="horizontal"
+android:id="@+id/event_type_lay"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:text="Event Type:         "
+                    android:textSize="16sp"
+
+                    android:textStyle="bold"
+
+
+
+                    android:drawablePadding="10dp"
+                    android:ellipsize="end"
+
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="74dp"
+                    android:id="@+id/event_type"
+                    android:text="Location"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/event_type_lay"
+                android:orientation="horizontal"
+android:id="@+id/partici_lay"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:text="Participants:         "
+                    android:textSize="16sp"
+
+                    android:textStyle="bold"
+
+
+
+                    android:drawablePadding="10dp"
+                    android:ellipsize="end"
+
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="66dp"
+                    android:id="@+id/participants"
+                    android:text="Location"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+
+
+                    android:id="@+id/range"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/partici_lay"
+                android:orientation="horizontal"
+
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:text="Payment:         "
+                    android:textSize="16sp"
+
+                    android:textStyle="bold"
+
+
+
+                    android:drawablePadding="10dp"
+                    android:ellipsize="end"
+
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="86dp"
+                  android:id="@+id/amount"
+                    android:text="1200"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+
+
+                    android:id="@+id/per_team_indiv"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
             <androidx.appcompat.widget.AppCompatImageView
                 android:visibility="gone"
                 android:layout_marginTop="10dp"
@@ -91,8 +403,9 @@
 
             <RelativeLayout
                 android:id="@+id/last_layout"
-                android:layout_below="@+id/event_descp2"
+                android:layout_below="@+id/location_lay"
                 android:layout_width="match_parent"
+                android:layout_marginTop="130dp"
                 android:layout_height="wrap_content">
 
                 <Button

@@ -571,6 +571,7 @@ android:id="@+id/work_det"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="10dp"
                     android:elevation="8dp"
+                    android:layout_below="@id/card4"
                     android:layout_alignParentBottom="true"
                     app:cardBackgroundColor="@color/lightpurple"
 

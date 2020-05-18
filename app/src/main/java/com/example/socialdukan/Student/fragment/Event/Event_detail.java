@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
  * A simple {@link Fragment} subclass.
  */
 public class Event_detail extends Fragment {
-    TextView Title_dt;
+    TextView Title_dt,insta_handle,link,event_location,date,event_type,fb_handle,fb_title,link_title,insta_title,participants,range,amount,indi_team;
     TextView Descp_dt;
     TextView Desc1_dt;
     TextView Desc2_dt;
@@ -58,12 +58,36 @@ public class Event_detail extends Fragment {
         String Desc2 = bundle.getString("Desc2");
         String Mimguri = bundle.getString("Mimguri");
         final String key = bundle.getString("key");
+        final String number_of_member = bundle.getString("number_of_member");
+        final String event_date = bundle.getString("event_date");
+
+        final String max_number = bundle.getString("max_number");
+        final String min_number = bundle.getString("min_number");
+        final String type_event = bundle.getString("type_event");
+        final String location = bundle.getString("location");
+
         readless = view.findViewById(R.id.read_less_events);
         final EventFragment eventFragment=new EventFragment();
-
         Title_dt = view.findViewById(R.id.event_title);
+        participants=view.findViewById( R.id.participants );
+        fb_handle=view.findViewById( R.id.fb_handle );
+        range=view.findViewById( R.id.range );
+        fb_title=view.findViewById( R.id.fb_title );
+        insta_title=view.findViewById( R.id.insta_title );
+        amount=view.findViewById( R.id.amount );
+        indi_team=view.findViewById( R.id.per_team_indiv );
+        link_title=view.findViewById( R.id.link_title );
+
+        event_location=view.findViewById( R.id.location_desc );
+        date=view.findViewById( R.id.event_date );
+        event_type=view.findViewById( R.id.event_type );
+
         Descp_dt = view.findViewById(R.id.event_descp);
         Desc1_dt = view.findViewById(R.id.event_descp1);
+
+        insta_handle=view.findViewById( R.id.insta_handle );
+        link=view.findViewById( R.id.link );
+
         Desc2_dt = view.findViewById(R.id.event_descp2);
         Mimg_dt = view.findViewById(R.id.event_main_img1);
         Register_dt = view.findViewById(R.id.register_events);
@@ -74,18 +98,76 @@ public class Event_detail extends Fragment {
         Descp_dt.setText(Descp);
         Desc1_dt.setText(Desc1);
         Desc2_dt.setText(Desc2);
+        event_location.setText( location );
+        date.setText( event_date );
+        event_type.setText( type_event );
+
         Picasso.get().load(Mimguri).into(Mimg_dt);
 
         databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Events");
         databaseReferencedetail.keepSynced(true);
 
-        databaseReferencedetail.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferencedetail.orderByChild("eventid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
                     events_md valueintern = dataSnapshot1.getValue(events_md.class);
+                    if(!valueintern.getAmount().equals( "0" )) {
+                    amount.setText( "Rs "+valueintern.getAmount() );
+                    indi_team.setText( "( /"+valueintern.getIndi_or_team()+" )" );
 
+                }
+                    if(valueintern.getAmount().equals( "0" )) {
+                        amount.setText( "Free");
+                        indi_team.setVisibility( View.GONE );
+
+                    }
+                    participants.setText( valueintern.getNumber_of_member() );
+                    if(valueintern.getNumber_of_member().equals( "Team" )){
+                        range.setVisibility( View.VISIBLE );
+                        range.setText( valueintern.getRange() );
+                    }
+
+                    if(!valueintern.getNumber_of_member().equals( "Team" )){
+                        range.setVisibility( View.GONE );
+                    }
+if(valueintern.getEvent_insta_handle().equals( "" )){
+    insta_handle.setVisibility( View.GONE );
+    insta_title.setVisibility( View.GONE );
+
+}
+                    if(valueintern.getEvent_website_link().equals( "" )){
+                        link.setVisibility( View.GONE );
+                        link_title.setVisibility( View.GONE );
+
+                    }
+                    if(valueintern.getEvent_fb_link().equals( "" )){
+                        fb_handle.setVisibility( View.GONE );
+                        fb_title.setVisibility( View.GONE );
+
+                    }
+
+                    //not
+                    if(!valueintern.getEvent_insta_handle().equals( "" )){
+                        insta_handle.setVisibility( View.VISIBLE );
+                        insta_title.setVisibility( View.VISIBLE );
+                        insta_handle.setText( valueintern.getEvent_insta_handle() );
+
+
+                    }
+                    if(!valueintern.getEvent_website_link().equals( "" )){
+                        link.setVisibility( View.VISIBLE );
+                        link_title.setVisibility( View.VISIBLE );
+                        link.setText( valueintern.getEvent_website_link() );
+
+                    }
+                    if(!valueintern.getEvent_fb_link().equals( "" )){
+                        fb_handle.setVisibility( View.VISIBLE );
+                        fb_title.setVisibility( View.VISIBLE );
+                        fb_handle.setText( valueintern.getEvent_fb_link() );
+
+                    }
                     Picasso.get().load(valueintern.intimguri).into(Mimg_dt);
                     Title_dt.setText(valueintern.eventname);
                     Descp_dt.setText(valueintern.event_desc);
