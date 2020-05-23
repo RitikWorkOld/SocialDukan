@@ -17,9 +17,10 @@
             android:id="@+id/intern_name"
             android:textColor="#000"
             android:layout_margin="8dp"
-            android:maxLines="1"
+
             android:textStyle="bold"
             android:textSize="20sp"
+            android:layout_toLeftOf="@+id/intern_img"
             android:fontFamily="@font/montserrat"
             android:text="Mobile App Development"
             android:layout_width="wrap_content"
@@ -27,7 +28,7 @@
         <TextView
             android:layout_below="@+id/intern_name"
             android:id="@+id/company_name"
-            android:maxLines="1"
+
             android:textSize="20sp"
 android:layout_margin="8dp"
             android:fontFamily="@font/montserrat"
@@ -36,7 +37,9 @@ android:layout_margin="8dp"
             android:layout_height="wrap_content"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/intern_img"
-            android:layout_alignParentEnd="true"
+           android:layout_marginStart="12dp"
+            android:src="@drawable/user"
+         android:layout_alignParentEnd="true"
            android:layout_marginEnd="18dp"
             android:layout_marginTop="12dp"
             android:layout_width="60dp"

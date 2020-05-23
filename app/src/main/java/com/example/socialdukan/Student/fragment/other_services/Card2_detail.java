@@ -98,14 +98,14 @@ public class Card2_detail extends AppCompatActivity {
                 {
                     card_model card_model = dataSnapshot1.getValue( card_model.class);
 
-                    Picasso.get().load(card_model.intimguri).into(cmpimage);
+                    Picasso.get().load(card_model.intimguri).resize(400,400).into(cmpimage);
                     infl_name.setText(card_model.getCollab_name());
                     brandname.setText(card_model.getCollab_name());
                     location.setText(card_model.getLocation());
                     brandname2.setText(card_model.getCollab_name());
                     pymnt_type.setText(card_model.getPaymenttype());
                     genre.setText(card_model.getCategory());
-                    insta_handle.setText("@"+card_model.getInstahandle());
+                    insta_handle.setText(card_model.getInstahandle());
                     link.setText(card_model.getLink());
                     campaign.setText( card_model.getCampaign() );
                     primary.setText(card_model.getPrimary());

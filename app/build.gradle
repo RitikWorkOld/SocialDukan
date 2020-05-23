@@ -44,13 +44,14 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.3.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-database:19.3.0'
-    implementation 'com.google.firebase:firebase-analytics:17.4.0'
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
     implementation 'com.firebaseui:firebase-ui-database:6.0.2'
-    implementation 'com.google.firebase:firebase-messaging:20.1.6'
-    implementation 'com.google.firebase:firebase-core:17.4.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.7'
+    implementation 'com.google.firebase:firebase-core:17.4.1'
 
     //Design library for Coordinator Layout and Toolbars
     implementation 'com.google.android.material:material:1.1.0'
+
 
     //picaso
     implementation 'com.squareup.picasso:picasso:2.71828'

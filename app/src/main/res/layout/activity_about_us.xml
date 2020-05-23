@@ -9,11 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="About us"
-        android:fontFamily="@font/montserrat"
+
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/purple"
-        android:textSize="32sp"
+        android:textSize="20sp"
         android:id="@+id/main_title"/>
     <ScrollView
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@ android:textStyle="bold"
         android:text="Our Team"
         android:textColor="@color/purple"
         android:fontFamily="@font/montserrat"
-        android:textSize="32sp"/>
+        android:textSize="20sp"/>
 
 
 </LinearLayout>
@@ -113,7 +113,7 @@ android:textStyle="bold"
                 android:text="Testimonials"
                 android:textColor="@color/purple"
                 android:fontFamily="@font/montserrat"
-                android:textSize="32sp"/>
+                android:textSize="20sp"/>
 
 
         </LinearLayout>
@@ -148,7 +148,7 @@ android:layout_marginTop="8dp"
                 android:text="Our Clients"
                 android:textColor="@color/purple"
                 android:fontFamily="@font/montserrat"
-                android:textSize="32sp"/>
+                android:textSize="20sp"/>
 
 
         </LinearLayout>

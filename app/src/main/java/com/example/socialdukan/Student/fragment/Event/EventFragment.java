@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.Notifications.Notifications_Dots;
 
@@ -42,12 +43,12 @@ import com.squareup.picasso.Picasso;
 
 public class EventFragment extends Fragment {
 String key;
-    RecyclerView rv_internall;
+    BucketRecyclerView rv_internall;
     DatabaseReference drinternall;
     FirebaseRecyclerOptions<events_md> optionsinternall;
     FirebaseRecyclerAdapter<events_md, events_vh> adapterinternall;
     ImageView notification_btn,notification_badge;
-
+private View no_app;
     public EventFragment() {
         // Required empty public constructor
     }
@@ -60,7 +61,7 @@ String key;
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
-
+        no_app=view.findViewById( R.id.no_app );
 
         notification_badge.setVisibility(View.GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
@@ -83,8 +84,10 @@ String key;
 
             }
         });
+
         rv_internall = view.findViewById(R.id.recycler);
         rv_internall.setHasFixedSize(true);
+        rv_internall.showIfEmpty( no_app );
         rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext()));
 
         drinternall = FirebaseDatabase.getInstance().getReference().child("Events");
@@ -97,7 +100,7 @@ String key;
             protected void onBindViewHolder(@NonNull events_vh holder, int position, @NonNull final events_md model) {
                 holder.Title.setText(model.getEventname());
                 holder.Descp.setText(model.getEvent_desc());
-                Picasso.get().load(model.getIntimguri()).into(holder.Mimguri);
+                Picasso.get().load(model.getIntimguri()).resize(400,400).into(holder.Mimguri);
                 holder.event_date.setText( model.getEvent_date() );
 
                 String Title = model.getEventname();

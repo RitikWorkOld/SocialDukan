@@ -3,9 +3,7 @@ package com.example.socialdukan.Student.Chat_bot.feature
 import ai.api.AIConfiguration
 import ai.api.AIDataService
 import ai.api.android.AIService
-
 import android.os.Bundle
-
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +12,6 @@ import com.example.socialdukan.R
 import com.example.socialdukan.Student.Chat_bot.adapter.ChatAdapter
 import com.example.socialdukan.Student.Chat_bot.entity.ChatMessage
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_chat_bot.*
@@ -27,19 +24,23 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     lateinit var aiService: AIService
     lateinit var aiDataAIService: AIDataService
     var user: String? = null
+    var key: String? = null
+    var notiid: String? = null
 
     lateinit var mPresenter : MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_bot)
+    notiid = FirebaseDatabase.getInstance().reference.child("chat").push().key
         initPresenter()
 
         rvChat.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.stackFromEnd = true
         rvChat.layoutManager = layoutManager
-        ref = FirebaseDatabase.getInstance().reference.child("chat")
+
+        ref = notiid?.let { FirebaseDatabase.getInstance().reference.child("chat").child(it) }!!
         ref.keepSynced(true)
 
         btnSend.setOnClickListener {
@@ -97,7 +98,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         aiService = AIService.getService(this, aiConfiguration)
         aiDataAIService = AIDataService(aiConfiguration)
-        ref = FirebaseDatabase.getInstance().reference.child("chat")
+
+        ref = notiid?.let { FirebaseDatabase.getInstance().reference.child("chat").child(it) }!!
 
         mPresenter = MainPresenter(aiDataAIService, ref)
 

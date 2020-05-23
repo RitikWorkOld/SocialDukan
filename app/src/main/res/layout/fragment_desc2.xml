@@ -17,7 +17,8 @@
             android:layout_gravity="start"
             android:layout_margin="8dp"
             android:visibility="visible"
-            android:textSize="20sp"
+
+            tools:visibility="visible"
             android:fontFamily="@font/montserrat"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
@@ -26,10 +27,10 @@
             android:id="@+id/textview2_wca"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat"
+            tools:visibility="visible"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
+
             android:text="@string/hello_blank_fragment" />
 
     </LinearLayout>

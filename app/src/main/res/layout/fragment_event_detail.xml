@@ -304,7 +304,7 @@ android:id="@+id/partici_lay"
 
                 </TextView>
                 <TextView
-                    android:layout_marginRight="15dp"
+
                     android:layout_marginLeft="66dp"
                     android:id="@+id/participants"
                     android:text="Location"
@@ -353,8 +353,7 @@ android:id="@+id/partici_lay"
 
                 </TextView>
                 <TextView
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="86dp"
+                    android:layout_marginStart="86dp"
                   android:id="@+id/amount"
                     android:text="1200"
                     android:textSize="16sp"

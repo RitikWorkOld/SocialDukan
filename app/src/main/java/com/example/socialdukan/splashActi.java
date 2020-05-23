@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +29,7 @@ Timer timer;
         setContentView( R.layout.activity_splash );
 
 
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Student");
 
         timer = new Timer();
         timer.schedule(new TimerTask() {

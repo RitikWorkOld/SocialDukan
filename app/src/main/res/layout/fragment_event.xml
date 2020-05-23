@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Student.fragment.Event.EventFragment">
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
@@ -20,8 +21,8 @@
 
 android:layout_centerInParent="true"
 android:textColor="@color/purple"
-                android:fontFamily="@font/montserrat"
-                android:textSize="40sp"
+
+                android:textSize="20sp"
 
 
                 />
@@ -46,7 +47,30 @@ android:textColor="@color/purple"
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
         </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/no_app"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/no_events"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Events"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
         android:id="@+id/recycler"
         android:layout_below="@id/eventsTitle"
         android:layout_width="match_parent"

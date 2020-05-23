@@ -746,7 +746,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     phno = user.getContactn();
                     uid = user.getUid();
                     if (user.profileimg!=null){
-                        Picasso.get().load(user.profileimg).into(user_img);
+                        Picasso.get().load(user.profileimg).resize(400,400).into(user_img);
                     }
                     else {
                         user_img.setImageResource(R.drawable.user);
@@ -805,19 +805,29 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             protected void onBindViewHolder(@NonNull final addexp2_viewholder holder2, int position, @NonNull final addexp2_model model) {
                 holder2.companynamelayout.setText(model.getAchivmnts());
                 holder2.companynamelayout.setVisibility( View.VISIBLE );
-
+                holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child(model.getExpid()).removeValue();
+                    }
+                });
                 holder2.ach_show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (!holder2.expand){
-
+                            holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child(model.getExpid()).removeValue();
+                                }
+                            });
                             holder2.companynamelayout.setVisibility( View.VISIBLE );
-
+holder2.cancelbtn.setVisibility( View.VISIBLE );
                             holder2.editexp.setVisibility(View.VISIBLE);
                             holder2.expand = true;
                         }
                         else {
-
+holder2.cancelbtn.setVisibility( View.GONE );
                             holder2.companynamelayout.setVisibility(View.GONE);
                             holder2.editexp.setVisibility(View.GONE);
                             holder2.expand = false;
@@ -864,6 +874,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                     addexpbtn2.setVisibility( View.GONE );
                                     updateexpbtn2.setVisibility( View.GONE );
                                     addnewexpbtn2.setVisibility( View.VISIBLE );
+                                    Toast.makeText( getApplicationContext(),"UPDATED",Toast.LENGTH_SHORT ).show();
                                 }
                                 else {
                                     companyname2.setError("Empty");
@@ -900,19 +911,24 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             @Override
             protected void onBindViewHolder(@NonNull final addexp1_viewholder holder1, int position, @NonNull final addexp1_model model) {
                 holder1.companynamelayout.setText(model.getSkills());
-
+                holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills").child(model.getExpid()).removeValue();
+                    }
+                });
                 holder1.show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (!holder1.expand){
 
                             holder1.companynamelayout.setVisibility(View.VISIBLE);
-
+holder1.cancelbtn.setVisibility( View.VISIBLE );
                             holder1.editexp.setVisibility(View.VISIBLE);
                             holder1.expand = true;
                         }
                         else {
-
+                            holder1.cancelbtn.setVisibility( View.GONE );
                             holder1.companynamelayout.setVisibility(View.GONE);
                             holder1.editexp.setVisibility(View.GONE);
                             holder1.expand = false;
@@ -955,6 +971,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                     addexpbtn1.setVisibility( View.GONE );
                                     updateexpbtn1.setVisibility( View.GONE );
                                     addnewexpbtn1.setVisibility( View.VISIBLE );
+                                    Toast.makeText( getApplicationContext(),"UPDATED",Toast.LENGTH_SHORT ).show();
                                 }
                                 else {
                                     companyname1.setError("Empty");
@@ -998,7 +1015,12 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                 holder.companyendlayout.setText(model.getCompanyend());
                 holder.companyrolelayout.setText(model.getCompanyrole());
                 holder.companybenefitslayout.setText(model.getCompanybenefits());
-
+                holder.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpexp").child(model.getExpid()).removeValue();
+                    }
+                });
 
                 holder.companynamelayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -1075,6 +1097,8 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                                     databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("expid").setValue(model.getExpid());
                                                     databaseReferencecmpexp.child("cmpexp").child(model.getExpid()).child("uid").setValue(uid);
 
+
+
                                                     companyname.setVisibility(View.GONE);
                                                     companystartdate.setVisibility(View.GONE);
                                                     companyenddate.setVisibility(View.GONE);
@@ -1083,6 +1107,11 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                                     addexpbtn.setVisibility(View.GONE);
                                                     updateexpbtn.setVisibility(View.GONE);
                                                     addnewexpbtn.setVisibility(View.VISIBLE);
+                                                    layout_company.setVisibility( View.GONE );
+                                                    layout_company1.setVisibility( View.GONE );
+                                                    spinYear6.setVisibility( View.GONE );
+                                                    spinYear7.setVisibility( View.GONE );
+                                                    Toast.makeText( getApplicationContext(),"Updated",Toast.LENGTH_SHORT ).show();
 
                                                 }
                                                 else {
@@ -1433,6 +1462,8 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                     layout_company1.setVisibility( View.GONE );
                                     spinYear6.setVisibility( View.GONE );
                                     spinYear7.setVisibility( View.GONE );
+                                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
+                                    adapterexp.notifyDataSetChanged();
                                 }
                                 else {
                                     companybenefits.setError("Empty");
@@ -1472,6 +1503,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     addexpbtn1.setVisibility(View.GONE);
                     updateexpbtn1.setVisibility(View.GONE);
                     addnewexpbtn1.setVisibility(View.VISIBLE);
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
                 }
 
                 else {
@@ -1496,6 +1528,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     addexpbtn2.setVisibility(View.GONE);
                     updateexpbtn2.setVisibility(View.GONE);
                     addnewexpbtn2.setVisibility(View.VISIBLE);
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
                 }
 
                 else {

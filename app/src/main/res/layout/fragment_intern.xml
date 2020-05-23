@@ -45,15 +45,38 @@
             android:layout_marginTop="12dp"
             android:background="#00808080"
             android:textColor="@color/white"
-            android:fontFamily="@font/montserrat"
-            android:textSize="28sp"
+
+            android:textSize="20sp"
             android:layout_centerHorizontal="true"
             />
 
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/no_app"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/no_application"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="No Application"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
 
 
-
-        <androidx.recyclerview.widget.RecyclerView
+        <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
             android:id="@+id/rv_internall"
             android:layout_marginTop="20dp"
             android:layout_below="@id/notif"

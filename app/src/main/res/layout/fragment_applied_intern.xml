@@ -14,8 +14,8 @@
 
             android:layout_centerInParent="true"
             android:textColor="@color/purple"
-            android:fontFamily="@font/montserrat"
-            android:textSize="32sp"
+
+            android:textSize="20sp"
 
 
             />

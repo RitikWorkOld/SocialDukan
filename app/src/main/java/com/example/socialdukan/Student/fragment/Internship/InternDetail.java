@@ -110,7 +110,7 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
                 {
                     internall_md valueintern = dataSnapshot1.getValue(internall_md.class);
 
-                    Picasso.get().load(valueintern.intimguri).into(cmpimage);
+                    Picasso.get().load(valueintern.intimguri).resize(400,400).into(cmpimage);
                     intername.setText(valueintern.intname);
                     cmpname.setText(valueintern.cmpname);
                     location.setText(valueintern.location);

@@ -158,13 +158,13 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
                         ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
-                            public void onSuccess(Uri uri) {
+                            public void onSuccess(final Uri uri) {
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
                                 databaseReference.keepSynced(true);
                                 databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profileimg").setValue(String.valueOf(uri)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(Studentdetail.this,"Completed",Toast.LENGTH_SHORT).show();
+                                        Picasso.get().load(String.valueOf( uri )).into(user_img);
                                         pb_userimg.setVisibility(View.GONE);
                                         user_img.setVisibility(View.VISIBLE);
                                     }
@@ -347,7 +347,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear; i++) {
+        for (int i = 1995; i <= thisYear; i++) {
             years.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_item, years);
@@ -372,7 +372,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years1 = new ArrayList<String>();
         int thisYear1 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear1; i++) {
+        for (int i = 1995; i <= thisYear1; i++) {
             years1.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,R.layout.spinner_item, years1);
@@ -395,7 +395,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years2 = new ArrayList<String>();
         int thisYear2 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear2; i++) {
+        for (int i = 1995; i <= thisYear2; i++) {
             years2.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,R.layout.spinner_item, years2);
@@ -419,7 +419,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years3 = new ArrayList<String>();
         int thisYear3 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear3; i++) {
+        for (int i = 1995; i <= thisYear3; i++) {
             years3.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,R.layout.spinner_item, years3);
@@ -442,7 +442,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years4 = new ArrayList<String>();
         int thisYear4 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear4; i++) {
+        for (int i = 1995; i <= thisYear4; i++) {
             years4.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this,R.layout.spinner_item, years4);
@@ -464,8 +464,8 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
         } );
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years5 = new ArrayList<String>();
-        int thisYear5 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear5; i++) {
+
+        for (int i = 1995; i <= 2030; i++) {
             years5.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter5= new ArrayAdapter<String>(this,R.layout.spinner_item, years5);
@@ -488,7 +488,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years6 = new ArrayList<String>();
         int thisYear6 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear6; i++) {
+        for (int i = 1995; i <= thisYear6; i++) {
             years6.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(this,R.layout.spinner_item, years6);
@@ -512,7 +512,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years7 = new ArrayList<String>();
         int thisYear7 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear7; i++) {
+        for (int i = 1995; i <= thisYear7; i++) {
             years7.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(this,R.layout.spinner_item, years7);
@@ -608,7 +608,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
         final DatabaseReference databaseReferencemain = FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReferencemain.keepSynced(true);
-        databaseReferencemain.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        databaseReferencemain.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
@@ -677,14 +677,19 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             protected void onBindViewHolder(@NonNull final addexp2_viewholder holder2, int position, @NonNull final addexp2_model model) {
                 holder2.companynamelayout.setText(model.getAchivmnts());
                 holder2.companynamelayout.setVisibility( View.VISIBLE );
-
+                holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child(model.getExpid()).removeValue();
+                    }
+                });
                 holder2.ach_show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (!holder2.expand){
 
                             holder2.companynamelayout.setVisibility( View.VISIBLE );
-
+                            holder2.cancelbtn.setVisibility( View.VISIBLE );
                             holder2.editexp.setVisibility(View.VISIBLE);
                             holder2.expand = true;
                         }
@@ -692,6 +697,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
                             holder2.companynamelayout.setVisibility(View.GONE);
                             holder2.editexp.setVisibility(View.GONE);
+                            holder2.cancelbtn.setVisibility( View.GONE );
                             holder2.expand = false;
                         }
                     }
@@ -772,7 +778,12 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
             @Override
             protected void onBindViewHolder(@NonNull final addexp1_viewholder holder1, int position, @NonNull final addexp1_model model) {
                 holder1.companynamelayout.setText(model.getSkills());
-
+                holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills").child(model.getExpid()).removeValue();
+                    }
+                });
                 holder1.show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -782,11 +793,13 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
                             holder1.editexp.setVisibility(View.VISIBLE);
                             holder1.expand = true;
+                            holder1.cancelbtn.setVisibility( View.VISIBLE );
                         }
                         else {
 
                             holder1.companynamelayout.setVisibility(View.GONE);
                             holder1.editexp.setVisibility(View.GONE);
+                            holder1.cancelbtn.setVisibility( View.GONE );
                             holder1.expand = false;
                         }
                     }
@@ -827,6 +840,8 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     addexpbtn1.setVisibility( View.GONE );
                                     updateexpbtn1.setVisibility( View.GONE );
                                     addnewexpbtn1.setVisibility( View.VISIBLE );
+
+                                    Toast.makeText( getApplicationContext(),"UPDATED",Toast.LENGTH_SHORT ).show();
                                 }
                                 else {
                                     companyname1.setError("Empty");
@@ -961,6 +976,11 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                                     addexpbtn.setVisibility(View.GONE);
                                                     updateexpbtn.setVisibility(View.GONE);
                                                     addnewexpbtn.setVisibility(View.VISIBLE);
+                                                    layout_company.setVisibility( View.GONE );
+                                                    layout_company1.setVisibility( View.GONE );
+                                                    spinYear6.setVisibility( View.GONE );
+                                                    spinYear7.setVisibility( View.GONE );
+                                                    Toast.makeText( getApplicationContext(),"Updated",Toast.LENGTH_SHORT ).show();
 
                                                 }
                                                 else {
@@ -1311,6 +1331,8 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     layout_company1.setVisibility( View.GONE );
                                     spinYear6.setVisibility( View.GONE );
                                     spinYear7.setVisibility( View.GONE );
+                                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
+                                    adapterexp.notifyDataSetChanged();
                                 }
                                 else {
                                     companybenefits.setError("Empty");
@@ -1350,6 +1372,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                                     addexpbtn1.setVisibility(View.GONE);
                                     updateexpbtn1.setVisibility(View.GONE);
                                     addnewexpbtn1.setVisibility(View.VISIBLE);
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
                                 }
 
                      else {
@@ -1374,6 +1397,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
                     addexpbtn2.setVisibility(View.GONE);
                     updateexpbtn2.setVisibility(View.GONE);
                     addnewexpbtn2.setVisibility(View.VISIBLE);
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
                 }
 
                 else {

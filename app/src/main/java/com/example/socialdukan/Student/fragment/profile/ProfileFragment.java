@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.socialdukan.Student.Login_Register_Student.Login_Student;
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Login_Register_Student.Utils.Save;
 import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.Student.ModelandViewholder.addexp1_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
@@ -279,7 +280,7 @@ about.setOnClickListener( new View.OnClickListener() {
                     User user = dataSnapshot1.getValue(User.class);
                     if (user.profileimg!=null){
 
-                        Picasso.get().load(user.profileimg).into(imageuser);
+                        Picasso.get().load(user.profileimg).resize(400,400).into(imageuser);
 
                     }
                     else {
@@ -446,7 +447,7 @@ about.setOnClickListener( new View.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mFirebaseAuth.getInstance().signOut();
                                 //saving session
-
+                                Save.save(getActivity(), "session", "false");
                                 Intent intent = new Intent(getActivity(), Login_Student.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);

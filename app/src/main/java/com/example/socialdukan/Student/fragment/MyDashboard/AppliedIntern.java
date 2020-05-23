@@ -119,7 +119,7 @@ public class AppliedIntern extends Fragment {
 
                             holder.intern_name.setText(value.getIntname());
                             holder.company_name.setText(value.getCmpname());
-                            Picasso.get().load(value.getIntimguri()).into(holder.intern_img);
+                            Picasso.get().load(value.getIntimguri()).resize(400,400).into(holder.intern_img);
 
                             notification_btn.setOnClickListener(new View.OnClickListener() {
                                 @Override

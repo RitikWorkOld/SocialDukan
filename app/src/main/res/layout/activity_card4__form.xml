@@ -158,6 +158,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:padding="8dp"
+                    android:inputType="number"
                     android:background="@drawable/edittext"
                     android:layout_margin="16dp"
                     android:hint="Head's Contact Number" />

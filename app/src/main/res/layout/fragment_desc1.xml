@@ -18,6 +18,7 @@
             android:id="@+id/perks_view"
             android:textColor="#000"
             android:visibility="gone"
+            tools:visibility="visible"
             android:layout_marginLeft="8dp"
             android:textSize="20sp"
             android:text="Perks" />
@@ -27,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_margin="8dp"
             android:visibility="gone"
-            android:textSize="20sp"
+            tools:visibility="visible"
+
             android:fontFamily="@font/montserrat"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
@@ -36,10 +38,11 @@
             android:id="@+id/textview2_wyg"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat"
+            tools:visibility="visible"
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_margin="8dp"
-            android:textSize="20sp"
+
             android:text="@string/hello_blank_fragment" />
 
     </LinearLayout>

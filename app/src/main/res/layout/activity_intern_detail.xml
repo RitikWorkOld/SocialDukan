@@ -105,7 +105,7 @@ android:paddingBottom="17dp"
                             android:id="@+id/icd_location"
                             android:textColor="@color/white"
                             android:drawablePadding="5dp"
-                            android:gravity="center"
+
                             android:text="Delhi"
                             android:drawableLeft="@drawable/ic_location_interncard_24dp"
                             android:layout_width="match_parent"
@@ -117,7 +117,8 @@ android:paddingBottom="17dp"
                             android:layout_marginTop="20dp"
                             android:id="@+id/stipend_detail"
                             android:textColor="@color/white"
-                            android:gravity="center"
+                  android:drawablePadding="8dp"
+                            android:layout_marginStart="4dp"
                             android:text="Stipend"
                             android:drawableLeft="@drawable/ic_attach_money_interncard_24dp"
                             android:layout_width="match_parent"
@@ -138,7 +139,7 @@ android:paddingBottom="17dp"
                             android:id="@+id/icd_duration"
                             android:layout_marginRight="5dp"
                             android:drawablePadding="5dp"
-                            android:gravity="center"
+
                             android:textColor="@color/white"
                             android:text="2 months"
                             android:drawableLeft="@drawable/ic_date_range_interncard_24dp"
@@ -151,7 +152,7 @@ android:paddingBottom="17dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="24dp"
                             android:drawablePadding="5dp"
-                            android:gravity="center"
+
                             android:textColor="@color/white"
                             android:text="2-3 Hour/day"
                             android:drawableLeft="@drawable/ic_clock"
@@ -169,42 +170,69 @@ android:paddingBottom="17dp"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:background="#94808080"
                         android:layout_weight="3"
                         android:layout_height="30dp">
-                        <RelativeLayout
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:weightSum="3"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+                        <LinearLayout
+
+                         android:gravity="start"
+                            android:layout_weight="1"
+
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
                         <TextView
                             android:layout_width="wrap_content"
                             android:textColor="@color/white"
-                            android:gravity="center"
+
+                            android:gravity="start|center_vertical"
+                            android:layout_gravity="start"
                             android:layout_marginStart="8dp"
                             android:id="@+id/title1"
                             android:layout_height="match_parent"
                             android:text="Work From Home"/>
+                        </LinearLayout>
+                        <LinearLayout
+
+                            android:layout_weight="1"
+android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
                         <TextView
                             android:layout_width="wrap_content"
                             android:textColor="@color/white"
                             android:gravity="center"
+                            android:layout_gravity="center"
                             android:id="@+id/title2"
-                            android:layout_centerInParent="true"
+
                             android:layout_marginStart="8dp"
                             android:layout_height="match_parent"
                             android:text="Work in College"/>
+                        </LinearLayout>
+                        <LinearLayout
+
+                            android:layout_weight="1"
+android:gravity="end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
                         <TextView
                             android:layout_width="wrap_content"
                             android:textColor="@color/white"
                             android:gravity="center"
                             android:id="@+id/title3"
                             android:layout_marginEnd="32dp"
-                            android:layout_alignParentEnd="true"
+
                             android:layout_marginStart="8dp"
                             android:layout_height="match_parent"
                             android:text="Nearby"/>
+                        </LinearLayout>
 
-                        </RelativeLayout>
+                        </LinearLayout>
                     </RelativeLayout>
 
                 </LinearLayout>

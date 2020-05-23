@@ -72,6 +72,10 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                 if(v==btnSignIn){
                     Intent intent = new Intent(Reg_Student.this, Login_Student.class);
                     startActivity(intent);
+                    emailId.setText( "" );
+                    password.setText( "" );
+                    fname1.setText( "" );
+                    number1.setText( "" );
                     overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                     finish();
                 }
@@ -117,27 +121,16 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
 
                 boolean valid = validateUser();
 
-                //  Log.i("Hello", "working");
+
                 if (valid) {
 
-                  /*  final String number=number1.getText().toString().trim();
-                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Users");
-                    dbref.keepSynced(true);
-                    dbref.orderByChild("contactn").equalTo(number).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getValue() != null){
-                              //  progressBar.setVisibility(View.GONE);
-                                findViewById(R.id.go).setVisibility(View.VISIBLE);
-                                Toast.makeText(Reg_Student.this,"User on this phone Number Already Exists",Toast.LENGTH_SHORT).show();
-                            }
-                            else {*/
                     final String email = emailId.getText().toString().trim();
                     final String pwd = password.getText().toString().trim();
                     final String fname = fname1.getText().toString().trim();
 
                     final String number = number1.getText().toString().trim();
                     progressBars.setVisibility(View.GONE);
+
                     Intent intent = new Intent( Reg_Student.this, Verification.class );
                     intent.putExtra( "name", fname );
                     intent.putExtra( "email", email );

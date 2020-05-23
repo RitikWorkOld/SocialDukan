@@ -122,13 +122,13 @@ public class about_us extends AppCompatActivity {
 
                 if (dataSnapshot.getValue() != null){
                     long j = dataSnapshot.getChildrenCount();
-                    Toast.makeText(getBaseContext(), "HELLO11", Toast.LENGTH_SHORT).show();
+
                     int i = (int)j;
                     final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
                     StartProcess(viewPager,i);
                 }
                 else {
-                  Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show();
+
 
                 }
 
@@ -148,13 +148,13 @@ public class about_us extends AppCompatActivity {
 
                 if (dataSnapshot.getValue() != null){
                     long j = dataSnapshot.getChildrenCount();
-                    Toast.makeText(getBaseContext(), "HELLO11", Toast.LENGTH_SHORT).show();
+
                     int i = (int)j;
                     final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager1);
                     StartProcessOne(viewPager,i);
                 }
                 else {
-                    Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show();
+
 
                 }
 
@@ -171,7 +171,7 @@ public class about_us extends AppCompatActivity {
     }
     public void StartProcessOne(ViewPager viewPager,int i){
 
-        Toast.makeText(getBaseContext(), "HELLO13", Toast.LENGTH_SHORT).show();
+
         CardFragmentPagerAdapterOne pagerAdapter = new CardFragmentPagerAdapterOne(getSupportFragmentManager(), dpToPixelsOne(2, this),i);
         ShadowTransformerOne fragmentCardShadowTransformer = new ShadowTransformerOne(viewPager, pagerAdapter);
         fragmentCardShadowTransformer.enableScaling(true);
@@ -183,7 +183,6 @@ public class about_us extends AppCompatActivity {
 
     public void StartProcess(ViewPager viewPager,int i){
 
-        Toast.makeText(getBaseContext(), "HELLO13", Toast.LENGTH_SHORT).show();
         CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this),i);
         ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, pagerAdapter);
         fragmentCardShadowTransformer.enableScaling(true);

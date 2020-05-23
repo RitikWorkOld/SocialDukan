@@ -2,6 +2,7 @@ package com.example.socialdukan.Student.ModelandViewholder;
 
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,7 @@ import com.example.socialdukan.R;
 public class addexp2_viewholder extends RecyclerView.ViewHolder {
 
     public TextView companynamelayout,ach_show;
-
+    public ImageView cancelbtn;
 
     public TextView editexp;
    public boolean expand;
@@ -24,7 +25,7 @@ public class addexp2_viewholder extends RecyclerView.ViewHolder {
         editexp = itemView.findViewById( R.id.editexp);
         companynamelayout = itemView.findViewById(R.id.companyname_layout);
         ach_show = itemView.findViewById(R.id.ach_show);
-
+        cancelbtn = itemView.findViewById(R.id.cancel_btn);
 
 
     }

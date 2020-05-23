@@ -8,5 +8,8 @@
     android:gravity="left"
     android:background="@color/lightpurple"
     android:textColor="@color/white"
-    android:padding="5dip"
+    android:paddingEnd="12dp"
+    android:paddingStart="12dp"
+    android:paddingBottom="12dp"
+    android:paddingTop="10dp"
     />

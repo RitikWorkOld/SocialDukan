@@ -102,7 +102,7 @@ public class Event_detail extends Fragment {
         date.setText( event_date );
         event_type.setText( type_event );
 
-        Picasso.get().load(Mimguri).into(Mimg_dt);
+        Picasso.get().load(Mimguri).resize(400,400).into(Mimg_dt);
 
         databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("Events");
         databaseReferencedetail.keepSynced(true);
@@ -168,7 +168,7 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         fb_handle.setText( valueintern.getEvent_fb_link() );
 
                     }
-                    Picasso.get().load(valueintern.intimguri).into(Mimg_dt);
+                    Picasso.get().load(valueintern.intimguri).resize(400,400).into(Mimg_dt);
                     Title_dt.setText(valueintern.eventname);
                     Descp_dt.setText(valueintern.event_desc);
                     Desc1_dt.setText(valueintern.desc1);

@@ -7,12 +7,12 @@
     tools:context=".Student.Login_Register_Student.Studentdetail"
 android:background="@drawable/try001"
     android:orientation="vertical">
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
 
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -20,6 +20,7 @@ android:background="@drawable/try001"
 
     <RelativeLayout
         android:layout_width="wrap_content"
+        android:id="@+id/image_layout"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -42,13 +43,16 @@ android:background="@drawable/try001"
 
 
 
-        <LinearLayout
+        <RelativeLayout
             android:gravity="center_horizontal"
             android:orientation="vertical"
+           android:layout_below="@+id/image_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/from_layout"
         android:layout_height="wrap_content">
 
 
@@ -96,7 +100,7 @@ android:background="@drawable/try001"
 
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 
@@ -104,6 +108,7 @@ android:background="@drawable/try001"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_below="@id/from_layout"
             android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -129,6 +134,8 @@ android:background="@drawable/try001"
                 android:textSize="16sp"
                 android:drawableStart="@drawable/ic_date_range_black_24dp"
                 android:textColor="@color/white"
+              android:paddingEnd="8dp"
+                android:drawablePadding="4dp"
                android:textColorHint="@color/white"
                 android:background="@drawable/edittext"
 android:paddingStart="8dp"
@@ -142,7 +149,9 @@ android:paddingStart="8dp"
                 android:hint=" Address"
                 android:id="@+id/adress"
                 android:textSize="16sp"
+                android:paddingEnd="8dp"
                 android:paddingStart="8dp"
+                android:drawablePadding="4dp"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:drawableStart="@drawable/ic_home_black_24dp"
@@ -154,12 +163,14 @@ android:paddingStart="8dp"
             <EditText
                 android:hint=" Current Occupation"
                 android:id="@+id/occupation"
+                android:paddingEnd="8dp"
                 android:layout_margin="16dp"
                 android:drawableLeft="@drawable/ic_work_black_24dp"
                 android:textColor="@color/white"
                 android:background="@drawable/edittext"
                 android:textSize="16sp"
                 android:paddingLeft="8dp"
+                android:drawablePadding="4dp"
                 android:textColorHint="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -167,8 +178,10 @@ android:paddingStart="8dp"
                 android:hint=" Whatsapp Number"
                 android:id="@+id/wanumber"
                 android:inputType="numberDecimal"
+                android:paddingEnd="8dp"
+                android:drawablePadding="4dp"
                 android:layout_margin="16dp"
-                android:drawableLeft="@drawable/ic_chat_black_24dp"
+                android:drawableStart="@drawable/ic_chat_black_24dp"
                 android:textColor="@color/white"
                 android:background="@drawable/edittext"
                 android:textSize="16sp"
@@ -240,6 +253,7 @@ android:paddingStart="8dp"
                 android:id="@+id/schoolname10"
                 android:layout_margin="16dp"
                 android:paddingLeft="8dp"
+                android:drawablePadding="4dp"
                 android:drawableLeft="@drawable/ic_school_black_24dp"
                 android:layout_width="match_parent"
                 android:textSize="16sp"
@@ -272,7 +286,7 @@ android:paddingStart="8dp"
             <Spinner
                 android:id="@+id/spinner"
                 android:spinnerMode="dropdown"
-                android:layout_marginTop="6dp"
+
 android:layout_toRightOf="@+id/schlstarty10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -302,7 +316,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:id="@+id/spinner1"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/schlendy10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -314,6 +328,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             android:background="@drawable/edittext"
             android:textColorHint="@color/white"
             android:layout_margin="16dp"
+    android:drawablePadding="4dp"
             android:paddingLeft="8dp"
             android:drawableLeft="@drawable/ic_library_books_black_24dp"
             android:layout_width="match_parent"
@@ -321,6 +336,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             <EditText
                 android:inputType="numberDecimal"
                 android:hint=" Percentage/CGPA"
+                android:drawablePadding="4dp"
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_content_paste_black_24dp"
                 android:textColorHint="@color/white"
@@ -401,26 +417,6 @@ android:layout_toRightOf="@+id/schlstarty10"
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-           <!-- <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:textSize="20sp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_alignParentLeft="true"
-                    android:textColor="#fff"
-                    android:fontFamily="@font/montserrat"
-                    android:text="High School/Diploma"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>       -->
-
-
-
-
 
             <EditText
                 android:hint=" School Name"
@@ -428,6 +424,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:textColor="@color/white"
                 android:paddingLeft="8dp"
                 android:textColorHint="@color/white"
+                android:drawablePadding="4dp"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:drawableLeft="@drawable/ic_school_black_24dp"
@@ -458,7 +455,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:id="@+id/spinner2"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/schlstarty12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -486,7 +483,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:id="@+id/spinner3"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/schlendy12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -495,7 +492,7 @@ android:layout_toRightOf="@+id/schlstarty10"
 
             </RelativeLayout>
             <EditText
-
+                android:drawablePadding="4dp"
                 android:hint=" Stream"
                 android:id="@+id/stream"
                 android:textColor="@color/white"
@@ -507,7 +504,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
-
+                android:drawablePadding="4dp"
                 android:hint=" Board"
                 android:id="@+id/board1"
                 android:textColor="@color/white"
@@ -522,6 +519,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             <EditText
                 android:inputType="numberDecimal"
                 android:hint=" Percentage"
+                android:drawablePadding="4dp"
                 android:id="@+id/percentage12"
                 android:textColor="@color/white"
                 android:background="@drawable/edittext"
@@ -533,7 +531,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:layout_height="wrap_content"/>
 
                 <EditText
-
+                    android:drawablePadding="4dp"
                     android:hint=" College Name"
                     android:id="@+id/dipclgname"
                     android:visibility="gone"
@@ -546,7 +544,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <EditText
-
+                    android:drawablePadding="4dp"
                     android:hint=" Course Name"
                     android:id="@+id/dipcorsname"
                     android:visibility="gone"
@@ -559,7 +557,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <EditText
-
+                    android:drawablePadding="4dp"
                     android:hint=" Percentage"
                     android:id="@+id/dippercentage"
                     android:visibility="gone"
@@ -620,6 +618,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             <EditText
                 android:hint=" College Name"
                 android:id="@+id/collegename"
+                android:drawablePadding="4dp"
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_school_black_24dp"
                 android:textColorHint="@color/white"
@@ -633,6 +632,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:hint=" Course (College)"
                 android:id="@+id/collegecourse"
                 android:layout_margin="16dp"
+                android:drawablePadding="4dp"
                 android:background="@drawable/edittext"
                 android:drawableLeft="@drawable/ic_library_books_black_24dp"
                 android:textColor="@color/white"
@@ -645,6 +645,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:hint=" Department/Stream (College)"
                 android:id="@+id/collegedept"
                 android:layout_margin="16dp"
+                android:drawablePadding="4dp"
                 android:background="@drawable/edittext"
                 android:paddingLeft="8dp"
                 android:textColor="@color/white"
@@ -674,7 +675,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:id="@+id/spinner4"
 
                 android:spinnerMode="dropdown"
-                android:layout_marginTop="6dp"
+
                 android:layout_toRightOf="@+id/collegestart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -702,7 +703,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:id="@+id/spinner5"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/collegeend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -713,6 +714,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:inputType="numberDecimal"
                 android:hint=" Percentage (Last Semester)"
                 android:id="@+id/collegeper"
+                android:drawablePadding="4dp"
                 android:layout_margin="16dp"
                 android:paddingLeft="8dp"
                 android:drawableLeft="@drawable/ic_content_paste_black_24dp"
@@ -731,7 +733,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                     android:background="@drawable/btn_gradient_style"
                     android:padding="16dp"
                     android:textColor="@color/white"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
@@ -752,9 +754,9 @@ android:layout_toRightOf="@+id/schlstarty10"
     android:id="@+id/layout_workexp"
     android:layout_height="match_parent">
             <TextView
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:textSize="20sp"
-           android:layout_marginLeft="16dp"
+           android:layout_marginStart="16dp"
                 android:textStyle="bold"
                 android:text="Work Experience:"
                 android:textColor="@color/white"
@@ -771,6 +773,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="6dp"
+                android:layout_below="@+id/layout_workexp"
                 android:id="@+id/layout_addnewex"
                 android:visibility="gone"
                 android:layout_height="match_parent">
@@ -779,7 +782,8 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:background="@drawable/btn_gradient_style"
                 android:padding="16dp"
 
-                android:layout_margin="5dp"
+              android:layout_marginLeft="12dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginStart="16dp"
                 android:text="Add new experience"
                 android:textColor="@color/white"
@@ -841,6 +845,7 @@ android:id="@+id/yes_no_exp"
                 android:drawableLeft="@drawable/ic_computer_black_24dp"
                 android:id="@+id/companyname"
                 android:textColor="@color/white"
+                android:drawablePadding="4dp"
                 android:paddingLeft="8dp"
                 android:textColorHint="@color/white"
                 android:background="@drawable/edittext"
@@ -872,7 +877,7 @@ android:visibility="gone"
                     android:id="@+id/spinner6"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/companystartdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -902,7 +907,7 @@ android:visibility="gone"
                     android:id="@+id/spinner7"
 
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="6dp"
+
                     android:layout_toRightOf="@+id/companyenddate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -916,6 +921,7 @@ android:visibility="gone"
                 android:background="@drawable/edittext"
                 android:textColor="@color/white"
                 android:paddingLeft="8dp"
+                android:drawablePadding="4dp"
                 android:drawableLeft="@drawable/ic_center_focus_strong_black_24dp"
                 android:textColorHint="@color/white"
                 android:layout_height="wrap_content"/>
@@ -929,6 +935,7 @@ android:visibility="gone"
                 android:paddingLeft="8dp"
                 android:textColorHint="@color/white"
                 android:layout_width="match_parent"
+                android:drawablePadding="4dp"
                 android:layout_height="wrap_content"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -1021,6 +1028,7 @@ android:visibility="gone"
     android:drawableLeft="@drawable/ic_archive_black_24dp"
                 android:paddingLeft="8dp"
                 android:id="@+id/companyname1"
+                android:drawablePadding="4dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:layout_margin="16dp"
@@ -1093,6 +1101,7 @@ android:visibility="gone"
                 android:textColor="@color/white"
 android:drawableLeft="@drawable/ic_brightness_medium_black_24dp"
                 android:paddingLeft="8dp"
+                android:drawablePadding="4dp"
                 android:background="@drawable/edittext"
                 android:textColorHint="@color/white"
                 android:layout_margin="16dp"
@@ -1159,13 +1168,13 @@ android:drawableLeft="@drawable/ic_brightness_medium_black_24dp"
         </LinearLayout>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
 
 
    <!-- </ScrollView>   -->
-        </LinearLayout>
-    </ScrollView>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

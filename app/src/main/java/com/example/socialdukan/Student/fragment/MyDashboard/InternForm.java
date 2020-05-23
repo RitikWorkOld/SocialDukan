@@ -104,7 +104,7 @@ public class InternForm extends AppCompatActivity {
 
                     intern_name.setText(value2.getIntname());
                     company_name.setText(value2.getCmpname());
-                    Picasso.get().load(value2.getIntimguri()).into(intern_img);
+                    Picasso.get().load(value2.getIntimguri()).resize(400,400).into(intern_img);
                 }
             }
 

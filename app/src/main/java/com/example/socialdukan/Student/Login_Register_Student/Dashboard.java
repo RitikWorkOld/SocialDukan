@@ -7,9 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -24,15 +28,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class Dashboard extends AppCompatActivity {
-
+    private Toast backToast;
     BottomNavigationView navigationView;
-
+    private long backPressedTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_dashboard);
         navigationView=findViewById( R.id.bottom_nav );
-
+        if(!haveNetworkConnection()){
+            Toast.makeText(Dashboard.this,"No Network Connection",Toast.LENGTH_LONG).show();
+        }
         final InternFragment intern=new InternFragment();
         final ProfileFragment profile=new ProfileFragment();
         final Other_Services other_services=new Other_Services();
@@ -72,11 +78,39 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
-   private void setFragment(Fragment fragment){
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            finish();
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService( Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
+   private synchronized void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace( R.id.frame,fragment );
-        fragmentTransaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN );
-        fragmentTransaction.commit();
+
+        fragmentTransaction.commitNow();
 
     }
 }

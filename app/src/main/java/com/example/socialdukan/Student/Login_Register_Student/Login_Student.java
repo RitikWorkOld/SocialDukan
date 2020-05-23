@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +27,8 @@ import android.widget.Toast;
 
 import com.example.socialdukan.LottieDialogFragment;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+
+import com.example.socialdukan.Student.Login_Register_Student.Utils.Save;
 import com.example.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Login_Student extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener {
     Button btnSignUp;
+    boolean session;
     ImageButton go;
     EditText emailId, password;
     FirebaseAuth mFirebaseAuth;
@@ -63,6 +68,16 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login__student );
+
+        if(!haveNetworkConnection()){
+
+
+            Toast.makeText(Login_Student.this,"No Network Connection",Toast.LENGTH_LONG).show();
+        }
+        SESSION();
+
+
+
         chatbot=findViewById( R.id.chatbot );
         progressBars = findViewById(R.id.progressBar2);
         progressBars.setVisibility(View.GONE);
@@ -152,20 +167,21 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                 ////yha bhi aaya run statement...ok
                                 //Toast.makeText( Login_Student.this, "Welcome", Toast.LENGTH_SHORT ).show();
                                 //saving session
-                                // Save.save(getApplicationContext(),"session","true");
+                              Save.save(getApplicationContext(),"session","true");
                                 // Intent intToHome = new Intent(getApplicationContext(),Dashboard.class);//not working TEAM.
                                 //   startActivity(intToHome);
                                 // finish();
 
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
                                 databaseReference.keepSynced(true);
-                                databaseReference.orderByChild("uid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                databaseReference.orderByChild("uid").equalTo(mFirebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                                             User user = dataSnapshot1.getValue(User.class);
 
-                                            pstatus = user.profilestatus;
+                                            assert user != null;
+                                            pstatus = user.getProfilestatus();
 
                                             Log.d("HEL**************","**************************************   "+pstatus);
 
@@ -181,7 +197,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                     startActivity(intent);
                                                     finish();
                                                 }
-                                                else {
+                                                if(pstatus.equals( "no" )) {
                                                     Log.d("HEL","msg= yha agya");
                                                     progressBars.setVisibility(View.GONE);
                                                    // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
@@ -270,8 +286,41 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
-    private void showProgressDialog(){
-        new LottieDialogFragment().newInstance().
-                show(getSupportFragmentManager(),"");
+    public void SESSION(){
+        session= Boolean.valueOf( Save.read(getApplicationContext(),"session","false"));
+        if(session){
+            //here when user first or logout
+            //In here,intent to signup for first reg
+
+             Toast.makeText(this,"Already Logged In",Toast.LENGTH_LONG).show();
+            Intent signup=new Intent(getApplicationContext(),Dashboard.class);
+            startActivity(signup);
+
+            finish();
+        }
+        else{
+            //here when user logged in
+            //value here is true
+            //Toast.makeText(this,"ALREADY LOGGED IN",Toast.LENGTH_SHORT).show();
+
+
+        }
+
+    }
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 }
