@@ -42,10 +42,7 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
 
         btn=findViewById( R.id.submit_btn );
         evnt_date.setOnClickListener( this );
-        TextView title = (TextView) findViewById(R.id.title);
-        SpannableString content = new SpannableString("Form");
 
-        title.setText(content);
 
 
         btn.setOnClickListener(new View.OnClickListener() {

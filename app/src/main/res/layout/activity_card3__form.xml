@@ -13,10 +13,9 @@
 
         android:textColor="@color/purple"
         android:padding="8dp"
-
+android:text="Form"
 android:layout_above="@id/main_lay"
-
-        android:textSize="44sp"
+        android:textSize="32sp"
         android:gravity="center"
         android:layout_margin="16dp"
         android:fontFamily="@font/montserrat"

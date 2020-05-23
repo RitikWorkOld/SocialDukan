@@ -30,10 +30,7 @@ Button btn;
         emailid=findViewById( R.id.emailid );
         btn=findViewById( R.id.submit_btn );
 
-        TextView title = (TextView) findViewById(R.id.title);
-        SpannableString content = new SpannableString("Form");
 
-        title.setText(content);
 
 
 

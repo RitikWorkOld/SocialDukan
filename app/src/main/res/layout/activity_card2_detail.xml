@@ -92,7 +92,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/greyline"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
+
             android:layout_marginEnd="0dp"
             android:orientation="vertical">
 
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_margin="16dp"
+           android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -109,18 +109,18 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Brand Name:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/brand_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Brand Name:"
                     android:textColor="#808080"
-                    android:textSize="20sp"
+
                     android:textStyle="normal" />
 
 
@@ -130,8 +130,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+android:layout_marginStart="16dp"
+               android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -140,7 +140,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Payment Type:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -151,7 +151,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Cash"
                     android:textColor="#808080"
-                    android:textSize="20sp"
+
                     android:textStyle="normal" />
 
 
@@ -160,8 +160,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -170,7 +170,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Location:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -181,7 +181,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Location"
                     android:textColor="#808080"
-                    android:textSize="20sp"
+
                     android:textStyle="normal" />
 
 
@@ -190,8 +190,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -200,7 +201,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Description:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -210,7 +211,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Note:The content created for the primary social media platform must be shared on the secondary platforms as well"
                     android:textColor="#808080"
-                    android:textSize="16sp"
+
                     android:textStyle="normal" />
 
 
@@ -220,7 +221,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -229,7 +232,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Social Media:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -239,7 +242,7 @@
 
                     android:text="Note:The content created for the primary social media platform must be shared on the secondary platforms as well"
                     android:textColor="#808080"
-                    android:textSize="16sp"
+
                     android:textStyle="normal" />
 
 
@@ -248,8 +251,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -259,7 +263,7 @@
                     android:text=" Primary:"
                     android:textColor="#000"
 
-                    android:textSize="16sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -271,7 +275,7 @@
                     android:gravity="start"
                     android:text="Youtube"
                     android:textColor="#808080"
-                    android:textSize="18sp"
+
                     android:textStyle="normal" />
 
 
@@ -280,8 +284,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -290,7 +295,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Genre:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+
                     android:textStyle="bold" />
 
                 <TextView
@@ -301,7 +306,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Gaming"
                     android:textColor="#808080"
-                    android:textSize="20sp"
+
                     android:textStyle="normal" />
 
 
@@ -310,8 +315,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -320,7 +326,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Type of campaign:"
                     android:textColor="#000"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -331,7 +337,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Product review"
                     android:textColor="#000"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
 
@@ -340,8 +346,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -366,7 +373,7 @@
                         android:text="Product Name:"
                         android:textColor="#000"
 
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
                     <TextView
@@ -377,7 +384,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="  Classic"
                         android:textColor="#808080"
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
 
@@ -395,7 +402,7 @@
                         android:text="Instagram Handle:"
                         android:textColor="#000"
 
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
                     <TextView
@@ -406,7 +413,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="  @Something"
                         android:textColor="#808080"
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
 
@@ -424,7 +431,7 @@
                         android:text="Link:"
                         android:textColor="#000"
 
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
                     <TextView
@@ -435,7 +442,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="  link"
                         android:textColor="#808080"
-                        android:textSize="16sp"
+
                         android:textStyle="normal" />
 
 

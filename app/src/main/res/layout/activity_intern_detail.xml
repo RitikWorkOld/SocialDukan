@@ -18,17 +18,18 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/cmp_detail2"
                 android:background="@drawable/btn_grd_style">
                 <ImageView
-
+android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
 android:paddingBottom="17dp"
+                    android:layout_toRightOf="@+id/cmp_img_detail"
                     android:src="@drawable/ic_certificate_1"
 
                     android:layout_width="100dp"
-                    android:layout_height="200dp"/>
+                    android:layout_height="164dp"/>
                 <TextView
                     android:layout_width="20dp"
                     android:textColor="@color/white"
@@ -40,7 +41,7 @@ android:paddingBottom="17dp"
                     app:cardCornerRadius="5dp"
                     android:elevation="5dp"
                     android:id="@+id/cmp_img_detail"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="30dp"
                     android:layout_centerHorizontal="true"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
@@ -85,7 +86,7 @@ android:paddingBottom="17dp"
                     android:layout_below="@id/cmp_work_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:weightSum="2"
+
                     android:layout_marginTop="8dp"
                     android:padding="8dp"
                     android:layout_centerHorizontal="true"
@@ -94,34 +95,34 @@ android:paddingBottom="17dp"
                     <LinearLayout
                         android:layout_gravity="center"
                         android:orientation="vertical"
-                        android:layout_weight="1"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
                             android:maxLines="1"
                             android:textSize="16dp"
-                            android:layout_marginEnd="64dp"
+
                             android:id="@+id/icd_location"
                             android:textColor="@color/white"
                             android:drawablePadding="5dp"
 
                             android:text="Delhi"
                             android:drawableLeft="@drawable/ic_location_interncard_24dp"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"/>
                         <TextView
                             android:maxLines="1"
                             android:textSize="16sp"
-                            android:layout_marginEnd="64dp"
-                            android:layout_marginTop="20dp"
+
+                            android:layout_marginTop="12dp"
                             android:id="@+id/stipend_detail"
                             android:textColor="@color/white"
                   android:drawablePadding="8dp"
-                            android:layout_marginStart="4dp"
+
                             android:text="Stipend"
                             android:drawableLeft="@drawable/ic_attach_money_interncard_24dp"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"/>
 
                     </LinearLayout>
@@ -129,7 +130,7 @@ android:paddingBottom="17dp"
                     <LinearLayout
                         android:layout_gravity="center"
                         android:orientation="vertical"
-                        android:layout_weight="1"
+                   android:layout_marginStart="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -137,7 +138,7 @@ android:paddingBottom="17dp"
                             android:maxLines="1"
                             android:textSize="16sp"
                             android:id="@+id/icd_duration"
-                            android:layout_marginRight="5dp"
+
                             android:drawablePadding="5dp"
 
                             android:textColor="@color/white"
@@ -147,10 +148,10 @@ android:paddingBottom="17dp"
                             android:layout_height="match_parent"/>
                         <TextView
                             android:maxLines="1"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:id="@+id/work_details"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="24dp"
+
+                           android:layout_marginTop="12dp"
                             android:drawablePadding="5dp"
 
                             android:textColor="@color/white"
@@ -167,6 +168,7 @@ android:paddingBottom="17dp"
                 <LinearLayout
                     android:layout_width="match_parent"
                    android:layout_alignParentBottom="true"
+                    android:visibility="gone"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout

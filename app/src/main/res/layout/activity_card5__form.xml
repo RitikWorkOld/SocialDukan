@@ -26,10 +26,10 @@
 
 android:text="Form"
             android:textAllCaps="false"
-            android:textSize="40sp"
+            android:textSize="32sp"
             android:gravity="center"
             android:layout_margin="16dp"
-            android:fontFamily="@font/montserrat"
+
             android:layout_marginTop="24dp"
 
             android:layout_width="match_parent"

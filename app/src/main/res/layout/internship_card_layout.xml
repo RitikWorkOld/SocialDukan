@@ -21,8 +21,8 @@
           android:layout_margin="10dp"
             android:layout_centerVertical="true"
             android:id="@+id/icd_cmpimg_layout"
-            android:layout_width="90dp"
-            android:layout_height="90dp">
+            android:layout_width="78dp"
+            android:layout_height="78dp">
 
             <ImageView
                 android:scaleType="centerCrop"
@@ -33,10 +33,10 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:maxLines="1"
+
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="Market Expansion for Oyo"
+            android:text="Business Development (Sales)"
             android:fontFamily="@font/montserrat"
             android:id="@+id/icd_cmpname"
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:maxLines="1"
+
             android:textColor="#808080"
             android:fontFamily="@font/montserrat"
             android:id="@+id/icd_cmpsubname"
@@ -86,10 +86,10 @@
 
                 <TextView
 
-                    android:textSize="12dp"
+                    android:textSize="8dp"
                     android:id="@+id/icd_location"
+android:textStyle="bold"
 
-                    android:drawablePadding="4dp"
                     android:gravity="start|center"
                     android:text="Work From Home"
                     android:drawableLeft="@drawable/ic_location_interncard_24dp"
@@ -111,7 +111,7 @@
                     android:textSize="12dp"
                     android:id="@+id/icd_amount"
 
-                    android:drawablePadding="4dp"
+                   android:textStyle="bold"
                     android:gravity="start|center"
                     android:text="1000"
                     android:drawableLeft="@drawable/ic_attach_money_interncard_24dp"
@@ -129,10 +129,10 @@
 
                 <TextView
 
-                    android:textSize="12dp"
+                    android:textSize="10dp"
                     android:id="@+id/icd_duration"
 
-                    android:drawablePadding="4dp"
+                  android:textStyle="bold"
                     android:gravity="start|center"
                     android:text="2 months"
                     android:drawableStart="@drawable/ic_date_range_interncard_24dp"
