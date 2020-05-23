@@ -19,7 +19,7 @@
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="5dp"
             android:elevation="5dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="14dp"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"
@@ -36,9 +36,9 @@
 
         </androidx.cardview.widget.CardView>
         <TextView
-            android:maxLines="1"
+
             android:textColor="@color/gray"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:text="Apply by"
             android:layout_alignParentBottom="true"
 
@@ -51,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
-            android:maxLines="1"
+
             android:textColor="#000"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="08 Apr"
 
 
@@ -69,7 +69,7 @@ android:layout_toRightOf="@id/icd_cmpname0"
         <TextView
             android:maxLines="1"
             android:textColor="#000000"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:text="Classic"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat"
@@ -81,13 +81,13 @@ android:layout_toRightOf="@id/icd_cmpname0"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:maxLines="1"
+
             android:textColor="#808080"
             android:fontFamily="@font/montserrat"
             android:id="@+id/categ_name"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="4dp"
             android:text="Gaming"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:layout_below="@+id/infl_name"
             android:layout_toRightOf="@+id/icd_cmpimg_layout"
             android:layout_width="wrap_content"
@@ -101,7 +101,7 @@ android:layout_toRightOf="@id/icd_cmpname0"
             android:id="@+id/icd_cmpsubname1"
 
             android:text="|"
-            android:textSize="22sp"
+            android:textSize="16sp"
            android:layout_below="@id/infl_name"
             android:layout_toEndOf="@+id/categ_name"
             android:layout_width="wrap_content"
@@ -111,18 +111,20 @@ android:layout_toRightOf="@id/icd_cmpname0"
             android:textColor="#808080"
             android:fontFamily="@font/montserrat"
             android:id="@+id/location"
-android:layout_marginLeft="12dp"
+android:layout_marginLeft="4dp"
             android:text="Location"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:layout_below="@id/infl_name"
             android:layout_toEndOf="@+id/icd_cmpsubname1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_width="wrap_content"
-
+android:layout_toRightOf="@+id/date"
            android:layout_alignParentBottom="true"
 android:layout_marginEnd="4dp"
+            android:layout_below="@id/location"
+            android:gravity="bottom|end"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="10dp"

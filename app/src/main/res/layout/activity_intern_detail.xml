@@ -76,7 +76,7 @@ android:paddingBottom="17dp"
                     android:id="@+id/cmp_work_detail"
                     android:layout_below="@id/cmp_name_detail"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Android Development">
 
 
@@ -86,7 +86,7 @@ android:paddingBottom="17dp"
                     android:layout_below="@id/cmp_work_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="8dp"
                     android:layout_centerHorizontal="true"
