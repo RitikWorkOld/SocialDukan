@@ -763,20 +763,10 @@ android:layout_toRightOf="@+id/schlstarty10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 </RelativeLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:id="@+id/no_exp_yet"
-    android:layout_height="wrap_content">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="No Experience yet"
 
-    android:visibility="visible"
-    android:textColor="@color/white"/>
-</LinearLayout>
 
-            <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_exp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -1013,20 +1003,7 @@ android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             </RelativeLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:id="@+id/no_exp_yet1"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No Experience yet"
-
-                    android:visibility="visible"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-
-            <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_exp1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -1099,20 +1076,7 @@ android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:id="@+id/no_exp_yet2"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No Experience yet"
-
-                    android:visibility="visible"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-
-            <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_exp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

@@ -1022,7 +1022,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No Experience yet"
+                            android:text="No Skills yet"
 
                             android:visibility="visible"
                             android:textColor="@color/white"/>
@@ -1108,7 +1108,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No Experience yet"
+                            android:text="No Achievements yet"
 
                             android:visibility="visible"
                             android:textColor="@color/white"/>
@@ -1163,6 +1163,7 @@
                         <Button
                             android:id="@+id/updateexp_btn2"
                             android:layout_margin="5dp"
+                            android:visibility="gone"
                             android:text="Update Achievements"
                             android:background="@drawable/btn_gradient_style"
                             android:padding="16dp"

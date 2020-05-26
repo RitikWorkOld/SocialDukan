@@ -36,7 +36,6 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp2_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,24 +65,26 @@ TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend
     Button addexpbtn2,addnewexpbtn2,updateexpbtn2;
     EditText companyname1;//RITIK
     EditText companyname2;
+    DatabaseReference reff,reff1,reff2;
     Button submit,yesbtn,nobtn;
     String name,phno,email,uid;
     RadioButton radioButton_high, radioButton_diploma;
 private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,pres_doctor5,pres_doctor6,pres_doctor7;
     EditText stream1,board,board1,dipclgname,dipcorsname,dippercentage;
-
+    long maxid,maxid1,maxid2;
+    private int max;
     ImageView user_img;
     private static final int ImageBack = 1;
     StorageReference storageReference;
     ProgressBar pb_userimg;
-
+int counter=0;
 
     private int mYear, mMonth, mDay;
     private int count1=0,count2=0,count3=0,count4=0,count5=0;
 
     TextView displayname,displayemail,displaymno;
-private View no_app,no_app1,no_app2;
-    BucketRecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
+
+    RecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
     FirebaseRecyclerOptions<addexp2_model> optionsexp2;
@@ -92,14 +93,30 @@ private View no_app,no_app1,no_app2;
     FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder> adapterexp2;
     DatabaseReference databaseReferenceexprv,databaseReferenceexprv1,databaseReferenceexprv2;           //RITIK
 
-    int expcounter=0;
-    int skillcount=0;
-    int achcount=0;
+
 
 
 
     protected void onStart(){
         super.onStart();
+
+        reff2=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child("cmpach"  );
+        reff2.addListenerForSingleValueEvent(  new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                if(dataSnapshot1.exists()){
+                    max= (int) dataSnapshot1.getChildrenCount();
+                    max++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+        counter=max;
+
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReference.keepSynced(true);
         databaseReference.orderByChild("uid").equalTo( FirebaseAuth.getInstance()
@@ -185,11 +202,7 @@ private View no_app,no_app1,no_app2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_studentdetail);
-
         getWindow().setBackgroundDrawableResource(R.drawable.try001);
-        no_app=findViewById( R.id.no_exp_yet );
-        no_app1=findViewById( R.id.no_exp_yet1 );
-        no_app2=findViewById( R.id.no_exp_yet2 );
         //textview=findViewById( R.id.txtview );
 
         //alreaady aopen hai to next pe jaega
@@ -261,6 +274,21 @@ private View no_app,no_app1,no_app2;
                 layout_addnewex.setVisibility( View.VISIBLE );
                 layout_askingex.setVisibility( View.GONE );
                 layout_yes_no_ex.setVisibility( View.GONE );
+                reff1=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child("cmpexp"  );
+                reff1.addValueEventListener( new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            maxid2= dataSnapshot.getChildrenCount();
+                            maxid2++;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                } );
 
             }
         } );
@@ -645,12 +673,39 @@ private View no_app,no_app1,no_app2;
             public void onClick(View v) {
                 companyname2.setVisibility(View.VISIBLE);
 
-                companyname2.clearComposingText();
+                companyname2.setText("");
 
                 addexpbtn2.setVisibility(View.VISIBLE);
                 updateexpbtn2.setVisibility(View.GONE);
                 addnewexpbtn2.setVisibility(View.GONE);
 
+
+            }
+        });
+        addexpbtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!companyname2.getText().toString().isEmpty()){
+counter=counter+1;
+
+
+                    DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child( String.valueOf( counter ) );
+                    databaseReferencecmpexp.keepSynced(true);
+                    Toast.makeText( getApplicationContext(),"Added"+max,Toast.LENGTH_SHORT ).show();
+                    databaseReferencecmpexp.child("achivmnts").setValue(companyname2.getText().toString());
+                    databaseReferencecmpexp.child("expid").setValue(String.valueOf( counter ));
+                    databaseReferencecmpexp.child("uid").setValue(String.valueOf( uid ));
+                    companyname2.setVisibility(View.GONE);
+                    addexpbtn2.setVisibility(View.GONE);
+                    updateexpbtn2.setVisibility(View.GONE);
+                    addnewexpbtn2.setVisibility(View.VISIBLE);
+                    companyname2.setText( "" );
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
+                }
+
+                else {
+                    companyname2.setError("Empty");
+                }
             }
         });
         //---------------------------------------------------------------------------
@@ -660,17 +715,31 @@ private View no_app,no_app1,no_app2;
             public void onClick(View v) {
                 companyname1.setVisibility(View.VISIBLE);
 
-                companyname1.clearComposingText();
+                companyname1.setText("");
 
                 addexpbtn1.setVisibility(View.VISIBLE);
                 updateexpbtn1.setVisibility(View.GONE);
                 addnewexpbtn1.setVisibility(View.GONE);
+                reff=FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child("cmpskills"  );
+                reff.addValueEventListener( new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            maxid= dataSnapshot.getChildrenCount();
+                            maxid++;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                } );
 
             }
         });
         //---------------------------------------------------------------------------
         rv_exp2 = findViewById(R.id.rv_exp2);
-        rv_exp2.showIfEmpty( no_app );
         rv_exp2.setHasFixedSize(true);
         rv_exp2.setLayoutManager(new LinearLayoutManager(this));
 
@@ -774,7 +843,6 @@ private View no_app,no_app1,no_app2;
           //---------------------------------------------------------------------------
         rv_exp1 = findViewById(R.id.rv_exp1);
         rv_exp1.setHasFixedSize(true);
-        rv_exp1.showIfEmpty( no_app1 );
         rv_exp1.setLayoutManager(new LinearLayoutManager(this));
 
         databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills");
@@ -878,7 +946,6 @@ private View no_app,no_app1,no_app2;
 
         rv_exp = findViewById(R.id.rv_exp);
         rv_exp.setHasFixedSize(true);
-        rv_exp.showIfEmpty(no_app2  );
         rv_exp.setLayoutManager(new LinearLayoutManager(this));
 
         databaseReferenceexprv = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpexp");
@@ -1316,17 +1383,17 @@ private View no_app,no_app1,no_app2;
                             if (!companyrole.getText().toString().isEmpty()){
                                 if (!companybenefits.getText().toString().isEmpty()){
 
-                                    expcounter++;
+
 
                                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                     databaseReferencecmpexp.keepSynced(true);
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companyname").setValue(companyname.getText().toString());
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companystart").setValue(pres_doctor6);
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companyend").setValue(pres_doctor7);
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companyrole").setValue(companyrole.getText().toString());
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("companybenefits").setValue(companybenefits.getText().toString());
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("expid").setValue(String.valueOf(expcounter));
-                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(expcounter)).child("uid").setValue(uid);
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("companyname").setValue(companyname.getText().toString());
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("companystart").setValue(pres_doctor6);
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("companyend").setValue(pres_doctor7);
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("companyrole").setValue(companyrole.getText().toString());
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("companybenefits").setValue(companybenefits.getText().toString());
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("expid").setValue(String.valueOf(maxid2));
+                                    databaseReferencecmpexp.child("cmpexp").child(String.valueOf(maxid2)).child("uid").setValue(uid);
 
                                     companyname.setVisibility(View.GONE);
                                     companystartdate.setVisibility(View.GONE);
@@ -1370,13 +1437,13 @@ private View no_app,no_app1,no_app2;
             @Override
             public void onClick(View v) {
                 if (!companyname1.getText().toString().isEmpty()){
-                                    skillcount++;
+
 
                                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                     databaseReferencecmpexp.keepSynced(true);
-                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("skills").setValue(companyname1.getText().toString());
-                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("expid").setValue(String.valueOf( skillcount ));
-                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(skillcount)).child("uid").setValue(String.valueOf( uid ));
+                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(maxid)).child("skills").setValue(companyname1.getText().toString());
+                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(maxid)).child("expid").setValue(String.valueOf( maxid ));
+                    databaseReferencecmpexp.child("cmpskills").child(String.valueOf(maxid)).child("uid").setValue(String.valueOf( uid ));
                                     companyname1.setVisibility(View.GONE);
                                     addexpbtn1.setVisibility(View.GONE);
                                     updateexpbtn1.setVisibility(View.GONE);
@@ -1391,29 +1458,7 @@ private View no_app,no_app1,no_app2;
         });
 
 
-        addexpbtn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!companyname2.getText().toString().isEmpty()){
-                    achcount++;
 
-                    DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    databaseReferencecmpexp.keepSynced(true);
-                    databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("achivmnts").setValue(companyname2.getText().toString());
-                    databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("expid").setValue(String.valueOf( achcount ));
-                    databaseReferencecmpexp.child("cmpach").child(String.valueOf(achcount)).child("uid").setValue(String.valueOf( uid ));
-                    companyname2.setVisibility(View.GONE);
-                    addexpbtn2.setVisibility(View.GONE);
-                    updateexpbtn2.setVisibility(View.GONE);
-                    addnewexpbtn2.setVisibility(View.VISIBLE);
-                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
-                }
-
-                else {
-                    companyname2.setError("Empty");
-                }
-            }
-        });
 
 
 
