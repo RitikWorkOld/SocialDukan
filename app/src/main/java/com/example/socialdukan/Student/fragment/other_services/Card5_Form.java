@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.socialdukan.R;
@@ -22,7 +23,9 @@ public class Card5_Form extends AppCompatActivity {
 CardView card1,card2,card3,card4,card5,card6;
 TextView text1,text2,text3,text4,text5,text6;
 EditText type;
+TextInputEditText name,no,email,citi,pieces;
 TextInputEditText other_text;
+ImageView cross;
 
     Button btn;
 
@@ -30,7 +33,12 @@ TextInputEditText other_text;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_card5__form );
+name=findViewById( R.id.nm_et );
+no=findViewById( R.id.no_et );
 
+email=findViewById( R.id.email_et );
+citi=findViewById( R.id.city_et );
+pieces=findViewById( R.id.pieces_et );
 
 type=findViewById( R.id.type );
         city1=findViewById( R.id.city );
@@ -235,13 +243,36 @@ other_text.setText( "NULL" );
                                                         databaseReference.child( "others" ).setValue( other_1.toString() );
                                                         databaseReference.child( "type" ).setValue( type.getText().toString() );
                                                         databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
-
+                                                        databaseReference.child( "read" ).setValue("no");
                                                         databaseReference.child( "id" ).setValue(notiid);
 
 
                                                         Intent intent = new Intent( Card5_Form.this, Thanks_Activity.class );
+                                                   name.setText( "" );
+                                                           no.setText( "" );
+                                                           email.setText( "" );
+                                                           citi.setText( "" );
+                                                                   pieces.setText( "" );
+                                                                   other_text.setText( "" );
+                                                        others.setVisibility( View.GONE );
+                                                        card1.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text1.setTextColor( getResources().getColor( R.color.gray ) );
+                                                        card2.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text2.setTextColor( getResources().getColor( R.color.gray ) );
+
+                                                        card3.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text3.setTextColor( getResources().getColor( R.color.gray ) );
+
+                                                        card4.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text4.setTextColor( getResources().getColor( R.color.gray ) );
+
+                                                        card5.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text5.setTextColor( getResources().getColor( R.color.gray ) );
+
+                                                        card6.setCardBackgroundColor( getResources().getColor( R.color.white ) );
+                                                        text6.setTextColor( getResources().getColor( R.color.gray ) );
                                                         startActivity( intent );
-                                                        finish();
+
 
                                                     }
                                                     else {

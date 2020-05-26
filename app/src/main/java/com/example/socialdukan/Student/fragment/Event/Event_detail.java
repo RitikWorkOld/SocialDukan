@@ -115,7 +115,7 @@ public class Event_detail extends Fragment {
                     events_md valueintern = dataSnapshot1.getValue(events_md.class);
                     if(!valueintern.getAmount().equals( "0" )) {
                     amount.setText( "Rs "+valueintern.getAmount() );
-                    indi_team.setText( "( /"+valueintern.getIndi_or_team()+" )" );
+                    indi_team.setText( "( "+valueintern.getIndi_or_team()+" )" );
 
                 }
                     if(valueintern.getAmount().equals( "0" )) {

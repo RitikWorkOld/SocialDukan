@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+
 import com.example.socialdukan.Student.Notifications.Notifications;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -62,7 +62,10 @@ public class MyMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        String channelId = getString( R.string.default_notification_channel_id);
+
+
+
+        String channelId = "Noti";
         Uri defaultSoundUri = RingtoneManager.getDefaultUri( RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
@@ -80,12 +83,12 @@ public class MyMessagingService extends FirebaseMessagingService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId,
                     "Channel 1",
-                    NotificationManager.IMPORTANCE_HIGH);
+                    NotificationManager.IMPORTANCE_DEFAULT);
 
             notificationManager.createNotificationChannel(channel);
         }
 
-        notificationManager.notify(0 , notificationBuilder.build());
+        notificationManager.notify(1 , notificationBuilder.build());
 
 
 

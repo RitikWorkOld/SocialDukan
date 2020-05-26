@@ -116,6 +116,7 @@ public class Card2_detail extends AppCompatActivity {
                         public void onClick(View v) {
                             Intent intent = new Intent( Card2_detail.this, Detail_Submitted.class);
                             intent.putExtra("id",id);
+                            intent.putExtra("userid",userid);
                             startActivity(intent);
 
                         }

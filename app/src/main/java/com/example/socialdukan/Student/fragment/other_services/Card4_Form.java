@@ -71,11 +71,19 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
                                                 databaseReference.child( "heademail" ).setValue( head_email.getText().toString() );
                                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                                 databaseReference.child( "id" ).setValue(notiid);
-
+                                                databaseReference.child( "read" ).setValue("no");
                                                 Intent intent = new Intent( Card4_Form.this, Thanks_Activity.class );
+                                                evnt_name.setText("");
+                                                evnt_date.setText("");
+                                                evnt_venue.setText("");
+                                                city.setText("");
+                                                exp_football.setText("");
+                                                head_cont.setText("");
+                                                head_name.setText("");
+                                                head_email.setText("");
                                                 startActivity( intent );
                                               //  Toast.makeText( Card4_Form.this, "Done", Toast.LENGTH_SHORT ).show();
-                                                finish();
+
 
                                             }
                                             else {

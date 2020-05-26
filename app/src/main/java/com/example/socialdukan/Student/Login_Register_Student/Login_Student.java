@@ -194,6 +194,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                     progressBars.setVisibility(View.GONE);
                                                    // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Student.this, Dashboard.class);
+                                                    Save.save(getApplicationContext(),"session","false");
                                                     startActivity(intent);
                                                     finish();
                                                 }

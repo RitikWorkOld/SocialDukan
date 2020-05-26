@@ -58,7 +58,7 @@ private View no_app;
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_event,container,false);
         // Inflate the layout for this fragment
-        notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
         no_app=view.findViewById( R.id.no_app );
@@ -140,7 +140,10 @@ private View no_app;
                     @Override
                     public void onClick(View v) {
 
-
+                        DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReferencenotup.child("dotstatus").setValue("no");
+                        databaseReferencenotup.keepSynced(true);
                         Intent intent = new Intent(getActivity(), Notifications.class);
                         startActivity(intent);
 

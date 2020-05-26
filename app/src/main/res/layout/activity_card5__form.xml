@@ -34,314 +34,314 @@ android:text="Form"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:id="@+id/upper"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/upper"
 
-android:layout_gravity="center"
-    android:gravity="center"
-    android:layout_height="wrap_content">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main"
-        android:elevation="8dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main"
+                android:elevation="8dp"
 
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        >
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                >
 
 
 
                 <LinearLayout
-    android:layout_width="wrap_content"
-    android:id="@+id/lay1"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/shirt"
-
-                    android:layout_width="114dp"
-                    android:layout_height="114dp"
-                    android:padding="16dp"/>
-             <RelativeLayout
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content">
-                <TextView
-android:id="@+id/card1_text"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="T-shirt"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-             android:textSize="18sp"
-
-                 />
-             </RelativeLayout>
-</LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main2"
-        android:elevation="8dp"
-android:layout_toRightOf="@+id/card_main"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp">
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:id="@+id/lay2"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:src="@drawable/hoodies"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
-
-                android:padding="16dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/card2_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hoodies"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:id="@+id/lay1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:src="@drawable/shirt"
 
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card1_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="T-shirt"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
 
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main3"
-        android:elevation="8dp"
-      android:layout_below="@id/card_main2"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp"
-        android:focusable="true">
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main2"
+                android:elevation="8dp"
+                android:layout_toRightOf="@+id/card_main"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:src="@drawable/notpad"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
-                android:padding="16dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/card3_text"
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Diaries"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:id="@+id/lay2"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:src="@drawable/hoodies"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
 
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card2_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hoodies"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
 
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main4"
-        android:elevation="8dp"
-        android:layout_below="@id/card_main3"
-
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp">
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main3"
+                android:elevation="8dp"
+                android:layout_below="@id/card_main2"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp"
+                android:focusable="true">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:src="@drawable/pen"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
 
-                android:padding="16dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/card5_text"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pens"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:src="@drawable/notpad"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card3_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diaries"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
 
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main5"
-        android:elevation="8dp"
-        android:clickable="true"
-android:layout_toRightOf="@id/card_main"
-        android:layout_below="@id/card_main"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp"
-        android:focusable="true">
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main4"
+                android:elevation="8dp"
+                android:layout_below="@id/card_main3"
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp">
 
-            <ImageView
-                android:src="@drawable/badges"
-                android:scaleType="centerCrop"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
-                android:padding="16dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/card4_text"
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Badges"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:src="@drawable/pen"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
 
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card5_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pens"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
 
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card_main6"
-        android:elevation="8dp"
-        android:clickable="true"
-android:layout_toEndOf="@id/card_main"
-        android:layout_below="@id/card_main3"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="6dp"
-        android:focusable="true">
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main5"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:layout_toRightOf="@id/card_main"
+                android:layout_below="@id/card_main"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp"
+                android:focusable="true">
 
-            <ImageView
-                android:src="@drawable/ic_tshirt"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
-                android:padding="16dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/card6_text"
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Others"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:src="@drawable/badges"
+                        android:scaleType="centerCrop"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card4_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Badges"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/card_main6"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:layout_toEndOf="@id/card_main"
+                android:layout_below="@id/card_main3"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="6dp"
+                android:focusable="true">
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_tshirt"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:padding="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/card6_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
     <LinearLayout
         android:layout_marginTop="12dp"
@@ -363,7 +363,7 @@ android:layout_toEndOf="@id/card_main"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+android:id="@+id/nm_et"
                 android:textColor="@color/white"
                 android:padding="8dp"
                 android:background="@drawable/edittext"
@@ -396,7 +396,7 @@ android:layout_toEndOf="@id/card_main"
 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+android:id="@+id/no_et"
                 android:textColor="@color/white"
                 android:padding="8dp"
                 android:background="@drawable/edittext"
@@ -420,6 +420,7 @@ android:inputType="textEmailAddress"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:padding="8dp"
+                android:id="@+id/email_et"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:hint="Head's Email ID" />
@@ -438,6 +439,7 @@ android:inputType="textEmailAddress"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:padding="8dp"
+                android:id="@+id/city_et"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:hint="City" />
@@ -456,6 +458,7 @@ android:inputType="number"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:padding="8dp"
+                android:id="@+id/pieces_et"
                 android:background="@drawable/edittext"
                 android:layout_margin="16dp"
                 android:hint="Number of Pieces" />

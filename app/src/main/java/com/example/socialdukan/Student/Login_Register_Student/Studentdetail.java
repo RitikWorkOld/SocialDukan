@@ -36,6 +36,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp2_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
 import com.example.socialdukan.R;
+import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -81,8 +82,8 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
     private int count1=0,count2=0,count3=0,count4=0,count5=0;
 
     TextView displayname,displayemail,displaymno;
-
-    RecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
+private View no_app,no_app1,no_app2;
+    BucketRecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
     FirebaseRecyclerOptions<addexp2_model> optionsexp2;
@@ -184,6 +185,11 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_studentdetail);
+
+        getWindow().setBackgroundDrawableResource(R.drawable.try001);
+        no_app=findViewById( R.id.no_exp_yet );
+        no_app1=findViewById( R.id.no_exp_yet1 );
+        no_app2=findViewById( R.id.no_exp_yet2 );
         //textview=findViewById( R.id.txtview );
 
         //alreaady aopen hai to next pe jaega
@@ -664,6 +670,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
         });
         //---------------------------------------------------------------------------
         rv_exp2 = findViewById(R.id.rv_exp2);
+        rv_exp2.showIfEmpty( no_app );
         rv_exp2.setHasFixedSize(true);
         rv_exp2.setLayoutManager(new LinearLayoutManager(this));
 
@@ -767,6 +774,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
           //---------------------------------------------------------------------------
         rv_exp1 = findViewById(R.id.rv_exp1);
         rv_exp1.setHasFixedSize(true);
+        rv_exp1.showIfEmpty( no_app1 );
         rv_exp1.setLayoutManager(new LinearLayoutManager(this));
 
         databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills");
@@ -870,6 +878,7 @@ private String pres_doctor,pres_doctor1,pres_doctor2,pres_doctor3,pres_doctor4,p
 
         rv_exp = findViewById(R.id.rv_exp);
         rv_exp.setHasFixedSize(true);
+        rv_exp.showIfEmpty(no_app2  );
         rv_exp.setLayoutManager(new LinearLayoutManager(this));
 
         databaseReferenceexprv = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpexp");

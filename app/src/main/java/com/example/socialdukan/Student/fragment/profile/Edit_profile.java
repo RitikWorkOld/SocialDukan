@@ -37,6 +37,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Miscellaneous.User;
+import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.example.socialdukan.Student.fragment.profile.models.College_md;
 import com.example.socialdukan.Student.fragment.profile.models.Diploma_md;
 import com.example.socialdukan.Student.fragment.profile.models.Personaldet_md;
@@ -88,8 +89,8 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
     private int count1=0,count2=0,count3=0,count4=0,count5=0;
 
     TextView displayname,displayemail,displaymno;
-
-    RecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
+    private View no_app,no_app1,no_app2;
+    BucketRecyclerView rv_exp,rv_exp1,rv_exp2;//RITIK
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
     FirebaseRecyclerOptions<addexp2_model> optionsexp2;
@@ -314,6 +315,10 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_edit_profile);
+        getWindow().setBackgroundDrawableResource(R.drawable.try001);
+        no_app=findViewById( R.id.no_exp_yet );
+        no_app1=findViewById( R.id.no_exp_yet1 );
+        no_app2=findViewById( R.id.no_exp_yet2 );
         //textview=findViewById( R.id.txtview );
 
         //alreaady aopen hai to next pe jaega
@@ -475,7 +480,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear; i++) {
+        for (int i = 1995; i <= thisYear; i++) {
             years.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_item, years);
@@ -500,7 +505,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years1 = new ArrayList<String>();
         int thisYear1 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear1; i++) {
+        for (int i = 1995; i <= thisYear1; i++) {
             years1.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,R.layout.spinner_item, years1);
@@ -523,7 +528,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years2 = new ArrayList<String>();
         int thisYear2 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear2; i++) {
+        for (int i = 1995; i <= thisYear2; i++) {
             years2.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,R.layout.spinner_item, years2);
@@ -547,7 +552,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years3 = new ArrayList<String>();
         int thisYear3 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear3; i++) {
+        for (int i = 1995; i <= thisYear3; i++) {
             years3.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,R.layout.spinner_item, years3);
@@ -570,7 +575,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years4 = new ArrayList<String>();
         int thisYear4 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear4; i++) {
+        for (int i = 1995; i <= thisYear4; i++) {
             years4.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this,R.layout.spinner_item, years4);
@@ -593,7 +598,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years5 = new ArrayList<String>();
         int thisYear5 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear5; i++) {
+        for (int i = 1995; i <= 2030; i++) {
             years5.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter5= new ArrayAdapter<String>(this,R.layout.spinner_item, years5);
@@ -616,7 +621,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years6 = new ArrayList<String>();
         int thisYear6 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear6; i++) {
+        for (int i = 1995; i <= thisYear6; i++) {
             years6.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(this,R.layout.spinner_item, years6);
@@ -640,7 +645,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years7 = new ArrayList<String>();
         int thisYear7 = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1970; i <= thisYear7; i++) {
+        for (int i = 1995; i <= thisYear7; i++) {
             years7.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(this,R.layout.spinner_item, years7);
@@ -667,17 +672,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------------------------------------------------------//RITIK
 
 
-        /*spinYear.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                schlstarty10.setText( finalYears );
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        } );*/
 
         dob.setOnClickListener( this );
 
@@ -792,6 +787,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
         });
         //---------------------------------------------------------------------------
         rv_exp2 = findViewById(R.id.rv_exp2);
+        rv_exp2.showIfEmpty( no_app2 );
         rv_exp2.setHasFixedSize(true);
         rv_exp2.setLayoutManager(new LinearLayoutManager(this));
 
@@ -899,6 +895,7 @@ holder2.cancelbtn.setVisibility( View.GONE );
 
         //---------------------------------------------------------------------------
         rv_exp1 = findViewById(R.id.rv_exp1);
+        rv_exp1.showIfEmpty( no_app1 );
         rv_exp1.setHasFixedSize(true);
         rv_exp1.setLayoutManager(new LinearLayoutManager(this));
 
@@ -999,6 +996,7 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
         //------------------------------------------------------------------------------------------------------------------
 
         rv_exp = findViewById(R.id.rv_exp);
+        rv_exp.showIfEmpty( no_app );
         rv_exp.setHasFixedSize(true);
         rv_exp.setLayoutManager(new LinearLayoutManager(this));
 

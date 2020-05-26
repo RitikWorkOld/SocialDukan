@@ -39,6 +39,7 @@ public class Card1_Form extends AppCompatActivity implements View.OnClickListene
 TextInputLayout evnt_name,evnt_venue,city1,exp_football,head_name,head_cont,head_email;
 EditText number;
 public String cmpid;
+EditText name_et,venue_et,city_et,exp_et,head_name_et,email_et;
 EditText evnt_date;
 private FirebaseAuth mFirebaseAuth;
 Button btn;
@@ -47,6 +48,13 @@ Button btn;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_card1__form );
+        name_et=findViewById( R.id.name_et );
+        venue_et=findViewById( R.id.venut_et );
+        city_et=findViewById( R.id.city_et );
+        exp_et=findViewById( R.id.exp_et );
+        head_name_et=findViewById( R.id.head_name_et );
+        email_et=findViewById( R.id.email_et );
+
         evnt_name=findViewById( R.id.evnt_name );
         evnt_date=findViewById( R.id.evnt_date );
         evnt_venue=findViewById( R.id.evnt_venue );
@@ -103,11 +111,19 @@ evnt_date.setOnClickListener( this );
                                                     databaseReference.child( "heademail" ).setValue( headEmail.toString() );
                                                     databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                                     databaseReference.child( "id" ).setValue(notiid);
-
+                                                    databaseReference.child( "read" ).setValue("no");
 
                                                     //Toast.makeText( Card1_Form.this, "Done", Toast.LENGTH_SHORT ).show();
 
                                                     Intent intent = new Intent( Card1_Form.this, Thanks_Activity.class );
+                                                    name_et.setText( "" );
+                                                    venue_et.setText( "" );
+                                                    city_et.setText( "" );
+                                                    exp_et.setText( "" );
+                                                    head_name_et.setText( "" );
+                                                    number.setText( "" );
+                                                    email_et.setText( "" );
+evnt_date.setText( "" );
                                                     startActivity( intent );
 
                                                 } else {

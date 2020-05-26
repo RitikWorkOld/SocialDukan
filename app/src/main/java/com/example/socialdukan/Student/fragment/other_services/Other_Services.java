@@ -72,7 +72,10 @@ CardView card1,card2,card3,card4,card5;
             @Override
             public void onClick(View v) {
 
-
+                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.keepSynced(true);
                 Intent intent = new Intent(getActivity(), Notifications.class);
                 startActivity(intent);
 

@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Card3_Form extends AppCompatActivity {
 TextInputEditText company_name,contact_no,emailid;
+
 Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ Button btn;
         setContentView( R.layout.activity_card3__form );
         company_name=findViewById( R.id.company_name );
         contact_no=findViewById( R.id.contact_no );
+
         emailid=findViewById( R.id.emailid );
         btn=findViewById( R.id.submit_btn );
 
@@ -51,12 +53,17 @@ Button btn;
                                                 databaseReference.child( "contactno" ).setValue( contact_no.getText().toString() );
                                                 databaseReference.child( "emailid" ).setValue( emailid.getText().toString() );
                             databaseReference.child( "id" ).setValue(notiid);
+                            databaseReference.child( "read" ).setValue("no");
                                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
 
 
                             Intent intent = new Intent( Card3_Form.this, Thanks_Activity.class );
+                            company_name.setText( "" );
+                            contact_no.setText( "" );
+                            emailid.setText( "" );
+
                             startActivity( intent );
-                                                finish();
+
 
 
 

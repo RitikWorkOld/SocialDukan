@@ -27,6 +27,7 @@ import com.example.socialdukan.Student.ModelandViewholder.addexp1_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_model;
 import com.example.socialdukan.Student.ModelandViewholder.addexp_viewholder;
+import com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.example.socialdukan.Student.Notifications.Notifications;
 import com.example.socialdukan.Student.Notifications.Notifications_Dots;
 import com.example.socialdukan.Student.fragment.profile.aboutus.about_us;
@@ -54,6 +55,7 @@ private Button matri_btn,inter_btn,dip_btn,clg_btn;
     ImageView notification_btn;
     private FirebaseRecyclerAdapter<addexp_model,addexp_viewholder> adapterexp;
     private FirebaseRecyclerAdapter<addexp1_model,addexp1_viewholder>adapterexp1; //Ritik
+    private View view1,view2;
 
     private FirebaseAuth mFirebaseAuth;
     private ProgressBar pb_userimg;
@@ -105,6 +107,9 @@ private TextView user_ph;
         user_email = view.findViewById(R.id.user_email);
         user_ph=view.findViewById( R.id.user_ph );
 
+        view1=view.findViewById( R.id.abi_lay );
+        view2=view.findViewById( R.id.abi_lay1 );
+
     ImageView about=view.findViewById( R.id.about );
         ImageView edit = view.findViewById( R.id.edit_profile );
         matri_btn=view.findViewById( R.id.matr_btn );
@@ -147,7 +152,10 @@ about.setOnClickListener( new View.OnClickListener() {
         notification_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.keepSynced(true);
 
                 Intent intent = new Intent(getActivity(), Notifications.class);
                 startActivity(intent);
@@ -166,8 +174,9 @@ about.setOnClickListener( new View.OnClickListener() {
         final RelativeLayout layout_profile4 = (RelativeLayout)view.findViewById(R.id.pers_detail4);
         final RelativeLayout layout_signout = (RelativeLayout)view.findViewById(R.id.layout_signout);
         //RITIK
-        RecyclerView rv_exp1 = view.findViewById( R.id.rv_exp1 );
+        BucketRecyclerView rv_exp1 = view.findViewById( R.id.rv_exp1 );
         rv_exp1.setHasFixedSize(true);
+        rv_exp1.showIfEmpty( view1 );
         rv_exp1.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DatabaseReference databaseReferenceexprv1 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpskills" );
@@ -214,8 +223,9 @@ about.setOnClickListener( new View.OnClickListener() {
         adapterexp1.startListening();
 
 //-------------------------------------------------------------------------------------------
-        RecyclerView rv_exp = view.findViewById( R.id.rv_exp );
+        BucketRecyclerView rv_exp = view.findViewById( R.id.rv_exp );
         rv_exp.setHasFixedSize( true );
+        rv_exp.showIfEmpty( view2 );
       //  rv_exp.setLayoutManager( new LinearLayoutManager( this ) );
         rv_exp.setLayoutManager( new LinearLayoutManager(  getContext()) );
 

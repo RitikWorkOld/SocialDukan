@@ -44,6 +44,7 @@ android:layout_above="@id/main_lay"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:padding="8dp"
+
             android:background="@drawable/edittext"
             android:layout_margin="16dp"
             android:hint="Head's Name" />

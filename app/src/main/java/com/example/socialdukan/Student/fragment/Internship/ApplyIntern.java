@@ -143,14 +143,17 @@ public class ApplyIntern extends AppCompatActivity {
                                             String name = user.getName();
                                             String number = user.getContactn();
                                             String imguri = user.getProfileimg();
+                                            String email=user.getEmail();
 
                                             databaseReference.child("username").setValue(name);
                                             databaseReference.child("usernumber").setValue(number);
                                             databaseReference.child("userimg").setValue(imguri);
+                                            databaseReference.child("useremail").setValue(email);
 
                                             databaseReference1.child("username").setValue(name);
                                             databaseReference1.child("usernumber").setValue(number);
                                             databaseReference1.child("userimg").setValue(imguri);
+                                            databaseReference1.child("useremail").setValue(email);
                                         }
                                     }
 
