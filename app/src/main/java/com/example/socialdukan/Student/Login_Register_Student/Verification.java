@@ -262,7 +262,7 @@ public class Verification extends AppCompatActivity {
 
                                 //saving session
 
-
+                                Save.save(getApplicationContext(),"session","false");
 
                                 // Toast.makeText(Verification.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
                                 // Intent intent = new Intent(Verification.this,Reg_Sucess.class);

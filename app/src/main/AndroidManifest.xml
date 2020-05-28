@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/dukan_r"
@@ -12,7 +11,7 @@
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".Student.fragment.Event.JoinTeam"></activity>
         <activity android:name=".Student.Notifications.Notifications" />
         <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
         <activity android:name=".Student.fragment.profile.aboutus.about_us" />
@@ -52,17 +51,13 @@
         <activity android:name=".Student.fragment.Internship.InternFragment" />
         <activity android:name=".Student.Chat_bot.feature.MainActivity" />
         <activity android:name=".Student.Login_Register_Student.Dashboard" />
-
         <activity
             android:name=".Student.Login_Register_Student.Verification"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.Login_Register_Student.Login_Student" />
         <activity android:name=".Student.Login_Register_Student.Reg_Student" />
-
         <activity android:name=".Student.Login_Register_Student.IntroActivity" />
-        <activity android:name=".Student.Login_Register_Student.Studentdetail" >
-
-        </activity>
+        <activity android:name=".Student.Login_Register_Student.Studentdetail"></activity>
         <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi">
             <intent-filter>
@@ -75,25 +70,23 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <service
             android:name=".Services.MyMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages. -->
+        </service> <!-- Set custom default icon. This is used when no icon is set for incoming notification messages. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/social_dukan" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming notification message. -->
+            android:resource="@drawable/social_dukan" /> <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming notification message. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/white" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-
     </application>
 
 </manifest>

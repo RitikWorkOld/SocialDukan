@@ -1,5 +1,6 @@
 package com.example.socialdukan.Student.Login_Register_Student;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,10 +12,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -81,23 +88,6 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                 }
             }
         } );
-
-
-
-
-
-
-
-
-      /*  go.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v==go){
-                    Intent intent = new Intent(Reg_Student.this, Verification.class);
-                    startActivity(intent);
-                }
-            }
-        } );*/
     }
 
 
@@ -123,26 +113,46 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
 
 
                 if (valid) {
+                    final String number=number1.getText().toString().trim();
+                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Users");
+                    dbref.keepSynced(true);
+                    dbref.orderByChild("contactn").equalTo(number).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getValue() != null){
+                                progressBars.setVisibility(View.GONE);
+                                findViewById(R.id.go).setVisibility(View.VISIBLE);
+                                Toast.makeText(Reg_Student.this,"User on this phone Number Already Exists",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                final String email = emailId.getText().toString().trim();
+                                final String pwd = password.getText().toString().trim();
+                                final String fname = fname1.getText().toString().trim();
 
-                    final String email = emailId.getText().toString().trim();
-                    final String pwd = password.getText().toString().trim();
-                    final String fname = fname1.getText().toString().trim();
+                                final String number = number1.getText().toString().trim();
+                                progressBars.setVisibility(View.GONE);
 
-                    final String number = number1.getText().toString().trim();
-                    progressBars.setVisibility(View.GONE);
+                                Intent intent = new Intent( Reg_Student.this, Verification.class );
+                                intent.putExtra( "name", fname );
+                                intent.putExtra( "email", email );
+                                intent.putExtra( "password", pwd );
 
-                    Intent intent = new Intent( Reg_Student.this, Verification.class );
-                    intent.putExtra( "name", fname );
-                    intent.putExtra( "email", email );
-                    intent.putExtra( "password", pwd );
+                                intent.putExtra( "number", number );
 
-                    intent.putExtra( "number", number );
+                                startActivity( intent );
 
-                    startActivity( intent );
+                                //  progressBar.setVisibility(View.GONE);
+                                findViewById( R.id.go ).setVisibility( View.VISIBLE );
+                                //Toast.makeText(RegAct.this,"NO user found",Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-                    //  progressBar.setVisibility(View.GONE);
-                    findViewById( R.id.go ).setVisibility( View.VISIBLE );
-                    //Toast.makeText(RegAct.this,"NO user found",Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
                 }
                 else {
                     progressBars.setVisibility(View.GONE);
@@ -151,17 +161,8 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                 break;
         }
 
-                      /*  @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                        }
-                    });*/
     }
-                /*else {
-                   // progressBar.setVisibility(View.GONE);
-                    findViewById(R.id.go).setVisibility(View.VISIBLE);
-                }*/
-                //break;
 
 
     private boolean validateUser() {

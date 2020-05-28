@@ -167,7 +167,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                 ////yha bhi aaya run statement...ok
                                 //Toast.makeText( Login_Student.this, "Welcome", Toast.LENGTH_SHORT ).show();
                                 //saving session
-                              Save.save(getApplicationContext(),"session","true");
+
                                 // Intent intToHome = new Intent(getApplicationContext(),Dashboard.class);//not working TEAM.
                                 //   startActivity(intToHome);
                                 // finish();
@@ -194,7 +194,8 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                     progressBars.setVisibility(View.GONE);
                                                    // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Student.this, Dashboard.class);
-                                                    Save.save(getApplicationContext(),"session","false");
+
+                                                    Save.save(getApplicationContext(),"session","true");
                                                     startActivity(intent);
                                                     finish();
                                                 }
@@ -203,6 +204,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                     progressBars.setVisibility(View.GONE);
                                                    // Toast.makeText(Login_Student.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(Login_Student.this, Studentdetail.class);
+                                                    Save.save(getApplicationContext(),"session","false");
                                                     startActivity(intent);
                                                     finish();
                                                 }
@@ -213,6 +215,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                                                 // NOTE: don't forget to log out the user.
                                                 FirebaseAuth.getInstance().signOut();
                                                 progressBars.setVisibility(View.GONE);
+                                                Save.save(getApplicationContext(),"session","false");
                                                 Toast.makeText(Login_Student.this, "Email Not Verified", Toast.LENGTH_SHORT).show();
                                                 //restart this activity
                                             }

@@ -1,5 +1,7 @@
 package com.example.socialdukan.Student.fragment.Event;
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,8 @@ import com.example.socialdukan.R;
 import com.example.socialdukan.Student.fragment.Event.EventFragment;
 import com.example.socialdukan.Student.fragment.Event.FAQ.FAQ_Managr;
 import com.example.socialdukan.Student.fragment.Event.events_md;
+import com.example.socialdukan.Student.fragment.Internship.ApplyIntern;
+import com.example.socialdukan.Student.fragment.Internship.InternDetail;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -77,6 +81,7 @@ public class Event_detail extends Fragment {
         amount=view.findViewById( R.id.amount );
         indi_team=view.findViewById( R.id.per_team_indiv );
         link_title=view.findViewById( R.id.link_title );
+
 
         event_location=view.findViewById( R.id.location_desc );
         date=view.findViewById( R.id.event_date );
@@ -185,7 +190,9 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         @Override
                         public void onClick(View v) {
 
-
+                            Intent intent = new Intent( getActivity(), Paint.Join.class);
+                    
+                            startActivity(intent);
                         }
                     } );
 
@@ -221,4 +228,6 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
 
         return view;
     }
+
+
 }
