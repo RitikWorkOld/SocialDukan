@@ -191,7 +191,7 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         public void onClick(View v) {
 
                             Intent intent = new Intent( getActivity(), Paint.Join.class);
-                    
+
                             startActivity(intent);
                         }
                     } );
