@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.Event.JoinTeam"></activity>
+        <activity android:name=".Student.fragment.Event.JoinTeam"
+            android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.Notifications.Notifications" />
         <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
         <activity android:name=".Student.fragment.profile.aboutus.about_us" />

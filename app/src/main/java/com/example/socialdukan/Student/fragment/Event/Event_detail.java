@@ -118,6 +118,7 @@ public class Event_detail extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
                     events_md valueintern = dataSnapshot1.getValue(events_md.class);
+
                     if(!valueintern.getAmount().equals( "0" )) {
                     amount.setText( "Rs "+valueintern.getAmount() );
                     indi_team.setText( "( "+valueintern.getIndi_or_team()+" )" );
@@ -190,8 +191,9 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         @Override
                         public void onClick(View v) {
 
-                            Intent intent = new Intent( getActivity(), Paint.Join.class);
-
+                            Intent intent = new Intent( getActivity(), JoinTeam.class);
+                            intent.putExtra( "maxmem",max_number );
+                            intent.putExtra( "minmem",min_number );
                             startActivity(intent);
                         }
                     } );

@@ -14,18 +14,20 @@ public class card_model {
     public String campaign;
     public String descrip;
     public String id;
+    String userid;
 
 
     public card_model() {
     }
 
 
-    public card_model(String id,String campaign,String descrip,String collab_name, String key, String category, String location, String intimguri, String date, String paymenttype, String instahandle, String link,String primary) {
+    public card_model(String userid,String id,String campaign,String descrip,String collab_name, String key, String category, String location, String intimguri, String date, String paymenttype, String instahandle, String link,String primary) {
         this.collab_name=collab_name;
         this.intimguri = intimguri;
         this.key = key;
         this.descrip=descrip;
         this.date=date;
+        this.userid=userid;
         this.id=id;
         this.primary=primary;
         this.category = category;
@@ -35,6 +37,14 @@ public class card_model {
         this.link=link;
         this.campaign=campaign;
 
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getId() {

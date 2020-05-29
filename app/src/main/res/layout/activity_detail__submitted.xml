@@ -119,6 +119,26 @@
                             android:layout_margin="16dp"
                             android:hint="Profile Link" />
                     </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        app:counterTextColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/follower"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:padding="8dp"
+
+                            android:background="@drawable/edittext"
+                            android:layout_margin="16dp"
+                            android:hint="Number of followers" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
                         android:layout_width="134dp"

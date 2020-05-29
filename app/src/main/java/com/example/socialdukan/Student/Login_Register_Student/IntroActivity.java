@@ -74,11 +74,11 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Apply for internships","",R.drawable.inernship));
-        mList.add(new ScreenItem(" Get Sponsorships for your event","",R.drawable.sponsorship));
-        mList.add(new ScreenItem(" Apply for campaigns as a influencer","",R.drawable.influence));
-        mList.add(new ScreenItem("Get your website designed","",R.drawable.website));
-        mList.add(new ScreenItem(" Get the live concert organised by us","",R.drawable.concert));
+        mList.add(new ScreenItem("Apply for internships","",R.drawable.inernship1));
+        mList.add(new ScreenItem(" Get Sponsorships for your event","",R.drawable.sponsorship1));
+        mList.add(new ScreenItem(" Apply for campaigns as a influencer","",R.drawable.influence1));
+        mList.add(new ScreenItem("Get your website designed","",R.drawable.website1));
+        mList.add(new ScreenItem(" Get the live concert organised by us","",R.drawable.concert1));
 
 
         // setup viewpager

@@ -170,9 +170,10 @@ android:id="@+id/card2"
                 <ImageView
                     android:src="@drawable/influenc"
                     android:id="@+id/influe"
-                    android:scaleType="centerCrop"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
+
+                    android:layout_width="108dp"
+
+                    android:layout_height="114dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:padding="2dp"/>
@@ -231,7 +232,7 @@ android:id="@+id/card3"
                 </LinearLayout>
 
                 <ImageView
-                    android:src="@drawable/website"
+                    android:src="@drawable/website1"
                     android:id="@+id/website"
                     android:layout_width="118dp"
                     android:layout_height="118dp"
@@ -298,7 +299,7 @@ android:id="@+id/card4"
                 </LinearLayout>
 
                 <ImageView
-                    android:src="@drawable/concert"
+                    android:src="@drawable/concert1"
                     android:layout_width="94dp"
                     android:id="@+id/concert"
                     android:layout_height="94dp"

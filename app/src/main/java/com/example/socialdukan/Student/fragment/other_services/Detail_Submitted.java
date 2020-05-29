@@ -24,11 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Detail_Submitted extends AppCompatActivity {
-TextInputEditText name,contact,emailid,profilelink;
+TextInputEditText name,contact,emailid,profilelink,follower;
 Button btn;
+
     String id;
     ImageView cross;
-    String userid;
+    String userid,panel_userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -38,9 +39,12 @@ Button btn;
         contact=findViewById( R.id.contact_no );
         emailid=findViewById( R.id.emailid );
         profilelink=findViewById( R.id.profile_link );
+        follower=findViewById( R.id.follower );
         btn=findViewById( R.id.submit_btn );
         id = getIntent().getStringExtra("id");
         userid = getIntent().getStringExtra("userid");
+        panel_userid = getIntent().getStringExtra("panel_userid");
+
         btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +52,10 @@ Button btn;
                     if (!contact.getText().toString().isEmpty()) {
                         if (!emailid.getText().toString().isEmpty()) {
                             if (!profilelink.getText().toString().isEmpty()) {
+                                if(!follower.getText().toString().isEmpty()){
+
+
+
 
                                 String notiid = FirebaseDatabase.getInstance().getReference().child("InfluencerDetailSubmitted")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
@@ -60,8 +68,9 @@ Button btn;
                                 databaseReference.child( "profilelink" ).setValue( "https://"+profilelink.getText().toString() );
                                 databaseReference.child("influencerid").setValue( id );
                                 databaseReference.child("id").setValue( notiid );
+                                    databaseReference.child( "follower" ).setValue( follower.getText().toString());
                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
-
+                                databaseReference.child( "id_status" ).setValue( panel_userid);
 cross.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -73,7 +82,10 @@ cross.setOnClickListener( new View.OnClickListener() {
 
                                 startActivity(intent);
                                 finish();
-
+                                }
+                                else {
+                                    Toast.makeText(Detail_Submitted.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                                }
                             }
                                         else {
                                     Toast.makeText(Detail_Submitted.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();

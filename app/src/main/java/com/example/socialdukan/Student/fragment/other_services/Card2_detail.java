@@ -110,6 +110,7 @@ public class Card2_detail extends AppCompatActivity {
                     campaign.setText( card_model.getCampaign() );
                     primary.setText(card_model.getPrimary());
               descri.setText( card_model.getDescrip() );
+              final String panel_userid=card_model.getUserid();
 
                     apply_btn.setOnClickListener( new View.OnClickListener() {
                         @Override
@@ -117,6 +118,7 @@ public class Card2_detail extends AppCompatActivity {
                             Intent intent = new Intent( Card2_detail.this, Detail_Submitted.class);
                             intent.putExtra("id",id);
                             intent.putExtra("userid",userid);
+                            intent.putExtra("panel_userid",panel_userid);
                             startActivity(intent);
 
                         }
