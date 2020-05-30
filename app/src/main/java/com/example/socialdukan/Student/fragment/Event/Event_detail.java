@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.socialdukan.R;
 import com.example.socialdukan.Student.fragment.Event.EventFragment;
@@ -128,7 +129,9 @@ public class Event_detail extends Fragment {
                         amount.setText( "Free");
                         indi_team.setVisibility( View.GONE );
 
+
                     }
+
                     participants.setText( valueintern.getNumber_of_member() );
                     if(valueintern.getNumber_of_member().equals( "Team" )){
                         range.setVisibility( View.VISIBLE );
@@ -190,11 +193,11 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                     Register_dt.setOnClickListener( new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            Intent intent = new Intent( getActivity(), JoinTeam.class);
+                            Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
+                           /* Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
-                            startActivity(intent);
+                            startActivity(intent);*/
                         }
                     } );
 

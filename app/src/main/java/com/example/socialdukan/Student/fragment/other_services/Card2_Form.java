@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 public class Card2_Form extends AppCompatActivity {
     BucketRecyclerView rv_internall;
     DatabaseReference drinternall;
+    private LinearLayoutManager mLayoutManager;
     FirebaseRecyclerOptions<card_model> optionsinternall;
     private String userid;
     private View no_app;
@@ -51,9 +52,14 @@ public class Card2_Form extends AppCompatActivity {
 no_app=findViewById( R.id.no_app );
 
                 rv_internall = findViewById(R.id.rv_internall);
-                rv_internall.setHasFixedSize(true);
+
                 rv_internall.showIfEmpty( no_app );
-                rv_internall.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                mLayoutManager=new LinearLayoutManager(getApplicationContext());
+                mLayoutManager.setReverseLayout( true );
+                mLayoutManager.setStackFromEnd(true);
+
+                rv_internall.setLayoutManager(mLayoutManager  );
+                rv_internall.setAdapter( adapterinternall );
                 drinternall = FirebaseDatabase.getInstance().getReference().child("InfluencerCard");
                 Query query = drinternall.orderByChild("id_status" ).equalTo("Accepted");
                 drinternall.keepSynced(true);

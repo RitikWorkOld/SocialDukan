@@ -39,7 +39,7 @@ public class InternFragment extends Fragment {
     FirebaseRecyclerAdapter<internall_md, internall_vh> adapterinternall;
     ImageView notification_btn;
     private View no_app;
-
+    private LinearLayoutManager mLayoutManager;
     ImageView notification_badge;
 
     public InternFragment() {
@@ -78,12 +78,15 @@ public class InternFragment extends Fragment {
         });
         rv_internall = view.findViewById(R.id.rv_internall);
         rv_internall.showIfEmpty( no_app );
-        rv_internall.setHasFixedSize(true);
-        rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext()));
+        mLayoutManager=new LinearLayoutManager(container.getContext());
+mLayoutManager.setReverseLayout( true );
+        mLayoutManager.setStackFromEnd(true);
 
-
+        rv_internall.setLayoutManager(mLayoutManager  );
+        rv_internall.setAdapter( adapterinternall );
         drinternall = FirebaseDatabase.getInstance().getReference().child("Internships");
         drinternall.keepSynced(true);
+
         Query query = drinternall.orderByChild("admin_status" ).equalTo( "Accepted" );
         optionsinternall = new FirebaseRecyclerOptions.Builder<internall_md>().setQuery(query,internall_md.class).build();
 

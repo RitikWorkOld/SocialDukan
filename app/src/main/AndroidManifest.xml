@@ -14,12 +14,12 @@
         <activity android:name=".Student.fragment.Event.JoinTeam"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.Notifications.Notifications" />
-        <activity android:name=".Student.fragment.profile.aboutus.testimonial_vh" />
+
         <activity android:name=".Student.fragment.profile.aboutus.about_us" />
         <activity
             android:name=".Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.fragment.Event.events_vh" />
+
         <activity
             android:name=".Student.fragment.other_services.Detail_Submitted"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -30,7 +30,7 @@
             android:name=".Student.fragment.other_services.Thanks_Activity"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name=".Student.fragment.other_services.Card4_Form" />
-        <activity android:name=".Student.fragment.other_services.Other_Services" />
+
         <activity android:name=".Student.fragment.other_services.Card3_Form" />
         <activity android:name=".Student.fragment.other_services.Card2_Form" />
         <activity android:name=".Student.fragment.other_services.Card1_Form" />
@@ -47,9 +47,9 @@
         <activity
             android:name=".Student.fragment.profile.Profile_activity1"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.fragment.SimpleFragmentPagerAdapter" />
+
         <activity android:name=".Student.fragment.Internship.InternDetail" />
-        <activity android:name=".Student.fragment.Internship.InternFragment" />
+
         <activity android:name=".Student.Chat_bot.feature.MainActivity" />
         <activity android:name=".Student.Login_Register_Student.Dashboard" />
         <activity
@@ -58,7 +58,7 @@
         <activity android:name=".Student.Login_Register_Student.Login_Student" />
         <activity android:name=".Student.Login_Register_Student.Reg_Student" />
         <activity android:name=".Student.Login_Register_Student.IntroActivity" />
-        <activity android:name=".Student.Login_Register_Student.Studentdetail"></activity>
+        <activity android:name=".Student.Login_Register_Student.Studentdetail" />
         <activity android:name=".Student.fragment.profile.Edit_profile" />
         <activity android:name=".splashActi">
             <intent-filter>

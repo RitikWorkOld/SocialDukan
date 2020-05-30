@@ -22,9 +22,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.socialdukan.Change_Pass;
 import com.example.socialdukan.LottieDialogFragment;
 import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 
@@ -52,7 +54,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     String pstatus;
     ImageView chatbot;
     private ProgressBar progressBars;
-
+TextView fgt_pass;
 
     private CheckBox rem_userpass;
     SharedPreferences sharedPreferences;
@@ -68,7 +70,15 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login__student );
-
+        fgt_pass=findViewById( R.id.frgt_pass );
+        fgt_pass.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( Login_Student.this, Change_Pass.class );
+                startActivity( intent );
+                overridePendingTransition( android.R.anim.fade_in, android.R.anim.fade_out );
+            }
+        } );
         if(!haveNetworkConnection()){
 
 
@@ -154,12 +164,11 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                //progressBars.setVisibility(View.GONE);
+
                                 progressBars.setVisibility(View.GONE);
 
-                                Toast.makeText( Login_Student.this, "Login Error, Please Login Again", Toast.LENGTH_SHORT ).show();
-                                // Intent intent = new Intent(LoginActivity.this,Login_Failed.class);
-                                //  startActivity(intent);
+                                Toast.makeText( Login_Student.this, "Something Hits, we cant find your account.", Toast.LENGTH_SHORT ).show();
+
                             } else {
                                 // progressBars.setVisibility(View.GONE);
 

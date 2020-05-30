@@ -208,7 +208,6 @@
                             android:orientation="vertical">
 
                             <RelativeLayout
-                                android:id="@+id/profile_layout"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
@@ -238,7 +237,6 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:id="@+id/add_view"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/dob_view"
@@ -348,7 +346,7 @@
                             android:textColor="#000"
                             android:fontFamily="@font/montserrat"
                             android:textSize="18sp"
-                            android:text="Education Details"/>
+                            android:text="Educational Details"/>
 
                     </RelativeLayout>
                     <RelativeLayout

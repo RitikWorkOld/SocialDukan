@@ -3,13 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ChatBot"
+    android:layout_centerHorizontal="true"
+    android:textSize="24sp"
+    android:textColor="@color/purple"
+    android:id="@+id/chatbot_text"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="10dp"
+        android:layout_below="@+id/chatbot_text"
         android:paddingBottom="50dp"
         android:clipToPadding="false"
         android:background="#f4f6f7"

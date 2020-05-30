@@ -38,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -48,6 +49,7 @@ String key;
     FirebaseRecyclerOptions<events_md> optionsinternall;
     FirebaseRecyclerAdapter<events_md, events_vh> adapterinternall;
     ImageView notification_btn,notification_badge;
+    private LinearLayoutManager mLayoutManager;
 private View no_app;
     public EventFragment() {
         // Required empty public constructor
@@ -86,14 +88,19 @@ private View no_app;
         });
 
         rv_internall = view.findViewById(R.id.recycler);
-        rv_internall.setHasFixedSize(true);
-        rv_internall.showIfEmpty( no_app );
-        rv_internall.setLayoutManager(new LinearLayoutManager(container.getContext()));
 
+        rv_internall.showIfEmpty( no_app );
+
+        mLayoutManager=new LinearLayoutManager(container.getContext());
+        mLayoutManager.setReverseLayout( true );
+        mLayoutManager.setStackFromEnd(true);
+
+        rv_internall.setLayoutManager(mLayoutManager  );
+        rv_internall.setAdapter( adapterinternall );
         drinternall = FirebaseDatabase.getInstance().getReference().child("Events");
         drinternall.keepSynced(true);
-
-        optionsinternall = new FirebaseRecyclerOptions.Builder<events_md>().setQuery(drinternall,events_md.class).build();
+        Query query = drinternall.orderByChild("status" ).equalTo("Accepted");
+        optionsinternall = new FirebaseRecyclerOptions.Builder<events_md>().setQuery(query,events_md.class).build();
 
         adapterinternall = new FirebaseRecyclerAdapter<events_md, events_vh>(optionsinternall) {
             @Override
