@@ -11,56 +11,58 @@
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Student.fragment.Event.JoinTeam"
+        <activity android:name="com.social.socialdukan.Student.fragment.Event.JoinTeam"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.Notifications.Notifications" />
+        <activity android:name="com.social.socialdukan.Change_Pass"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name="com.social.socialdukan.Student.Notifications.Notifications" />
 
-        <activity android:name=".Student.fragment.profile.aboutus.about_us" />
+        <activity android:name="com.social.socialdukan.Student.fragment.profile.aboutus.about_us" />
         <activity
-            android:name=".Student.fragment.Event.Register_event"
-            android:theme="@style/AppTheme.Popupstyle" />
-
-        <activity
-            android:name=".Student.fragment.other_services.Detail_Submitted"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.fragment.MyDashboard.InternForm" />
-        <activity android:name=".Student.fragment.other_services.Card2_detail" />
-        <activity android:name=".Student.fragment.other_services.Card5_Form" />
-        <activity
-            android:name=".Student.fragment.other_services.Thanks_Activity"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.fragment.other_services.Card4_Form" />
-
-        <activity android:name=".Student.fragment.other_services.Card3_Form" />
-        <activity android:name=".Student.fragment.other_services.Card2_Form" />
-        <activity android:name=".Student.fragment.other_services.Card1_Form" />
-        <activity android:name=".Student.fragment.Internship.ApplyIntern" />
-        <activity
-            android:name=".Student.fragment.profile.Profile_activity4"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity
-            android:name=".Student.fragment.profile.Profile_activity3"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity
-            android:name=".Student.fragment.profile.Profile_activity2"
-            android:theme="@style/AppTheme.Popupstyle" />
-        <activity
-            android:name=".Student.fragment.profile.Profile_activity1"
+            android:name="com.social.socialdukan.Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
 
-        <activity android:name=".Student.fragment.Internship.InternDetail" />
-
-        <activity android:name=".Student.Chat_bot.feature.MainActivity" />
-        <activity android:name=".Student.Login_Register_Student.Dashboard" />
         <activity
-            android:name=".Student.Login_Register_Student.Verification"
+            android:name="com.social.socialdukan.Student.fragment.other_services.Detail_Submitted"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name=".Student.Login_Register_Student.Login_Student" />
-        <activity android:name=".Student.Login_Register_Student.Reg_Student" />
-        <activity android:name=".Student.Login_Register_Student.IntroActivity" />
-        <activity android:name=".Student.Login_Register_Student.Studentdetail" />
-        <activity android:name=".Student.fragment.profile.Edit_profile" />
-        <activity android:name=".splashActi">
+        <activity android:name="com.social.socialdukan.Student.fragment.MyDashboard.InternForm" />
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card2_detail" />
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card5_Form" />
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.other_services.Thanks_Activity"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card4_Form" />
+
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card3_Form" />
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card2_Form" />
+        <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card1_Form" />
+        <activity android:name="com.social.socialdukan.Student.fragment.Internship.ApplyIntern" />
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.profile.Profile_activity4"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.profile.Profile_activity3"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.profile.Profile_activity2"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.profile.Profile_activity1"
+            android:theme="@style/AppTheme.Popupstyle" />
+
+        <activity android:name="com.social.socialdukan.Student.fragment.Internship.InternDetail" />
+
+        <activity android:name="com.social.socialdukan.Student.Chat_bot.feature.MainActivity" />
+        <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Dashboard" />
+        <activity
+            android:name="com.social.socialdukan.Student.Login_Register_Student.Verification"
+            android:theme="@style/AppTheme.Popupstyle" />
+        <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Login_Student" />
+        <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Reg_Student" />
+        <activity android:name="com.social.socialdukan.Student.Login_Register_Student.IntroActivity" />
+        <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Studentdetail" />
+        <activity android:name="com.social.socialdukan.Student.fragment.profile.Edit_profile" />
+        <activity android:name="com.social.socialdukan.splashActi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,7 +75,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name=".Services.MyMessagingService"
+            android:name="com.social.socialdukan.Services.MyMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

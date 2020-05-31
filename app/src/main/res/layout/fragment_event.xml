@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student.fragment.Event.EventFragment">
+    tools:context="com.social.socialdukan.Student.fragment.Event.EventFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@ android:textColor="@color/purple"
                 android:layout_height="20dp"/>
         </RelativeLayout>
 
-    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+    <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
         android:id="@+id/recycler"
         android:layout_below="@id/eventsTitle"
         android:layout_width="match_parent"

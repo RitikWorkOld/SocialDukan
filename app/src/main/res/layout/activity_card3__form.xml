@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_check"
-    tools:context=".Student.fragment.other_services.Card3_Form">
+    tools:context="com.social.socialdukan.Student.fragment.other_services.Card3_Form">
     <TextView
 
         android:textStyle="bold"

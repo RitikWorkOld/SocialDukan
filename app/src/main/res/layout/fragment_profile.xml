@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Student.fragment.profile.ProfileFragment">
+    tools:context="com.social.socialdukan.Student.fragment.profile.ProfileFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -498,7 +498,7 @@ android:id="@+id/work_det"
 
                                     />
                             </LinearLayout>
-                            <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+                            <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
                                 android:id="@+id/rv_exp"
                                 android:layout_centerInParent="true"
                                 android:layout_width="match_parent"
@@ -582,7 +582,7 @@ android:id="@+id/work_det"
 
                                 />
                         </LinearLayout>
-                       <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+                       <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
                             android:id="@+id/rv_exp1"
                             android:layout_centerInParent="true"
                             android:layout_width="match_parent"

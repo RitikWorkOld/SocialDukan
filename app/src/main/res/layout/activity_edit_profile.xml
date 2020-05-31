@@ -150,6 +150,8 @@
                         android:id="@+id/adress"
                         android:textSize="16sp"
                         android:paddingEnd="8dp"
+                        android:inputType="textCapSentences"
+
                         android:paddingStart="8dp"
                         android:drawablePadding="4dp"
                         android:background="@drawable/edittext"
@@ -171,6 +173,7 @@
                         android:textSize="16sp"
                         android:paddingLeft="8dp"
                         android:drawablePadding="4dp"
+                        android:inputType="textCapSentences"
                         android:textColorHint="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -778,7 +781,7 @@
                             android:textColor="@color/white"/>
                     </LinearLayout>
 
-                    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+                    <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
                         android:id="@+id/rv_exp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -1028,7 +1031,7 @@
                             android:textColor="@color/white"/>
                     </LinearLayout>
 
-                    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+                    <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
                         android:id="@+id/rv_exp1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -1114,7 +1117,7 @@
                             android:textColor="@color/white"/>
                     </LinearLayout>
 
-                    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+                    <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
                         android:id="@+id/rv_exp2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

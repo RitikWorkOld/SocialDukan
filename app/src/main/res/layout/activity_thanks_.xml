@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student.fragment.other_services.Thanks_Activity"
+    tools:context="com.social.socialdukan.Student.fragment.other_services.Thanks_Activity"
     android:gravity="center">
 
     <ImageView

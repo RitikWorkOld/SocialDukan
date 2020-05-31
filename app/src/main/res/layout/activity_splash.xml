@@ -6,7 +6,7 @@
     android:background="#fff"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".splashActi">
+    tools:context="com.social.socialdukan.splashActi">
 
 
             <com.airbnb.lottie.LottieAnimationView

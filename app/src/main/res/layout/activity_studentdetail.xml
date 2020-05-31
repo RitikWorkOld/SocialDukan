@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student.Login_Register_Student.Studentdetail"
+    tools:context="com.social.socialdukan.Student.Login_Register_Student.Studentdetail"
 
     android:orientation="vertical">
     <androidx.core.widget.NestedScrollView

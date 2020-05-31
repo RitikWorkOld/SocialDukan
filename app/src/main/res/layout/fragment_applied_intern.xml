@@ -64,7 +64,7 @@
             android:textSize="20sp"/>
 
     </LinearLayout>
-    <com.example.socialdukan.Student.Notifications.Customised.BucketRecyclerView
+    <com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView
         android:id="@+id/rv_applied_intern"
         android:layout_below="@id/eventsTitle"
         android:layout_marginTop="12dp"

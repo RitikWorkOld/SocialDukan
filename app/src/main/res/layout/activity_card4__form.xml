@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/bg_check"
-    tools:context=".Student.fragment.other_services.Card4_Form">
+    tools:context="com.social.socialdukan.Student.fragment.other_services.Card4_Form">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

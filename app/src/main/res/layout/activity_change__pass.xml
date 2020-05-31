@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.Change_Pass"
+
     android:gravity="center">
 
     <androidx.cardview.widget.CardView
@@ -65,7 +65,7 @@
                     android:background="@drawable/btn_gradient_style"
                     android:text="   send   "
                     android:textColor="@color/white"
-                    android:textSize="20sp"/>
+                    android:textSize="12sp"/>
                 <ProgressBar
                     android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyle"
