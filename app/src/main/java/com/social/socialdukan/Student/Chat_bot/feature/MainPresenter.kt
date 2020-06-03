@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 
 
 /**
- * Created by muhrahmatullah on 09/10/18.
+ *
  */
 class MainPresenter(val aiDataAIService: AIDataService,
                     val ref: DatabaseReference) : MainContract.Presenter {
@@ -23,7 +23,7 @@ class MainPresenter(val aiDataAIService: AIDataService,
     private val coroutineScope = CoroutineScope(Dispatchers.IO + job)
 
     override fun sendMessage(message: String) {
-        val chatMessage = _root_ide_package_.com.social.socialdukan.Student.Chat_bot.entity.ChatMessage(message, "user")
+        val chatMessage = ChatMessage(message, "user")
         ref.child("chat").push().setValue(chatMessage)
         aiRequest.setQuery(message)
 
@@ -45,7 +45,7 @@ else {
     private fun sendMessageToServer(response: AIResponse?) {
         val result = response?.result
         val reply = result?.fulfillment?.speech
-        val chatMessage = _root_ide_package_.com.social.socialdukan.Student.Chat_bot.entity.ChatMessage(reply, "bot")
+        val chatMessage = ChatMessage(reply, "bot")
         ref.child("chat").push().setValue(chatMessage)
 
     }

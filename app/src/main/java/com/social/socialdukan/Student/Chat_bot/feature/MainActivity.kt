@@ -17,9 +17,9 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_chat_bot.*
 
 
-class MainActivity : AppCompatActivity(), _root_ide_package_.com.social.socialdukan.Student.Chat_bot.feature.MainContract.View {
+class MainActivity : AppCompatActivity(),MainContract.View {
 
-    lateinit var adapter: _root_ide_package_.com.social.socialdukan.Student.Chat_bot.adapter.ChatAdapter
+    lateinit var adapter: ChatAdapter
     lateinit var ref: DatabaseReference
     lateinit var aiService: AIService
     lateinit var aiDataAIService: AIDataService
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), _root_ide_package_.com.social.socialdu
     var key: String? = null
     var notiid: String? = null
 
-    lateinit var mPresenter : _root_ide_package_.com.social.socialdukan.Student.Chat_bot.feature.MainContract.Presenter
+    lateinit var mPresenter : MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity(), _root_ide_package_.com.social.socialdu
             edChat.setText("")
         }
 
-        val options = FirebaseRecyclerOptions.Builder<_root_ide_package_.com.social.socialdukan.Student.Chat_bot.entity.ChatMessage>()
-                .setQuery(ref.child("chat"), _root_ide_package_.com.social.socialdukan.Student.Chat_bot.entity.ChatMessage::class.java)
+        val options = FirebaseRecyclerOptions.Builder<ChatMessage>()
+                .setQuery(ref.child("chat"), ChatMessage::class.java)
                 .build()
 
-        adapter = _root_ide_package_.com.social.socialdukan.Student.Chat_bot.adapter.ChatAdapter(options)
+        adapter = ChatAdapter(options)
 
         rvChat.adapter = adapter
 
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), _root_ide_package_.com.social.socialdu
 
         ref = notiid?.let { FirebaseDatabase.getInstance().reference.child("chat").child(it) }!!
 
-        mPresenter = _root_ide_package_.com.social.socialdukan.Student.Chat_bot.feature.MainPresenter(aiDataAIService, ref)
+        mPresenter = MainPresenter(aiDataAIService, ref)
 
     }
 }

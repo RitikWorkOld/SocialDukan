@@ -27,9 +27,9 @@ import android.widget.Toast;
 
 
 import com.social.socialdukan.Change_Pass;
-import com.social.socialdukan.LottieDialogFragment;
-import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
 
+
+import com.social.socialdukan.Student.Chat_bot.feature.MainActivity;
 import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
 import com.social.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
@@ -43,8 +43,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
-import com.social.socialdukan.Student.Miscellaneous.User;
+
 
 public class Login_Student extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener {
@@ -169,7 +168,7 @@ TextView fgt_pass;
 
                                 progressBars.setVisibility(View.GONE);
 
-                                Toast.makeText( Login_Student.this, "Something Hits, we cant find your account.", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( Login_Student.this, "Something went wrong!!", Toast.LENGTH_SHORT ).show();
 
                             } else {
                                 // progressBars.setVisibility(View.GONE);

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+
 import com.social.socialdukan.Student.fragment.Event.EventFragment;
 import com.social.socialdukan.Student.fragment.MyDashboard.AppliedIntern;
 import com.social.socialdukan.Student.fragment.Internship.InternFragment;

@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.socialdukan.R;
-import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.socialdukan.Student.Chat_bot.feature.MainActivity;
+
 import com.social.socialdukan.Student.Miscellaneous.IntroViewPagerAdapter;
 import com.social.socialdukan.Student.Miscellaneous.ScreenItem;
 import com.example.socialdukan.R;

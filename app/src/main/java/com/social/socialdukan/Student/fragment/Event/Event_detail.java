@@ -20,9 +20,7 @@ import android.widget.Toast;
 import com.example.socialdukan.R;
 import com.social.socialdukan.Student.fragment.Event.EventFragment;
 import com.social.socialdukan.Student.fragment.Event.FAQ.FAQ_Managr;
-import com.social.socialdukan.Student.fragment.Event.events_md;
-import com.social.socialdukan.Student.fragment.Internship.ApplyIntern;
-import com.social.socialdukan.Student.fragment.Internship.InternDetail;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
