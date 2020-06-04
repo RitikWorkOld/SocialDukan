@@ -67,6 +67,7 @@ TextView schlstarty10,schlendy10,schlstarty12,schlendy12,collegestart,collegeend
             collegecourse,collegedept,collegeper;
     EditText companyname,companyrole,companybenefits;
     //TextView textview;
+    int thisYear3;
     Button addpersonaldet,addschool10det,addschool12det,addcollegedet,addexpbtn,addnewexpbtn,updateexpbtn,adddiplomadet_btn;
     Button addexpbtn1,addnewexpbtn1,updateexpbtn1;//RITIK
     Button addexpbtn2,addnewexpbtn2,updateexpbtn2;
@@ -459,11 +460,12 @@ int counter=0;
 
 //------------------------------------------------------------------------------------------------//RITIK
         ArrayList<String> years3 = new ArrayList<String>();
-        int thisYear3 = Calendar.getInstance().get(Calendar.YEAR);
+         thisYear3 = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = 1995; i <= thisYear3; i++) {
             years3.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,R.layout.spinner_item, years3);
+
 
         final Spinner spinYear3 = (Spinner)findViewById(R.id.spinner3);
         spinYear3.setAdapter(adapter3);
@@ -759,6 +761,8 @@ counter=counter+1;
             @Override
             protected void onBindViewHolder(@NonNull final addexp2_viewholder holder2, int position, @NonNull final addexp2_model model) {
                 holder2.companynamelayout.setText(model.getAchivmnts());
+                holder2.companynamelayout.setVisibility( View.GONE );
+                holder2.ach_show.setText( model.getAchivmnts() );
                 holder2.companynamelayout.setVisibility( View.VISIBLE );
                 holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -861,6 +865,8 @@ counter=counter+1;
             @Override
             protected void onBindViewHolder(@NonNull final addexp1_viewholder holder1, int position, @NonNull final addexp1_model model) {
                 holder1.companynamelayout.setText(model.getSkills());
+                holder1.companynamelayout.setVisibility( View.GONE );
+                holder1.show.setText( model.getSkills() );
                 holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1130,6 +1136,7 @@ counter=counter+1;
 
 
                                 addpersonaldet.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
+                                addpersonaldet.setText( "Added" );
                                 addpersonaldet.setCompoundDrawablePadding( 5 );
 
 
@@ -1178,6 +1185,7 @@ counter=counter+1;
                                 databaseReferenceschl10.child("school10").child("schoolboard").setValue(board.getText().toString());
                                 databaseReferenceschl10.child("school10").child( "uid" ).setValue("sch10"+ uid );
                                 addschool10det.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
+                                addschool10det.setText( "Added" );
                                 addschool10det.setCompoundDrawablePadding(5);
 
                             }
@@ -1229,6 +1237,7 @@ counter=counter+1;
 
                                 addschool12det.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_check_green_24dp, 0, 0, 0 );
                                 addschool12det.setCompoundDrawablePadding( 5 );
+                                addschool12det.setText( "Added" );
 
                             } else {
                                 percentage12.setError( "Empty" );
@@ -1274,6 +1283,7 @@ counter=counter+1;
                             databaseReferencedipdet.child("diplomadet").child("uid").setValue("dip"+uid);
 
                             adddiplomadet_btn.setCompoundDrawablePadding(5);
+                            adddiplomadet_btn.setText( "Added" );
                             adddiplomadet_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
                         }
                         else {
@@ -1315,6 +1325,7 @@ counter=counter+1;
                                         databaseReferenceclgdet.child("collegedet").child( "uid" ).setValue("clg"+ uid );
 
                                         addcollegedet.setCompoundDrawablePadding(5);
+                                        addcollegedet.setText( "Added" );
                                         addcollegedet.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_green_24dp,0,0,0);
 
                                     }
@@ -1519,20 +1530,30 @@ counter=counter+1;
                     }, mYear, mMonth, mDay );
             datePickerDialog.show();
         }
-        if(v==submit){
+        if(v==submit ){
 
             int count = count1+count2+count3+count4+count5;
-
+            Log.d("HAS","BELIEVER "+pres_doctor3);
             if(count>3){
-                savePrefsData();
 
-                DatabaseReference databaseReferencepstatus = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                databaseReferencepstatus.keepSynced(true);
-                databaseReferencepstatus.child("profilestatus").setValue("yes");
+                if(pres_doctor3.equals( "2020" )){
+                    savePrefsData();
 
-                Intent intent = new Intent( Studentdetail.this, Dashboard.class );
-                startActivity( intent );
-                finish();
+                    DatabaseReference databaseReferencepstatus = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    databaseReferencepstatus.keepSynced(true);
+                    databaseReferencepstatus.child("profilestatus").setValue("yes");
+
+                    Intent intent = new Intent( Studentdetail.this, Dashboard.class );
+                    startActivity( intent );
+                    finish();
+
+                }
+                else{
+
+                    Toast.makeText(Studentdetail.this," You can't give a passed out year",Toast.LENGTH_SHORT).show();
+
+                }
+
             }
             else{
                 Toast.makeText(Studentdetail.this,"PLease fill all the required details",Toast.LENGTH_SHORT).show();

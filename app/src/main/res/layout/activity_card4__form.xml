@@ -124,7 +124,7 @@ android:text="Form"
                     android:padding="8dp"
                     android:background="@drawable/edittext"
                     android:layout_margin="16dp"
-                    android:hint="Expected Football" />
+                    android:hint="Expected Footfall" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
 

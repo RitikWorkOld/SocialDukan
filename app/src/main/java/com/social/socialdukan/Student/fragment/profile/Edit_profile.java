@@ -895,7 +895,9 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             @Override
             protected void onBindViewHolder(@NonNull final addexp2_viewholder holder2, int position, @NonNull final addexp2_model model) {
                 holder2.companynamelayout.setText(model.getAchivmnts());
-                holder2.companynamelayout.setVisibility( View.VISIBLE );
+
+                holder2.companynamelayout.setVisibility( View.GONE );
+                holder2.ach_show.setText( model.getAchivmnts() );
                 holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1003,6 +1005,8 @@ holder2.cancelbtn.setVisibility( View.GONE );
             @Override
             protected void onBindViewHolder(@NonNull final addexp1_viewholder holder1, int position, @NonNull final addexp1_model model) {
                 holder1.companynamelayout.setText(model.getSkills());
+                holder1.companynamelayout.setVisibility( View.GONE );
+                holder1.show.setText( model.getSkills() );
                 holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

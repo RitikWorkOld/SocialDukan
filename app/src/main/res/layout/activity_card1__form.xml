@@ -127,7 +127,7 @@ android:id="@+id/evnt_date"
             android:id="@+id/exp_et"
             android:background="@drawable/edittext"
             android:layout_margin="16dp"
-            android:hint="Expected Football" />
+            android:hint="Expected Footfall" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/head_name"

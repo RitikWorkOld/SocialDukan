@@ -23,6 +23,7 @@ public class addexp2_viewholder extends RecyclerView.ViewHolder {
 
         expand = false;
         editexp = itemView.findViewById( R.id.editexp);
+
         companynamelayout = itemView.findViewById(R.id.companyname_layout);
         ach_show = itemView.findViewById(R.id.ach_show);
         cancelbtn = itemView.findViewById(R.id.cancel_btn);

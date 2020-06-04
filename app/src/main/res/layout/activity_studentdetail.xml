@@ -773,7 +773,7 @@ android:layout_toRightOf="@+id/schlstarty10"
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="6dp"
-                android:layout_below="@+id/layout_workexp"
+
                 android:id="@+id/layout_addnewex"
                 android:visibility="gone"
                 android:layout_height="match_parent">
