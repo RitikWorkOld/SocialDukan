@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.socialdukan.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Notifications.Notifications;
 import com.social.socialdukan.Student.Notifications.Notifications_Dots;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +30,7 @@ import com.social.socialdukan.Student.Notifications.Notifications_Dots;
 public class Other_Services extends Fragment {
 CardView card1,card2,card3,card4,card5;
     ImageView notification_btn,notification_badge;
-
+    FloatingActionButton help_fab;
 
     public Other_Services() {
         // Required empty public constructor
@@ -47,7 +49,16 @@ CardView card1,card2,card3,card4,card5;
         card4=view.findViewById( R.id.card4 );
         card5=view.findViewById( R.id.card5 );
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+        help_fab=view.findViewById( R.id.help_fab );
+        help_fab.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Contact_Us.class);
 
+
+                startActivity( intent );
+            }
+        } );
         notification_badge.setVisibility(View.GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                 .child( FirebaseAuth.getInstance().getCurrentUser().getUid());

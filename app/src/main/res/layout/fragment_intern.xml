@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/artboard_try"
     tools:context="com.social.socialdukan.Student.fragment.Internship.InternFragment">
 
@@ -14,6 +15,18 @@
             android:layout_width="wrap_content"
             android:id="@+id/notif"
             android:layout_height="wrap_content">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:src="@drawable/ic_support"
+              app:fabCustomSize="40dp"
+                android:id="@+id/help_fab"
+android:backgroundTint="@color/white"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:elevation="6dp"
+                android:layout_height="wrap_content"
+                tools:ignore="RelativeOverlap" />
+
             <ImageView
                 android:elevation="6dp"
                 android:id="@+id/iv_notification_btn"

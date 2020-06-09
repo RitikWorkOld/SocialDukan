@@ -879,10 +879,10 @@ counter=counter+1;
                         if (!holder1.expand){
 
                             holder1.companynamelayout.setVisibility(View.VISIBLE);
-
+                            holder1.cancelbtn.setVisibility( View.VISIBLE );
                             holder1.editexp.setVisibility(View.VISIBLE);
                             holder1.expand = true;
-                            holder1.cancelbtn.setVisibility( View.VISIBLE );
+
                         }
                         else {
 
@@ -985,7 +985,7 @@ counter=counter+1;
                 holder.companynamelayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (holder.expand == false){
+                        if (!holder.expand){
                             holder.companystartlayout.setVisibility(View.VISIBLE);
                             holder.companyendlayout.setVisibility(View.VISIBLE);
                             holder.companyrolelayout.setVisibility(View.VISIBLE);

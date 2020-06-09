@@ -24,6 +24,17 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/try_4"
                     android:layout_height="match_parent">
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:src="@drawable/ic_support"
+                        app:fabCustomSize="40dp"
+                        android:id="@+id/help_fab"
+                        android:backgroundTint="@color/white"
+                        android:layout_margin="8dp"
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:elevation="6dp"
+                        android:layout_height="wrap_content"
+                        tools:ignore="RelativeOverlap" />
                     <ImageView
                         android:id="@+id/iv_notification_btn"
                         android:layout_width="48dp"
@@ -110,7 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ritik Mehta"
+                        android:text=""
                         android:textSize="16sp"
                         android:id="@+id/name_user"
                         android:textStyle="bold"
@@ -122,7 +133,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="99643538169"
+                        android:text=""
                         android:textSize="16sp"
 
                         android:id="@+id/user_ph"
@@ -136,7 +147,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="rithikmehta@gmail.com"
+                        android:text=""
                         android:textSize="16sp"
                         android:textStyle="italic"
                         android:id="@+id/user_email"

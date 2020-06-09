@@ -1007,12 +1007,7 @@ holder2.cancelbtn.setVisibility( View.GONE );
                 holder1.companynamelayout.setText(model.getSkills());
                 holder1.companynamelayout.setVisibility( View.GONE );
                 holder1.show.setText( model.getSkills() );
-                holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills").child(model.getExpid()).removeValue();
-                    }
-                });
+
                 holder1.show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1020,6 +1015,12 @@ holder2.cancelbtn.setVisibility( View.GONE );
 
                             holder1.companynamelayout.setVisibility(View.VISIBLE);
 holder1.cancelbtn.setVisibility( View.VISIBLE );
+                            holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpskills").child(model.getExpid()).removeValue();
+                                }
+                            });
                             holder1.editexp.setVisibility(View.VISIBLE);
                             holder1.expand = true;
                         }

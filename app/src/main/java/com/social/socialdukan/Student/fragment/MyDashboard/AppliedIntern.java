@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialdukan.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.social.socialdukan.Student.Notifications.Notifications;
 import com.social.socialdukan.Student.Notifications.Notifications_Dots;
@@ -40,6 +42,7 @@ public class AppliedIntern extends Fragment {
     FirebaseRecyclerOptions<applied_intern_md> app_intern_options;
     FirebaseRecyclerAdapter<applied_intern_md, applied_intern_vh> app_intern_adapter;
     ImageView notification_btn,notification_badge;
+    FloatingActionButton help_fab;
     private View no_app;
 
     public AppliedIntern(){
@@ -53,7 +56,16 @@ public class AppliedIntern extends Fragment {
         rv_applied_intern = view.findViewById(R.id.rv_applied_intern);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
         no_app=view.findViewById( R.id.no_app );
+        help_fab=view.findViewById( R.id.help_fab );
+        help_fab.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Contact_Us.class);
 
+
+                startActivity( intent );
+            }
+        } );
         notification_badge.setVisibility( GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                 .child( FirebaseAuth.getInstance().getCurrentUser().getUid());

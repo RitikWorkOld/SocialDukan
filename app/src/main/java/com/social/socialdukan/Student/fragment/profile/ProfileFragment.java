@@ -1,15 +1,11 @@
 package com.social.socialdukan.Student.fragment.profile;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +14,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Login_Register_Student.Login_Student;
 import com.example.socialdukan.R;
 import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
@@ -40,22 +37,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.social.socialdukan.Student.Login_Register_Student.Login_Student;
-import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
-import com.social.socialdukan.Student.Miscellaneous.User;
-import com.social.socialdukan.Student.ModelandViewholder.addexp1_model;
-import com.social.socialdukan.Student.ModelandViewholder.addexp1_viewholder;
-import com.social.socialdukan.Student.ModelandViewholder.addexp_model;
-import com.social.socialdukan.Student.ModelandViewholder.addexp_viewholder;
-import com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
-import com.social.socialdukan.Student.Notifications.Notifications;
-import com.social.socialdukan.Student.Notifications.Notifications_Dots;
-import com.social.socialdukan.Student.fragment.profile.aboutus.about_us;
-import com.social.socialdukan.Student.fragment.profile.models.Personaldet_md;
 import com.squareup.picasso.Picasso;
-
 import java.util.Objects;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -68,7 +51,7 @@ private Button matri_btn,inter_btn,dip_btn,clg_btn;
     private FirebaseRecyclerAdapter<addexp_model, addexp_viewholder> adapterexp;
     private FirebaseRecyclerAdapter<addexp1_model, addexp1_viewholder>adapterexp1; //Ritik
     private View view1,view2;
-
+    FloatingActionButton help_fab;
     private FirebaseAuth mFirebaseAuth;
     private ProgressBar pb_userimg;
 
@@ -91,7 +74,6 @@ private Button matri_btn,inter_btn,dip_btn,clg_btn;
     }
 
     private TextView dob,address,occ,wa_no;
-
     private DatabaseReference reff;
 private TextView user_ph;
     private TextView name_user;
@@ -130,7 +112,16 @@ private TextView user_ph;
         clg_btn=view.findViewById( R.id.college_btn );
         pb_userimg = view.findViewById(R.id.pb_userimg);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+        help_fab=view.findViewById( R.id.help_fab );
+        help_fab.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Contact_Us.class);
 
+
+                startActivity( intent );
+            }
+        } );
         notification_badge.setVisibility(View.GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                 .child( FirebaseAuth.getInstance().getCurrentUser().getUid());

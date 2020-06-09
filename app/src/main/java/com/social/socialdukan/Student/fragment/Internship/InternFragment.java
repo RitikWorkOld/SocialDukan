@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.socialdukan.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.social.socialdukan.Student.Notifications.Notifications;
 import com.social.socialdukan.Student.Notifications.Notifications_Dots;
@@ -44,6 +46,7 @@ public class InternFragment extends Fragment {
     FirebaseRecyclerAdapter<internall_md, internall_vh> adapterinternall;
     ImageView notification_btn;
     private View no_app;
+    FloatingActionButton help_fab;
     private LinearLayoutManager mLayoutManager;
     ImageView notification_badge;
 
@@ -58,6 +61,16 @@ public class InternFragment extends Fragment {
         // Inflate the layout for this fragment
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
+        help_fab=view.findViewById( R.id.help_fab );
+        help_fab.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Contact_Us.class);
+
+
+                startActivity( intent );
+            }
+        } );
         no_app=view.findViewById( R.id.no_app );
 
         notification_badge.setVisibility(View.GONE);

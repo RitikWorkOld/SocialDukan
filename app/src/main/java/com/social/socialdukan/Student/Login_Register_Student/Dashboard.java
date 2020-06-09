@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.socialdukan.R;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.social.socialdukan.Student.fragment.Event.EventFragment;
 import com.social.socialdukan.Student.fragment.MyDashboard.AppliedIntern;
 import com.social.socialdukan.Student.fragment.Internship.InternFragment;
@@ -76,7 +79,51 @@ public class Dashboard extends AppCompatActivity {
         } );
         navigationView.setSelectedItemId( R.id.intern );
 
+        if(isFirstTime()){
+            /*TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.image_power), "Log Out Button", "Use this to signout from you account")
+                    .tintTarget(false));*/
+            new TapTargetSequence(this).targets(
+                    TapTarget.forView(findViewById(R.id.intern), "Internship button", "Check for top internship opportunities and apply!! \n (Tap on button to Cancel)")
+                            .tintTarget(false)
+                            .targetCircleColor(R.color.colorPrimaryDark)
+                            .cancelable(false)
+                            .id(1),
+                    TapTarget.forView(findViewById(R.id.other_serv), "Miscellaneous", "Fill the form to connect with the team for raising sponsorships, web & app development, merchandise & a lot more!!\n (Tap on button to Cancel)")
+                            .tintTarget(false)
+                            .cancelable(false)
+                            .targetCircleColor(R.color.colorPrimaryDark)
+                            .id(2),
+                    TapTarget.forView(findViewById(R.id.bot), "Check for events", "Find some top events happening and apply with your choice! \n (Tap on button to Cancel)")
+                            .tintTarget(false)
+                            .targetCircleColor(R.color.colorPrimaryDark)
+                            .cancelable(false)
+                            .id(3),
+                    TapTarget.forView(findViewById(R.id.chat_box), "Dashboard", "Check the status of your internships & campaigns applied.\n (Tap on button to Cancel)")
+                            .tintTarget(false)
+                            .cancelable(false)
+                            .targetCircleColor(R.color.colorPrimaryDark)
+                            .id(4),
+                    TapTarget.forView(findViewById(R.id.profile), "Profile", "Check your profile and update from here if required.\n (Tap on button to Cancel)")
+                            .tintTarget(false)
+                            .cancelable(false)
+                            .targetCircleColor(R.color.colorPrimaryDark)
+                            .id(5)
+            ).listener(new TapTargetSequence.Listener() {
+                @Override
+                public void onSequenceFinish() {
+                }
 
+                @Override
+                public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                }
+
+                @Override
+                public void onSequenceCanceled(TapTarget lastTarget) {
+
+                }
+            }).start();
+        }
     }
     @Override
     public void onBackPressed() {
@@ -105,7 +152,18 @@ public class Dashboard extends AppCompatActivity {
         }
         return haveConnectedWifi || haveConnectedMobile;
     }
+    private boolean isFirstTime() {
 
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
+    }
    private synchronized void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace( R.id.frame,fragment );

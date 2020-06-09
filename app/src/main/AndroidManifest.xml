@@ -3,25 +3,29 @@
     package="com.example.socialdukan">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/dukan_r"
         android:label="@string/app_name"
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity android:name="com.social.socialdukan.Student.fragment.Event.JoinTeam"
+        <activity android:name="com.social.socialdukan.Student.Contact_Us">
+
+        </activity>
+        <activity
+            android:name="com.social.socialdukan.Student.fragment.Event.JoinTeam"
             android:theme="@style/AppTheme.Popupstyle" />
-        <activity android:name="com.social.socialdukan.Change_Pass"
+        <activity
+            android:name="com.social.socialdukan.Change_Pass"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name="com.social.socialdukan.Student.Notifications.Notifications" />
-
         <activity android:name="com.social.socialdukan.Student.fragment.profile.aboutus.about_us" />
         <activity
             android:name="com.social.socialdukan.Student.fragment.Event.Register_event"
             android:theme="@style/AppTheme.Popupstyle" />
-
         <activity
             android:name="com.social.socialdukan.Student.fragment.other_services.Detail_Submitted"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -32,7 +36,6 @@
             android:name="com.social.socialdukan.Student.fragment.other_services.Thanks_Activity"
             android:theme="@style/AppTheme.Popupstyle" />
         <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card4_Form" />
-
         <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card3_Form" />
         <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card2_Form" />
         <activity android:name="com.social.socialdukan.Student.fragment.other_services.Card1_Form" />
@@ -49,9 +52,7 @@
         <activity
             android:name="com.social.socialdukan.Student.fragment.profile.Profile_activity1"
             android:theme="@style/AppTheme.Popupstyle" />
-
         <activity android:name="com.social.socialdukan.Student.fragment.Internship.InternDetail" />
-
         <activity android:name="com.social.socialdukan.Student.Chat_bot.feature.MainActivity" />
         <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Dashboard" />
         <activity
@@ -63,6 +64,7 @@
         <activity android:name="com.social.socialdukan.Student.Login_Register_Student.Studentdetail" />
         <activity android:name="com.social.socialdukan.Student.fragment.profile.Edit_profile" />
         <activity android:name="com.social.socialdukan.splashActi">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
