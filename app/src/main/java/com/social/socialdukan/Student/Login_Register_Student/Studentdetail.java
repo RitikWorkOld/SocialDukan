@@ -700,9 +700,9 @@ counter=counter+1;
 
                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child( String.valueOf( counter ) );
                     databaseReferencecmpexp.keepSynced(true);
-                    Toast.makeText( getApplicationContext(),"Added"+max,Toast.LENGTH_SHORT ).show();
+
                     databaseReferencecmpexp.child("achivmnts").setValue(companyname2.getText().toString());
-                    databaseReferencecmpexp.child("expid").setValue(String.valueOf( counter ));
+                    databaseReferencecmpexp.child("expid").setValue(String.valueOf( max ));
                     databaseReferencecmpexp.child("uid").setValue(String.valueOf( uid ));
                     companyname2.setVisibility(View.GONE);
                     addexpbtn2.setVisibility(View.GONE);

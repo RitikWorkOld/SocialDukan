@@ -1,6 +1,8 @@
 package com.social.socialdukan.Student.fragment.Internship;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.socialdukan.R;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
@@ -38,6 +42,8 @@ import com.social.socialdukan.Student.fragment.Internship.model.internall_md;
 import com.social.socialdukan.Student.fragment.Internship.model.internall_vh;
 import com.squareup.picasso.Picasso;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class InternFragment extends Fragment {
 
     BucketRecyclerView rv_internall;
@@ -60,8 +66,22 @@ public class InternFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_intern,container,false);
         // Inflate the layout for this fragment
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+        notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.keepSynced(true);
+                Intent intent = new Intent(getActivity(), Notifications.class);
+                startActivity(intent);
+
+            }
+        });
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
         help_fab=view.findViewById( R.id.help_fab );
+
         help_fab.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +176,18 @@ mLayoutManager.setReverseLayout( true );
         return view;
 
 
+    }
+    private boolean isFirstTime() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 
 }

@@ -92,6 +92,7 @@ private TextView user_ph;
         // Inflate the layout for this fragment
         final View view = inflater.inflate( R.layout.fragment_profile, container, false );
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+
         dob = view.findViewById( R.id.dob_text );
         address = view.findViewById( R.id.add_text );
         occ = view.findViewById( R.id.curr_occ_text );

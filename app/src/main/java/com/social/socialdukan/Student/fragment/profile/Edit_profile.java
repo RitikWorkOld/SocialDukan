@@ -831,7 +831,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
 
                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child( String.valueOf( max ) );
                     databaseReferencecmpexp.keepSynced(true);
-                    Toast.makeText( getApplicationContext(),"Added"+max,Toast.LENGTH_SHORT ).show();
+
                     databaseReferencecmpexp.child("achivmnts").setValue(companyname2.getText().toString());
                     databaseReferencecmpexp.child("expid").setValue(String.valueOf( max ));
                     databaseReferencecmpexp.child("uid").setValue(String.valueOf( uid ));
@@ -839,7 +839,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     addexpbtn2.setVisibility(View.GONE);
                     updateexpbtn2.setVisibility(View.GONE);
                     addnewexpbtn2.setVisibility(View.VISIBLE);
-                    Toast.makeText( getApplicationContext(),"Added"+max,Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
                     finish();
                     startActivity(getIntent());
 
@@ -856,8 +856,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 companyname1.setVisibility(View.VISIBLE);
-
-                companyname1.clearComposingText();
+                companyname1.setText("");
 
                 addexpbtn1.setVisibility(View.VISIBLE);
                 updateexpbtn1.setVisibility(View.GONE);
@@ -868,7 +867,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists()){
                             maxid= dataSnapshot.getChildrenCount();
-                            maxid++;
+
                         }
                     }
 
@@ -1591,7 +1590,7 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
             @Override
             public void onClick(View v) {
                 if (!companyname1.getText().toString().isEmpty()){
-
+maxid++;
 
 
                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -1604,7 +1603,8 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                     updateexpbtn1.setVisibility(View.GONE);
                     addnewexpbtn1.setVisibility(View.VISIBLE);
                     Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
-
+                    finish();
+                    startActivity(getIntent());
 
                 }
 

@@ -95,6 +95,19 @@ public class AppliedIntern extends Fragment {
         rv_applied_intern.showIfEmpty( no_app );
 
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
+        notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.keepSynced(true);
+                Intent intent = new Intent(getActivity(), Notifications.class);
+                startActivity(intent);
+
+            }
+        });
         DatabaseReference db_applied_intern = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         db_applied_intern.keepSynced(true);
 

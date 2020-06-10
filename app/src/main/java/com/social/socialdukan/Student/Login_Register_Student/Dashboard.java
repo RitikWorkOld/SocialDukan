@@ -80,34 +80,34 @@ public class Dashboard extends AppCompatActivity {
         navigationView.setSelectedItemId( R.id.intern );
 
         if(isFirstTime()){
-            /*TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.image_power), "Log Out Button", "Use this to signout from you account")
-                    .tintTarget(false));*/
+
             new TapTargetSequence(this).targets(
-                    TapTarget.forView(findViewById(R.id.intern), "Internship button", "Check for top internship opportunities and apply!! \n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.intern), "Internship button", "Check for top internship opportunities and apply!! \n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .cancelable(false)
                             .id(1),
-                    TapTarget.forView(findViewById(R.id.other_serv), "Miscellaneous", "Fill the form to connect with the team for raising sponsorships, web & app development, merchandise & a lot more!!\n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.other_serv), "Miscellaneous", "Fill the form to connect with the team for raising sponsorships, web & app development, merchandise & a lot more!!\n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .cancelable(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .id(2),
-                    TapTarget.forView(findViewById(R.id.bot), "Check for events", "Find some top events happening and apply with your choice! \n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.bot), "Check for events", "Find some top events happening and apply with your choice! \n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .cancelable(false)
                             .id(3),
-                    TapTarget.forView(findViewById(R.id.chat_box), "Dashboard", "Check the status of your internships & campaigns applied.\n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.chat_box), "Dashboard", "Check the status of your internships & campaigns applied.\n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .cancelable(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .id(4),
-                    TapTarget.forView(findViewById(R.id.profile), "Profile", "Check your profile and update from here if required.\n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.chat_box), "Profile", "Check your profile and update from here if required.\n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .cancelable(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .id(5)
+
             ).listener(new TapTargetSequence.Listener() {
                 @Override
                 public void onSequenceFinish() {

@@ -81,6 +81,19 @@ private View no_app;
             }
         } );
         notification_badge.setVisibility(View.GONE);
+        notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.keepSynced(true);
+                Intent intent = new Intent(getActivity(), Notifications.class);
+                startActivity(intent);
+
+            }
+        });
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                 .child( FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReferencenot.keepSynced(true);
