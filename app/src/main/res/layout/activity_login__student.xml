@@ -186,7 +186,7 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_marginBottom="16dp"
                 android:layout_centerInParent="true"
-                android:text="Not having an account?"/>
+                android:text="Haven't Signed Up?"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

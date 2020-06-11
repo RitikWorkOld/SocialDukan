@@ -695,10 +695,10 @@ int counter=0;
             @Override
             public void onClick(View v) {
                 if (!companyname2.getText().toString().isEmpty()){
-counter=counter+1;
 
+max++;
 
-                    DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child( String.valueOf( counter ) );
+                    DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child( String.valueOf( max ) );
                     databaseReferencecmpexp.keepSynced(true);
 
                     databaseReferencecmpexp.child("achivmnts").setValue(companyname2.getText().toString());
@@ -763,7 +763,7 @@ counter=counter+1;
                 holder2.companynamelayout.setText(model.getAchivmnts());
                 holder2.companynamelayout.setVisibility( View.GONE );
                 holder2.ach_show.setText( model.getAchivmnts() );
-                holder2.companynamelayout.setVisibility( View.VISIBLE );
+
                 holder2.cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -775,7 +775,6 @@ counter=counter+1;
                     public void onClick(View v) {
                         if (!holder2.expand){
 
-                            holder2.companynamelayout.setVisibility( View.VISIBLE );
                             holder2.cancelbtn.setVisibility( View.VISIBLE );
                             holder2.editexp.setVisibility(View.VISIBLE);
                             holder2.expand = true;
@@ -878,7 +877,7 @@ counter=counter+1;
                     public void onClick(View v) {
                         if (!holder1.expand){
 
-                            holder1.companynamelayout.setVisibility(View.VISIBLE);
+
                             holder1.cancelbtn.setVisibility( View.VISIBLE );
                             holder1.editexp.setVisibility(View.VISIBLE);
                             holder1.expand = true;
@@ -1533,10 +1532,10 @@ counter=counter+1;
         if(v==submit ){
 
             int count = count1+count2+count3+count4+count5;
-            Log.d("HAS","BELIEVER "+pres_doctor3);
+
             if(count>3){
 
-                if(pres_doctor3.equals( "2020" )){
+
                     savePrefsData();
 
                     DatabaseReference databaseReferencepstatus = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -1546,13 +1545,6 @@ counter=counter+1;
                     Intent intent = new Intent( Studentdetail.this, Dashboard.class );
                     startActivity( intent );
                     finish();
-
-                }
-                else{
-
-                    Toast.makeText(Studentdetail.this," You can't give a passed out year",Toast.LENGTH_SHORT).show();
-
-                }
 
             }
             else{

@@ -53,6 +53,7 @@ public class InternFragment extends Fragment {
     ImageView notification_btn;
     private View no_app;
     FloatingActionButton help_fab;
+    FirebaseAuth firebaseAuth;
     private LinearLayoutManager mLayoutManager;
     ImageView notification_badge;
 
@@ -65,6 +66,11 @@ public class InternFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_intern,container,false);
         // Inflate the layout for this fragment
+        firebaseAuth= FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser()==null){
+
+
+        }
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_btn.setOnClickListener(new View.OnClickListener() {
             @Override

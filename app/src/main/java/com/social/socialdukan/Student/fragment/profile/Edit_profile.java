@@ -913,7 +913,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                                     FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cmpach").child(model.getExpid()).removeValue();
                                 }
                             });
-                            holder2.companynamelayout.setVisibility( View.VISIBLE );
+
 holder2.cancelbtn.setVisibility( View.VISIBLE );
                             holder2.editexp.setVisibility(View.VISIBLE);
                             holder2.expand = true;
@@ -1012,7 +1012,7 @@ holder2.cancelbtn.setVisibility( View.GONE );
                     public void onClick(View v) {
                         if (!holder1.expand){
 
-                            holder1.companynamelayout.setVisibility(View.VISIBLE);
+
 holder1.cancelbtn.setVisibility( View.VISIBLE );
                             holder1.cancelbtn.setOnClickListener(new View.OnClickListener() {
                                 @Override

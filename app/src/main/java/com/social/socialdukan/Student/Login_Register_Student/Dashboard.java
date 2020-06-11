@@ -102,7 +102,7 @@ public class Dashboard extends AppCompatActivity {
                             .cancelable(false)
                             .targetCircleColor(R.color.colorPrimaryDark)
                             .id(4),
-                    TapTarget.forView(findViewById(R.id.chat_box), "Profile", "Check your profile and update from here if required.\n\n (Tap on button to Cancel)")
+                    TapTarget.forView(findViewById(R.id.profile), "Profile", "Check your profile and update from here if required.\n\n (Tap on button to Cancel)")
                             .tintTarget(false)
                             .cancelable(false)
                             .targetCircleColor(R.color.colorPrimaryDark)

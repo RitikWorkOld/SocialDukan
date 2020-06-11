@@ -576,6 +576,7 @@ android:id="@+id/work_det"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
 
+                        android:id="@+id/tomas"
                         android:layout_marginBottom="30dp"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
@@ -603,7 +604,25 @@ android:id="@+id/work_det"
 
 
                     </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+android:layout_below="@+id/tomas"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_exp3"
+                            android:layout_centerInParent="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+
+
+                    </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
 
