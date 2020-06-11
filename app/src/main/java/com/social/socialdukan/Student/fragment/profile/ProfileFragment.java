@@ -51,8 +51,8 @@ public class ProfileFragment extends Fragment{
 private Button matri_btn,inter_btn,dip_btn,clg_btn;
     FirebaseRecyclerOptions<addexp_model> optionsexp;
     private FirebaseRecyclerOptions<addexp1_model> optionsexp1;  //Ritik
-    private FirebaseRecyclerOptions<addexp2_model> optionsexp3;  //Ritik
-    private FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder>adapterexp3; //Ritik
+    private FirebaseRecyclerOptions<addexp2_model> optionsexp2;  //Ritik
+    private FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder>adapterexp2; //Ritik
     ImageView notification_btn;
     private FirebaseRecyclerAdapter<addexp_model, addexp_viewholder> adapterexp;
     private FirebaseRecyclerAdapter<addexp1_model, addexp1_viewholder>adapterexp1; //Ritik
@@ -66,7 +66,7 @@ private Button matri_btn,inter_btn,dip_btn,clg_btn;
         super.onStop();
         adapterexp.stopListening();
         adapterexp1.stopListening();
-        adapterexp3.stopListening();
+        adapterexp2.stopListening();
     }
 
     @Override
@@ -74,7 +74,7 @@ private Button matri_btn,inter_btn,dip_btn,clg_btn;
         super.onStart();
         adapterexp.startListening();
         adapterexp1.startListening();
-        adapterexp3.startListening();
+        adapterexp2.startListening();
     }
 
     public ProfileFragment() {
@@ -187,52 +187,6 @@ about.setOnClickListener( new View.OnClickListener() {
         final RelativeLayout layout_signout = (RelativeLayout)view.findViewById(R.id.layout_signout);
 
 
-        RecyclerView rv_exp3 = view.findViewById( R.id.rv_exp3 );
-        rv_exp3.setHasFixedSize(true);
-        rv_exp3.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        DatabaseReference databaseReferenceexprv3 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpach" );
-        databaseReferenceexprv3.keepSynced(true);
-
-        optionsexp3  = new FirebaseRecyclerOptions.Builder<addexp2_model>().setQuery( databaseReferenceexprv3,addexp2_model.class).build();
-
-        adapterexp3 = new FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder>(optionsexp3) {
-            @Override
-            protected void onBindViewHolder(@NonNull final addexp2_viewholder holder1, int position, @NonNull final addexp2_model model) {
-                holder1.companynamelayout.setText(model.getAchivmnts());
-
-                holder1.ach_show.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (!holder1.expand){
-
-                            holder1.companynamelayout.setVisibility(View.VISIBLE);
-
-                            holder1.editexp.setVisibility(View.GONE);
-                            holder1.expand = true;
-                        }
-                        else {
-
-                            holder1.companynamelayout.setVisibility(View.GONE);
-                            holder1.editexp.setVisibility(View.GONE);
-                            holder1.expand = false;
-                        }
-                    }
-                });
-
-
-
-            }
-
-            @NonNull
-            @Override
-            public addexp2_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new addexp2_viewholder(LayoutInflater.from(getActivity()).inflate(R.layout.exp2_card_layout,parent,false));
-            }
-        };
-
-        rv_exp3.setAdapter(adapterexp1);
-        adapterexp3.startListening();
 
         //RITIK
         BucketRecyclerView rv_exp1 = view.findViewById( R.id.rv_exp1 );
@@ -282,6 +236,53 @@ about.setOnClickListener( new View.OnClickListener() {
 
         rv_exp1.setAdapter(adapterexp1);
         adapterexp1.startListening();
+//-------------------------------------------------------------------------------------------
+        RecyclerView rv_exp3 = view.findViewById( R.id.rv_exp3 );
+        rv_exp3.setHasFixedSize(true);
+        rv_exp3.setLayoutManager(new LinearLayoutManager( getContext() ));
+
+        DatabaseReference databaseReferenceexprv3 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpach" );
+        databaseReferenceexprv3.keepSynced(true);
+
+        optionsexp2  = new FirebaseRecyclerOptions.Builder<addexp2_model>().setQuery( databaseReferenceexprv3,addexp2_model.class).build();
+
+        adapterexp2 = new FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder>(optionsexp2) {
+            @Override
+            protected void onBindViewHolder(@NonNull final addexp2_viewholder holder1, int position, @NonNull final addexp2_model model) {
+                holder1.companynamelayout.setText(model.getAchivmnts());
+
+                holder1.ach_show.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!holder1.expand){
+
+                            holder1.companynamelayout.setVisibility(View.VISIBLE);
+
+                            holder1.editexp.setVisibility(View.GONE);
+                            holder1.expand = true;
+                        }
+                        else {
+
+                            holder1.companynamelayout.setVisibility(View.GONE);
+                            holder1.editexp.setVisibility(View.GONE);
+                            holder1.expand = false;
+                        }
+                    }
+                });
+
+
+
+            }
+
+            @NonNull
+            @Override
+            public addexp2_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return new addexp2_viewholder(LayoutInflater.from(getActivity()).inflate(R.layout.exp2_card_layout,parent,false));
+            }
+        };
+
+        rv_exp3.setAdapter(adapterexp2);
+        adapterexp2.startListening();
 
 //-------------------------------------------------------------------------------------------
         BucketRecyclerView rv_exp = view.findViewById( R.id.rv_exp );

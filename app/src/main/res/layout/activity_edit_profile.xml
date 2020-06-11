@@ -890,7 +890,7 @@
                         <Spinner
 
                             android:id="@+id/spinner6"
-
+android:visibility="visible"
                             android:spinnerMode="dropdown"
 
                             android:layout_toRightOf="@+id/companystartdate"

@@ -857,7 +857,8 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 companyname1.setVisibility(View.VISIBLE);
                 companyname1.setText("");
-
+                companyrole.setText( "" );
+                companybenefits.setText( "" );
                 addexpbtn1.setVisibility(View.VISIBLE);
                 updateexpbtn1.setVisibility(View.GONE);
                 addnewexpbtn1.setVisibility(View.GONE);
@@ -1156,6 +1157,12 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                         holder.editexp.setVisibility(View.GONE);
                         holder.expand = false;
 
+                        layout_company.setVisibility( View.VISIBLE );
+                        layout_company1.setVisibility( View.VISIBLE );
+                        spinYear6.setVisibility( View.VISIBLE );
+                        spinYear7.setVisibility( View.VISIBLE );
+                        spinYear6.setSelection( 0 );
+                        spinYear7.setSelection( 0 );
                         companyname.setVisibility(View.VISIBLE);
                         companystartdate.setVisibility(View.VISIBLE);
                         companyenddate.setVisibility(View.VISIBLE);
@@ -1165,6 +1172,8 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                         updateexpbtn.setVisibility(View.VISIBLE);
                         addnewexpbtn.setVisibility(View.GONE);
 
+                        layout_askingex.setVisibility( View.GONE );
+                        layout_yes_no_ex.setVisibility( View.GONE );
                         companyname.setText(model.getCompanyname());
                         companystartdate.setText(model.getCompanystart());
                         companyenddate.setText(model.getCompanyend());
@@ -1206,8 +1215,8 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                                                     addnewexpbtn.setVisibility(View.VISIBLE);
                                                     layout_company.setVisibility( View.GONE );
                                                     layout_company1.setVisibility( View.GONE );
-                                                    spinYear6.setVisibility( View.GONE );
-                                                    spinYear7.setVisibility( View.GONE );
+                                                    layout_askingex.setVisibility( View.VISIBLE );
+                                                    layout_yes_no_ex.setVisibility( View.VISIBLE );
                                                     Toast.makeText( getApplicationContext(),"Updated",Toast.LENGTH_SHORT ).show();
 
                                                 }
@@ -1499,11 +1508,11 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                 companyenddate.setVisibility(View.VISIBLE);
                 companyrole.setVisibility(View.VISIBLE);
                 companybenefits.setVisibility(View.VISIBLE);
-                companyname.clearComposingText();
-                companystartdate.clearComposingText();
-                companyenddate.clearComposingText();
-                companyrole.clearComposingText();
-                companybenefits.clearComposingText();
+                companyname.setText( "" );
+                companystartdate.setText( "" );
+                companyenddate.setText( "" );
+                companyrole.setText( "" );
+                companybenefits.setText( "" );
                 addexpbtn.setVisibility(View.VISIBLE);
                 updateexpbtn.setVisibility(View.GONE);
                 addnewexpbtn.setVisibility(View.GONE);
@@ -1530,11 +1539,10 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
             @Override
             public void onClick(View v) {
                 if (!companyname.getText().toString().isEmpty()){
-                    if (!companystartdate.getText().toString().isEmpty()){
-                        if (!companyenddate.getText().toString().isEmpty()){
+
                             if (!companyrole.getText().toString().isEmpty()){
                                 if (!companybenefits.getText().toString().isEmpty()){
-
+maxid2++;
 
 
                                     DatabaseReference databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child("Profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -1559,9 +1567,12 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                                     layout_company1.setVisibility( View.GONE );
                                     spinYear6.setVisibility( View.GONE );
                                     spinYear7.setVisibility( View.GONE );
+
                                     Toast.makeText( getApplicationContext(),"Added",Toast.LENGTH_SHORT ).show();
 
                                     adapterexp.notifyDataSetChanged();
+                                    finish();
+                                    startActivity(getIntent());
                                 }
                                 else {
                                     companybenefits.setError("Empty");
@@ -1570,14 +1581,8 @@ holder1.cancelbtn.setVisibility( View.VISIBLE );
                             else {
                                 companyrole.setError("Empty");
                             }
-                        }
-                        else {
-                            companyenddate.setError("Empty");
-                        }
-                    }
-                    else {
-                        companystartdate.setError("Empty");
-                    }
+
+
                 }
                 else {
                     companyname.setError("Empty");
