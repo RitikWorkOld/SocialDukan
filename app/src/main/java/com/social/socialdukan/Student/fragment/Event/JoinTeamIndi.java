@@ -58,7 +58,7 @@ public class JoinTeamIndi extends AppCompatActivity {
         member10.setVisibility( View.GONE );
 teamname.setVisibility( View.GONE );
 member1.setHint( "Name" );
-member1.setHint( "Email" );
+member2.setHint( "Email" );
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Users" );
         databaseReference.keepSynced( true );

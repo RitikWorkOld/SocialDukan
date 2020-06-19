@@ -202,7 +202,7 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                     Register_dt.setOnClickListener( new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
+                          //  Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
                             if(valueintern.getNumber_of_member().equals( "Individual" )){
 
                                 Intent intent = new Intent( getActivity(), JoinTeamIndi.class);
@@ -210,10 +210,10 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                             startActivity(intent);
                             }
                             if(!valueintern.getNumber_of_member().equals( "Individual" )) {
-                           /* Intent intent = new Intent( getActivity(), JoinTeam.class);
+                            Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
-                            startActivity(intent);*/
+                            startActivity(intent);
                             }
                         }
                     } );
