@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -240,17 +241,18 @@ about.setOnClickListener( new View.OnClickListener() {
         RecyclerView rv_exp3 = view.findViewById( R.id.rv_exp3 );
         rv_exp3.setHasFixedSize(true);
         rv_exp3.setLayoutManager(new LinearLayoutManager( getContext() ));
-
+Log.d("HAS","ONE");
         DatabaseReference databaseReferenceexprv3 = FirebaseDatabase.getInstance().getReference().child( "Profile" ).child( FirebaseAuth.getInstance().getCurrentUser().getUid() ).child( "cmpach" );
         databaseReferenceexprv3.keepSynced(true);
-
+        Log.d("HAS","ONEE");
         optionsexp2  = new FirebaseRecyclerOptions.Builder<addexp2_model>().setQuery( databaseReferenceexprv3,addexp2_model.class).build();
-
+        Log.d("HAS","ONEEE");
         adapterexp2 = new FirebaseRecyclerAdapter<addexp2_model, addexp2_viewholder>(optionsexp2) {
             @Override
+
             protected void onBindViewHolder(@NonNull final addexp2_viewholder holder1, int position, @NonNull final addexp2_model model) {
                 holder1.companynamelayout.setText(model.getAchivmnts());
-
+                Log.d("HAS","ONEEEE");
                 holder1.ach_show.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -310,7 +312,7 @@ about.setOnClickListener( new View.OnClickListener() {
                 holder.companynamelayout.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (holder.expand == false) {
+                        if (!holder.expand) {
                             holder.companystartlayout.setVisibility( View.VISIBLE );
                             holder.companyendlayout.setVisibility( View.VISIBLE );
                             holder.companyrolelayout.setVisibility( View.VISIBLE );
@@ -399,13 +401,7 @@ about.setOnClickListener( new View.OnClickListener() {
 
         //-------------------------------------------------------------------------------------------------
 
-        /*layout_profile1.setOnClickListener( new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), Profile_activity1.class);
-            startActivity(intent);
-    }
-        } );*/
+
         layout_profile3.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

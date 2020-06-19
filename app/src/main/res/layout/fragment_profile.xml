@@ -384,7 +384,7 @@
                                 <Button
                                     android:layout_width="130dp"
                                     android:layout_height="wrap_content"
-                                    android:text="      Matriculate      "
+                                    android:text="      10th      "
                                     android:textSize="12sp"
                                     android:layout_centerHorizontal="true"
                                     android:layout_margin="4dp"
@@ -394,7 +394,7 @@
                                 <Button
                                     android:layout_width="130dp"
                                     android:layout_height="wrap_content"
-                                    android:text="      Intermediate      "
+                                    android:text="      12th      "
                                     android:textSize="12sp"
                                     android:layout_centerHorizontal="true"
                                     android:layout_below="@id/matr_btn"
@@ -563,7 +563,7 @@ android:id="@+id/work_det"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:id="@+id/abi_det"
                     android:layout_centerHorizontal="true"
 
@@ -607,7 +607,7 @@ android:id="@+id/work_det"
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
 android:layout_below="@+id/tomas"
                         android:layout_marginBottom="30dp"
                         android:gravity="center_horizontal"
@@ -617,7 +617,7 @@ android:layout_below="@+id/tomas"
                             android:id="@+id/rv_exp3"
                             android:layout_centerInParent="true"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="match_parent"/>
 
 
 

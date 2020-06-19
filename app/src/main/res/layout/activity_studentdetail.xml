@@ -241,7 +241,7 @@ android:paddingStart="8dp"
                     android:layout_alignParentLeft="true"
                     android:textColor="#fff"
                     android:fontFamily="@font/montserrat"
-                    android:text="School Details* - Matriculate"
+                    android:text="School Details* - 10th"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -392,7 +392,7 @@ android:layout_toRightOf="@+id/schlstarty10"
                             android:checked="true"
                             android:fontFamily="@font/nunito"
                             android:padding="8dp"
-                            android:text="Intermediate"
+                            android:text="12th"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 

@@ -476,6 +476,7 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                 rlayout_divider.setVisibility( View.GONE );
                 layout_workexptecxt.setVisibility( View.GONE );
 
+
             }
         } );
 

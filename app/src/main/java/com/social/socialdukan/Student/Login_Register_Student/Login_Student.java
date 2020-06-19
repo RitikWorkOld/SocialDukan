@@ -49,7 +49,7 @@ public class Login_Student extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener {
     Button btnSignUp;
     boolean session;
-    ImageButton go;
+    Button go;
     EditText emailId, password;
     FirebaseAuth mFirebaseAuth;
     String pstatus;
@@ -141,6 +141,13 @@ TextView fgt_pass;
             public void onClick(View v) {
               //  showProgressDialog();
                 progressBars.setVisibility(View.VISIBLE);
+                if(!haveNetworkConnection()){
+
+
+                    Toast.makeText(Login_Student.this,"No Network Connection",Toast.LENGTH_LONG).show();
+                    progressBars.setVisibility(View.GONE);
+                }
+
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {

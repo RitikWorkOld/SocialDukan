@@ -28,7 +28,7 @@ public class JoinTeam extends AppCompatActivity {
     String mem1,mem2,mem3,mem4,mem5,mem6,mem7,mem8,mem9,mem10;
     Button next_btn;
     String teamid;
-    String useremail,usernumber,username;
+    String useremail,usernumber,username,uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +54,6 @@ public class JoinTeam extends AppCompatActivity {
         minmem = getIntent().getStringExtra("minmem");
         maxmem = getIntent().getStringExtra("maxmem");
 
-        next_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
-            }
-        });
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReference.keepSynced(true);
@@ -72,6 +66,7 @@ public class JoinTeam extends AppCompatActivity {
                     useremail = user.getEmail();
                     username = user.getName();
                     usernumber = user.getContactn();
+                    uid=user.getUid();
                 }
             }
 
@@ -81,6 +76,13 @@ public class JoinTeam extends AppCompatActivity {
             }
         });
 
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
+
+            }
+        });
         assert maxmem != null;
         switch (Integer.parseInt(maxmem)){
             case 2:
@@ -214,6 +216,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -238,6 +241,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -268,6 +272,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -304,6 +309,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -346,6 +352,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -394,6 +401,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -448,6 +456,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -508,6 +517,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
@@ -574,6 +584,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("uid").setValue(uid);
                     }
                     if (!mem2.equals("")){
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);

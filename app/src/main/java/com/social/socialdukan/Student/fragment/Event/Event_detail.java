@@ -117,7 +117,7 @@ public class Event_detail extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
-                    events_md valueintern = dataSnapshot1.getValue(events_md.class);
+                    final events_md valueintern = dataSnapshot1.getValue(events_md.class);
 
                     if(!valueintern.getAmount().equals( "0" )) {
                     amount.setText( "Rs "+valueintern.getAmount() );
@@ -131,10 +131,20 @@ public class Event_detail extends Fragment {
 
                     }
 
+
                     participants.setText( valueintern.getNumber_of_member() );
                     if(valueintern.getNumber_of_member().equals( "Team" )){
-                        range.setVisibility( View.VISIBLE );
-                        range.setText( valueintern.getRange() );
+                        if(valueintern.getMax_number().equals( valueintern.getMin_number() )) {
+
+                            range.setText( "("+valueintern.getMax_number()+")" );
+                        }
+                        if(!valueintern.getMax_number().equals( valueintern.getMin_number() )) {
+
+                            range.setVisibility( View.VISIBLE );
+                            range.setText( valueintern.getRange() );
+                        }
+
+
                     }
 
                     if(!valueintern.getNumber_of_member().equals( "Team" )){
@@ -193,10 +203,18 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         @Override
                         public void onClick(View v) {
                             Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
+                            if(valueintern.getNumber_of_member().equals( "Individual" )){
+
+                                Intent intent = new Intent( getActivity(), JoinTeamIndi.class);
+
+                            startActivity(intent);
+                            }
+                            if(!valueintern.getNumber_of_member().equals( "Individual" )) {
                            /* Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
                             startActivity(intent);*/
+                            }
                         }
                     } );
 
