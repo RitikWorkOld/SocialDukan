@@ -44,7 +44,12 @@ Button btn;
         id = getIntent().getStringExtra("id");
         userid = getIntent().getStringExtra("userid");
         panel_userid = getIntent().getStringExtra("panel_userid");
-
+        cross.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        } );
         btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,12 +76,7 @@ Button btn;
                                     databaseReference.child( "follower" ).setValue( follower.getText().toString());
                                 databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
                                 databaseReference.child( "id_status" ).setValue( panel_userid);
-cross.setOnClickListener( new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        finish();
-    }
-} );
+
                                 Toast.makeText( Detail_Submitted.this, "Applied", Toast.LENGTH_SHORT ).show();
                                 Intent intent = new Intent( getApplicationContext(), Card2_Form.class);
 

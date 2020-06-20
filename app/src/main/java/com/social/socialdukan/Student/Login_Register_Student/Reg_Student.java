@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 public class Reg_Student extends AppCompatActivity implements View.OnClickListener {
     Button btnSignIn;
-    ImageButton go;
+    Button go;
     private EditText emailId,password,number1,fname1;
     FirebaseAuth mFirebaseAuth;
     ImageView chatbot;

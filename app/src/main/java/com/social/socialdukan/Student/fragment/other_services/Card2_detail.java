@@ -32,6 +32,7 @@ public class Card2_detail extends AppCompatActivity {
     TextView infl_name,brandname,brandname2,pymnt_type,location,genre,insta_handle,link,primary,campaign,descri ;
     String id,userid;
     Button apply_btn,applied_btn;
+
     private DatabaseReference  databaseReference;
     private String description;
 
@@ -41,7 +42,7 @@ public class Card2_detail extends AppCompatActivity {
 
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("InfluencerDetailSubmitted");
         dbref.keepSynced(true);
-        dbref.orderByChild("influencerid").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbref.orderByChild("userid").equalTo(userid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null){

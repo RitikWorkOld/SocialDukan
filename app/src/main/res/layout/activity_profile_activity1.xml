@@ -71,7 +71,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:textColor="#000"
                                 android:fontFamily="@font/montserrat"
-                                android:text="School Details* - Matriculate"
+                                android:text="School Details* - 10th"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
 
