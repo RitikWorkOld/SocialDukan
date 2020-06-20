@@ -29,6 +29,7 @@ public class JoinTeam extends AppCompatActivity {
     Button next_btn;
     String teamid;
     String useremail,usernumber,username;
+    String amt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class JoinTeam extends AppCompatActivity {
 
         minmem = getIntent().getStringExtra("minmem");
         maxmem = getIntent().getStringExtra("maxmem");
+        amt = getIntent().getStringExtra("amt");
 
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +208,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem1 = member1.getText().toString();
                     mem2 = member2.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -214,11 +217,14 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -230,6 +236,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem2 = member2.getText().toString();
                     mem3 = member3.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -238,16 +245,21 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -260,6 +272,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem3 = member3.getText().toString();
                     mem4 = member4.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -268,21 +281,28 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -296,6 +316,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem4 = member4.getText().toString();
                     mem5 = member5.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -304,26 +325,35 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -338,6 +368,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem5 = member5.getText().toString();
                     mem6 = member6.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -346,31 +377,42 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem6.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -386,6 +428,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem6 = member6.getText().toString();
                     mem7 = member7.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -394,36 +437,49 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem6.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem7.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -440,6 +496,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem7 = member7.getText().toString();
                     mem8 = member8.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -448,41 +505,56 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem6.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem7.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem8.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -500,6 +572,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem8 = member8.getText().toString();
                     mem9 = member9.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -508,46 +581,63 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem6.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem7.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem8.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem9.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*9);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member9").setValue(mem9);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;
@@ -566,6 +656,7 @@ public class JoinTeam extends AppCompatActivity {
                     mem9 = member9.getText().toString();
                     mem10 = member10.getText().toString();
                     if (!mem1.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt));
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("leadername").setValue(mem1);
@@ -574,51 +665,70 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("username").setValue(username);
                         dbref.child("useremail").setValue(useremail);
                         dbref.child("usernumber").setValue(usernumber);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem2.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem3.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem4.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem5.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem6.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem7.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem8.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem9.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*9);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member9").setValue(mem9);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                     if (!mem10.equals("")){
+                        String totalamt = String.valueOf(Integer.parseInt(amt)*10);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member10").setValue(mem10);
+                        dbref.child("totalamt").setValue(totalamt);
                     }
                 }
                 break;

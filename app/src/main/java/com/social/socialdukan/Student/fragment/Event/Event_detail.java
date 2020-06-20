@@ -69,6 +69,7 @@ public class Event_detail extends Fragment {
         final String min_number = bundle.getString("min_number");
         final String type_event = bundle.getString("type_event");
         final String location = bundle.getString("location");
+        final String amt = bundle.getString("amt");
 
         readless = view.findViewById(R.id.read_less_events);
         final EventFragment eventFragment=new EventFragment();
@@ -193,10 +194,11 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         @Override
                         public void onClick(View v) {
                             Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
-                           /* Intent intent = new Intent( getActivity(), JoinTeam.class);
+                            Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
-                            startActivity(intent);*/
+                            intent.putExtra("amt",amt);
+                            startActivity(intent);
                         }
                     } );
 

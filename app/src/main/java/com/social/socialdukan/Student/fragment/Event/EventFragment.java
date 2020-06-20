@@ -169,6 +169,7 @@ private View no_app;
                 bundle.putString("type_event",type_event);
                 bundle.putString("location",location);
                 bundle.putString("key",key);
+                bundle.putString("amt",model.getAmount());
 
 
                 notification_btn.setOnClickListener(new View.OnClickListener() {
