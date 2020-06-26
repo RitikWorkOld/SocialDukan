@@ -25,9 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
         }
-        debug{
-            debuggable false
-        }
+      
     }
 
 }
@@ -88,6 +86,9 @@ dependencies {
     implementation 'com.nex3z:notification-badge:0.1.0'
 
     implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
+
+    //rajor-pay
+    implementation  'com.razorpay:checkout:1.5.12'
 }
 repositories {
     mavenCentral()

@@ -137,7 +137,7 @@ private View no_app;
                 holder.Descp.setText(model.getEvent_desc());
                 Picasso.get().load(model.getIntimguri()).resize(400,400).into(holder.Mimguri);
                 holder.event_date.setText( model.getEvent_date() );
-
+String event_name = model.getEventname();
                 String Title = model.getEventname();
                 String Descp = model.getEvent_desc();
                 String Desc1 = model.getDesc1();
@@ -153,9 +153,10 @@ private View no_app;
                         String type_event=model.getType_of_event();
                 key=model.getEventid();
                 String location=model.getLocation();
-
+String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 final Bundle bundle = new Bundle();
+                bundle.putString("Name",event_name);
                 bundle.putString("Title",Title);
                 bundle.putString("Descp",Descp);
                 bundle.putString("Desc1",Desc1);
@@ -163,7 +164,7 @@ private View no_app;
                 bundle.putString("Mimguri",Mimguri);
                 bundle.putString("number_of_member",number_of_member);
                 bundle.putString("event_date",event_date);
-
+                bundle.putString("uid",uid);
                 bundle.putString("max_number",max_number);
                 bundle.putString("min_number",min_number);
                 bundle.putString("type_event",type_event);

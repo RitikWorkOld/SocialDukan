@@ -40,6 +40,7 @@ this.indi_or_team=indi_or_team;
         this.desc1=desc1;
         this.desc2=desc2;
         this.location=location;
+
         this.type_of_event=type_of_event;
         this.min_number=min_number;
         this.max_number=max_number;
@@ -52,6 +53,7 @@ this.indi_or_team=indi_or_team;
 
 
     }
+
 
     public String getAmount() {
         return amount;

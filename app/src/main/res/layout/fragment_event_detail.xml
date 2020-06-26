@@ -447,11 +447,20 @@ android:id="@+id/partici_lay"
                     android:layout_height="wrap_content"/>
 
             </RelativeLayout>
+            <Button
 
+             android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_gradient_style"
+                android:textColor="#fff"
+               android:layout_below="@+id/last_layout"
+                android:id="@+id/show_pass"
+                android:text="       Show Pass     "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <TextView
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/last_layout"
+                android:layout_below="@+id/show_pass"
                 android:id="@+id/faq_btn"
                 android:textStyle="bold"
                 android:textAlignment="center"

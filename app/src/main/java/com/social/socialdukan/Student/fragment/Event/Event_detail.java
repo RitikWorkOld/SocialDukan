@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.social.socialdukan.Student.fragment.Event.FAQ.FAQ_Managr;
+import com.social.socialdukan.Student.fragment.Internship.model.EventRegistered;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -40,6 +41,7 @@ public class Event_detail extends Fragment {
     Button Register_dt,registered;
     ImageView Mimg_dt;
     TextView readless;
+    Button showpass;
     DatabaseReference databaseReferencedetail;
 
     TextView faq;
@@ -58,6 +60,7 @@ public class Event_detail extends Fragment {
 
         final String Title = bundle.getString("Title");
         String Descp = bundle.getString("Descp");
+        final String event_name = bundle.getString("Name");
         String Desc1 = bundle.getString("Desc1");
         String Desc2 = bundle.getString("Desc2");
         String Mimguri = bundle.getString("Mimguri");
@@ -70,12 +73,14 @@ public class Event_detail extends Fragment {
         final String type_event = bundle.getString("type_event");
         final String location = bundle.getString("location");
         final String amt = bundle.getString("amt");
-
+        final String uid = bundle.getString("uid");
         readless = view.findViewById(R.id.read_less_events);
         final EventFragment eventFragment=new EventFragment();
         Title_dt = view.findViewById(R.id.event_title);
         participants=view.findViewById( R.id.participants );
         fb_handle=view.findViewById( R.id.fb_handle );
+        showpass=view.findViewById( R.id.show_pass );
+        showpass.setVisibility( View.GONE );
         range=view.findViewById( R.id.range );
         fb_title=view.findViewById( R.id.fb_title );
         insta_title=view.findViewById( R.id.insta_title );
@@ -107,6 +112,43 @@ public class Event_detail extends Fragment {
         event_location.setText( location );
         date.setText( event_date );
         event_type.setText( type_event );
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
+        databaseReference.keepSynced(true);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                    EventRegistered event = dataSnapshot1.getValue(EventRegistered.class);
+                    assert event != null;
+
+
+
+                    if(event.getPass().equals( "yes" )){
+                        showpass.setVisibility( View.VISIBLE );
+                    }
+                    if(event.getPass().equals( "no" )){
+                        showpass.setVisibility( View.GONE );
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+showpass.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent( getActivity(), Event_Pass.class);
+        intent.putExtra( "Name",event_name );
+        intent.putExtra( "uid",uid );
+        startActivity(intent);
+    }
+} );
 
         Picasso.get().load(Mimguri).resize(400,400).into(Mimg_dt);
 
@@ -116,6 +158,42 @@ public class Event_detail extends Fragment {
         databaseReferencedetail.orderByChild("eventid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
+                databaseReferencedetail.keepSynced(true);
+
+                databaseReferencedetail.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                        {
+                            final EventRegistered event = dataSnapshot1.getValue(EventRegistered.class);
+
+                            if(event.getStatus().equals( "PAID" )){
+                                Register_dt.setVisibility( View.GONE );
+                                registered.setVisibility( View.VISIBLE );
+                            }
+
+                            if(event.getPass().equals( "yes" )){
+                                showpass.setVisibility( View.VISIBLE );
+                            }
+                            if(event.getPass().equals( "no" )){
+                                showpass.setVisibility( View.GONE );
+                            }
+
+
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
                     final events_md valueintern = dataSnapshot1.getValue(events_md.class);
@@ -131,6 +209,7 @@ public class Event_detail extends Fragment {
 
 
                     }
+
 
 
                     participants.setText( valueintern.getNumber_of_member() );
@@ -207,6 +286,9 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                             if(valueintern.getNumber_of_member().equals( "Individual" )){
 
                                 Intent intent = new Intent( getActivity(), JoinTeamIndi.class);
+                                intent.putExtra("amt",amt);
+                                intent.putExtra("eventid",valueintern.getEventid());
+                                intent.putExtra( "eventname" ,valueintern.getEventname());
 
                             startActivity(intent);
                             }
@@ -253,5 +335,9 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+    }
 }
