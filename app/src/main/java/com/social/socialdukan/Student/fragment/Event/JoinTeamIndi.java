@@ -1,11 +1,14 @@
 package com.social.socialdukan.Student.fragment.Event;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.socialdukan.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,17 +41,21 @@ public class JoinTeamIndi extends AppCompatActivity implements PaymentResultList
     EditText member1,member2,member3,member4,member5,member6,member7,member8,member9,member10;
     String mem1,mem2,mem3,mem4,mem5,mem6,mem7,mem8,mem9,mem10;
     Button next_btn;
-    String teamid_main;
+   // String teamid_main;
     TextView amount;
     String teamid;
     String eventid,eventname;
     DatabaseReference databaseReferencecmpexp;
     String useremail,usernumber,username,uid;
+    private ProgressBar progressBars;
+    private long mLastClickTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_join_team );
+        progressBars = findViewById(R.id.progressBar2);
+        progressBars.setVisibility(View.GONE);
 String amt=getIntent().getStringExtra( "amt" );
          eventid=getIntent().getStringExtra( "eventid" );
          eventname=getIntent().getStringExtra( "eventname" );
@@ -105,13 +113,61 @@ amount.setText( amt );
 next_btn.setOnClickListener( new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+
+
+            progressBars.setVisibility( View.VISIBLE );
+
+        progressBars.setVisibility( View.GONE );
 if(!member1.getText().toString().isEmpty()){
     if(!member2.getText().toString().isEmpty()){
         if(!amount.getText().toString().isEmpty()){
-startPayment();
+         /*   databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child( "EventRegistration" );
+            databaseReferencecmpexp.keepSynced( true );
+
+
+            databaseReferencecmpexp.orderByChild( "eventid" ).equalTo( eventid ).addListenerForSingleValueEvent( new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                        EventRegistered event = dataSnapshot1.getValue(EventRegistered.class);
+                        assert event != null;
+                        teamid_main=event.getTeamid();
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            } );
+            Intent intent = new Intent( getApplicationContext(), Payment_Individual.class);
+            intent.putExtra("useremail",useremail);
+            intent.putExtra("username",username);
+            intent.putExtra("usernumber",usernumber);
+            intent.putExtra("uid",uid);
+            intent.putExtra("amount",amount.getText().toString());
+            intent.putExtra("teamid",teamid_main);
+            intent.putExtra("eventid",eventid);
+            startActivity(intent);*/
+            startPayment();
+            progressBars.setVisibility( View.GONE );
+        }
+        else
+        {        progressBars.setVisibility( View.GONE );
+
         }
 
+
     }
+    else{
+        progressBars.setVisibility( View.GONE );
+        member2.setError( "Required" );
+    }
+}
+else{
+    progressBars.setVisibility( View.GONE );
+    member1.setError( "Required" );
 }
     }
 } );
@@ -119,9 +175,7 @@ startPayment();
     }
 
     public void startPayment() {
-        /**
-         * You need to pass current activity in order to let Razorpay create CheckoutActivity
-         */
+
         final Activity activity = this;
 
         final Checkout co = new Checkout();
@@ -163,37 +217,38 @@ startPayment();
 
       databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child( "EventRegistration" );
         databaseReferencecmpexp.keepSynced( true );
+        Log.d("HAS","TESTTEST"+username+useremail+usernumber+" "+amount.getText().toString()+" "+teamid+" "+eventid+" "+uid);
 
 
-        databaseReferencecmpexp.orderByChild( "eventid" ).equalTo( eventid ).addListenerForSingleValueEvent( new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-                    EventRegistered event = dataSnapshot1.getValue(EventRegistered.class);
-                    assert event != null;
-                    teamid_main=event.getTeamid();
-                    databaseReferencecmpexp.child( teamid_main ).child( "status" ).setValue( "PAID" );
-                    databaseReferencecmpexp.child( teamid_main ).child( "amountpaid" ).setValue( amount.getText().toString() );
-                    databaseReferencecmpexp.child( teamid_main ).child( "statusError" ).removeValue();
+                    Log.d("HAS","TESTTEST1"+username+useremail+usernumber+" "+amount.getText().toString()+" "+teamid+" "+eventid+" "+uid);
+                    databaseReferencecmpexp.child( teamid ).child( "status" ).setValue( "PAID" );
+                    databaseReferencecmpexp.child( teamid ).child( "amountpaid" ).setValue( amount.getText().toString() );
+                    databaseReferencecmpexp.child( teamid ).child( "statusError" ).removeValue();
+
+                    databaseReferencecmpexp.child( teamid ).child("username").setValue(username);
+                    databaseReferencecmpexp.child( teamid ).child("teamid").setValue(teamid);
+                    databaseReferencecmpexp.child( teamid ).child("useremail").setValue(useremail);
+                    databaseReferencecmpexp.child( teamid ).child("usernumber").setValue(usernumber);
+        databaseReferencecmpexp.child( teamid ).child("eventid").setValue(eventid);
+                    databaseReferencecmpexp.child( teamid ).child("uid").setValue(uid);
+                    databaseReferencecmpexp.child( teamid ).child("pass").setValue("no");
+                    Toast.makeText(getApplicationContext(), "Please refresh the page " , Toast.LENGTH_LONG).show();
+                   finish();
+
+
 
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        } );
 
 
-    }
+
+
 
     @Override
     public void onPaymentError(int i, String s) {
       // Log.e(TAG,  "error code "+String.valueOf(i)+" -- Payment failed "+s.toString()  );
         try {
-            databaseReferencecmpexp.child( teamid_main ).child( "status" ).setValue( "ERROR" );
-            databaseReferencecmpexp.child( teamid_main ).child( "statusError" ).setValue( "Not-Paid" );
+            databaseReferencecmpexp.child( teamid ).child( "status" ).setValue( "ERROR" );
+            databaseReferencecmpexp.child( teamid ).child( "statusError" ).setValue( "Not-Paid" );
 
             Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
 

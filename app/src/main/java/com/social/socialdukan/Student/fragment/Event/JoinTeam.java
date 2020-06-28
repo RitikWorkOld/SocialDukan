@@ -81,6 +81,7 @@ public class JoinTeam extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
 
             }
