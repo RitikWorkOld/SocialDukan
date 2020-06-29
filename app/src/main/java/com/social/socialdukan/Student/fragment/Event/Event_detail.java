@@ -1,14 +1,20 @@
 package com.social.socialdukan.Student.fragment.Event;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.socialdukan.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.social.socialdukan.Student.Miscellaneous.User;
 import com.social.socialdukan.Student.fragment.Event.EventFragment;
 import com.social.socialdukan.Student.fragment.Event.FAQ.FAQ_Managr;
 
@@ -28,7 +36,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.social.socialdukan.Student.fragment.Event.FAQ.FAQ_Managr;
 import com.social.socialdukan.Student.fragment.Internship.model.EventRegistered;
+import com.social.socialdukan.Student.fragment.profile.models.College_md;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,10 +53,14 @@ public class Event_detail extends Fragment {
     ImageView Mimg_dt;
     TextView readless;
     Button showpass;
+    String clgname;
+    String teamid;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     DatabaseReference databaseReferencedetail;
-
+    private FirebaseAuth mFirebaseAuth;
+    DatabaseReference databaseReferencecmpexp;
     TextView faq;
-
+    String useremail,usernumber,username;
     public Event_detail() {
         // Required empty public constructor
     }
@@ -57,7 +72,7 @@ public class Event_detail extends Fragment {
         // Inflate the layout for this fragment
      final   View view= inflater.inflate( R.layout.fragment_event_detail, container, false );
         final Bundle bundle = getArguments();
-
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
         final String Title = bundle.getString("Title");
         String Descp = bundle.getString("Descp");
         final String event_name = bundle.getString("Name");
@@ -78,6 +93,7 @@ public class Event_detail extends Fragment {
         final EventFragment eventFragment=new EventFragment();
         Title_dt = view.findViewById(R.id.event_title);
         participants=view.findViewById( R.id.participants );
+        teamid = FirebaseDatabase.getInstance().getReference().child( "EventRegistration" ).push().getKey();
         fb_handle=view.findViewById( R.id.fb_handle );
         showpass=view.findViewById( R.id.show_pass );
         showpass.setVisibility( View.GONE );
@@ -112,9 +128,46 @@ public class Event_detail extends Fragment {
         event_location.setText( location );
         date.setText( event_date );
         event_type.setText( type_event );
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
-        databaseReference.keepSynced(true);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                Event_detail events_details = new Event_detail();
+                events_details.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.frame,events_details);
+                fragmentTransaction.addToBackStack("tech1");
+                fragmentTransaction.commit();
+            }
+        });
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Users" );
+        databaseReference.keepSynced( true );
+        databaseReference.orderByChild( "uid" ).equalTo( FirebaseAuth.getInstance().getCurrentUser().getUid() ).addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    User user = dataSnapshot1.getValue( User.class );
+
+                    useremail = user.getEmail();
+                    username = user.getName();
+                    usernumber = user.getContactn();
+
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+        DatabaseReference databaseReferenceone = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
+        databaseReferenceone.keepSynced(true);
+        databaseReferenceone.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
@@ -283,7 +336,45 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                         @Override
                         public void onClick(View v) {
                           //  Toast.makeText(getActivity(),"Coming Soon",Toast.LENGTH_LONG).show();
-                            if(valueintern.getNumber_of_member().equals( "Individual" )){
+
+                            if(valueintern.getAmount().equals( "0" ) && valueintern.getNumber_of_member().equals( "Individual" ) || !valueintern.getNumber_of_member().equals( "Individual" ) && valueintern.getAmount().equals( "0" )) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder( Objects.requireNonNull( getActivity() ) );
+                                builder.setTitle(R.string.app_name);
+                                builder.setIcon(R.drawable.social_dukan);
+                                builder.setMessage("Please Confirm your Registeration")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                //saving session
+                                                databaseReferencecmpexp = FirebaseDatabase.getInstance().getReference().child( "EventRegistration" );
+                                                databaseReferencecmpexp.keepSynced( true );
+Log.d("HAS","TEST"+clgname);
+                                                databaseReferencecmpexp.child( teamid ).child("username").setValue(username);
+                                                databaseReferencecmpexp.child( teamid ).child("teamid").setValue(teamid);
+                                                databaseReferencecmpexp.child( teamid ).child( "status" ).setValue( "PAID" );
+                                                databaseReferencecmpexp.child( teamid ).child("useremail").setValue(useremail);
+                                                databaseReferencecmpexp.child( teamid ).child("usernumber").setValue(usernumber);
+                                                databaseReferencecmpexp.child( teamid ).child( "amountpaid" ).setValue( "FREE");
+                                                databaseReferencecmpexp.child( teamid ).child("uid").setValue(uid);
+                                                databaseReferencecmpexp.child( teamid ).child("pass").setValue("no");
+                                                databaseReferencecmpexp.child( teamid ).child("collegename").setValue(clgname);
+                                              Toast.makeText( getActivity(),"Swipe down to refresh",Toast.LENGTH_LONG ).show();
+
+                                            }
+                                        })
+                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+
+
+                            }
+                            if(valueintern.getNumber_of_member().equals( "Individual" ) && !valueintern.getAmount().equals( "0" )){
 
                                 Intent intent = new Intent( getActivity(), JoinTeamIndi.class);
                                 intent.putExtra("amt",amt);
@@ -292,7 +383,7 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
 
                             startActivity(intent);
                             }
-                            if(!valueintern.getNumber_of_member().equals( "Individual" )) {
+                            if(!valueintern.getNumber_of_member().equals( "Individual" ) && !valueintern.getAmount().equals( "0" )) {
                             Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
@@ -337,9 +428,5 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-    }
 }

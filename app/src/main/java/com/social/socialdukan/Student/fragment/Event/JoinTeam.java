@@ -2,16 +2,22 @@ package com.social.socialdukan.Student.fragment.Event;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.socialdukan.R;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 import com.social.socialdukan.Student.Miscellaneous.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,9 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.social.socialdukan.Student.Miscellaneous.User;
 
-public class JoinTeam extends AppCompatActivity {
+import org.json.JSONObject;
+
+public class JoinTeam extends AppCompatActivity implements PaymentResultListener {
 
     String maxmem,minmem;
     EditText teamname;
@@ -31,14 +38,17 @@ public class JoinTeam extends AppCompatActivity {
     String teamid;
     String useremail,usernumber,username,uid;
     String amt;
-
+    String totalamt;
+    ProgressBar progressBar;
+    DatabaseReference dbref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_join_team);
 
         teamid = FirebaseDatabase.getInstance().getReference().child("EventRegistration").push().getKey();
-
+progressBar=findViewById( R.id.progressBar2 );
+progressBar.setVisibility( View.GONE );
         member1 = findViewById(R.id.member1);
         member2 = findViewById(R.id.member2);
         member3 = findViewById(R.id.member3);
@@ -56,7 +66,7 @@ public class JoinTeam extends AppCompatActivity {
         minmem = getIntent().getStringExtra("minmem");
         maxmem = getIntent().getStringExtra("maxmem");
         amt = getIntent().getStringExtra("amt");
-
+         dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReference.keepSynced(true);
@@ -82,11 +92,10 @@ public class JoinTeam extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int amount = getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
-                Intent intent = new Intent(JoinTeam.this,PaymentforEvent.class);
-                intent.putExtra("amt",String.valueOf(amount));
-                startActivity(intent);
-                finish();
+                progressBar.setVisibility( View.VISIBLE );
+
+                getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
+
             }
         });
         assert maxmem != null;
@@ -205,8 +214,8 @@ public class JoinTeam extends AppCompatActivity {
         }
     }
 
-    public int getData(int max,int min){
-        int passamt = 0;
+    public void getData(int max,int min){
+
         switch (max){
             case 2:
                 boolean valid2 = Validate(Integer.parseInt(minmem));
@@ -214,29 +223,17 @@ public class JoinTeam extends AppCompatActivity {
                     mem1 = member1.getText().toString();
                     mem2 = member2.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                   totalamt = String.valueOf(Integer.parseInt(amt));
+
+
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                  totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
+                    startPayment(totalamt);
+
                 }
                 break;
 
@@ -247,37 +244,20 @@ public class JoinTeam extends AppCompatActivity {
                     mem2 = member2.getText().toString();
                     mem3 = member3.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                     //   startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -289,45 +269,24 @@ public class JoinTeam extends AppCompatActivity {
                     mem3 = member3.getText().toString();
                     mem4 = member4.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                 //       startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -340,53 +299,28 @@ public class JoinTeam extends AppCompatActivity {
                     mem4 = member4.getText().toString();
                     mem5 = member5.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                   //     startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -400,61 +334,32 @@ public class JoinTeam extends AppCompatActivity {
                     mem5 = member5.getText().toString();
                     mem6 = member6.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                    //    startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
                     if (!mem6.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member6").setValue(mem6);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*6);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -469,69 +374,36 @@ public class JoinTeam extends AppCompatActivity {
                     mem6 = member6.getText().toString();
                     mem7 = member7.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                      //  startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
                     if (!mem6.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member6").setValue(mem6);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*6);
+
                     }
                     if (!mem7.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member7").setValue(mem7);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*7);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -547,77 +419,39 @@ public class JoinTeam extends AppCompatActivity {
                     mem7 = member7.getText().toString();
                     mem8 = member8.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
 
+                      //  startPayment( totalamt );
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
                     if (!mem6.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member6").setValue(mem6);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*6);
+
                     }
                     if (!mem7.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member7").setValue(mem7);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*7);
+
                     }
                     if (!mem8.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member8").setValue(mem8);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*8);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -634,85 +468,44 @@ public class JoinTeam extends AppCompatActivity {
                     mem8 = member8.getText().toString();
                     mem9 = member9.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+                       // startPayment( totalamt );
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
                     if (!mem6.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member6").setValue(mem6);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*6);
+
                     }
                     if (!mem7.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member7").setValue(mem7);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*7);
+
                     }
                     if (!mem8.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member8").setValue(mem8);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*8);
+
                     }
                     if (!mem9.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*9);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member9").setValue(mem9);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*9);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
 
@@ -730,97 +523,89 @@ public class JoinTeam extends AppCompatActivity {
                     mem9 = member9.getText().toString();
                     mem10 = member10.getText().toString();
                     if (!mem1.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt));
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("leadername").setValue(mem1);
-                        dbref.child("teamid").setValue(teamid);
-                        dbref.child("teamname").setValue(teamname.getText().toString());
-                        dbref.child("username").setValue(username);
-                        dbref.child("useremail").setValue(useremail);
-                        dbref.child("usernumber").setValue(usernumber);
-                        dbref.child("totalamt").setValue(totalamt);
-                        dbref.child("uid").setValue(uid);
-                        dbref.child("pass").setValue("no");
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt));
+
+
 
                     }
                     if (!mem2.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*2);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member2").setValue(mem2);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*2);
+
                     }
                     if (!mem3.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*3);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member3").setValue(mem3);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*3);
+
                     }
                     if (!mem4.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*4);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member4").setValue(mem4);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*4);
+
                     }
                     if (!mem5.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*5);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member5").setValue(mem5);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*5);
+
                     }
                     if (!mem6.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*6);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*6);
                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem7.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*7);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member7").setValue(mem7);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*7);
+
                     }
                     if (!mem8.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*8);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member8").setValue(mem8);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*8);
+
                     }
                     if (!mem9.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*9);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member9").setValue(mem9);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*9);
+
                     }
                     if (!mem10.equals("")){
-                        String totalamt = String.valueOf(Integer.parseInt(amt)*10);
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
-                        dbref.keepSynced(true);
-                        dbref.child("member10").setValue(mem10);
-                        dbref.child("totalamt").setValue(totalamt);
-                        passamt = Integer.parseInt(totalamt);
+                         totalamt = String.valueOf(Integer.parseInt(amt)*10);
+
                     }
+                    startPayment(totalamt);
                 }
                 break;
         }
-        return passamt;
+
+    }
+    public void startPayment(String totalamt) {
+progressBar.setVisibility( View.GONE );
+        final Activity activity = this;
+
+        final Checkout co = new Checkout();
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", "Social Dukan");
+            options.put("description", "Event Payment");
+
+            // options.put("razorpay_order_id", "order_9A33XWu170gUtm");
+            options.put("image", "https://i.imgur.com/9yp1SSY.png");
+            options.put("currency", "INR");
+            //  options.put("payment_capture", true);
+            String payment = totalamt;
+            // amount is in paise so please multiple it by 100
+            //Payment failed Invalid amount (should be passed in integer paise. Minimum value is 100 paise, i.e. ₹ 1)
+            double total = Double.parseDouble(payment);
+            total = total * 100;
+            options.put("amount", total);
+            JSONObject preFill = new JSONObject();
+            preFill.put("email", useremail);
+            Log.d("HAS","TEST"+useremail+" "+usernumber);
+            preFill.put("contact", usernumber);
+
+            options.put("prefill", preFill);
+
+            co.open(activity, options);
+        } catch (Exception e) {
+            Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
     public boolean Validate(int num){
@@ -829,6 +614,7 @@ public class JoinTeam extends AppCompatActivity {
 
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -839,12 +625,14 @@ public class JoinTeam extends AppCompatActivity {
                 else {
                     member2.setError("Empty");
                     member2.requestFocus();
+                    progressBar.setVisibility( View.GONE );
                     return false;
                 }
             }
             else {
-                member2.setError("Empty");
-                member2.requestFocus();
+                member1.setError("Empty");
+                member1.requestFocus();
+                progressBar.setVisibility( View.GONE );
                 return false;
             }
         }
@@ -852,6 +640,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 3){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -863,18 +652,20 @@ public class JoinTeam extends AppCompatActivity {
                     else {
                         member3.setError("Empty");
                         member3.requestFocus();
+                        progressBar.setVisibility( View.GONE );
                         return false;
                     }
                 }
                 else {
                     member2.setError("Empty");
                     member2.requestFocus();
+                    progressBar.setVisibility( View.GONE );
                     return false;
                 }
             }
             else {
-                member2.setError("Empty");
-                member2.requestFocus();
+                member1.setError("Empty");
+                member1.requestFocus();      progressBar.setVisibility( View.GONE );
                 return false;
             }
         }
@@ -882,6 +673,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 4){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -894,24 +686,28 @@ public class JoinTeam extends AppCompatActivity {
                         else {
                             member4.setError("Empty");
                             member4.requestFocus();
+                            progressBar.setVisibility( View.GONE );
                             return false;
                         }
                     }
                     else {
                         member3.setError("Empty");
                         member3.requestFocus();
+                        progressBar.setVisibility( View.GONE );
                         return false;
                     }
                 }
                 else {
                     member2.setError("Empty");
                     member2.requestFocus();
+                    progressBar.setVisibility( View.GONE );
                     return false;
                 }
             }
             else {
-                member2.setError("Empty");
-                member2.requestFocus();
+                member1.setError("Empty");
+                member1.requestFocus();
+                progressBar.setVisibility( View.GONE );
                 return false;
             }
         }
@@ -919,6 +715,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 5){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -932,30 +729,35 @@ public class JoinTeam extends AppCompatActivity {
                             else {
                                 member5.setError("Empty");
                                 member5.requestFocus();
+                                progressBar.setVisibility( View.GONE );
                                 return false;
                             }
                         }
                         else {
                             member4.setError("Empty");
                             member4.requestFocus();
+                            progressBar.setVisibility( View.GONE );
                             return false;
                         }
                     }
                     else {
                         member3.setError("Empty");
                         member3.requestFocus();
+                        progressBar.setVisibility( View.GONE );
                         return false;
                     }
                 }
                 else {
                     member2.setError("Empty");
                     member2.requestFocus();
+                    progressBar.setVisibility( View.GONE );
                     return false;
                 }
             }
             else {
-                member2.setError("Empty");
-                member2.requestFocus();
+                member1.setError("Empty");
+                member1.requestFocus();
+                progressBar.setVisibility( View.GONE );
                 return false;
             }
         }
@@ -964,6 +766,7 @@ public class JoinTeam extends AppCompatActivity {
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
                 teamname.requestFocus();
+                progressBar.setVisibility( View.GONE );
                 return false;
             }
             else if (!member1.getText().toString().isEmpty()){
@@ -977,36 +780,39 @@ public class JoinTeam extends AppCompatActivity {
                                 else {
                                     member6.setError("Empty");
                                     member6.requestFocus();
+                                    progressBar.setVisibility( View.GONE );
                                     return false;
                                 }
                             }
                             else {
                                 member5.setError("Empty");
                                 member5.requestFocus();
+                                progressBar.setVisibility( View.GONE );
                                 return false;
                             }
                         }
                         else {
                             member4.setError("Empty");
                             member4.requestFocus();
+                            progressBar.setVisibility( View.GONE );
                             return false;
                         }
                     }
-                    else {
+                    else {      progressBar.setVisibility( View.GONE );
                         member3.setError("Empty");
                         member3.requestFocus();
                         return false;
                     }
                 }
-                else {
+                else {      progressBar.setVisibility( View.GONE );
                     member2.setError("Empty");
                     member2.requestFocus();
                     return false;
                 }
             }
-            else {
-                member2.setError("Empty");
-                member2.requestFocus();
+            else {      progressBar.setVisibility( View.GONE );
+                member1.setError("Empty");
+                member1.requestFocus();
                 return false;
             }
         }
@@ -1014,6 +820,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 7){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -1029,42 +836,46 @@ public class JoinTeam extends AppCompatActivity {
                                     else {
                                         member7.setError("Empty");
                                         member7.requestFocus();
+                                        progressBar.setVisibility( View.GONE );
                                         return false;
                                     }
                                 }
                                 else {
                                     member6.setError("Empty");
                                     member6.requestFocus();
+                                    progressBar.setVisibility( View.GONE );
                                     return false;
                                 }
                             }
                             else {
                                 member5.setError("Empty");
                                 member5.requestFocus();
+                                progressBar.setVisibility( View.GONE );
                                 return false;
                             }
                         }
                         else {
                             member4.setError("Empty");
                             member4.requestFocus();
+                            progressBar.setVisibility( View.GONE );
                             return false;
                         }
                     }
-                    else {
+                    else {      progressBar.setVisibility( View.GONE );
                         member3.setError("Empty");
                         member3.requestFocus();
                         return false;
                     }
                 }
-                else {
+                else {      progressBar.setVisibility( View.GONE );
                     member2.setError("Empty");
                     member2.requestFocus();
                     return false;
                 }
             }
-            else {
-                member2.setError("Empty");
-                member2.requestFocus();
+            else {      progressBar.setVisibility( View.GONE );
+                member1.setError("Empty");
+                member1.requestFocus();
                 return false;
             }
         }
@@ -1072,6 +883,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 8){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -1085,51 +897,51 @@ public class JoinTeam extends AppCompatActivity {
                                         if (!member8.getText().toString().isEmpty()){
                                             return true;
                                         }
-                                        else {
+                                        else {      progressBar.setVisibility( View.GONE );
                                             member8.setError("Empty");
                                             member8.requestFocus();
                                             return false;
                                         }
                                     }
-                                    else {
+                                    else {      progressBar.setVisibility( View.GONE );
                                         member7.setError("Empty");
                                         member7.requestFocus();
                                         return false;
                                     }
                                 }
-                                else {
+                                else {      progressBar.setVisibility( View.GONE );
                                     member6.setError("Empty");
                                     member6.requestFocus();
                                     return false;
                                 }
                             }
-                            else {
+                            else {      progressBar.setVisibility( View.GONE );
                                 member5.setError("Empty");
                                 member5.requestFocus();
                                 return false;
                             }
                         }
-                        else {
+                        else {      progressBar.setVisibility( View.GONE );
                             member4.setError("Empty");
                             member4.requestFocus();
                             return false;
                         }
                     }
-                    else {
+                    else {      progressBar.setVisibility( View.GONE );
                         member3.setError("Empty");
                         member3.requestFocus();
                         return false;
                     }
                 }
-                else {
+                else {      progressBar.setVisibility( View.GONE );
                     member2.setError("Empty");
                     member2.requestFocus();
                     return false;
                 }
             }
-            else {
-                member2.setError("Empty");
-                member2.requestFocus();
+            else {      progressBar.setVisibility( View.GONE );
+                member1.setError("Empty");
+                member1.requestFocus();
                 return false;
             }
         }
@@ -1137,6 +949,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 9){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -1151,57 +964,57 @@ public class JoinTeam extends AppCompatActivity {
                                             if (!member9.getText().toString().isEmpty()){
                                                 return true;
                                             }
-                                            else {
+                                            else {      progressBar.setVisibility( View.GONE );
                                                 member9.setError("Empty");
                                                 member9.requestFocus();
                                                 return false;
                                             }
                                         }
-                                        else {
+                                        else {      progressBar.setVisibility( View.GONE );
                                             member8.setError("Empty");
                                             member8.requestFocus();
                                             return false;
                                         }
                                     }
-                                    else {
+                                    else {      progressBar.setVisibility( View.GONE );
                                         member7.setError("Empty");
                                         member7.requestFocus();
                                         return false;
                                     }
                                 }
-                                else {
+                                else {      progressBar.setVisibility( View.GONE );
                                     member6.setError("Empty");
                                     member6.requestFocus();
                                     return false;
                                 }
                             }
-                            else {
+                            else {      progressBar.setVisibility( View.GONE );
                                 member5.setError("Empty");
                                 member5.requestFocus();
                                 return false;
                             }
                         }
-                        else {
+                        else {      progressBar.setVisibility( View.GONE );
                             member4.setError("Empty");
                             member4.requestFocus();
                             return false;
                         }
                     }
-                    else {
+                    else {      progressBar.setVisibility( View.GONE );
                         member3.setError("Empty");
                         member3.requestFocus();
                         return false;
                     }
                 }
-                else {
+                else {      progressBar.setVisibility( View.GONE );
                     member2.setError("Empty");
                     member2.requestFocus();
                     return false;
                 }
             }
-            else {
-                member2.setError("Empty");
-                member2.requestFocus();
+            else {      progressBar.setVisibility( View.GONE );
+                member1.setError("Empty");
+                member1.requestFocus();
                 return false;
             }
         }
@@ -1209,6 +1022,7 @@ public class JoinTeam extends AppCompatActivity {
         else if (num == 10){
             if (teamname.getText().toString().isEmpty()){
                 teamname.setError("Empty");
+                progressBar.setVisibility( View.GONE );
                 teamname.requestFocus();
                 return false;
             }
@@ -1225,62 +1039,63 @@ public class JoinTeam extends AppCompatActivity {
                                                     return true;
                                                 }
                                                 else {
+                                                    progressBar.setVisibility( View.GONE );
                                                     member10.setError("Empty");
                                                     member10.requestFocus();
                                                     return false;
                                                 }
                                             }
-                                            else {
+                                            else {      progressBar.setVisibility( View.GONE );
                                                 member9.setError("Empty");
                                                 member9.requestFocus();
                                                 return false;
                                             }
                                         }
-                                        else {
+                                        else {      progressBar.setVisibility( View.GONE );
                                             member8.setError("Empty");
                                             member8.requestFocus();
                                             return false;
                                         }
                                     }
-                                    else {
+                                    else {      progressBar.setVisibility( View.GONE );
                                         member7.setError("Empty");
                                         member7.requestFocus();
                                         return false;
                                     }
                                 }
-                                else {
+                                else {      progressBar.setVisibility( View.GONE );
                                     member6.setError("Empty");
                                     member6.requestFocus();
                                     return false;
                                 }
                             }
-                            else {
+                            else {      progressBar.setVisibility( View.GONE );
                                 member5.setError("Empty");
                                 member5.requestFocus();
                                 return false;
                             }
                         }
-                        else {
+                        else {      progressBar.setVisibility( View.GONE );
                             member4.setError("Empty");
                             member4.requestFocus();
                             return false;
                         }
                     }
-                    else {
+                    else {      progressBar.setVisibility( View.GONE );
                         member3.setError("Empty");
                         member3.requestFocus();
                         return false;
                     }
                 }
-                else {
+                else {      progressBar.setVisibility( View.GONE );
                     member2.setError("Empty");
                     member2.requestFocus();
                     return false;
                 }
             }
-            else {
-                member2.setError("Empty");
-                member2.requestFocus();
+            else {      progressBar.setVisibility( View.GONE );
+                member1.setError("Empty");
+                member1.requestFocus();
                 return false;
             }
         }
@@ -1289,4 +1104,56 @@ public class JoinTeam extends AppCompatActivity {
             return true;
         }
     }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+        Toast.makeText(this, "Payment successfully done! " , Toast.LENGTH_SHORT).show();
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("EventRegistration").child(teamid);
+        dbref.keepSynced(true);
+        dbref.child("leadername").setValue(mem1);
+        dbref.child("teamid").setValue(teamid);
+        dbref.child("teamname").setValue(teamname.getText().toString());
+        dbref.child("username").setValue(username);
+        dbref.child("useremail").setValue(useremail);
+        dbref.child("usernumber").setValue(usernumber);
+        dbref.child("totalamt").setValue(totalamt);
+        dbref.child("uid").setValue(uid);
+        dbref.child("pass").setValue("no");
+        dbref.child("status").setValue("PAID");
+        dbref.child( "statusError" ).removeValue();
+        dbref.child( "amountpaid" ).setValue( totalamt);
+
+        dbref.child("member2").setValue(mem2);
+        dbref.child("member3").setValue(mem3);
+        dbref.child("member4").setValue(mem4);
+        dbref.child("member5").setValue(mem5);
+        dbref.child("member6").setValue(mem6);
+        dbref.child("member7").setValue(mem7);
+        dbref.child("member8").setValue(mem8);
+        dbref.child("member9").setValue(mem9);
+        dbref.child("member10").setValue(mem10);
+
+
+        finish();
+      //  setResult(Activity.RESULT_OK);
+
+       // onBackPressed();
+        Toast.makeText( getApplicationContext(),"Swipe down to refresh",Toast.LENGTH_LONG ).show();
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        try {
+            progressBar.setVisibility( View.GONE );
+            dbref.child( "status" ).setValue( "ERROR" );
+            dbref.child( "statusError" ).setValue( "Not-Paid" );
+
+            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e("OnPaymentError", "Exception in onPaymentError", e);
+        }
+        //onBackPressed();
+    }
+
 }

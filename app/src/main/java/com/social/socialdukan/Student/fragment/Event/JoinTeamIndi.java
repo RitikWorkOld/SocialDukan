@@ -232,7 +232,7 @@ else{
         databaseReferencecmpexp.child( teamid ).child("eventid").setValue(eventid);
                     databaseReferencecmpexp.child( teamid ).child("uid").setValue(uid);
                     databaseReferencecmpexp.child( teamid ).child("pass").setValue("no");
-                    Toast.makeText(getApplicationContext(), "Please refresh the page " , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Swipe down to refresh" , Toast.LENGTH_LONG).show();
                    finish();
 
 
