@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.social.socialdukan.Student.fragment.Event.PaymentforEvent"></activity>
         <activity
             android:name="com.social.socialdukan.Student.fragment.Event.Event_Pass"
             android:theme="@style/AppTheme.Popupstyle" />

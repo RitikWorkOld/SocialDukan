@@ -214,9 +214,6 @@ String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         adapterinternall.startListening();
 
         return view;
-
-
-
     }
 
 

@@ -296,7 +296,9 @@ if(valueintern.getEvent_insta_handle().equals( "" )){
                             Intent intent = new Intent( getActivity(), JoinTeam.class);
                             intent.putExtra( "maxmem",max_number );
                             intent.putExtra( "minmem",min_number );
-                                intent.putExtra("amt",amt);
+                            intent.putExtra("amt",amt);
+                            intent.putExtra("eventid",valueintern.getEventid());
+                            intent.putExtra( "eventname" ,valueintern.getEventname());
                             startActivity(intent);
                             }
                         }

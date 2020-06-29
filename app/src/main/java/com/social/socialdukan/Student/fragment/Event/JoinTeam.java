@@ -3,6 +3,7 @@ package com.social.socialdukan.Student.fragment.Event;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -81,9 +82,11 @@ public class JoinTeam extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
-
+                int amount = getData(Integer.valueOf(maxmem),Integer.parseInt(minmem));
+                Intent intent = new Intent(JoinTeam.this,PaymentforEvent.class);
+                intent.putExtra("amt",String.valueOf(amount));
+                startActivity(intent);
+                finish();
             }
         });
         assert maxmem != null;
@@ -202,8 +205,8 @@ public class JoinTeam extends AppCompatActivity {
         }
     }
 
-    public void getData(int max,int min){
-
+    public int getData(int max,int min){
+        int passamt = 0;
         switch (max){
             case 2:
                 boolean valid2 = Validate(Integer.parseInt(minmem));
@@ -223,6 +226,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -231,6 +235,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -254,6 +259,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -262,6 +268,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -269,6 +276,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -293,6 +301,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -301,6 +310,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -308,6 +318,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -315,6 +326,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -340,6 +352,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -348,6 +361,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -355,6 +369,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -362,6 +377,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -369,6 +385,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -395,6 +412,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -403,6 +421,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -410,6 +429,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -417,6 +437,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -424,6 +445,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem6.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*6);
@@ -431,6 +453,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -458,6 +481,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -466,6 +490,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -473,6 +498,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -480,6 +506,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -487,6 +514,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem6.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*6);
@@ -494,6 +522,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem7.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*7);
@@ -501,6 +530,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -529,6 +559,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -537,6 +568,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -544,6 +576,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -551,6 +584,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -558,6 +592,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem6.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*6);
@@ -565,6 +600,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem7.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*7);
@@ -572,6 +608,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem8.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*8);
@@ -579,6 +616,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -608,6 +646,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -616,6 +655,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -623,6 +663,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -630,6 +671,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -637,6 +679,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem6.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*6);
@@ -644,6 +687,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem7.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*7);
@@ -651,6 +695,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem8.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*8);
@@ -658,6 +703,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem9.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*9);
@@ -665,6 +711,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member9").setValue(mem9);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
@@ -695,6 +742,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.child("totalamt").setValue(totalamt);
                         dbref.child("uid").setValue(uid);
                         dbref.child("pass").setValue("no");
+                        passamt = Integer.parseInt(totalamt);
 
                     }
                     if (!mem2.equals("")){
@@ -703,6 +751,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member2").setValue(mem2);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem3.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*3);
@@ -710,6 +759,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member3").setValue(mem3);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem4.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*4);
@@ -717,6 +767,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member4").setValue(mem4);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem5.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*5);
@@ -724,6 +775,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member5").setValue(mem5);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem6.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*6);
@@ -731,6 +783,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member6").setValue(mem6);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem7.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*7);
@@ -738,6 +791,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member7").setValue(mem7);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem8.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*8);
@@ -745,6 +799,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member8").setValue(mem8);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem9.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*9);
@@ -752,6 +807,7 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member9").setValue(mem9);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                     if (!mem10.equals("")){
                         String totalamt = String.valueOf(Integer.parseInt(amt)*10);
@@ -759,11 +815,12 @@ public class JoinTeam extends AppCompatActivity {
                         dbref.keepSynced(true);
                         dbref.child("member10").setValue(mem10);
                         dbref.child("totalamt").setValue(totalamt);
+                        passamt = Integer.parseInt(totalamt);
                     }
                 }
                 break;
         }
-
+        return passamt;
     }
 
     public boolean Validate(int num){
