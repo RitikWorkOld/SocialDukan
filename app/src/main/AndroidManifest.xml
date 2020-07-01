@@ -12,7 +12,6 @@
         android:roundIcon="@drawable/dukan_r"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.social.socialdukan.Student.fragment.Event.PaymentforEvent"></activity>
         <activity
             android:name="com.social.socialdukan.Student.fragment.Event.Event_Pass"
             android:theme="@style/AppTheme.Popupstyle" />
@@ -98,7 +97,7 @@
             android:value="@string/default_notification_channel_id" />
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_live_1uEWzs7i1EVrrw" />
+            android:value="rzp_test_yfNbDAUe2bEQFi" />
     </application>
 
 </manifest>

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.example.socialdukan.R;
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -56,6 +57,7 @@ public class InternFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     private LinearLayoutManager mLayoutManager;
     ImageView notification_badge;
+    ProgressBar progressBar;
 
     public InternFragment() {
         // Required empty public constructor
@@ -71,6 +73,7 @@ public class InternFragment extends Fragment {
 
 
         }
+        progressBar=view.findViewById( R.id.progressBar2 );
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
         notification_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +146,7 @@ mLayoutManager.setReverseLayout( true );
                 holder.location.setText(model.getLocation());
                 holder.amount.setText(model.getAmount());
                 holder.duration.setText(model.getDuration());
-
+                progressBar.setVisibility(View.GONE);
                 notification_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

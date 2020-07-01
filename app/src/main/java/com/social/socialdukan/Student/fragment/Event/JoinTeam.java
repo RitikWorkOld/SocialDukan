@@ -39,16 +39,21 @@ public class JoinTeam extends AppCompatActivity implements PaymentResultListener
     String useremail,usernumber,username,uid;
     String amt;
     String totalamt;
+    String eventid;
     ProgressBar progressBar;
     DatabaseReference dbref;
+    String location,clg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_join_team);
-
+        location=getIntent().getStringExtra( "location" );
+        eventid=getIntent().getStringExtra( "eventid" );
+        clg=getIntent().getStringExtra( "collegename" );
         teamid = FirebaseDatabase.getInstance().getReference().child("EventRegistration").push().getKey();
 progressBar=findViewById( R.id.progressBar2 );
 progressBar.setVisibility( View.GONE );
+
         member1 = findViewById(R.id.member1);
         member2 = findViewById(R.id.member2);
         member3 = findViewById(R.id.member3);
@@ -1122,7 +1127,9 @@ progressBar.setVisibility( View.GONE );
         dbref.child("status").setValue("PAID");
         dbref.child( "statusError" ).removeValue();
         dbref.child( "amountpaid" ).setValue( totalamt);
-
+        dbref.child( "location" ).setValue( location);
+        dbref.child( "eventidstatus" ).setValue( eventid+"PAID");
+        dbref.child( "collegename" ).setValue( clg);
         dbref.child("member2").setValue(mem2);
         dbref.child("member3").setValue(mem3);
         dbref.child("member4").setValue(mem4);
@@ -1132,6 +1139,8 @@ progressBar.setVisibility( View.GONE );
         dbref.child("member8").setValue(mem8);
         dbref.child("member9").setValue(mem9);
         dbref.child("member10").setValue(mem10);
+        dbref.child("eventid").setValue(eventid);
+        dbref.child("eventuid").setValue(eventid+uid);
 
 
         finish();
@@ -1146,7 +1155,8 @@ progressBar.setVisibility( View.GONE );
         try {
             progressBar.setVisibility( View.GONE );
             dbref.child( "status" ).setValue( "ERROR" );
-            dbref.child( "statusError" ).setValue( "Not-Paid" );
+            dbref.child( "eventidstatus" ).setValue( eventid+"ERROR");
+            dbref.child( "statusError" ).setValue( eventid+"Not-Paid" );
 
             Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
 

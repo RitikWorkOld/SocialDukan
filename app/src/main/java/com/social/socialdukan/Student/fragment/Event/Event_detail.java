@@ -61,6 +61,7 @@ public class Event_detail extends Fragment {
     DatabaseReference databaseReferencecmpexp;
     TextView faq;
     String useremail,usernumber,username;
+    String colg;
     public Event_detail() {
         // Required empty public constructor
     }
@@ -142,6 +143,29 @@ public class Event_detail extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        DatabaseReference databaseReferencedetail1 = FirebaseDatabase.getInstance().getReference().child("Profile").child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
+        databaseReferencedetail1.keepSynced(true);
+
+        databaseReferencedetail1.orderByChild("uid").equalTo("clg"+FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                {
+                    final College_md use = dataSnapshot1.getValue(College_md.class);
+                    //   Picasso.get().load(Mimguri).resize(400,400).into(img);
+                    colg=use.getCollegename();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "Users" );
         databaseReference.keepSynced( true );
         databaseReference.orderByChild( "uid" ).equalTo( FirebaseAuth.getInstance().getCurrentUser().getUid() ).addListenerForSingleValueEvent( new ValueEventListener() {
@@ -165,33 +189,7 @@ public class Event_detail extends Fragment {
             }
         } );
 
-        DatabaseReference databaseReferenceone = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
-        databaseReferenceone.keepSynced(true);
-        databaseReferenceone.orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent( new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-                    EventRegistered event = dataSnapshot1.getValue(EventRegistered.class);
-                    assert event != null;
 
-
-
-                    if(event.getPass().equals( "yes" )){
-                        showpass.setVisibility( View.VISIBLE );
-                    }
-                    if(event.getPass().equals( "no" )){
-                        showpass.setVisibility( View.GONE );
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 showpass.setOnClickListener( new View.OnClickListener() {
     @Override
@@ -199,6 +197,7 @@ showpass.setOnClickListener( new View.OnClickListener() {
         Intent intent = new Intent( getActivity(), Event_Pass.class);
         intent.putExtra( "Name",event_name );
         intent.putExtra( "uid",uid );
+        intent.putExtra( "location",location );
         startActivity(intent);
     }
 } );
@@ -214,7 +213,7 @@ showpass.setOnClickListener( new View.OnClickListener() {
                 databaseReferencedetail = FirebaseDatabase.getInstance().getReference().child("EventRegistration");
                 databaseReferencedetail.keepSynced(true);
 
-                databaseReferencedetail.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReferencedetail.orderByChild("eventuid").equalTo(key+uid).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -359,6 +358,11 @@ Log.d("HAS","TEST"+clgname);
                                                 databaseReferencecmpexp.child( teamid ).child("uid").setValue(uid);
                                                 databaseReferencecmpexp.child( teamid ).child("pass").setValue("no");
                                                 databaseReferencecmpexp.child( teamid ).child("collegename").setValue(clgname);
+                                                databaseReferencecmpexp.child( teamid ).child("eventid").setValue(valueintern.getEventid());
+                                                databaseReferencecmpexp.child( teamid ).child("location").setValue(valueintern.getLocation());
+                                                databaseReferencecmpexp.child( teamid ).child("eventuid").setValue(valueintern.getEventid()+uid);
+                                                databaseReferencecmpexp.child( teamid ).child("eventidstatus").setValue(valueintern.getEventid()+"PAID");
+                                                databaseReferencecmpexp.child( teamid ).child("collegename").setValue(colg);
                                               Toast.makeText( getActivity(),"Swipe down to refresh",Toast.LENGTH_LONG ).show();
 
                                             }
@@ -380,8 +384,12 @@ Log.d("HAS","TEST"+clgname);
                                 intent.putExtra("amt",amt);
                                 intent.putExtra("eventid",valueintern.getEventid());
                                 intent.putExtra( "eventname" ,valueintern.getEventname());
+                                intent.putExtra( "location" ,valueintern.getLocation());
+                                intent.putExtra( "collegename" ,colg);
 
-                            startActivity(intent);
+
+
+                                startActivity(intent);
                             }
                             if(!valueintern.getNumber_of_member().equals( "Individual" ) && !valueintern.getAmount().equals( "0" )) {
                             Intent intent = new Intent( getActivity(), JoinTeam.class);
@@ -390,6 +398,8 @@ Log.d("HAS","TEST"+clgname);
                             intent.putExtra("amt",amt);
                             intent.putExtra("eventid",valueintern.getEventid());
                             intent.putExtra( "eventname" ,valueintern.getEventname());
+                                intent.putExtra( "location" ,valueintern.getLocation());
+                                intent.putExtra( "collegename" ,colg);
                             startActivity(intent);
                             }
                         }

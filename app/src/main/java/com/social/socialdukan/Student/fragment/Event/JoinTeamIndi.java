@@ -43,12 +43,13 @@ public class JoinTeamIndi extends AppCompatActivity implements PaymentResultList
     Button next_btn;
    // String teamid_main;
     TextView amount;
-    String teamid;
+    String teamid,clg;
     String eventid,eventname;
     DatabaseReference databaseReferencecmpexp;
     String useremail,usernumber,username,uid;
     private ProgressBar progressBars;
     private long mLastClickTime = 0;
+    String location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,8 @@ public class JoinTeamIndi extends AppCompatActivity implements PaymentResultList
 String amt=getIntent().getStringExtra( "amt" );
          eventid=getIntent().getStringExtra( "eventid" );
          eventname=getIntent().getStringExtra( "eventname" );
+         location=getIntent().getStringExtra( "location" );
+         clg=getIntent().getStringExtra( "collegename" );
         teamid = FirebaseDatabase.getInstance().getReference().child( "EventRegistration" ).push().getKey();
 amount=findViewById( R.id.amt_txt );
         member1 = findViewById( R.id.member1 );
@@ -232,6 +235,10 @@ else{
         databaseReferencecmpexp.child( teamid ).child("eventid").setValue(eventid);
                     databaseReferencecmpexp.child( teamid ).child("uid").setValue(uid);
                     databaseReferencecmpexp.child( teamid ).child("pass").setValue("no");
+        databaseReferencecmpexp.child( teamid ).child("location").setValue(location);
+        databaseReferencecmpexp.child( teamid ).child("eventuid").setValue(eventid+uid);
+        databaseReferencecmpexp.child( teamid ).child( "eventidstatus" ).setValue( eventid+"PAID");
+        databaseReferencecmpexp.child( teamid ).child("collegename").setValue(clg);
                     Toast.makeText(getApplicationContext(), "Swipe down to refresh" , Toast.LENGTH_LONG).show();
                    finish();
 
@@ -248,7 +255,8 @@ else{
       // Log.e(TAG,  "error code "+String.valueOf(i)+" -- Payment failed "+s.toString()  );
         try {
             databaseReferencecmpexp.child( teamid ).child( "status" ).setValue( "ERROR" );
-            databaseReferencecmpexp.child( teamid ).child( "statusError" ).setValue( "Not-Paid" );
+            databaseReferencecmpexp.child( teamid ).child( "eventidstatus" ).setValue( eventid+"ERROR");
+            databaseReferencecmpexp.child( teamid ).child( "statusError" ).setValue( eventid+"Not-Paid" );
 
             Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
 

@@ -23,9 +23,10 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Event_Pass extends AppCompatActivity {
-TextView event_na,name,email,cont_number,clg_name;
+TextView event_na,name,location,clg_name;
     DatabaseReference databaseReferencedetail,databaseReferencedetail1;
     CircleImageView img;
+    String location_event;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -33,8 +34,11 @@ TextView event_na,name,email,cont_number,clg_name;
         event_na=findViewById( R.id.event_name );
         img=findViewById( R.id.img );
         name=findViewById( R.id.name );
-        email=findViewById( R.id.email );
-        cont_number=findViewById( R.id.number );
+location_event=getIntent().getStringExtra( "location" );
+
+
+        location=findViewById( R.id.location );
+        location.setText( location_event);
         clg_name=findViewById( R.id.clg_name );
         databaseReferencedetail1 = FirebaseDatabase.getInstance().getReference().child("Profile").child( FirebaseAuth.getInstance().getCurrentUser().getUid() );
         databaseReferencedetail1.keepSynced(true);
@@ -106,8 +110,8 @@ TextView event_na,name,email,cont_number,clg_name;
                  //   Picasso.get().load(Mimguri).resize(400,400).into(img);
 
 name.setText( event.getUsername() );
-email.setText( event.getUseremail() );
-cont_number.setText( event.getUsernumber() );
+
+location.setText( location_event);
 
 
 
