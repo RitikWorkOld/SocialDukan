@@ -128,10 +128,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:passwordToggleEnabled="true"
+
+
+
                         >
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:textSize="18sp"
+
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:textColor="#CD4B4B"
@@ -155,19 +159,32 @@
                         android:text="Contact Number"
                         android:textColor="#000"
                         android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/cnumber"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="You will recieve an OTP"
-                        android:textColor="#CD4B4B"
-                        android:textColorHint="#808080"
-                        android:textSize="18sp" />
+                        android:layout_height="50dp"
+                        android:weightSum="3"
+                        android:orientation="horizontal">
+<com.hbb20.CountryCodePicker
+    android:layout_width="0dp"
+    android:id="@+id/ccp"
+    android:layout_weight="1"
+android:gravity="center"
+    app:ccp_textSize="16sp"
+    app:ccp_autoDetectCountry="true"
+    app:ccp_showNameCode="true"
+    android:layout_height="match_parent"/>
+    <EditText
+        android:id="@+id/cnumber"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+      android:layout_weight="2"
+android:hint="You will recieve an OTP"
 
+    />
+
+
+
+                    </LinearLayout>
 
 
 

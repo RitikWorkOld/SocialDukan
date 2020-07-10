@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hbb20.CountryCodePicker;
 import com.social.socialdukan.Student.Chat_bot.feature.MainActivity;
 
 import java.util.regex.Pattern;
@@ -32,6 +33,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
     private EditText emailId,password,number1,fname1;
     FirebaseAuth mFirebaseAuth;
     ImageView chatbot;
+    private CountryCodePicker ccp;
     private ProgressBar progressBars;
 
     private static final Pattern PASSWORD_PATTERN =
@@ -59,7 +61,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
         fname1 = findViewById(R.id.fname);
         number1 = findViewById(R.id.cnumber);
         chatbot=findViewById( R.id.chatbot );
-
+ccp=findViewById( R.id.ccp );
         chatbot.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +111,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
             case R.id.go:
                 progressBars.setVisibility(View.VISIBLE);
                 findViewById( R.id.go ).setVisibility( View.VISIBLE );
-
+final String phonenumber=ccp.getSelectedCountryCode();
                 boolean valid = validateUser();
 
 
@@ -137,7 +139,7 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
                                 intent.putExtra( "name", fname );
                                 intent.putExtra( "email", email );
                                 intent.putExtra( "password", pwd );
-
+                                intent.putExtra( "code", phonenumber );
                                 intent.putExtra( "number", number );
 
                                 startActivity( intent );
@@ -190,19 +192,16 @@ public class Reg_Student extends AppCompatActivity implements View.OnClickListen
             return false;
         }
         else if(pwd.isEmpty()){
-            password.setError(getString(R.string.input_error_password));
-            password.requestFocus();
+            Toast.makeText( getApplicationContext(),"Password Required",Toast.LENGTH_SHORT ).show();
             return false;
         }
         else if (pwd.length() < 6 ) {
-            password.setError(getString(R.string.input_error_password_length));
-            password.requestFocus();
+            Toast.makeText( getApplicationContext(),"Password should be atleast 6 characters long",Toast.LENGTH_SHORT ).show();
             return false;
         }
         else if(!PASSWORD_PATTERN.matcher(pwd).matches()){
 
-            password.setError("1 Digit? \n 1 LowerCase? \n 1 UpperCase? \n 1 Special Character? \n atleast 6 character?");
-            password.requestFocus();
+            Toast.makeText( getApplicationContext(),"1 Digit? \n 1 LowerCase? \n 1 UpperCase? \n 1 Special Character? \n atleast 6 character?",Toast.LENGTH_SHORT ).show();
             return false;
         }
 

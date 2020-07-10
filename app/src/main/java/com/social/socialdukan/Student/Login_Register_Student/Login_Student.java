@@ -158,8 +158,7 @@ TextView fgt_pass;
                 } else if (pwd.isEmpty()) {
                     //progressBars.setVisibility(View.GONE);
                     progressBars.setVisibility(View.GONE);
-                    password.setError( "Please enter your password" );
-                    password.requestFocus();
+                    Toast.makeText( getApplicationContext(),"Password Required",Toast.LENGTH_SHORT ).show();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     //   progressBars.setVisibility(View.GONE);
                     progressBars.setVisibility(View.GONE);

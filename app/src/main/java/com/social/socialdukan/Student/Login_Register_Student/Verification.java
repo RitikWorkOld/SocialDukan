@@ -40,7 +40,7 @@ public class Verification extends AppCompatActivity {
 
 
     private FirebaseAuth mFirebaseAuth;
-    int code=91;
+
 
 
     ImageView crossiv;
@@ -79,9 +79,9 @@ public class Verification extends AppCompatActivity {
         final String pwd = intent.getStringExtra("password");
         final String fname = intent.getStringExtra("name");
         final String number = intent.getStringExtra("number");
+        final String code1 = intent.getStringExtra("code");
 
-
-        final String mobile = "+"+code+number;
+        final String mobile = "+"+code1+number;
         sendVerificationCode(mobile);
         verify_btn.setOnClickListener(new View.OnClickListener() {
             @Override

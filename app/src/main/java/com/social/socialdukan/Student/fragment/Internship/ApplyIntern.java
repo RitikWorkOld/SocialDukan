@@ -111,6 +111,7 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
 
                                 final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                                 databaseReference.keepSynced(true);
+                                databaseReference.child("id").setValue(notiid);
                                 databaseReference.child("answer1").setValue(text1.toString());
                                 databaseReference.child("answer2").setValue(text2.toString());
                                 databaseReference.child("answer3").setValue(text3.toString());
@@ -120,21 +121,21 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                                 databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference.child("companyid").setValue(companyid);
                                 databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                databaseReference.child("id").setValue(notiid);
 
 
 
-                                final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
-                                databaseReference1.keepSynced(true);
-                                databaseReference1.child("answer1").setValue(text1.toString());
-                                databaseReference1.child("answer2").setValue(text2.toString());
-                                databaseReference1.child("answer3").setValue(text3.toString());
-                                databaseReference1.child("internid").setValue(key);
-                                databaseReference1.child("status").setValue("Applied");
-                                databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                databaseReference1.child("companyid").setValue(companyid);
-                                databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                databaseReference.child("id").setValue(key);
+
+                                final DatabaseReference databaseReferenceone = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                                databaseReferenceone.keepSynced(true);
+                                databaseReferenceone.child("answer1").setValue(text1.toString());
+                                databaseReferenceone.child("answer2").setValue(text2.toString());
+                                databaseReferenceone.child("answer3").setValue(text3.toString());
+                                databaseReferenceone.child("internid").setValue(key);
+                                databaseReferenceone.child("status").setValue("Applied");
+                                databaseReferenceone.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                databaseReferenceone.child("companyid").setValue(companyid);
+                                databaseReferenceone.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                              //  databaseReference.child("id").setValue(key);
 
                                 DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                                 dbhelper.keepSynced(true);
@@ -154,10 +155,10 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                                             databaseReference.child("userimg").setValue(imguri);
                                             databaseReference.child("useremail").setValue(email);
 
-                                            databaseReference1.child("username").setValue(name);
-                                            databaseReference1.child("usernumber").setValue(number);
-                                            databaseReference1.child("userimg").setValue(imguri);
-                                            databaseReference1.child("useremail").setValue(email);
+                                            databaseReferenceone.child("username").setValue(name);
+                                            databaseReferenceone.child("usernumber").setValue(number);
+                                            databaseReferenceone.child("userimg").setValue(imguri);
+                                            databaseReferenceone.child("useremail").setValue(email);
                                         }
                                     }
 
@@ -189,6 +190,7 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
 
                             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                             databaseReference.keepSynced(true);
+                            databaseReference.child("id").setValue(notiid);
                             databaseReference.child("answer1").setValue(text1.toString());
                             databaseReference.child("answer2").setValue(text2.toString());
                             databaseReference.child("answer3").setValue("QNP");
@@ -198,19 +200,19 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference.child("companyid").setValue(companyid);
                             databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                            databaseReference.child("id").setValue(notiid);
+                            //databaseReference.child("id").setValue(notiid);
 
-                            final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
-                            databaseReference1.keepSynced(true);
-                            databaseReference1.child("answer1").setValue(text1.toString());
-                            databaseReference1.child("answer2").setValue(text2.toString());
-                            databaseReference1.child("answer3").setValue("QNP");
-                            databaseReference1.child("internid").setValue(key);
-                            databaseReference1.child("status").setValue("Applied");
-                            databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                            databaseReference1.child("companyid").setValue(companyid);
-                            databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                            databaseReference.child("id").setValue(key);
+                            final DatabaseReference databaseReferencetwo = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                            databaseReferencetwo.keepSynced(true);
+                            databaseReferencetwo.child("answer1").setValue(text1.toString());
+                            databaseReferencetwo.child("answer2").setValue(text2.toString());
+                            databaseReferencetwo.child("answer3").setValue("QNP");
+                            databaseReferencetwo.child("internid").setValue(key);
+                            databaseReferencetwo.child("status").setValue("Applied");
+                            databaseReferencetwo.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReferencetwo.child("companyid").setValue(companyid);
+                            databaseReferencetwo.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                           // databaseReferencetwo.child("id").setValue(key);
 
 
                             DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -229,9 +231,9 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                                         databaseReference.child("usernumber").setValue(number);
                                         databaseReference.child("userimg").setValue(imguri);
 
-                                        databaseReference1.child("username").setValue(name);
-                                        databaseReference1.child("usernumber").setValue(number);
-                                        databaseReference1.child("userimg").setValue(imguri);
+                                        databaseReferencetwo.child("username").setValue(name);
+                                        databaseReferencetwo.child("usernumber").setValue(number);
+                                        databaseReferencetwo.child("userimg").setValue(imguri);
                                     }
                                 }
 
@@ -258,6 +260,7 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
 
                         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                         databaseReference.keepSynced(true);
+                        databaseReference.child("id").setValue(notiid);
                         databaseReference.child("answer1").setValue(text1.toString());
                         databaseReference.child("answer2").setValue("QNP");
                         databaseReference.child("answer3").setValue("QNP");
@@ -267,19 +270,19 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                         databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference.child("companyid").setValue(companyid);
                         databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        databaseReference.child("id").setValue(notiid);
+                       // databaseReference.child("id").setValue(notiid);
 
-                        final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
-                        databaseReference1.keepSynced(true);
-                        databaseReference1.child("answer1").setValue(text1.toString());
-                        databaseReference1.child("answer2").setValue("QNP");
-                        databaseReference1.child("answer3").setValue("QNP");
-                        databaseReference1.child("internid").setValue(key);
-                        databaseReference1.child("status").setValue("Applied");
-                        databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        databaseReference1.child("companyid").setValue(companyid);
-                        databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        databaseReference.child("id").setValue(key);
+                        final DatabaseReference databaseReferencethree = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
+                        databaseReferencethree.keepSynced(true);
+                        databaseReferencethree.child("answer1").setValue(text1.toString());
+                        databaseReferencethree.child("answer2").setValue("QNP");
+                        databaseReferencethree.child("answer3").setValue("QNP");
+                        databaseReferencethree.child("internid").setValue(key);
+                        databaseReferencethree.child("status").setValue("Applied");
+                        databaseReferencethree.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReferencethree.child("companyid").setValue(companyid);
+                        databaseReferencethree.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                     //   databaseReferencethree.child("id").setValue(key);
 
 
                         DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -300,10 +303,10 @@ notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
                                     databaseReference.child("userimg").setValue(imguri);
                                     databaseReference.child("useremail").setValue(useremail);
 
-                                    databaseReference1.child("username").setValue(name);
-                                    databaseReference1.child("usernumber").setValue(number);
-                                    databaseReference1.child("userimg").setValue(imguri);
-                                    databaseReference1.child("useremail").setValue(useremail);
+                                    databaseReferencethree.child("username").setValue(name);
+                                    databaseReferencethree.child("usernumber").setValue(number);
+                                    databaseReferencethree.child("userimg").setValue(imguri);
+                                    databaseReferencethree.child("useremail").setValue(useremail);
                                 }
                             }
 
