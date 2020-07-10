@@ -30,7 +30,7 @@ public class ApplyIntern extends AppCompatActivity {
     TextView ques1,ques2,ques3;
     TextInputLayout answer1,answer2,answer3;
     Button fillbtn;
-    String key;
+    String key,notiid;
     String internid;
     String companyid;
     int count = 1;
@@ -39,7 +39,8 @@ public class ApplyIntern extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_apply_intern);
-
+notiid = FirebaseDatabase.getInstance().getReference().child("Forms")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
         key = getIntent().getStringExtra("key");
 
         ques1 = findViewById(R.id.ques_1);
@@ -108,7 +109,7 @@ public class ApplyIntern extends AppCompatActivity {
                         if (!text2.toString().isEmpty()){
                             if (!text3.toString().isEmpty()){
 
-                                final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
+                                final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                                 databaseReference.keepSynced(true);
                                 databaseReference.child("answer1").setValue(text1.toString());
                                 databaseReference.child("answer2").setValue(text2.toString());
@@ -118,8 +119,8 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference.child("status").setValue("Applied");
                                 databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference.child("companyid").setValue(companyid);
-
-
+                                databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                databaseReference.child("id").setValue(notiid);
 
 
 
@@ -132,7 +133,8 @@ public class ApplyIntern extends AppCompatActivity {
                                 databaseReference1.child("status").setValue("Applied");
                                 databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 databaseReference1.child("companyid").setValue(companyid);
-
+                                databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                databaseReference.child("id").setValue(key);
 
                                 DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
                                 dbhelper.keepSynced(true);
@@ -185,7 +187,7 @@ public class ApplyIntern extends AppCompatActivity {
                     if (!text1.toString().isEmpty()){
                         if (!text2.toString().isEmpty()){
 
-                            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
+                            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                             databaseReference.keepSynced(true);
                             databaseReference.child("answer1").setValue(text1.toString());
                             databaseReference.child("answer2").setValue(text2.toString());
@@ -195,7 +197,8 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference.child("status").setValue("Applied");
                             databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference.child("companyid").setValue(companyid);
-
+                            databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReference.child("id").setValue(notiid);
 
                             final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                             databaseReference1.keepSynced(true);
@@ -206,6 +209,8 @@ public class ApplyIntern extends AppCompatActivity {
                             databaseReference1.child("status").setValue("Applied");
                             databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             databaseReference1.child("companyid").setValue(companyid);
+                            databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            databaseReference.child("id").setValue(key);
 
 
                             DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -251,7 +256,7 @@ public class ApplyIntern extends AppCompatActivity {
                 else if (count == 1){
                     if (!text1.toString().isEmpty()){
 
-                        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(key);
+                        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Forms").child(companyid).child(notiid);
                         databaseReference.keepSynced(true);
                         databaseReference.child("answer1").setValue(text1.toString());
                         databaseReference.child("answer2").setValue("QNP");
@@ -261,7 +266,8 @@ public class ApplyIntern extends AppCompatActivity {
                         databaseReference.child("internid_status").setValue(key+"Applied");
                         databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference.child("companyid").setValue(companyid);
-
+                        databaseReference.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReference.child("id").setValue(notiid);
 
                         final DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(key);
                         databaseReference1.keepSynced(true);
@@ -272,6 +278,8 @@ public class ApplyIntern extends AppCompatActivity {
                         databaseReference1.child("status").setValue("Applied");
                         databaseReference1.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         databaseReference1.child("companyid").setValue(companyid);
+                        databaseReference1.child("internshipuid").setValue(key+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        databaseReference.child("id").setValue(key);
 
 
                         DatabaseReference dbhelper = FirebaseDatabase.getInstance().getReference().child("Users");

@@ -2,6 +2,7 @@ package com.social.socialdukan.Student.fragment.MyDashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialdukan.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.Query;
 import com.social.socialdukan.Student.Contact_Us;
 import com.social.socialdukan.Student.Notifications.Customised.BucketRecyclerView;
 import com.social.socialdukan.Student.Notifications.Notifications;
@@ -136,10 +138,11 @@ public class AppliedIntern extends Fragment {
                     holder.intern_status.setBackground( getResources().getDrawable( R.drawable.rejected ) );
 
                 }
-
+Log.d("HAs","ID HAI"+model.getInternid());
+                String id = model.getInternid();
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Internships");
                 db.keepSynced(true);
-                db.orderByChild("id").equalTo(model.getInternid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                db.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -54,7 +55,7 @@ public class InternForm extends AppCompatActivity {
                 startActivity( intent );
             }
         } );
-
+        Log.d("HAS","Internid "+internid);
         DatabaseReference db_form = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         db_form.keepSynced(true);
         db_form.orderByChild("internid").equalTo(internid).addListenerForSingleValueEvent(new ValueEventListener() {

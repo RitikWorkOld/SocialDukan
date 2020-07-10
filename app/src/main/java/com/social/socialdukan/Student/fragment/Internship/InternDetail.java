@@ -44,10 +44,10 @@ public class InternDetail extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onStart() {
         super.onStart();
-
+Log.d("HAS","KEY:"+key);
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Formsself").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         dbref.keepSynced(true);
-        dbref.orderByChild("internid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbref.orderByChild("internshipuid").equalTo(key+FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null){
