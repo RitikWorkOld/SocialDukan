@@ -9,16 +9,16 @@ public class User {
     public String password;
     public String profileimg;
     public String profilestatus;
-
+public String  code;
 
     public User(){
 
     }
 
-    public User(String name, String email,String contactn, String uid, String password,String profileimg,String profilestatus) {
+    public User(String name, String email,String contactn, String uid, String password,String profileimg,String profilestatus,String code) {
         this.name = name;
         this.email = email;
-
+this.code=code;
         this.contactn = contactn;
 
         this.uid = uid;
@@ -27,6 +27,14 @@ public class User {
         this.profileimg = profileimg;
         this.profilestatus = profilestatus;
 
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {

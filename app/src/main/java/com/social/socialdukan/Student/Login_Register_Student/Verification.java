@@ -212,7 +212,7 @@ public class Verification extends AppCompatActivity {
         final String email = intent.getStringExtra("email");
         final String pwd = intent.getStringExtra("password");
         final String fname = intent.getStringExtra("name");
-
+        final String cd = intent.getStringExtra("code");
         final String number = intent.getStringExtra("number");
 
 
@@ -247,7 +247,7 @@ public class Verification extends AppCompatActivity {
 
                     //final String refrelid = endvr.concat(number);
                     String uid = FirebaseAuth.getInstance().getUid();
-                    User user=new User(fname,email,number,uid,pwd,null,"no");
+                    User user=new User(fname,email,number,uid,pwd,null,"no",cd);
 
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

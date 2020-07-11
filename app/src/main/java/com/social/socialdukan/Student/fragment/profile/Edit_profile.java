@@ -150,9 +150,18 @@ public class Edit_profile extends AppCompatActivity implements View.OnClickListe
                     String n = bnd_helper.name;
                     String n_one=bnd_helper.email;
                     String n_two=bnd_helper.contactn;
+                    String code=bnd_helper.getCode();
+                 if(bnd_helper.code!=null){
+                     displaymno.setText("(+"+code+")"+ n_two );
+                 }
+                 else{
+                     displaymno.setText("(+91)"+ n_two );
+                 }
+
+
                     displayname.setText(n);
                     displayemail.setText( n_one );
-                    displaymno.setText("+91 "+ n_two );
+
                 }
             }
 

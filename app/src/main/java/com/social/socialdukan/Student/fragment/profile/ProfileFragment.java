@@ -544,7 +544,14 @@ Log.d("HAS","ONE");
 
                     name_user.setText(user.name);
                     user_email.setText(user.email);
-                    user_ph.setText( "+91"+user.contactn );
+                    String code=user.getCode();
+                    if(user.code!=null){
+                        user_ph.setText("(+"+code+")"+ user.getContactn() );
+                    }
+                    else{
+                        user_ph.setText("(+91)"+ user.getContactn() );
+                    }
+                  //  user_ph.setText( "+91"+user.contactn );
                 }
             }
 
