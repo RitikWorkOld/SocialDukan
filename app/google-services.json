@@ -8,104 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:41450525162:android:a4ae398bf7d0aa738d2293",
-        "android_client_info": {
-          "package_name": "com.example.socialdukan"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "41450525162-5a797nrjrlh540rk4ravh2isajdk6phk.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.socialdukan",
-            "certificate_hash": "103784bfa4c85947d44e47a673c1e7a291fcfc05"
-          }
-        },
-        {
-          "client_id": "41450525162-devg7qbvk2j1n4jj5h90jb79i7ptc021.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.socialdukan",
-            "certificate_hash": "34c196760ce11b34663a06cbbada432ceb093b2f"
-          }
-        },
-        {
-          "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCTUu-DsBt5pckb8t6R38Tk_4hRnHhiFTE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "41450525162-1eoklqf0oba76hg37jg3ebpaqq3hatgi.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:41450525162:android:3b28c419a021de4f8d2293",
-        "android_client_info": {
-          "package_name": "com.example.socialdukan_employer"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "41450525162-vdtd5rn21n0u5qks2eoug0pmunun3v53.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.socialdukan_employer",
-            "certificate_hash": "34c196760ce11b34663a06cbbada432ceb093b2f"
-          }
-        },
-        {
-          "client_id": "41450525162-rv7ac0mgoclej20js5ck7cm4h8qqqot7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.socialdukan_employer",
-            "certificate_hash": "103784bfa4c85947d44e47a673c1e7a291fcfc05"
-          }
-        },
-        {
-          "client_id": "41450525162-0dqnol9hn1euk1b3jrapk9ihhovmc131.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.socialdukan_employer",
-            "certificate_hash": "5787bd431cb4e4168ae461cf0190cae81681eb8b"
-          }
-        },
-        {
-          "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCTUu-DsBt5pckb8t6R38Tk_4hRnHhiFTE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "41450525162-1eoklqf0oba76hg37jg3ebpaqq3hatgi.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:41450525162:android:9759bd3fd6b9a1ee8d2293",
         "android_client_info": {
           "package_name": "com.social.socialdukan"
@@ -113,13 +15,34 @@
       },
       "oauth_client": [
         {
-          "client_id": "41450525162-9hp5v7srs3fs4fi740o5d7vgig0kjori.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.social.socialdukan",
-            "certificate_hash": "5787bd431cb4e4168ae461cf0190cae81681eb8b"
-          }
-        },
+          "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTUu-DsBt5pckb8t6R38Tk_4hRnHhiFTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41450525162-1eoklqf0oba76hg37jg3ebpaqq3hatgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41450525162:android:89f814cc9c91d1b98d2293",
+        "android_client_info": {
+          "package_name": "com.social.socialdukan_employer"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "41450525162-801kfddbp0u0q9bgqhp2ukm4tt265pmh.apps.googleusercontent.com",
           "client_type": 3

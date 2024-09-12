@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
+import android.util.Log; // Import for logging
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
@@ -19,60 +17,37 @@ import com.social.socialdukan.Student.Miscellaneous.User;
 import com.example.socialdukan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-import com.social.socialdukan.Student.Login_Register_Student.Utils.Save;
-import com.social.socialdukan.Student.Miscellaneous.User;
 
 import java.util.concurrent.TimeUnit;
 
 public class Verification extends AppCompatActivity {
 
-    private String mVerificationId;
-    PhoneAuthProvider.ForceResendingToken token;
-    private FirebaseAuth mAuth;
-
+    private static final String TAG = "VerificationActivity"; // Tag for logging
 
     private FirebaseAuth mFirebaseAuth;
-
-
+    private String mVerificationId;
+    private PhoneAuthProvider.ForceResendingToken token;
 
     ImageView crossiv;
-    Button verify_btn,login_btn;
+    Button verify_btn, login_btn;
+    EditText otp_et;
 
-    EditText otp;
-    TextView email_txt,chk_email,enterotp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_verification );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_verification);
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-
-        int width = displayMetrics.widthPixels;
-        int height = displayMetrics.heightPixels;
-
-        getWindow().setLayout((int)(width*.8),(int)(height*.8));
-
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseAuth = FirebaseAuth.getInstance();
-
-
-        crossiv = (ImageView) findViewById(R.id.cross_btn_rf);
-        verify_btn=findViewById( R.id.verify_btn );
-        otp=findViewById( R.id.otp_et );
-        email_txt=findViewById( R.id.textemail );
-        chk_email=findViewById( R.id.chk_email );
-        enterotp=findViewById( R.id.title_001 );
-        login_btn=findViewById( R.id.login_btn );
-
+        initializeUI();
+        initializeFirebase();
 
         Intent intent = getIntent();
         final String email = intent.getStringExtra("email");
@@ -81,220 +56,175 @@ public class Verification extends AppCompatActivity {
         final String number = intent.getStringExtra("number");
         final String code1 = intent.getStringExtra("code");
 
-        final String mobile = "+"+code1+number;
-        sendVerificationCode(mobile);
-        verify_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = otp.getText().toString().trim();
-                if (code.isEmpty() || code.length() < 6) {
-                    otp.setError("Enter valid code");
-                    otp.requestFocus();
-                    return;
-                }
+        // Log phone number before sending OTP
+        Log.d(TAG, "Phone number received: " + number);
+String cleanN = "+91" + number;
+        // Send OTP to the user's phone number
+        sendVerificationCode(cleanN);
 
-                //verifying the code entered manually
-                verifyVerificationCode(code);
+        verify_btn.setOnClickListener(v -> {
+            String code = otp_et.getText().toString().trim();
+            if (code.isEmpty() || code.length() < 6) {
+                otp_et.setError("Enter valid OTP");
+                otp_et.requestFocus();
+                return;
             }
+            verifyVerificationCode(code);  // Verifying OTP
         });
 
-        crossiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        /*verify_btn.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v==verify_btn){
-                    otp.setVisibility( View.GONE );
-                    verify_btn.setVisibility( View.GONE );
-                    enterotp.setVisibility( View.GONE );
-                    chk_email.setVisibility( View.VISIBLE );
-                    email_txt.setVisibility( View.VISIBLE );
-                }
-            }
-        } );*/
+        crossiv.setOnClickListener(v -> finish());
     }
 
-    private void sendVerificationCode(String mobile) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                mobile,
-                120,
-                TimeUnit.SECONDS,
-                TaskExecutors.MAIN_THREAD,
-                mCallbacks);
+    private void initializeUI() {
+        crossiv = findViewById(R.id.cross_btn_rf);
+        verify_btn = findViewById(R.id.verify_btn);
+        login_btn = findViewById(R.id.login_btn);
+        otp_et = findViewById(R.id.otp_et);  // Assuming you have an EditText for OTP
     }
+
+    private void initializeFirebase() {
+        mFirebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    // Method to send the OTP to the phone number
+    private void sendVerificationCode(String number) {
+        Log.d(TAG, "Sending verification code to: " + number);  // Log before sending OTP
+
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mFirebaseAuth)
+                .setPhoneNumber(number)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallbacks)
+                .build();
+
+        PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+
+    // Callback to handle OTP events
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
-            //Getting the code sent by SMS
             String code = phoneAuthCredential.getSmsCode();
-
-            //sometime the code is not detected automatically
-            //in this case the code will be null
-            //so user has to manually enter the code
             if (code != null) {
-                otp.setText(code);
-
-                //verifying the code
-                verifyVerificationCode(code);
+                Log.d(TAG, "OTP received automatically: " + code);  // Log received OTP
+                otp_et.setText(code);  // Automatically filling OTP
+                verifyVerificationCode(code);  // Verifying OTP
             }
         }
+
         @Override
         public void onVerificationFailed(FirebaseException e) {
+            Log.e(TAG, "Verification failed: " + e.getMessage());  // Log error message
             Toast.makeText(Verification.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-
-            //storing the verification id that is sent to the user
-            mVerificationId = s;
-            token=forceResendingToken;
-
+        public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(verificationId, forceResendingToken);
+            Log.d(TAG, "Code sent, verificationId: " + verificationId);  // Log verificationId
+            mVerificationId = verificationId;
+            token = forceResendingToken;
         }
     };
+
+    // Method to verify the OTP entered by the user
     private void verifyVerificationCode(String code) {
-        //creating the credential
-        try {
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
-            mAuth.signOut();
-            mFirebaseAuth.signOut();
-            //signing the user
-
-            signInWithPhoneAuthCredential(credential);
-        }catch (Exception e){ //ss
-            Toast toast = Toast.makeText(getApplicationContext(), "Error,Please try again lator", Toast.LENGTH_SHORT);
-            toast.setGravity( Gravity.CENTER,0,0);
-            toast.show();
-        }
-
+        Log.d(TAG, "Verifying OTP: " + code);  // Log OTP being verified
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
+        signInWithPhoneAuthCredential(credential);  // Sign in after OTP verification
     }
+
+    // Method to sign in using OTP
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential).addOnCompleteListener(Verification.this, new OnCompleteListener<AuthResult>() {
+        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(Verification.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Log.d(TAG, "OTP verification successful.");  // Log success
 
-                    //verification successful we will start the profile activity
+                    Intent intent = getIntent();
+                    final String email = intent.getStringExtra("email");
+                    final String pwd = intent.getStringExtra("password");
+                    final String fname = intent.getStringExtra("name");
+                    final String number = intent.getStringExtra("number");
+                    final String code1 = intent.getStringExtra("code");
 
-
-                    //EMAIL BHEJNE KA CODE YHA AYEGA SHYAAD
-
-
-                    registeruser();
-
+                    // Register user after OTP verification
+                    registerUser(email, pwd, fname, code1, number);
                 } else {
-
-                    //verification unsuccessful.. display an error message
-
-                    String message = "Somthing is wrong, we will fix it soon...";
-
+                    Log.e(TAG, "OTP verification failed: " + task.getException());  // Log failure
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                        message = "Invalid code entered...";
+                        Toast.makeText(Verification.this, "Invalid OTP", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Verification.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
-                    Toast.makeText(Verification.this,message, Toast.LENGTH_LONG).show();
-
                 }
             }
         });
-
     }
-    private void registeruser() {
 
-        Intent intent = getIntent();
-        final String email = intent.getStringExtra("email");
-        final String pwd = intent.getStringExtra("password");
-        final String fname = intent.getStringExtra("name");
-        final String cd = intent.getStringExtra("code");
-        final String number = intent.getStringExtra("number");
+    // Method to register the user after OTP verification and send email verification
+    private void registerUser(String email, String pwd, String fname, String code, String number) {
+        Log.d(TAG, "Registering user with email: " + email);  // Log user registration details
 
-
-        //  progressBar.setVisibility(View.VISIBLE);
-        verify_btn.setVisibility(View.GONE);
-        mFirebaseAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-
-                    mFirebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            otp.setVisibility( View.GONE );
-                            verify_btn.setVisibility( View.GONE );
-                            enterotp.setVisibility( View.GONE );
-
-                            chk_email.setVisibility( View.VISIBLE );
-                            email_txt.setVisibility( View.VISIBLE );
-                            login_btn.setVisibility( View.VISIBLE );
-                            login_btn.setOnClickListener( new View.OnClickListener() {
+        mFirebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                        if (user != null) {
+                            // Send email verification
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(Verification.this, Login_Student.class);
-                                    startActivity( intent );
-                                    finish();
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "Verification email sent.");  // Log email sent
+                                        saveUserToDatabase(fname, email, number, code, pwd);
+                                        Toast.makeText(Verification.this, "Verification email sent. Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                                        showLoginUI();
+                                    } else {
+                                        Log.e(TAG, "Failed to send verification email: " + task.getException().getMessage());  // Log failure
+                                        Toast.makeText(Verification.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            } );
+                            });
                         }
-                    });
+                    } else {
+                        showErrorToast(task.getException().getMessage());
+                        finish();
+                    }
+                });
+    }
 
-                    //final String refrelid = endvr.concat(number);
-                    String uid = FirebaseAuth.getInstance().getUid();
-                    User user=new User(fname,email,number,uid,pwd,null,"no",cd);
+    private void saveUserToDatabase(String fname, String email, String number, String code, String pwd) {
+        String uid = FirebaseAuth.getInstance().getUid();
+        User user = new User(fname, email, number, uid, pwd, null, "no", code);
 
-                    FirebaseDatabase.getInstance().getReference("Users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            // progressBar.setVisibility(View.GONE);
-                            //progressBar.setVisibility(View.GONE);
-                            if (task.isSuccessful()) {
+        Log.d(TAG, "Saving user to database with UID: " + uid);  // Log saving user to database
 
+        FirebaseDatabase.getInstance().getReference("Users")
+                .child(uid)
+                .setValue(user)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "User saved successfully.");  // Log success
+                        Save.save(getApplicationContext(), "session", "false");
+                    } else {
+                        Log.e(TAG, "Failed to save user data: " + task.getException());  // Log failure
+                        showErrorToast("Failed to save user data.");
+                    }
+                });
+    }
 
-
-
-                                //saving session
-
-                                Save.save(getApplicationContext(),"session","false");
-
-                                // Toast.makeText(Verification.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
-                                // Intent intent = new Intent(Verification.this,Reg_Sucess.class);
-                                //intent.putExtra("referid",refrelid);
-                                //    startActivity(intent);
-                                // finish();
-                            }
-                            else {
-                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                    // The verification code entered was invalid
-                                    // Intent intent = new Intent(RequestOtp.this,Reg_Fail.class);
-                                    //  startActivity(intent);
-                                    //  finish();
-                                }
-
-                            }
-                        }
-                    });
-
-                }
-                else {
-                    //progressBar.setVisibility(View.GONE);
-                    //Toast.makeText(RegAct.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    //   Intent intent = new Intent(RequestOtp.this,Reg_Fail.class);
-                    // startActivity(intent);
-                    finish();
-                }
-            }
+    private void showLoginUI() {
+        verify_btn.setVisibility(View.GONE);
+        login_btn.setVisibility(View.VISIBLE);
+        login_btn.setOnClickListener(v -> {
+            startActivity(new Intent(Verification.this, Login_Student.class));
+            finish();
         });
     }
 
-
+    private void showErrorToast(String message) {
+        Toast.makeText(Verification.this, message, Toast.LENGTH_LONG).show();
+    }
 }

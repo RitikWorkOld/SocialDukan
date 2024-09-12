@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,37 +82,28 @@ private View no_app;
             }
         } );
         notification_badge.setVisibility(View.GONE);
-        notification_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                databaseReferencenotup.child("dotstatus").setValue("no");
-                databaseReferencenotup.keepSynced(true);
-                Intent intent = new Intent(getActivity(), Notifications.class);
-                startActivity(intent);
-
-            }
-        });
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
-                .child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReferencenot.keepSynced(true);
         databaseReferencenot.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
-                if (notifications_dots != null)
-                {
-                    if (notifications_dots.getDotstatus().equals("yes")){
-                        notification_badge.setVisibility(View.VISIBLE);
+                if (notifications_dots != null) {
+                    if (notifications_dots.getDotstatus().equals("no")) {
+                        notification_badge.setVisibility(View.VISIBLE);  // Show badge
+                    } else {
+                        notification_badge.setVisibility(View.GONE);     // Hide badge when dotstatus is "no"
                     }
+                } else {
+                    notification_badge.setVisibility(View.GONE);         // Hide badge by default if no dotstatus is found
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Handle possible errors
             }
         });
 
@@ -134,43 +126,50 @@ private View no_app;
             @Override
             protected void onBindViewHolder(@NonNull events_vh holder, int position, @NonNull final events_md model) {
                 holder.Title.setText(model.getEventname());
-                holder.Descp.setText(model.getEvent_desc());
-                Picasso.get().load(model.getIntimguri()).resize(400,400).into(holder.Mimguri);
-                holder.event_date.setText( model.getEvent_date() );
+                holder.Descp.setText(model.getEventdesc());
+                if (model.getImageUrl() != null) {
+                    Picasso.get().load(model.getImageUrl()).resize(400, 400).into(holder.Mimguri);
+                }
+                holder.event_date.setText( model.getEventdate() );
+                Log.d("CHECK_IT",model.getEventname()+model.getEventdesc()+model.getEventdate());
 String event_name = model.getEventname();
                 String Title = model.getEventname();
-                String Descp = model.getEvent_desc();
-                String Desc1 = model.getDesc1();
-                String Desc2 = model.getDesc2();
-                String Mimguri = model.getIntimguri();
-                String number_of_member=model.getNumber_of_member();
-                String event_date=model.getEvent_date();
+                String Descp = model.getEventdesc();
+                String Desc1 = model.getEventdesc();
+                String Desc2 = model.getEventdesc();
+                String Mimguri = model.getImageUrl();
+                String number_of_member=model.getMax_number();
+                String event_date=model.getEventdate();
                 String event_fb_link=model.getEvent_fb_link();
                         String event_insta_handle=model.getEvent_insta_handle();
-                        String website_link=model.getEvent_website_link();
+                        String website_link=model.getWebsite_link();
                         String max_number=model.getMax_number();
                         String min_number=model.getMin_number();
-                        String type_event=model.getType_of_event();
-                key=model.getEventid();
+                        String type_event=model.getType_event();
+                key=model.getEventId();
                 String location=model.getLocation();
 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+                // Ensure all required data is put into the Bundle
                 final Bundle bundle = new Bundle();
-                bundle.putString("Name",event_name);
-                bundle.putString("Title",Title);
-                bundle.putString("Descp",Descp);
-                bundle.putString("Desc1",Desc1);
-                bundle.putString("Desc2",Desc2);
-                bundle.putString("Mimguri",Mimguri);
-                bundle.putString("number_of_member",number_of_member);
-                bundle.putString("event_date",event_date);
-                bundle.putString("uid",uid);
-                bundle.putString("max_number",max_number);
-                bundle.putString("min_number",min_number);
-                bundle.putString("type_event",type_event);
-                bundle.putString("location",location);
-                bundle.putString("key",key);
-                bundle.putString("amt",model.getAmount());
+                bundle.putString("Name", event_name);
+                bundle.putString("Title", Title);
+                bundle.putString("Descp", Descp);
+                bundle.putString("Desc1", Desc1);
+                bundle.putString("Desc2", Desc2);
+                bundle.putString("Mimguri", Mimguri);
+                bundle.putString("number_of_member", number_of_member);
+                bundle.putString("event_date", event_date);
+                bundle.putString("uid", uid);
+                bundle.putString("max_number", max_number);
+                bundle.putString("min_number", min_number);
+                bundle.putString("type_event", type_event);
+                bundle.putString("location", location);
+                bundle.putString("key", key);
+                bundle.putString("amt", model.getAmount());
+                bundle.putString("fb", event_fb_link);
+                bundle.putString("insta", event_insta_handle);
+                bundle.putString("website", website_link);
 
 
                 notification_btn.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +178,7 @@ String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                         DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        databaseReferencenotup.child("dotstatus").setValue("no");
+                        databaseReferencenotup.child("dotstatus").setValue("yes");
                         databaseReferencenotup.keepSynced(true);
                         Intent intent = new Intent(getActivity(), Notifications.class);
                         startActivity(intent);

@@ -1,12 +1,16 @@
 package com.social.socialdukan;
 
 
+import static android.app.Application.getProcessName;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 ;
 import com.example.socialdukan.R;
+import com.google.firebase.FirebaseApp;
 import com.social.socialdukan.Student.Login_Register_Student.Login_Student;
 import com.social.socialdukan.Student.Login_Register_Student.Login_Student;
 
@@ -24,7 +28,7 @@ Timer timer;
         setContentView( R.layout.activity_splash );
 
 
-       // FirebaseMessaging.getInstance().subscribeToTopic(getString( R.string.default_notification_channel_id));
+        // FirebaseMessaging.getInstance().subscribeToTopic(getString( R.string.default_notification_channel_id));
 
 
         timer = new Timer();

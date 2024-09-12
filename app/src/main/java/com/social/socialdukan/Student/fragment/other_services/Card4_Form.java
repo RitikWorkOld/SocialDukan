@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 public class Card4_Form extends AppCompatActivity implements View.OnClickListener  {
-    TextInputEditText evnt_name,evnt_venue,city,exp_football,head_name,head_cont,head_email;
+    TextInputEditText evnt_name,evnt_venue,city,exp_football,head_name,head_cont,head_email,desc;
     Button btn;
     EditText evnt_date;
     private int mYear, mMonth, mDay;
@@ -39,6 +39,7 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
         head_cont=findViewById( R.id.head_cont );
         head_name=findViewById( R.id.head_name );
         head_email=findViewById( R.id.head_email );
+        desc = findViewById(R.id.desc_et);
 
         btn=findViewById( R.id.submit_btn );
         evnt_date.setOnClickListener( this );
@@ -56,35 +57,42 @@ public class Card4_Form extends AppCompatActivity implements View.OnClickListene
                                     if (!head_cont.getText().toString().isEmpty()) {
                                         if (!head_name.getText().toString().isEmpty()) {
                                             if (!head_email.getText().toString().isEmpty()) {
-                                                String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard4")
-                                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
+                                                if (!desc.getText().toString().isEmpty()) {
+                                                    String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard4")
+                                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().getKey();
 
-                                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard4" ).child( notiid);
-                                                databaseReference.keepSynced( true );
-                                                databaseReference.child( "eventname" ).setValue( evnt_name.getText().toString() );
-                                                databaseReference.child( "eventdate" ).setValue( evnt_date.getText().toString() );
-                                                databaseReference.child( "eventvenue" ).setValue( evnt_venue.getText().toString() );
-                                                databaseReference.child( "city" ).setValue( city.getText().toString() );
-                                                databaseReference.child( "expfootball" ).setValue( exp_football.getText().toString() );
-                                                databaseReference.child( "headname" ).setValue( head_name.getText().toString() );
-                                                databaseReference.child( "headcont" ).setValue( head_cont.getText().toString() );
-                                                databaseReference.child( "heademail" ).setValue( head_email.getText().toString() );
-                                                databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
-                                                databaseReference.child( "id" ).setValue(notiid);
-                                                databaseReference.child( "read" ).setValue("no");
-                                                Intent intent = new Intent( Card4_Form.this, Thanks_Activity.class );
-                                                evnt_name.setText("");
-                                                evnt_date.setText("");
-                                                evnt_venue.setText("");
-                                                city.setText("");
-                                                exp_football.setText("");
-                                                head_cont.setText("");
-                                                head_name.setText("");
-                                                head_email.setText("");
-                                                startActivity( intent );
-                                              //  Toast.makeText( Card4_Form.this, "Done", Toast.LENGTH_SHORT ).show();
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard4").child(notiid);
+                                                    databaseReference.keepSynced(true);
+                                                    databaseReference.child("eventname").setValue(evnt_name.getText().toString());
+                                                    databaseReference.child("eventdate").setValue(evnt_date.getText().toString());
+                                                    databaseReference.child("eventvenue").setValue(evnt_venue.getText().toString());
+                                                    databaseReference.child("city").setValue(city.getText().toString());
+                                                    databaseReference.child("expfootball").setValue(exp_football.getText().toString());
+                                                    databaseReference.child("headname").setValue(head_name.getText().toString());
+                                                    databaseReference.child("headcont").setValue(head_cont.getText().toString());
+                                                    databaseReference.child("heademail").setValue(head_email.getText().toString());
+                                                    databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                    databaseReference.child("id").setValue(notiid);
+                                                    databaseReference.child("read").setValue("no");
+                                                    databaseReference.child("desc").setValue(desc.getText().toString());
 
+                                                    Intent intent = new Intent(Card4_Form.this, Thanks_Activity.class);
+                                                    evnt_name.setText("");
+                                                    evnt_date.setText("");
+                                                    evnt_venue.setText("");
+                                                    city.setText("");
+                                                    exp_football.setText("");
+                                                    head_cont.setText("");
+                                                    head_name.setText("");
+                                                    head_email.setText("");
+                                                    desc.setText("");
+                                                    startActivity(intent);
+                                                    //  Toast.makeText( Card4_Form.this, "Done", Toast.LENGTH_SHORT ).show();
 
+                                                }
+                                                else {
+                                                    Toast.makeText(Card4_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
+                                                }
                                             }
                                             else {
                                                 Toast.makeText(Card4_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();

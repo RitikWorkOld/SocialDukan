@@ -9,16 +9,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialdukan.R
+import com.example.socialdukan.databinding.ActivityChatBotBinding
 import com.social.socialdukan.Student.Chat_bot.adapter.ChatAdapter
 import com.social.socialdukan.Student.Chat_bot.entity.ChatMessage
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_chat_bot.*
 
+class MainActivity : AppCompatActivity(), MainContract.View {
 
-class MainActivity : AppCompatActivity(),MainContract.View {
-
+    private lateinit var binding: ActivityChatBotBinding
     lateinit var adapter: ChatAdapter
     lateinit var ref: DatabaseReference
     lateinit var aiService: AIService
@@ -27,43 +27,47 @@ class MainActivity : AppCompatActivity(),MainContract.View {
     var key: String? = null
     var notiid: String? = null
 
-    lateinit var mPresenter : MainContract.Presenter
+    lateinit var mPresenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_bot)
-    notiid = FirebaseDatabase.getInstance().reference.child("chat").push().key
+
+        // Initialize View Binding
+        binding = ActivityChatBotBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        notiid = FirebaseDatabase.getInstance().reference.child("chat").push().key
         initPresenter()
 
-        rvChat.setHasFixedSize(true)
+        // Setup RecyclerView
+        binding.rvChat.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.stackFromEnd = true
-        rvChat.layoutManager = layoutManager
+        binding.rvChat.layoutManager = layoutManager
 
         ref = notiid?.let { FirebaseDatabase.getInstance().reference.child("chat").child(it) }!!
         ref.keepSynced(true)
 
-        btnSend.setOnClickListener {
-            val message = edChat.text.toString()
-            if(message.isNullOrBlank()){
+        binding.btnSend.setOnClickListener {
+            val message = binding.edChat.text.toString()
+            if (message.isNullOrBlank()) {
                 Toast.makeText(applicationContext, "Enter message first", Toast.LENGTH_SHORT).show()
-            }
-           else if (message != "") {
+            } else if (message != "") {
                 mPresenter.sendMessage(message)
             } else {
                 aiService.startListening()
                 Toast.makeText(applicationContext, "Enter message first", Toast.LENGTH_SHORT).show()
             }
-            edChat.setText("")
+            binding.edChat.setText("")
         }
 
         val options = FirebaseRecyclerOptions.Builder<ChatMessage>()
-                .setQuery(ref.child("chat"), ChatMessage::class.java)
-                .build()
+            .setQuery(ref.child("chat"), ChatMessage::class.java)
+            .build()
 
         adapter = ChatAdapter(options)
 
-        rvChat.adapter = adapter
+        binding.rvChat.adapter = adapter
 
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
@@ -73,11 +77,10 @@ class MainActivity : AppCompatActivity(),MainContract.View {
                 val lastVisiblePosition = layoutManager.findLastCompletelyVisibleItemPosition()
 
                 if (lastVisiblePosition == -1 || positionStart >= msgCount - 1 && lastVisiblePosition == positionStart - 1) {
-                    rvChat.scrollToPosition(positionStart)
+                    binding.rvChat.scrollToPosition(positionStart)
                 }
             }
         })
-
     }
 
     override fun onStart() {
@@ -91,10 +94,12 @@ class MainActivity : AppCompatActivity(),MainContract.View {
         mPresenter.onDestroy()
     }
 
-    fun initPresenter(){
-        val aiConfiguration = ai.api.android.AIConfiguration("81903d97e9b6421a83f67e3b6f49ba22",
-                AIConfiguration.SupportedLanguages.English,
-                ai.api.android.AIConfiguration.RecognitionEngine.System)
+    private fun initPresenter() {
+        val aiConfiguration = ai.api.android.AIConfiguration(
+            "81903d97e9b6421a83f67e3b6f49ba22",
+            AIConfiguration.SupportedLanguages.English,
+            ai.api.android.AIConfiguration.RecognitionEngine.System
+        )
 
         aiService = AIService.getService(this, aiConfiguration)
         aiDataAIService = AIDataService(aiConfiguration)
@@ -102,6 +107,5 @@ class MainActivity : AppCompatActivity(),MainContract.View {
         ref = notiid?.let { FirebaseDatabase.getInstance().reference.child("chat").child(it) }!!
 
         mPresenter = MainPresenter(aiDataAIService, ref)
-
     }
 }

@@ -61,23 +61,26 @@ CardView card1,card2,card3,card4,card5;
         } );
         notification_badge.setVisibility(View.GONE);
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
-                .child( FirebaseAuth.getInstance().getCurrentUser().getUid());
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReferencenot.keepSynced(true);
         databaseReferencenot.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
-                if (notifications_dots != null)
-                {
-                    if (notifications_dots.getDotstatus().equals("yes")){
-                        notification_badge.setVisibility(View.VISIBLE);
+                if (notifications_dots != null) {
+                    if (notifications_dots.getDotstatus().equals("no")) {
+                        notification_badge.setVisibility(View.VISIBLE);  // Show badge
+                    } else {
+                        notification_badge.setVisibility(View.GONE);     // Hide badge when dotstatus is "no"
                     }
+                } else {
+                    notification_badge.setVisibility(View.GONE);         // Hide badge by default if no dotstatus is found
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Handle possible errors
             }
         });
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
@@ -87,7 +90,7 @@ CardView card1,card2,card3,card4,card5;
 
                 DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                databaseReferencenotup.child("dotstatus").setValue("no");
+                databaseReferencenotup.child("dotstatus").setValue("yes");
                 databaseReferencenotup.keepSynced(true);
                 Intent intent = new Intent(getActivity(), Notifications.class);
                 startActivity(intent);

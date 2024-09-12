@@ -99,6 +99,24 @@ android:text="Form"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/desc_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:padding="8dp"
+                    android:background="@drawable/edittext"
+                    android:layout_margin="16dp"
+                    android:hint="Event's Description" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                app:counterTextColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

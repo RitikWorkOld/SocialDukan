@@ -36,162 +36,138 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class Card1_Form extends AppCompatActivity implements View.OnClickListener {
-TextInputLayout evnt_name,evnt_venue,city1,exp_football,head_name,head_cont,head_email;
-EditText number;
-public String cmpid;
-EditText name_et,venue_et,city_et,exp_et,head_name_et,email_et;
-EditText evnt_date;
-private FirebaseAuth mFirebaseAuth;
-Button btn;
+    TextInputLayout evnt_name, evnt_venue, city1, exp_football, head_name, head_cont, head_email;
+    EditText number;
+    EditText evnt_date;
+    private FirebaseAuth mFirebaseAuth;
+    Button btn;
     private int mYear, mMonth, mDay;
+    TextInputLayout description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_card1__form );
-        name_et=findViewById( R.id.name_et );
-        venue_et=findViewById( R.id.venut_et );
-        city_et=findViewById( R.id.city_et );
-        exp_et=findViewById( R.id.exp_et );
-        head_name_et=findViewById( R.id.head_name_et );
-        email_et=findViewById( R.id.email_et );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_card1__form);
 
-        evnt_name=findViewById( R.id.evnt_name );
-        evnt_date=findViewById( R.id.evnt_date );
-        evnt_venue=findViewById( R.id.evnt_venue );
-        city1=findViewById( R.id.city );
-        number=findViewById( R.id.number );
-        mFirebaseAuth=FirebaseAuth.getInstance();
-        exp_football=findViewById( R.id.exp_football );
-        head_cont=findViewById( R.id.head_cont );
-        head_name=findViewById( R.id.head_name );
-        head_email=findViewById( R.id.head_email );
+        // Initialize UI elements
+        evnt_name = findViewById(R.id.evnt_name);
+        evnt_venue = findViewById(R.id.evnt_venue);
+        city1 = findViewById(R.id.city);
+        description = findViewById(R.id.evnt_desc);
+        exp_football = findViewById(R.id.exp_football);
+        head_name = findViewById(R.id.head_name);
+        head_cont = findViewById(R.id.head_cont);
+        head_email = findViewById(R.id.head_email);
+        number = findViewById(R.id.number);
+        evnt_date = findViewById(R.id.evnt_date);
+        btn = findViewById(R.id.submit_btn);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
-        final Editable eventname = evnt_name.getEditText().getText();
+        // Set listeners
+        evnt_date.setOnClickListener(this);
 
-        final Editable eventvenue = evnt_venue.getEditText().getText();
-        final Editable city = city1.getEditText().getText();
-        final Editable exprec_football = exp_football.getEditText().getText();
-        final Editable headName = head_name.getEditText().getText();
-        final Editable headCont = head_cont.getEditText().getText();
-        final Editable headEmail = head_email.getEditText().getText();
-
-
-        btn=findViewById( R.id.submit_btn );
-
-
+        btn.setOnClickListener(v -> {
+            // Retrieve and validate inputs
+            String eventname = evnt_name.getEditText() != null ? evnt_name.getEditText().getText().toString().trim() : "";
+            String eventdate = evnt_date.getText().toString().trim();
+            String eventvenue = evnt_venue.getEditText() != null ? evnt_venue.getEditText().getText().toString().trim() : "";
+            String city = city1.getEditText() != null ? city1.getEditText().getText().toString().trim() : "";
+            String expfootball = exp_football.getEditText() != null ? exp_football.getEditText().getText().toString().trim() : "";
+            String headName = head_name.getEditText() != null ? head_name.getEditText().getText().toString().trim() : "";
+            String headCont = head_cont.getEditText() != null ? head_cont.getEditText().getText().toString().trim() : "";
+            String headEmail = head_email.getEditText() != null ? head_email.getEditText().getText().toString().trim() : "";
+            String desc = description.getEditText() != null ? description.getEditText().getText().toString().trim() : "";
 
 
-evnt_date.setOnClickListener( this );
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!eventname.toString().isEmpty()) {
-                    if (!evnt_date.getText().toString().isEmpty()) {
-                        if (!eventvenue.toString().isEmpty()) {
-                            if (!city.toString().isEmpty()) {
-                                if (!exprec_football.toString().isEmpty()) {
-                                    if (!headCont.toString().isEmpty()) {
-                                        if((number.length() == 10)) {
-                                            if (!headName.toString().isEmpty()) {
-                                                if (!headEmail.toString().isEmpty()) {
-                                                    String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard1")
-                                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
-
-                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard1" ).child( notiid )
-                                                            ;
-                                                    databaseReference.keepSynced( true );
-                                                    databaseReference.child( "eventname" ).setValue( eventname.toString() );
-                                                    databaseReference.child( "eventdate" ).setValue( evnt_date.getText().toString() );
-                                                    databaseReference.child( "eventvenue" ).setValue( eventvenue.toString() );
-                                                    databaseReference.child( "city" ).setValue( city.toString() );
-                                                    databaseReference.child( "expfootball" ).setValue( exprec_football.toString() );
-                                                    databaseReference.child( "headname" ).setValue( headName.toString() );
-                                                    databaseReference.child( "headcont" ).setValue( headCont.toString() );
-                                                    databaseReference.child( "heademail" ).setValue( headEmail.toString() );
-                                                    databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
-                                                    databaseReference.child( "id" ).setValue(notiid);
-                                                    databaseReference.child( "read" ).setValue("no");
-
-                                                    //Toast.makeText( Card1_Form.this, "Done", Toast.LENGTH_SHORT ).show();
-
-                                                    Intent intent = new Intent( Card1_Form.this, Thanks_Activity.class );
-                                                    name_et.setText( "" );
-                                                    venue_et.setText( "" );
-                                                    city_et.setText( "" );
-                                                    exp_et.setText( "" );
-                                                    head_name_et.setText( "" );
-                                                    number.setText( "" );
-                                                    email_et.setText( "" );
-evnt_date.setText( "" );
-                                                    startActivity( intent );
-
-                                                } else {
-                                                    Toast.makeText( Card1_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
-                                                }
-                                            } else {
-                                                Toast.makeText( Card1_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
-                                            }
-                                        }
-
-                                        else {
-                                            number.setError(getString(R.string.input_error_phone_invalid));
-                                            number.requestFocus();
-                                            }
-
-
-                                    }//
-                                    else {
-                                        Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                }
-
-                            }
-                            else {
-                                Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else {
-                        Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(Card1_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                }
-
+            if (eventname.isEmpty()) {
+                evnt_name.setError("Please fill in the event name");
+                return;
             }
+
+            if (eventdate.isEmpty()) {
+                evnt_date.setError("Please select the event date");
+                return;
+            }
+            if (eventvenue.isEmpty()) {
+                evnt_venue.setError("Please fill in the event venue");
+                return;
+            }
+            if (desc.isEmpty()) {
+                evnt_name.setError("Please fill in the description");
+                return;
+            }
+            if (city.isEmpty()) {
+                city1.setError("Please fill in the city");
+                return;
+            }
+            if (expfootball.isEmpty()) {
+                exp_football.setError("Please fill in the expected football experience");
+                return;
+            }
+            if (headCont.isEmpty() || number.length() != 10) {
+                head_cont.setError("Please enter a valid contact number");
+                return;
+            }
+            if (headName.isEmpty()) {
+                head_name.setError("Please fill in the head name");
+                return;
+            }
+            if (headEmail.isEmpty()) {
+                head_email.setError("Please fill in the head email");
+                return;
+            }
+
+            // If all fields are filled correctly, proceed with saving data
+            String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard1")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().getKey();
+
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
+                    .child("OtherServiceCard1").child(notiid);
+            databaseReference.keepSynced(true);
+            databaseReference.child("eventname").setValue(eventname);
+            databaseReference.child("eventdate").setValue(eventdate);
+            databaseReference.child("eventvenue").setValue(eventvenue);
+            databaseReference.child("city").setValue(city);
+            databaseReference.child("expfootball").setValue(expfootball);
+            databaseReference.child("headname").setValue(headName);
+            databaseReference.child("headcont").setValue(headCont);
+            databaseReference.child("heademail").setValue(headEmail);
+            databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            databaseReference.child("id").setValue(notiid);
+            databaseReference.child("read").setValue("no");
+            databaseReference.child("desc").setValue(desc);
+
+            // Clear fields after submission
+            evnt_name.getEditText().setText("");
+            evnt_date.setText("");
+            description.getEditText().setText("");
+            evnt_venue.getEditText().setText("");
+            city1.getEditText().setText("");
+            exp_football.getEditText().setText("");
+            head_name.getEditText().setText("");
+            head_cont.getEditText().setText("");
+            head_email.getEditText().setText("");
+            number.setText("");
+
+            // Navigate to the Thanks activity
+            Intent intent = new Intent(Card1_Form.this, Thanks_Activity.class);
+            startActivity(intent);
         });
     }
 
     @Override
     public void onClick(View v) {
         if (v == evnt_date) {
-
             // Get Current Date
             final Calendar c = Calendar.getInstance();
-            mYear = c.get( Calendar.YEAR );
-            mMonth = c.get( Calendar.MONTH );
-            mDay = c.get( Calendar.DAY_OF_MONTH );
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog( this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                          evnt_date.setText( dayOfMonth + "-" + (monthOfYear + 1) + "-" + year );
-
-                        }
-                    }, mYear, mMonth, mDay );
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    (view, year, monthOfYear, dayOfMonth) ->
+                            evnt_date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year),
+                    mYear, mMonth, mDay);
             datePickerDialog.show();
         }
     }

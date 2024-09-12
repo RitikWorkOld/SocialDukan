@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.socialdukan.R;
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -69,25 +70,13 @@ public class InternFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_intern,container,false);
         // Inflate the layout for this fragment
         firebaseAuth= FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()==null){
 
-
-        }
         progressBar=view.findViewById( R.id.progressBar2 );
         notification_btn = (ImageView) view.findViewById(R.id.iv_notification_btn);
-        notification_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                databaseReferencenotup.child("dotstatus").setValue("no");
-                databaseReferencenotup.keepSynced(true);
-                Intent intent = new Intent(getActivity(), Notifications.class);
-                startActivity(intent);
 
-            }
-        });
+
+
         notification_badge = (ImageView)view.findViewById(R.id.notificationbadge);
         help_fab=view.findViewById( R.id.help_fab );
 
@@ -103,6 +92,7 @@ public class InternFragment extends Fragment {
         no_app=view.findViewById( R.id.no_app );
 
         notification_badge.setVisibility(View.GONE);
+        // Check for notification dot status and set the badge visibility accordingly
         DatabaseReference databaseReferencenot = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReferencenot.keepSynced(true);
@@ -110,19 +100,23 @@ public class InternFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Notifications_Dots notifications_dots = dataSnapshot.getValue(Notifications_Dots.class);
-                if (notifications_dots != null)
-                {
-                    if (notifications_dots.getDotstatus().equals("yes")){
-                        notification_badge.setVisibility(View.VISIBLE);
+                if (notifications_dots != null) {
+                    if (notifications_dots.getDotstatus().equals("no")) {
+                        notification_badge.setVisibility(View.VISIBLE);  // Show badge
+                    } else {
+                        notification_badge.setVisibility(View.GONE);     // Hide badge when dotstatus is "no"
                     }
+                } else {
+                    notification_badge.setVisibility(View.GONE);         // Hide badge by default if no dotstatus is found
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Handle possible errors
             }
         });
+
         rv_internall = view.findViewById(R.id.rv_internall);
         rv_internall.showIfEmpty( no_app );
         mLayoutManager=new LinearLayoutManager(container.getContext());
@@ -150,16 +144,19 @@ mLayoutManager.setReverseLayout( true );
                 notification_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        // Get reference to NotificationDots
                         DatabaseReference databaseReferencenotup = FirebaseDatabase.getInstance().getReference().child("NotificationDots")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        databaseReferencenotup.child("dotstatus").setValue("no");
+
+                        // Update dot status to "yes" when the notification button is clicked
+                        databaseReferencenotup.child("dotstatus").setValue("yes");
+                        // Keep Firebase synced
                         databaseReferencenotup.keepSynced(true);
                         Intent intent = new Intent(getActivity(), Notifications.class);
                         startActivity(intent);
-
                     }
                 });
+
 
                 holder.layout_card.setOnClickListener( new View.OnClickListener() {
                     @Override

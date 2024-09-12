@@ -222,91 +222,88 @@ other_text.setText( "NULL" );
             @Override
             public void onClick(View v) {
 
-                            if (!headName1.toString().isEmpty()) {
-                                if (!headCont1.toString().isEmpty()) {
-                                    if (!headEmail1.toString().isEmpty()) {
-                                        if (!city.toString().isEmpty()) {
-                                            if (!pieces1.toString().isEmpty()) {
-                                                if (!other_text.getText().toString().isEmpty()) {
-                                                    if (!type.getText().toString().isEmpty()) {
-                                                        String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard5")
-                                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() ).push().getKey();
+                // Get the latest text from the EditText fields
+                String headNameText = head_name1.getEditText().getText().toString().trim();
+                String headContText = head_cont.getEditText().getText().toString().trim();
+                String headEmailText = head_email.getEditText().getText().toString().trim();
+                String cityText = city1.getEditText().getText().toString().trim();
+                String piecesText = no_piecces.getEditText().getText().toString().trim();
+                String otherText = other_text.getText().toString().trim();
+                String typeText = type.getText().toString().trim();
 
-                                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child( "OtherServiceCard5" ).child(notiid );
-                                                        databaseReference.keepSynced( true );
+                if (!headNameText.isEmpty()) {
+                    if (!headContText.isEmpty()) {
+                        if (!headEmailText.isEmpty()) {
+                            if (!cityText.isEmpty()) {
+                                if (!piecesText.isEmpty()) {
+                                    if (!otherText.isEmpty()) {
+                                        if (!typeText.isEmpty()) {
+                                            String notiid = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard5")
+                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().getKey();
 
-                                                        databaseReference.child( "city" ).setValue( city.toString() );
-                                                        databaseReference.child( "pieces" ).setValue( pieces1.toString() );
-                                                        databaseReference.child( "headname" ).setValue( headName1.toString() );
-                                                        databaseReference.child( "headcont" ).setValue( headCont1.toString() );
-                                                        databaseReference.child( "heademail" ).setValue( headEmail1.toString() );
-                                                        databaseReference.child( "others" ).setValue( other_1.toString() );
-                                                        databaseReference.child( "type" ).setValue( type.getText().toString() );
-                                                        databaseReference.child( "userid" ).setValue( FirebaseAuth.getInstance().getCurrentUser().getUid() );
-                                                        databaseReference.child( "read" ).setValue("no");
-                                                        databaseReference.child( "id" ).setValue(notiid);
+                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("OtherServiceCard5").child(notiid);
+                                            databaseReference.keepSynced(true);
 
+                                            databaseReference.child("city").setValue(cityText);
+                                            databaseReference.child("pieces").setValue(piecesText);
+                                            databaseReference.child("headname").setValue(headNameText);
+                                            databaseReference.child("headcont").setValue(headContText);
+                                            databaseReference.child("heademail").setValue(headEmailText);
+                                            databaseReference.child("others").setValue(otherText);
+                                            databaseReference.child("type").setValue(typeText);
+                                            databaseReference.child("userid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                            databaseReference.child("read").setValue("no");
+                                            databaseReference.child("id").setValue(notiid);
 
-                                                        Intent intent = new Intent( Card5_Form.this, Thanks_Activity.class );
-                                                   name.setText( "" );
-                                                           no.setText( "" );
-                                                           email.setText( "" );
-                                                           citi.setText( "" );
-                                                                   pieces.setText( "" );
-                                                                   other_text.setText( "" );
-                                                        others.setVisibility( View.GONE );
-                                                        card1.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text1.setTextColor( getResources().getColor( R.color.gray ) );
-                                                        card2.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text2.setTextColor( getResources().getColor( R.color.gray ) );
+                                            Intent intent = new Intent(Card5_Form.this, Thanks_Activity.class);
+                                            name.setText("");
+                                            no.setText("");
+                                            email.setText("");
+                                            citi.setText("");
+                                            pieces.setText("");
+                                            other_text.setText("");
+                                            others.setVisibility(View.GONE);
 
-                                                        card3.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text3.setTextColor( getResources().getColor( R.color.gray ) );
+                                            // Reset the card colors and texts
+                                            card1.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text1.setTextColor(getResources().getColor(R.color.gray));
+                                            card2.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text2.setTextColor(getResources().getColor(R.color.gray));
+                                            card3.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text3.setTextColor(getResources().getColor(R.color.gray));
+                                            card4.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text4.setTextColor(getResources().getColor(R.color.gray));
+                                            card5.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text5.setTextColor(getResources().getColor(R.color.gray));
+                                            card6.setCardBackgroundColor(getResources().getColor(R.color.white));
+                                            text6.setTextColor(getResources().getColor(R.color.gray));
 
-                                                        card4.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text4.setTextColor( getResources().getColor( R.color.gray ) );
+                                            startActivity(intent);
 
-                                                        card5.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text5.setTextColor( getResources().getColor( R.color.gray ) );
-
-                                                        card6.setCardBackgroundColor( getResources().getColor( R.color.white ) );
-                                                        text6.setTextColor( getResources().getColor( R.color.gray ) );
-                                                        startActivity( intent );
-
-
-                                                    }
-                                                    else {
-                                                        Toast.makeText( Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
-                                                    }
-                                                }
-                                                else {
-                                                    Toast.makeText( Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT ).show();
-                                                }
-                                            }
-                                            else {
-                                                Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                            }
+                                        } else {
+                                            Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
                                         }
-                                        else {
-                                            Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                        }
+                                    } else {
+                                        Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
                                     }
-                                    else {
-                                        Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                    }
+                                } else {
+                                    Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
                                 }
-                                else {
-                                    Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                                }
-
+                            } else {
+                                Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
                             }
-                            else {
-                                Toast.makeText(Card5_Form.this,"Please fill all the answers",Toast.LENGTH_SHORT).show();
-                            }
-
-
+                        } else {
+                            Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(Card5_Form.this, "Please fill all the answers", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
 
